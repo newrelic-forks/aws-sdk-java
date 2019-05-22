@@ -206,7 +206,7 @@ public interface AWSResourceGroupsAsync extends AWSResourceGroups {
 
     /**
      * <p>
-     * Returns a list of tags that are associated with a resource, specified by an ARN.
+     * Returns a list of tags that are associated with a resource group, specified by an ARN.
      * </p>
      * 
      * @param getTagsRequest
@@ -219,7 +219,7 @@ public interface AWSResourceGroupsAsync extends AWSResourceGroups {
 
     /**
      * <p>
-     * Returns a list of tags that are associated with a resource, specified by an ARN.
+     * Returns a list of tags that are associated with a resource group, specified by an ARN.
      * </p>
      * 
      * @param getTagsRequest
@@ -332,8 +332,8 @@ public interface AWSResourceGroupsAsync extends AWSResourceGroups {
 
     /**
      * <p>
-     * Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are
-     * not specified in the request parameters.
+     * Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they
+     * are not specified in the request parameters.
      * </p>
      * 
      * @param tagRequest
@@ -346,8 +346,8 @@ public interface AWSResourceGroupsAsync extends AWSResourceGroups {
 
     /**
      * <p>
-     * Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are
-     * not specified in the request parameters.
+     * Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they
+     * are not specified in the request parameters.
      * </p>
      * 
      * @param tagRequest

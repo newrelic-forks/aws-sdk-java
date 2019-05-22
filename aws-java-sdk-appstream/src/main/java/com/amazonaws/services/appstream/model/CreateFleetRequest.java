@@ -187,27 +187,35 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private VpcConfig vpcConfig;
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      */
     private Integer maxUserDurationInSeconds;
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      */
     private Integer disconnectTimeoutInSeconds;
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      */
     private String displayName;
@@ -219,10 +227,58 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private Boolean enableDefaultInternetAccess;
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      */
     private DomainJoinInfo domainJoinInfo;
+    /**
+     * <p>
+     * The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     * Environment=Test. If you do not specify a value, Environment=.
+     * </p>
+     * <p>
+     * If you do not specify a value, the value is set to an empty string.
+     * </p>
+     * <p>
+     * Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special
+     * characters:
+     * </p>
+     * <p>
+     * _ . : / = + \ - @
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If they try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 900.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     */
+    private Integer idleDisconnectTimeoutInSeconds;
 
     /**
      * <p>
@@ -1262,11 +1318,21 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
      * @param maxUserDurationInSeconds
-     *        The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     *        The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *        connected to a streaming instance five minutes before this limit is reached, they are prompted to save any
+     *        open documents before being disconnected. After this time elapses, the instance is terminated and replaced
+     *        by a new instance.</p>
+     *        <p>
+     *        Specify a value between 600 and 360000.
      */
 
     public void setMaxUserDurationInSeconds(Integer maxUserDurationInSeconds) {
@@ -1275,10 +1341,20 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
-     * @return The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * @return The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *         connected to a streaming instance five minutes before this limit is reached, they are prompted to save
+     *         any open documents before being disconnected. After this time elapses, the instance is terminated and
+     *         replaced by a new instance.</p>
+     *         <p>
+     *         Specify a value between 600 and 360000.
      */
 
     public Integer getMaxUserDurationInSeconds() {
@@ -1287,11 +1363,21 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
      * @param maxUserDurationInSeconds
-     *        The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     *        The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *        connected to a streaming instance five minutes before this limit is reached, they are prompted to save any
+     *        open documents before being disconnected. After this time elapses, the instance is terminated and replaced
+     *        by a new instance.</p>
+     *        <p>
+     *        Specify a value between 600 and 360000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1302,15 +1388,21 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
      * @param disconnectTimeoutInSeconds
-     *        The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *        disconnected reconnects within this time interval, the user is connected to their previous session.
-     *        Specify a value between 60 and 57600.
+     *        The amount of time that a streaming session remains active after users disconnect. If users try to
+     *        reconnect to the streaming session after a disconnection or network interruption within this time
+     *        interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *        with a new streaming instance. </p>
+     *        <p>
+     *        Specify a value between 60 and 360000.
      */
 
     public void setDisconnectTimeoutInSeconds(Integer disconnectTimeoutInSeconds) {
@@ -1319,14 +1411,20 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
-     * @return The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *         disconnected reconnects within this time interval, the user is connected to their previous session.
-     *         Specify a value between 60 and 57600.
+     * @return The amount of time that a streaming session remains active after users disconnect. If users try to
+     *         reconnect to the streaming session after a disconnection or network interruption within this time
+     *         interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *         with a new streaming instance. </p>
+     *         <p>
+     *         Specify a value between 60 and 360000.
      */
 
     public Integer getDisconnectTimeoutInSeconds() {
@@ -1335,15 +1433,21 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
      * @param disconnectTimeoutInSeconds
-     *        The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *        disconnected reconnects within this time interval, the user is connected to their previous session.
-     *        Specify a value between 60 and 57600.
+     *        The amount of time that a streaming session remains active after users disconnect. If users try to
+     *        reconnect to the streaming session after a disconnection or network interruption within this time
+     *        interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *        with a new streaming instance. </p>
+     *        <p>
+     *        Specify a value between 60 and 360000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1354,11 +1458,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      */
 
     public void setDescription(String description) {
@@ -1367,10 +1471,10 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
-     * @return The description for display.
+     * @return The description to display.
      */
 
     public String getDescription() {
@@ -1379,11 +1483,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1394,11 +1498,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
      * @param displayName
-     *        The fleet name for display.
+     *        The fleet name to display.
      */
 
     public void setDisplayName(String displayName) {
@@ -1407,10 +1511,10 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
-     * @return The fleet name for display.
+     * @return The fleet name to display.
      */
 
     public String getDisplayName() {
@@ -1419,11 +1523,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
      * @param displayName
-     *        The fleet name for display.
+     *        The fleet name to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1486,11 +1590,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *        Directory domain.
      */
 
     public void setDomainJoinInfo(DomainJoinInfo domainJoinInfo) {
@@ -1499,10 +1605,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
-     * @return The information needed to join a Microsoft Active Directory domain.
+     * @return The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *         Directory domain.
      */
 
     public DomainJoinInfo getDomainJoinInfo() {
@@ -1511,16 +1619,329 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *        Directory domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateFleetRequest withDomainJoinInfo(DomainJoinInfo domainJoinInfo) {
         setDomainJoinInfo(domainJoinInfo);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     * Environment=Test. If you do not specify a value, Environment=.
+     * </p>
+     * <p>
+     * If you do not specify a value, the value is set to an empty string.
+     * </p>
+     * <p>
+     * Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special
+     * characters:
+     * </p>
+     * <p>
+     * _ . : / = + \ - @
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * </p>
+     * 
+     * @return The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     *         Environment=Test. If you do not specify a value, Environment=. </p>
+     *         <p>
+     *         If you do not specify a value, the value is set to an empty string.
+     *         </p>
+     *         <p>
+     *         Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following
+     *         special characters:
+     *         </p>
+     *         <p>
+     *         _ . : / = + \ - @
+     *         </p>
+     *         <p>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your
+     *         Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     * Environment=Test. If you do not specify a value, Environment=.
+     * </p>
+     * <p>
+     * If you do not specify a value, the value is set to an empty string.
+     * </p>
+     * <p>
+     * Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special
+     * characters:
+     * </p>
+     * <p>
+     * _ . : / = + \ - @
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     *        Environment=Test. If you do not specify a value, Environment=. </p>
+     *        <p>
+     *        If you do not specify a value, the value is set to an empty string.
+     *        </p>
+     *        <p>
+     *        Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following
+     *        special characters:
+     *        </p>
+     *        <p>
+     *        _ . : / = + \ - @
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your
+     *        Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     * Environment=Test. If you do not specify a value, Environment=.
+     * </p>
+     * <p>
+     * If you do not specify a value, the value is set to an empty string.
+     * </p>
+     * <p>
+     * Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special
+     * characters:
+     * </p>
+     * <p>
+     * _ . : / = + \ - @
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to associate with the fleet. A tag is a key-value pair, and the value is optional. For example,
+     *        Environment=Test. If you do not specify a value, Environment=. </p>
+     *        <p>
+     *        If you do not specify a value, the value is set to an empty string.
+     *        </p>
+     *        <p>
+     *        Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following
+     *        special characters:
+     *        </p>
+     *        <p>
+     *        _ . : / = + \ - @
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your
+     *        Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFleetRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateFleetRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFleetRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If they try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 900.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @param idleDisconnectTimeoutInSeconds
+     *        The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *        session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *        they are disconnected due to inactivity. If they try to reconnect to the streaming session before the time
+     *        interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *        previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *        streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *        user activity. If users continue to be idle after the time interval in
+     *        <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *        <p>
+     *        To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *        value between 60 and 3600. The default value is 900.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *        number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *        nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *        inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *        rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *        inactivity.
+     *        </p>
+     */
+
+    public void setIdleDisconnectTimeoutInSeconds(Integer idleDisconnectTimeoutInSeconds) {
+        this.idleDisconnectTimeoutInSeconds = idleDisconnectTimeoutInSeconds;
+    }
+
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If they try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 900.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @return The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *         session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *         they are disconnected due to inactivity. If they try to reconnect to the streaming session before the
+     *         time interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *         previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *         streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *         user activity. If users continue to be idle after the time interval in
+     *         <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *         <p>
+     *         To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *         value between 60 and 3600. The default value is 900.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *         number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *         nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *         inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *         rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *         inactivity.
+     *         </p>
+     */
+
+    public Integer getIdleDisconnectTimeoutInSeconds() {
+        return this.idleDisconnectTimeoutInSeconds;
+    }
+
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If they try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 900.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @param idleDisconnectTimeoutInSeconds
+     *        The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *        session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *        they are disconnected due to inactivity. If they try to reconnect to the streaming session before the time
+     *        interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *        previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *        streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *        user activity. If users continue to be idle after the time interval in
+     *        <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *        <p>
+     *        To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *        value between 60 and 3600. The default value is 900.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *        number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *        nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *        inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *        rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *        inactivity.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFleetRequest withIdleDisconnectTimeoutInSeconds(Integer idleDisconnectTimeoutInSeconds) {
+        setIdleDisconnectTimeoutInSeconds(idleDisconnectTimeoutInSeconds);
         return this;
     }
 
@@ -1561,7 +1982,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getEnableDefaultInternetAccess() != null)
             sb.append("EnableDefaultInternetAccess: ").append(getEnableDefaultInternetAccess()).append(",");
         if (getDomainJoinInfo() != null)
-            sb.append("DomainJoinInfo: ").append(getDomainJoinInfo());
+            sb.append("DomainJoinInfo: ").append(getDomainJoinInfo()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getIdleDisconnectTimeoutInSeconds() != null)
+            sb.append("IdleDisconnectTimeoutInSeconds: ").append(getIdleDisconnectTimeoutInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -1628,6 +2053,15 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getDomainJoinInfo() != null && other.getDomainJoinInfo().equals(this.getDomainJoinInfo()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getIdleDisconnectTimeoutInSeconds() == null ^ this.getIdleDisconnectTimeoutInSeconds() == null)
+            return false;
+        if (other.getIdleDisconnectTimeoutInSeconds() != null
+                && other.getIdleDisconnectTimeoutInSeconds().equals(this.getIdleDisconnectTimeoutInSeconds()) == false)
+            return false;
         return true;
     }
 
@@ -1649,6 +2083,8 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getDisplayName() == null) ? 0 : getDisplayName().hashCode());
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getIdleDisconnectTimeoutInSeconds() == null) ? 0 : getIdleDisconnectTimeoutInSeconds().hashCode());
         return hashCode;
     }
 

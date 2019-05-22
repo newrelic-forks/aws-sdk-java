@@ -31,9 +31,9 @@ import com.amazonaws.services.lambda.model.*;
  * </p>
  * <p>
  * This is the <i>AWS Lambda API Reference</i>. The AWS Lambda Developer Guide provides additional information. For the
- * service overview, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>, and
+ * service overview, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>, and
  * for information about how the service works, see <a
- * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the
+ * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the
  * <b>AWS Lambda Developer Guide</b>.
  * </p>
  */
@@ -42,9 +42,10 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Adds permissions to the resource-based policy of a version of a function layer. Use this action to grant layer
-     * usage permission to other accounts. You can grant permission to a single account, all AWS accounts, or all
-     * accounts in an organization.
+     * Adds permissions to the resource-based policy of a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. Use this
+     * action to grant layer usage permission to other accounts. You can grant permission to a single account, all AWS
+     * accounts, or all accounts in an organization.
      * </p>
      * <p>
      * To revoke permission, call <a>RemoveLayerVersionPermission</a> with the statement ID that you specified when you
@@ -62,9 +63,10 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Adds permissions to the resource-based policy of a version of a function layer. Use this action to grant layer
-     * usage permission to other accounts. You can grant permission to a single account, all AWS accounts, or all
-     * accounts in an organization.
+     * Adds permissions to the resource-based policy of a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. Use this
+     * action to grant layer usage permission to other accounts. You can grant permission to a single account, all AWS
+     * accounts, or all accounts in an organization.
      * </p>
      * <p>
      * To revoke permission, call <a>RemoveLayerVersionPermission</a> with the statement ID that you specified when you
@@ -87,21 +89,23 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource
-     * policies to grant permissions to event sources that use the <i>push</i> model. In a <i>push</i> model, event
-     * sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the
-     * resource policy allows an event source permission to invoke the Lambda function.
+     * Grants an AWS service or another account permission to use a function. You can apply the policy at the function
+     * level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the
+     * invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.
      * </p>
      * <p>
-     * Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the
-     * unpublished version of the function), or include a version or alias. If a client uses a version or alias to
-     * invoke a function, use the <code>Qualifier</code> parameter to apply permissions to that ARN. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * To grant permission to another account, specify the account ID as the <code>Principal</code>. For AWS services,
+     * the principal is a domain-style identifier defined by the service, like <code>s3.amazonaws.com</code> or
+     * <code>sns.amazonaws.com</code>. For AWS services, you can also specify the ARN or owning account of the
+     * associated resource as the <code>SourceArn</code> or <code>SourceAccount</code>. If you grant permission to a
+     * service principal without specifying the source, other accounts could potentially configure resources in their
+     * account to invoke your Lambda function.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:AddPermission</code> action.
+     * This action adds a statement to a resource-based permission policy for the function. For more information about
+     * function policies, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">Lambda Function
+     * Policies</a>.
      * </p>
      * 
      * @param addPermissionRequest
@@ -114,21 +118,23 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource
-     * policies to grant permissions to event sources that use the <i>push</i> model. In a <i>push</i> model, event
-     * sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the
-     * resource policy allows an event source permission to invoke the Lambda function.
+     * Grants an AWS service or another account permission to use a function. You can apply the policy at the function
+     * level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the
+     * invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.
      * </p>
      * <p>
-     * Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the
-     * unpublished version of the function), or include a version or alias. If a client uses a version or alias to
-     * invoke a function, use the <code>Qualifier</code> parameter to apply permissions to that ARN. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * To grant permission to another account, specify the account ID as the <code>Principal</code>. For AWS services,
+     * the principal is a domain-style identifier defined by the service, like <code>s3.amazonaws.com</code> or
+     * <code>sns.amazonaws.com</code>. For AWS services, you can also specify the ARN or owning account of the
+     * associated resource as the <code>SourceArn</code> or <code>SourceAccount</code>. If you grant permission to a
+     * service principal without specifying the source, other accounts could potentially configure resources in their
+     * account to invoke your Lambda function.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:AddPermission</code> action.
+     * This action adds a statement to a resource-based permission policy for the function. For more information about
+     * function policies, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">Lambda Function
+     * Policies</a>.
      * </p>
      * 
      * @param addPermissionRequest
@@ -146,11 +152,13 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates an alias that points to the specified Lambda function version. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
+     * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a> for a Lambda
+     * function version. Use aliases to provide clients with a function identifier that you can update to invoke a
+     * different version.
      * </p>
      * <p>
-     * Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
+     * You can also map an alias to split invocation requests between two versions. Use the <code>RoutingConfig</code>
+     * parameter to specify a second version and the percentage of invocation requests that it receives.
      * </p>
      * 
      * @param createAliasRequest
@@ -163,11 +171,13 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates an alias that points to the specified Lambda function version. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
+     * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a> for a Lambda
+     * function version. Use aliases to provide clients with a function identifier that you can update to invoke a
+     * different version.
      * </p>
      * <p>
-     * Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
+     * You can also map an alias to split invocation requests between two versions. Use the <code>RoutingConfig</code>
+     * parameter to specify a second version and the percentage of invocation requests that it receives.
      * </p>
      * 
      * @param createAliasRequest
@@ -194,17 +204,17 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
      * </p>
      * </li>
      * </ul>
@@ -228,17 +238,17 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
      * </p>
      * </li>
      * </ul>
@@ -258,11 +268,36 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a new Lambda function. The function configuration is created from the request parameters, and the code
-     * for the function is provided by a .zip file. The function name is case-sensitive.
+     * Creates a Lambda function. To create a function, you need a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html">deployment package</a> and an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role">
+     * execution role</a>. The deployment package contains your function code. The execution role grants the function
+     * permission to use AWS services, such as Amazon CloudWatch Logs for log streaming and AWS X-Ray for request
+     * tracing.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:CreateFunction</code> action.
+     * A function has an unpublished version, and can have published versions and aliases. The unpublished version
+     * changes when you update your function's code and configuration. A published version is a snapshot of your
+     * function code and configuration that can't be changed. An alias is a named resource that maps to a version, and
+     * can be changed to map to a different version. Use the <code>Publish</code> parameter to create version
+     * <code>1</code> of your function from its initial configuration.
+     * </p>
+     * <p>
+     * The other parameters let you configure version-specific and function-level settings. You can modify
+     * version-specific settings later with <a>UpdateFunctionConfiguration</a>. Function-level settings apply to both
+     * the unpublished and published versions of the function, and include tags (<a>TagResource</a>) and per-function
+     * concurrency limits (<a>PutFunctionConcurrency</a>).
+     * </p>
+     * <p>
+     * If another account or an AWS service invokes your function, use <a>AddPermission</a> to grant permission by
+     * creating a resource-based IAM policy. You can grant permissions at the function level, on a version, or on an
+     * alias.
+     * </p>
+     * <p>
+     * To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other AWS
+     * services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in
+     * the other service. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html">Invoking Functions</a>.
      * </p>
      * 
      * @param createFunctionRequest
@@ -275,11 +310,36 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a new Lambda function. The function configuration is created from the request parameters, and the code
-     * for the function is provided by a .zip file. The function name is case-sensitive.
+     * Creates a Lambda function. To create a function, you need a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html">deployment package</a> and an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role">
+     * execution role</a>. The deployment package contains your function code. The execution role grants the function
+     * permission to use AWS services, such as Amazon CloudWatch Logs for log streaming and AWS X-Ray for request
+     * tracing.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:CreateFunction</code> action.
+     * A function has an unpublished version, and can have published versions and aliases. The unpublished version
+     * changes when you update your function's code and configuration. A published version is a snapshot of your
+     * function code and configuration that can't be changed. An alias is a named resource that maps to a version, and
+     * can be changed to map to a different version. Use the <code>Publish</code> parameter to create version
+     * <code>1</code> of your function from its initial configuration.
+     * </p>
+     * <p>
+     * The other parameters let you configure version-specific and function-level settings. You can modify
+     * version-specific settings later with <a>UpdateFunctionConfiguration</a>. Function-level settings apply to both
+     * the unpublished and published versions of the function, and include tags (<a>TagResource</a>) and per-function
+     * concurrency limits (<a>PutFunctionConcurrency</a>).
+     * </p>
+     * <p>
+     * If another account or an AWS service invokes your function, use <a>AddPermission</a> to grant permission by
+     * creating a resource-based IAM policy. You can grant permissions at the function level, on a version, or on an
+     * alias.
+     * </p>
+     * <p>
+     * To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other AWS
+     * services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in
+     * the other service. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html">Invoking Functions</a>.
      * </p>
      * 
      * @param createFunctionRequest
@@ -297,11 +357,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes the specified Lambda function alias. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:DeleteAlias action.
+     * Deletes a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param deleteAliasRequest
@@ -314,11 +371,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes the specified Lambda function alias. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:DeleteAlias action.
+     * Deletes a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param deleteAliasRequest
@@ -336,7 +390,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes an event source mapping.
+     * Deletes an <a href="https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html">event source
+     * mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.
      * </p>
      * 
      * @param deleteEventSourceMappingRequest
@@ -349,7 +404,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes an event source mapping.
+     * Deletes an <a href="https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html">event source
+     * mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.
      * </p>
      * 
      * @param deleteEventSourceMappingRequest
@@ -368,10 +424,12 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Deletes a Lambda function. To delete a specific function version, use the <code>Qualifier</code> parameter.
-     * Otherwise, all versions and aliases are deleted. Event source mappings are not deleted.
+     * Otherwise, all versions and aliases are deleted.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:DeleteFunction</code> action.
+     * To delete Lambda event source mappings that invoke a function, use <a>DeleteEventSourceMapping</a>. For AWS
+     * services and resources that invoke your function directly, delete the trigger in the service where you originally
+     * configured it.
      * </p>
      * 
      * @param deleteFunctionRequest
@@ -385,10 +443,12 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Deletes a Lambda function. To delete a specific function version, use the <code>Qualifier</code> parameter.
-     * Otherwise, all versions and aliases are deleted. Event source mappings are not deleted.
+     * Otherwise, all versions and aliases are deleted.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:DeleteFunction</code> action.
+     * To delete Lambda event source mappings that invoke a function, use <a>DeleteEventSourceMapping</a>. For AWS
+     * services and resources that invoke your function directly, delete the trigger in the service where you originally
+     * configured it.
      * </p>
      * 
      * @param deleteFunctionRequest
@@ -406,8 +466,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes concurrent execution limits from this function. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
+     * Removes a concurrent execution limit from a function.
      * </p>
      * 
      * @param deleteFunctionConcurrencyRequest
@@ -421,8 +480,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes concurrent execution limits from this function. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
+     * Removes a concurrent execution limit from a function.
      * </p>
      * 
      * @param deleteFunctionConcurrencyRequest
@@ -441,7 +499,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes a version of a function layer. Deleted versions can no longer be viewed or added to functions. However, a
+     * Deletes a version of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
+     * Lambda layer</a>. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a
      * copy of the version remains in Lambda until no functions refer to it.
      * </p>
      * 
@@ -455,7 +514,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Deletes a version of a function layer. Deleted versions can no longer be viewed or added to functions. However, a
+     * Deletes a version of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
+     * Lambda layer</a>. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a
      * copy of the version remains in Lambda until no functions refer to it.
      * </p>
      * 
@@ -475,7 +535,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Retrieves details about your account's <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">limits</a> and usage in a region.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">limits</a> and usage in an AWS Region.
      * </p>
      * 
      * @param getAccountSettingsRequest
@@ -489,7 +549,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Retrieves details about your account's <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">limits</a> and usage in a region.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">limits</a> and usage in an AWS Region.
      * </p>
      * 
      * @param getAccountSettingsRequest
@@ -507,12 +567,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the specified alias information such as the alias ARN, description, and function version it is pointing
-     * to. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the <code>lambda:GetAlias</code> action.
+     * Returns details about a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param getAliasRequest
@@ -525,12 +581,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the specified alias information such as the alias ARN, description, and function version it is pointing
-     * to. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the <code>lambda:GetAlias</code> action.
+     * Returns details about a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param getAliasRequest
@@ -548,7 +600,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns details about an event source mapping.
+     * Returns details about an event source mapping. You can get the identifier of a mapping from the output of
+     * <a>ListEventSourceMappings</a>.
      * </p>
      * 
      * @param getEventSourceMappingRequest
@@ -561,7 +614,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns details about an event source mapping.
+     * Returns details about an event source mapping. You can get the identifier of a mapping from the output of
+     * <a>ListEventSourceMappings</a>.
      * </p>
      * 
      * @param getEventSourceMappingRequest
@@ -579,19 +633,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you
-     * uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10
-     * minutes. The configuration information is the same information you provided as parameters when uploading the
-     * function.
-     * </p>
-     * <p>
-     * Use the <code>Qualifier</code> parameter to retrieve a published version of the function. Otherwise, returns the
-     * unpublished version (<code>$LATEST</code>). For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:GetFunction</code> action.
+     * Returns information about the function or function version, with a link to download the deployment package that's
+     * valid for 10 minutes. If you specify a function version, only details that are specific to that version are
+     * returned.
      * </p>
      * 
      * @param getFunctionRequest
@@ -604,19 +648,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you
-     * uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10
-     * minutes. The configuration information is the same information you provided as parameters when uploading the
-     * function.
-     * </p>
-     * <p>
-     * Use the <code>Qualifier</code> parameter to retrieve a published version of the function. Otherwise, returns the
-     * unpublished version (<code>$LATEST</code>). For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:GetFunction</code> action.
+     * Returns information about the function or function version, with a link to download the deployment package that's
+     * valid for 10 minutes. If you specify a function version, only details that are specific to that version are
+     * returned.
      * </p>
      * 
      * @param getFunctionRequest
@@ -634,19 +668,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the configuration information of the Lambda function. This the same information you provided as
-     * parameters when uploading the function by using <a>CreateFunction</a>.
+     * Returns the version-specific settings of a Lambda function or version. The output includes only options that can
+     * vary between versions of a function. To modify these settings, use <a>UpdateFunctionConfiguration</a>.
      * </p>
      * <p>
-     * If you are using the versioning feature, you can retrieve this information for a specific function version by
-     * using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to
-     * it. If you don't provide it, the API returns information about the $LATEST version of the function. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.
+     * To get all of a function's details, including function-level settings, use <a>GetFunction</a>.
      * </p>
      * 
      * @param getFunctionConfigurationRequest
@@ -659,19 +685,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the configuration information of the Lambda function. This the same information you provided as
-     * parameters when uploading the function by using <a>CreateFunction</a>.
+     * Returns the version-specific settings of a Lambda function or version. The output includes only options that can
+     * vary between versions of a function. To modify these settings, use <a>UpdateFunctionConfiguration</a>.
      * </p>
      * <p>
-     * If you are using the versioning feature, you can retrieve this information for a specific function version by
-     * using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to
-     * it. If you don't provide it, the API returns information about the $LATEST version of the function. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.
+     * To get all of a function's details, including function-level settings, use <a>GetFunction</a>.
      * </p>
      * 
      * @param getFunctionConfigurationRequest
@@ -689,8 +707,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns information about a version of a function layer, with a link to download the layer archive that's valid
-     * for 10 minutes.
+     * Returns information about a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>, with a link
+     * to download the layer archive that's valid for 10 minutes.
      * </p>
      * 
      * @param getLayerVersionRequest
@@ -703,8 +722,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns information about a version of a function layer, with a link to download the layer archive that's valid
-     * for 10 minutes.
+     * Returns information about a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>, with a link
+     * to download the layer archive that's valid for 10 minutes.
      * </p>
      * 
      * @param getLayerVersionRequest
@@ -722,7 +742,44 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the permission policy for a layer version. For more information, see <a>AddLayerVersionPermission</a>.
+     * Returns information about a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>, with a link
+     * to download the layer archive that's valid for 10 minutes.
+     * </p>
+     * 
+     * @param getLayerVersionByArnRequest
+     * @return A Java Future containing the result of the GetLayerVersionByArn operation returned by the service.
+     * @sample AWSLambdaAsync.GetLayerVersionByArn
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetLayerVersionByArn" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLayerVersionByArnResult> getLayerVersionByArnAsync(GetLayerVersionByArnRequest getLayerVersionByArnRequest);
+
+    /**
+     * <p>
+     * Returns information about a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>, with a link
+     * to download the layer archive that's valid for 10 minutes.
+     * </p>
+     * 
+     * @param getLayerVersionByArnRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetLayerVersionByArn operation returned by the service.
+     * @sample AWSLambdaAsyncHandler.GetLayerVersionByArn
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetLayerVersionByArn" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLayerVersionByArnResult> getLayerVersionByArnAsync(GetLayerVersionByArnRequest getLayerVersionByArnRequest,
+            com.amazonaws.handlers.AsyncHandler<GetLayerVersionByArnRequest, GetLayerVersionByArnResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the permission policy for a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. For more
+     * information, see <a>AddLayerVersionPermission</a>.
      * </p>
      * 
      * @param getLayerVersionPolicyRequest
@@ -735,7 +792,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the permission policy for a layer version. For more information, see <a>AddLayerVersionPermission</a>.
+     * Returns the permission policy for a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. For more
+     * information, see <a>AddLayerVersionPermission</a>.
      * </p>
      * 
      * @param getLayerVersionPolicyRequest
@@ -753,10 +812,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the resource policy associated with the specified Lambda function.
-     * </p>
-     * <p>
-     * This action requires permission for the <code>lambda:GetPolicy action.</code>
+     * Returns the <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">resource-based IAM
+     * policy</a> for a function, version, or alias.
      * </p>
      * 
      * @param getPolicyRequest
@@ -769,10 +827,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns the resource policy associated with the specified Lambda function.
-     * </p>
-     * <p>
-     * This action requires permission for the <code>lambda:GetPolicy action.</code>
+     * Returns the <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">resource-based IAM
+     * policy</a> for a function, version, or alias.
      * </p>
      * 
      * @param getPolicyRequest
@@ -790,34 +847,39 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Invokes a Lambda function. For an example, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually"
-     * >Create the Lambda Function and Test It Manually</a>.
+     * Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or
+     * asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.
      * </p>
      * <p>
-     * Specify just a function name to invoke the latest version of the function. To invoke a published version, use the
-     * <code>Qualifier</code> parameter to specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">version or alias</a>.
+     * For synchronous invocation, details about the function response, including errors, are included in the response
+     * body and headers. For either invocation type, you can find more information in the <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html">execution log</a> and <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">trace</a>. To record function errors for
+     * asynchronous invocations, configure your function with a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">dead letter queue</a>.
      * </p>
      * <p>
-     * If you use the <code>RequestResponse</code> (synchronous) invocation option, the function will be invoked only
-     * once. If you use the <code>Event</code> (asynchronous) invocation option, the function will be invoked at least
-     * once in response to an event and the function must be idempotent to handle this.
+     * When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client,
+     * event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error,
+     * Lambda executes the function up to two more times. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html">Retry Behavior</a>.
      * </p>
      * <p>
-     * For functions with a long timeout, your client may be disconnected during synchronous invocation while it waits
+     * The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that
+     * prevent your function from executing, such as permissions errors, <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">limit errors</a>, or issues with your function's
+     * code and configuration. For example, Lambda returns <code>TooManyRequestsException</code> if executing the
+     * function would cause you to exceed a concurrency limit at either the account level (
+     * <code>ConcurrentInvocationLimitExceeded</code>) or function level (
+     * <code>ReservedFunctionConcurrentInvocationLimitExceeded</code>).
+     * </p>
+     * <p>
+     * For functions with a long timeout, your client might be disconnected during synchronous invocation while it waits
      * for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long
      * connections with timeout or keep-alive settings.
      * </p>
      * <p>
      * This operation requires permission for the <code>lambda:InvokeFunction</code> action.
-     * </p>
-     * <p>
-     * The <code>TooManyRequestsException</code> noted below will return the following:
-     * <code>ConcurrentInvocationLimitExceeded</code> will be returned if you have no functions with reserved
-     * concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds
-     * the account's unreserved concurrency limit. <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> will
-     * be returned when a function with reserved concurrency exceeds its configured concurrency limit.
      * </p>
      * 
      * @param invokeRequest
@@ -830,34 +892,39 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Invokes a Lambda function. For an example, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually"
-     * >Create the Lambda Function and Test It Manually</a>.
+     * Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or
+     * asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.
      * </p>
      * <p>
-     * Specify just a function name to invoke the latest version of the function. To invoke a published version, use the
-     * <code>Qualifier</code> parameter to specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">version or alias</a>.
+     * For synchronous invocation, details about the function response, including errors, are included in the response
+     * body and headers. For either invocation type, you can find more information in the <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html">execution log</a> and <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">trace</a>. To record function errors for
+     * asynchronous invocations, configure your function with a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">dead letter queue</a>.
      * </p>
      * <p>
-     * If you use the <code>RequestResponse</code> (synchronous) invocation option, the function will be invoked only
-     * once. If you use the <code>Event</code> (asynchronous) invocation option, the function will be invoked at least
-     * once in response to an event and the function must be idempotent to handle this.
+     * When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client,
+     * event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error,
+     * Lambda executes the function up to two more times. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html">Retry Behavior</a>.
      * </p>
      * <p>
-     * For functions with a long timeout, your client may be disconnected during synchronous invocation while it waits
+     * The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that
+     * prevent your function from executing, such as permissions errors, <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">limit errors</a>, or issues with your function's
+     * code and configuration. For example, Lambda returns <code>TooManyRequestsException</code> if executing the
+     * function would cause you to exceed a concurrency limit at either the account level (
+     * <code>ConcurrentInvocationLimitExceeded</code>) or function level (
+     * <code>ReservedFunctionConcurrentInvocationLimitExceeded</code>).
+     * </p>
+     * <p>
+     * For functions with a long timeout, your client might be disconnected during synchronous invocation while it waits
      * for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long
      * connections with timeout or keep-alive settings.
      * </p>
      * <p>
      * This operation requires permission for the <code>lambda:InvokeFunction</code> action.
-     * </p>
-     * <p>
-     * The <code>TooManyRequestsException</code> noted below will return the following:
-     * <code>ConcurrentInvocationLimitExceeded</code> will be returned if you have no functions with reserved
-     * concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds
-     * the account's unreserved concurrency limit. <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> will
-     * be returned when a function with reserved concurrency exceeds its configured concurrency limit.
      * </p>
      * 
      * @param invokeRequest
@@ -880,11 +947,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * </p>
      * </important>
      * <p>
-     * Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function
-     * asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:InvokeFunction</code> action.
+     * Invokes a function asynchronously.
      * </p>
      * 
      * @param invokeAsyncRequest
@@ -903,11 +966,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * </p>
      * </important>
      * <p>
-     * Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function
-     * asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:InvokeFunction</code> action.
+     * Invokes a function asynchronously.
      * </p>
      * 
      * @param invokeAsyncRequest
@@ -926,12 +985,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns list of aliases created for a Lambda function. For each alias, the response includes information such as
-     * the alias ARN, description, alias name, and the function version to which it points. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:ListAliases action.
+     * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">aliases</a> for
+     * a Lambda function.
      * </p>
      * 
      * @param listAliasesRequest
@@ -944,12 +999,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns list of aliases created for a Lambda function. For each alias, the response includes information such as
-     * the alias ARN, description, alias name, and the function version to which it points. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:ListAliases action.
+     * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">aliases</a> for
+     * a Lambda function.
      * </p>
      * 
      * @param listAliasesRequest
@@ -1015,17 +1066,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of your Lambda functions. For each function, the response includes the function configuration
-     * information. You must use <a>GetFunction</a> to retrieve the code for your function.
+     * Returns a list of Lambda functions, with the version-specific configuration of each.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:ListFunctions</code> action.
-     * </p>
-     * <p>
-     * If you are using the versioning feature, you can list all of your functions or only <code>$LATEST</code>
-     * versions. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in
+     * addition to the unpublished version. To get more information about a function or version, use <a>GetFunction</a>.
      * </p>
      * 
      * @param listFunctionsRequest
@@ -1038,17 +1083,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of your Lambda functions. For each function, the response includes the function configuration
-     * information. You must use <a>GetFunction</a> to retrieve the code for your function.
+     * Returns a list of Lambda functions, with the version-specific configuration of each.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:ListFunctions</code> action.
-     * </p>
-     * <p>
-     * If you are using the versioning feature, you can list all of your functions or only <code>$LATEST</code>
-     * versions. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in
+     * addition to the unpublished version. To get more information about a function or version, use <a>GetFunction</a>.
      * </p>
      * 
      * @param listFunctionsRequest
@@ -1081,8 +1120,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists the versions of a function layer. Versions that have been deleted aren't listed. Specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
+     * Lists the versions of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
+     * Lambda layer</a>. Versions that have been deleted aren't listed. Specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
      * versions that indicate that they're compatible with that runtime.
      * </p>
      * 
@@ -1096,8 +1136,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists the versions of a function layer. Versions that have been deleted aren't listed. Specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
+     * Lists the versions of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
+     * Lambda layer</a>. Versions that have been deleted aren't listed. Specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
      * versions that indicate that they're compatible with that runtime.
      * </p>
      * 
@@ -1116,8 +1157,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists function layers and shows information about the latest version of each. Specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
+     * Lists <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layers</a> and
+     * shows information about the latest version of each. Specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
      * layers that indicate that they're compatible with that runtime.
      * </p>
      * 
@@ -1131,8 +1173,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists function layers and shows information about the latest version of each. Specify a <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
+     * Lists <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layers</a> and
+     * shows information about the latest version of each. Specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime identifier</a> to list only
      * layers that indicate that they're compatible with that runtime.
      * </p>
      * 
@@ -1151,9 +1194,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more
-     * information on Tagging, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
-     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
+     * Returns a function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>. You can also
+     * view tags with <a>GetFunction</a>.
      * </p>
      * 
      * @param listTagsRequest
@@ -1166,9 +1208,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more
-     * information on Tagging, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
-     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
+     * Returns a function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>. You can also
+     * view tags with <a>GetFunction</a>.
      * </p>
      * 
      * @param listTagsRequest
@@ -1186,9 +1227,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists all versions of a function. For information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">versions</a>,
+     * with the version-specific configuration of each.
      * </p>
      * 
      * @param listVersionsByFunctionRequest
@@ -1201,9 +1241,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Lists all versions of a function. For information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">versions</a>,
+     * with the version-specific configuration of each.
      * </p>
      * 
      * @param listVersionsByFunctionRequest
@@ -1221,8 +1260,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a function layer from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same
-     * version name, a new version is created.
+     * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>
+     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same version name, a new version
+     * is created.
      * </p>
      * <p>
      * Add layers to your function with <a>CreateFunction</a> or <a>UpdateFunctionConfiguration</a>.
@@ -1238,8 +1278,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a function layer from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same
-     * version name, a new version is created.
+     * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>
+     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same version name, a new version
+     * is created.
      * </p>
      * <p>
      * Add layers to your function with <a>CreateFunction</a> or <a>UpdateFunctionConfiguration</a>.
@@ -1260,11 +1301,17 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Publishes a version of your function from the current snapshot of $LATEST. That is, AWS Lambda takes a snapshot
-     * of the function code and configuration information from $LATEST and publishes a new version. The code and
-     * configuration cannot be modified after publication. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Creates a <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">version</a> from the
+     * current code and configuration of a function. Use versions to create a snapshot of your function code and
+     * configuration that doesn't change.
+     * </p>
+     * <p>
+     * AWS Lambda doesn't publish a version if the function's configuration and code haven't changed since the last
+     * version. Use <a>UpdateFunctionCode</a> or <a>UpdateFunctionConfiguration</a> to update the function before
+     * publishing a version.
+     * </p>
+     * <p>
+     * Clients can invoke versions directly or with an alias. To create an alias, use <a>CreateAlias</a>.
      * </p>
      * 
      * @param publishVersionRequest
@@ -1277,11 +1324,17 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Publishes a version of your function from the current snapshot of $LATEST. That is, AWS Lambda takes a snapshot
-     * of the function code and configuration information from $LATEST and publishes a new version. The code and
-     * configuration cannot be modified after publication. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * Creates a <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">version</a> from the
+     * current code and configuration of a function. Use versions to create a snapshot of your function code and
+     * configuration that doesn't change.
+     * </p>
+     * <p>
+     * AWS Lambda doesn't publish a version if the function's configuration and code haven't changed since the last
+     * version. Use <a>UpdateFunctionCode</a> or <a>UpdateFunctionConfiguration</a> to update the function before
+     * publishing a version.
+     * </p>
+     * <p>
+     * Clients can invoke versions directly or with an alias. To create an alias, use <a>CreateAlias</a>.
      * </p>
      * 
      * @param publishVersionRequest
@@ -1299,11 +1352,20 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's
-     * total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent
-     * executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you
-     * have a total of 900 available to allocate to individual functions. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
+     * Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency
+     * level.
+     * </p>
+     * <p>
+     * Concurrency settings apply to the function as a whole, including all published versions and the unpublished
+     * version. Reserving concurrency both ensures that your function has capacity to process the specified number of
+     * events simultaneously, and prevents it from scaling beyond that level. Use <a>GetFunction</a> to see the current
+     * setting for a function.
+     * </p>
+     * <p>
+     * Use <a>GetAccountSettings</a> to see your regional concurrency limit. You can reserve concurrency for as many
+     * functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that
+     * aren't configured with a per-function limit. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
      * </p>
      * 
      * @param putFunctionConcurrencyRequest
@@ -1316,11 +1378,20 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's
-     * total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent
-     * executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you
-     * have a total of 900 available to allocate to individual functions. For more information, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
+     * Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency
+     * level.
+     * </p>
+     * <p>
+     * Concurrency settings apply to the function as a whole, including all published versions and the unpublished
+     * version. Reserving concurrency both ensures that your function has capacity to process the specified number of
+     * events simultaneously, and prevents it from scaling beyond that level. Use <a>GetFunction</a> to see the current
+     * setting for a function.
+     * </p>
+     * <p>
+     * Use <a>GetAccountSettings</a> to see your regional concurrency limit. You can reserve concurrency for as many
+     * functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that
+     * aren't configured with a per-function limit. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
      * </p>
      * 
      * @param putFunctionConcurrencyRequest
@@ -1338,8 +1409,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes a statement from the permissions policy for a layer version. For more information, see
-     * <a>AddLayerVersionPermission</a>.
+     * Removes a statement from the permissions policy for a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. For more
+     * information, see <a>AddLayerVersionPermission</a>.
      * </p>
      * 
      * @param removeLayerVersionPermissionRequest
@@ -1354,8 +1426,9 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes a statement from the permissions policy for a layer version. For more information, see
-     * <a>AddLayerVersionPermission</a>.
+     * Removes a statement from the permissions policy for a version of an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>. For more
+     * information, see <a>AddLayerVersionPermission</a>.
      * </p>
      * 
      * @param removeLayerVersionPermissionRequest
@@ -1375,20 +1448,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes permissions from a function. You can remove individual permissions from an resource policy associated
-     * with a Lambda function by providing a statement ID that you provided when you added the permission. When you
-     * remove permissions, disable the event source mapping or trigger configuration first to avoid errors.
-     * </p>
-     * <p>
-     * Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the
-     * unpublished version of the function), or include a version or alias. If a client uses a version or alias to
-     * invoke a function, use the <code>Qualifier</code> parameter to apply permissions to that ARN. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * You need permission for the <code>lambda:RemovePermission</code> action.
+     * Revokes function-use permission from an AWS service or another account. You can get the ID of the statement from
+     * the output of <a>GetPolicy</a>.
      * </p>
      * 
      * @param removePermissionRequest
@@ -1401,20 +1462,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes permissions from a function. You can remove individual permissions from an resource policy associated
-     * with a Lambda function by providing a statement ID that you provided when you added the permission. When you
-     * remove permissions, disable the event source mapping or trigger configuration first to avoid errors.
-     * </p>
-     * <p>
-     * Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the
-     * unpublished version of the function), or include a version or alias. If a client uses a version or alias to
-     * invoke a function, use the <code>Qualifier</code> parameter to apply permissions to that ARN. For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * You need permission for the <code>lambda:RemovePermission</code> action.
+     * Revokes function-use permission from an AWS service or another account. You can get the ID of the statement from
+     * the output of <a>GetPolicy</a>.
      * </p>
      * 
      * @param removePermissionRequest
@@ -1432,10 +1481,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon
-     * Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of
-     * null. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
-     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
+     * Adds <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a> to a function.
      * </p>
      * 
      * @param tagResourceRequest
@@ -1448,10 +1494,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon
-     * Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of
-     * null. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
-     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
+     * Adds <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a> to a function.
      * </p>
      * 
      * @param tagResourceRequest
@@ -1469,9 +1512,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS
-     * Lambda Developer Guide</b>.
+     * Removes <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a> from a function.
      * </p>
      * 
      * @param untagResourceRequest
@@ -1484,9 +1525,7 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see
-     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS
-     * Lambda Developer Guide</b>.
+     * Removes <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a> from a function.
      * </p>
      * 
      * @param untagResourceRequest
@@ -1504,12 +1543,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Using this API you can update the function version to which the alias points and the alias description. For more
-     * information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS
-     * Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:UpdateAlias action.
+     * Updates the configuration of a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param updateAliasRequest
@@ -1522,12 +1557,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Using this API you can update the function version to which the alias points and the alias description. For more
-     * information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS
-     * Lambda Aliases</a>.
-     * </p>
-     * <p>
-     * This requires permission for the lambda:UpdateAlias action.
+     * Updates the configuration of a Lambda function <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
      * </p>
      * 
      * @param updateAliasRequest
@@ -1578,17 +1609,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda
-     * function and cannot be used to update the function configuration.
+     * Updates a Lambda function's code.
      * </p>
      * <p>
-     * If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda
-     * function. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
+     * The function's code is locked when you publish a version. You can't modify the code of a published version, only
+     * the unpublished version.
      * </p>
      * 
      * @param updateFunctionCodeRequest
@@ -1601,17 +1626,11 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda
-     * function and cannot be used to update the function configuration.
+     * Updates a Lambda function's code.
      * </p>
      * <p>
-     * If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda
-     * function. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
-     * </p>
-     * <p>
-     * This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
+     * The function's code is locked when you publish a version. You can't modify the code of a published version, only
+     * the unpublished version.
      * </p>
      * 
      * @param updateFunctionCodeRequest
@@ -1629,18 +1648,15 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Updates the configuration parameters for the specified Lambda function by using the values provided in the
-     * request. You provide only the parameters you want to change. This operation must only be used on an existing
-     * Lambda function and cannot be used to update the function's code.
+     * Modify the version-specific settings of a Lambda function.
      * </p>
      * <p>
-     * If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda
-     * function. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * These settings can vary between versions of a function and are locked when you publish a version. You can't
+     * modify the configuration of a published version, only the unpublished version.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.
+     * To configure function concurrency, use <a>PutFunctionConcurrency</a>. To grant invoke permissions to an account
+     * or AWS service, use <a>AddPermission</a>.
      * </p>
      * 
      * @param updateFunctionConfigurationRequest
@@ -1654,18 +1670,15 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Updates the configuration parameters for the specified Lambda function by using the values provided in the
-     * request. You provide only the parameters you want to change. This operation must only be used on an existing
-     * Lambda function and cannot be used to update the function's code.
+     * Modify the version-specific settings of a Lambda function.
      * </p>
      * <p>
-     * If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda
-     * function. For information about the versioning feature, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and
-     * Aliases</a>.
+     * These settings can vary between versions of a function and are locked when you publish a version. You can't
+     * modify the configuration of a published version, only the unpublished version.
      * </p>
      * <p>
-     * This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.
+     * To configure function concurrency, use <a>PutFunctionConcurrency</a>. To grant invoke permissions to an account
+     * or AWS service, use <a>AddPermission</a>.
      * </p>
      * 
      * @param updateFunctionConfigurationRequest

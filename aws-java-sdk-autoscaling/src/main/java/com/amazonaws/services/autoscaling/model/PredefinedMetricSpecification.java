@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Configures a predefined metric for a target tracking policy.
+ * Represents a predefined metric for a target tracking scaling policy to use with Amazon EC2 Auto Scaling.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PredefinedMetricSpecification"
@@ -57,7 +57,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load Balancer
-     * target group.
+     * or a Network Load Balancer target group.
      * </p>
      * </li>
      * </ul>
@@ -172,7 +172,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load Balancer
-     * target group.
+     * or a Network Load Balancer target group.
      * </p>
      * </li>
      * </ul>
@@ -211,7 +211,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load
-     *        Balancer target group.
+     *        Balancer or a Network Load Balancer target group.
      *        </p>
      *        </li>
      *        </ul>
@@ -255,7 +255,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load Balancer
-     * target group.
+     * or a Network Load Balancer target group.
      * </p>
      * </li>
      * </ul>
@@ -293,7 +293,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load
-     *         Balancer target group.
+     *         Balancer or a Network Load Balancer target group.
      *         </p>
      *         </li>
      *         </ul>
@@ -337,7 +337,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load Balancer
-     * target group.
+     * or a Network Load Balancer target group.
      * </p>
      * </li>
      * </ul>
@@ -376,7 +376,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>ALBRequestCountPerTarget</code> - Number of requests completed per target in an Application Load
-     *        Balancer target group.
+     *        Balancer or a Network Load Balancer target group.
      *        </p>
      *        </li>
      *        </ul>

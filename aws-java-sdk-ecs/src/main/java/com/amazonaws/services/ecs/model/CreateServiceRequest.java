@@ -46,6 +46,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      */
     private String taskDefinition;
     /**
@@ -120,17 +123,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The launch type on which to run your service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private String launchType;
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -156,7 +159,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has
      * a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information,
      * see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      * >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      * </p>
      */
@@ -197,8 +200,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      * Balancing target health checks after a task has first started. This is only valid if your service is configured
      * to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing
-     * health checks, you can specify a health check grace period of up to 7,200 seconds. During that time, the ECS
-     * service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
+     * health checks, you can specify a health check grace period of up to 2,147,483,647 seconds. During that time, the
+     * ECS service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
      * marking tasks as unhealthy and stopping them before they have time to come up.
      * </p>
      */
@@ -216,21 +219,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -254,16 +257,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private Boolean enableECSManagedTags;
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is
-     * specified, the tags are not propagated. Tags can only be propagated to the tasks within the service during
-     * service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
+     * Specifies whether to propagate the tags from the task definition or the service to the tasks in the service. If
+     * no value is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
+     * during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
      * </p>
      */
     private String propagateTags;
@@ -372,11 +375,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @param taskDefinition
      *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *        definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        <code>ACTIVE</code> revision is used.</p>
+     *        <p>
+     *        A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      */
 
     public void setTaskDefinition(String taskDefinition) {
@@ -389,10 +397,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @return The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *         definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *         <code>ACTIVE</code> revision is used.
+     *         <code>ACTIVE</code> revision is used.</p>
+     *         <p>
+     *         A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      */
 
     public String getTaskDefinition() {
@@ -405,11 +418,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @param taskDefinition
      *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *        definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        <code>ACTIVE</code> revision is used.</p>
+     *        <p>
+     *        A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1017,13 +1035,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The launch type on which to run your service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -1035,12 +1053,12 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The launch type on which to run your service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The launch type on which to run your service. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -1052,13 +1070,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The launch type on which to run your service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -1072,13 +1090,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The launch type on which to run your service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -1091,18 +1109,18 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param platformVersion
-     *        The platform version on which your tasks in the service are running. A platform version is only specified
-     *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
+     *        The platform version that your tasks in the service are running on. A platform version is specified only
+     *        for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1112,17 +1130,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
-     * @return The platform version on which your tasks in the service are running. A platform version is only specified
-     *         for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform
-     *         version is used by default. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     * @return The platform version that your tasks in the service are running on. A platform version is specified only
+     *         for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
+     *         is used by default. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1132,18 +1150,18 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param platformVersion
-     *        The platform version on which your tasks in the service are running. A platform version is only specified
-     *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
+     *        The platform version that your tasks in the service are running on. A platform version is specified only
+     *        for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1174,7 +1192,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has
      * a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information,
      * see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      * >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      * </p>
      * 
@@ -1198,7 +1216,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name
      *        <code>bar</code> has a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role
      *        name. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      *        >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      */
 
@@ -1227,7 +1245,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has
      * a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information,
      * see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      * >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      * </p>
      * 
@@ -1250,7 +1268,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name
      *         <code>bar</code> has a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the
      *         role name. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     *         "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      *         >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      */
 
@@ -1279,7 +1297,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has
      * a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information,
      * see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      * >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      * </p>
      * 
@@ -1303,7 +1321,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name
      *        <code>bar</code> has a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role
      *        name. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names"
      *        >Friendly Names and Paths</a> in the <i>IAM User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1594,8 +1612,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      * Balancing target health checks after a task has first started. This is only valid if your service is configured
      * to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing
-     * health checks, you can specify a health check grace period of up to 7,200 seconds. During that time, the ECS
-     * service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
+     * health checks, you can specify a health check grace period of up to 2,147,483,647 seconds. During that time, the
+     * ECS service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
      * marking tasks as unhealthy and stopping them before they have time to come up.
      * </p>
      * 
@@ -1603,9 +1621,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      *        Balancing target health checks after a task has first started. This is only valid if your service is
      *        configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic
-     *        Load Balancing health checks, you can specify a health check grace period of up to 7,200 seconds. During
-     *        that time, the ECS service scheduler ignores health check status. This grace period can prevent the ECS
-     *        service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
+     *        Load Balancing health checks, you can specify a health check grace period of up to 2,147,483,647 seconds.
+     *        During that time, the ECS service scheduler ignores health check status. This grace period can prevent the
+     *        ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
      */
 
     public void setHealthCheckGracePeriodSeconds(Integer healthCheckGracePeriodSeconds) {
@@ -1617,17 +1635,18 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      * Balancing target health checks after a task has first started. This is only valid if your service is configured
      * to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing
-     * health checks, you can specify a health check grace period of up to 7,200 seconds. During that time, the ECS
-     * service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
+     * health checks, you can specify a health check grace period of up to 2,147,483,647 seconds. During that time, the
+     * ECS service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
      * marking tasks as unhealthy and stopping them before they have time to come up.
      * </p>
      * 
      * @return The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic
      *         Load Balancing target health checks after a task has first started. This is only valid if your service is
      *         configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic
-     *         Load Balancing health checks, you can specify a health check grace period of up to 7,200 seconds. During
-     *         that time, the ECS service scheduler ignores health check status. This grace period can prevent the ECS
-     *         service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
+     *         Load Balancing health checks, you can specify a health check grace period of up to 2,147,483,647 seconds.
+     *         During that time, the ECS service scheduler ignores health check status. This grace period can prevent
+     *         the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come
+     *         up.
      */
 
     public Integer getHealthCheckGracePeriodSeconds() {
@@ -1639,8 +1658,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      * Balancing target health checks after a task has first started. This is only valid if your service is configured
      * to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing
-     * health checks, you can specify a health check grace period of up to 7,200 seconds. During that time, the ECS
-     * service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
+     * health checks, you can specify a health check grace period of up to 2,147,483,647 seconds. During that time, the
+     * ECS service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from
      * marking tasks as unhealthy and stopping them before they have time to come up.
      * </p>
      * 
@@ -1648,9 +1667,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load
      *        Balancing target health checks after a task has first started. This is only valid if your service is
      *        configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic
-     *        Load Balancing health checks, you can specify a health check grace period of up to 7,200 seconds. During
-     *        that time, the ECS service scheduler ignores health check status. This grace period can prevent the ECS
-     *        service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
+     *        Load Balancing health checks, you can specify a health check grace period of up to 2,147,483,647 seconds.
+     *        During that time, the ECS service scheduler ignores health check status. This grace period can prevent the
+     *        ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1672,21 +1691,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -1703,20 +1722,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @see SchedulingStrategy
@@ -1739,21 +1759,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -1769,20 +1789,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *         across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *         use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *         strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *         strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *         deployment controller types.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *         instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *         using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *         instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *         using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *         use Service Auto Scaling policies.
      *         </p>
      *         <note>
      *         <p>
-     *         Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *         the <code>DAEMON</code> scheduling strategy.
+     *         Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *         controller types don't support the <code>DAEMON</code> scheduling strategy.
      *         </p>
      *         </note></li>
      * @see SchedulingStrategy
@@ -1805,21 +1826,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -1836,20 +1857,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1874,21 +1896,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -1905,20 +1927,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2070,15 +2093,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *        Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setEnableECSManagedTags(Boolean enableECSManagedTags) {
@@ -2088,14 +2111,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *         Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean getEnableECSManagedTags() {
@@ -2105,15 +2128,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *        Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2125,14 +2148,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *         Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean isEnableECSManagedTags() {
@@ -2141,16 +2164,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is
-     * specified, the tags are not propagated. Tags can only be propagated to the tasks within the service during
-     * service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
+     * Specifies whether to propagate the tags from the task definition or the service to the tasks in the service. If
+     * no value is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
+     * during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
      * </p>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value
-     *        is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
-     *        during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API
-     *        action.
+     *        Specifies whether to propagate the tags from the task definition or the service to the tasks in the
+     *        service. If no value is specified, the tags are not propagated. Tags can only be propagated to the tasks
+     *        within the service during service creation. To add tags to a task after service creation, use the
+     *        <a>TagResource</a> API action.
      * @see PropagateTags
      */
 
@@ -2160,15 +2183,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is
-     * specified, the tags are not propagated. Tags can only be propagated to the tasks within the service during
-     * service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
+     * Specifies whether to propagate the tags from the task definition or the service to the tasks in the service. If
+     * no value is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
+     * during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
      * </p>
      * 
-     * @return Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value
-     *         is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
-     *         during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API
-     *         action.
+     * @return Specifies whether to propagate the tags from the task definition or the service to the tasks in the
+     *         service. If no value is specified, the tags are not propagated. Tags can only be propagated to the tasks
+     *         within the service during service creation. To add tags to a task after service creation, use the
+     *         <a>TagResource</a> API action.
      * @see PropagateTags
      */
 
@@ -2178,16 +2201,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is
-     * specified, the tags are not propagated. Tags can only be propagated to the tasks within the service during
-     * service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
+     * Specifies whether to propagate the tags from the task definition or the service to the tasks in the service. If
+     * no value is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
+     * during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
      * </p>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value
-     *        is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
-     *        during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API
-     *        action.
+     *        Specifies whether to propagate the tags from the task definition or the service to the tasks in the
+     *        service. If no value is specified, the tags are not propagated. Tags can only be propagated to the tasks
+     *        within the service during service creation. To add tags to a task after service creation, use the
+     *        <a>TagResource</a> API action.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PropagateTags
      */
@@ -2199,16 +2222,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is
-     * specified, the tags are not propagated. Tags can only be propagated to the tasks within the service during
-     * service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
+     * Specifies whether to propagate the tags from the task definition or the service to the tasks in the service. If
+     * no value is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
+     * during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API action.
      * </p>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value
-     *        is specified, the tags are not propagated. Tags can only be propagated to the tasks within the service
-     *        during service creation. To add tags to a task after service creation, use the <a>TagResource</a> API
-     *        action.
+     *        Specifies whether to propagate the tags from the task definition or the service to the tasks in the
+     *        service. If no value is specified, the tags are not propagated. Tags can only be propagated to the tasks
+     *        within the service during service creation. To add tags to a task after service creation, use the
+     *        <a>TagResource</a> API action.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PropagateTags
      */

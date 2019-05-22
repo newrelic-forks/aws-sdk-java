@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeImagesRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DescribeImages.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeImagesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeImagesRequest> {
@@ -36,7 +34,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
     private com.amazonaws.internal.SdkInternalList<String> executableUsers;
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -70,6 +68,11 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <p>
      * <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      * <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is encrypted.
      * </p>
      * </li>
      * <li>
@@ -206,7 +209,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * One or more image IDs.
+     * The image IDs.
      * </p>
      * <p>
      * Default: Describes all images available to you.
@@ -306,7 +309,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -340,6 +343,11 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <p>
      * <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      * <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is encrypted.
      * </p>
      * </li>
      * <li>
@@ -473,7 +481,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -506,6 +514,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *         <p>
      *         <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      *         <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is
+     *         encrypted.
      *         </p>
      *         </li>
      *         <li>
@@ -651,7 +665,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -685,6 +699,11 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <p>
      * <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      * <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is encrypted.
      * </p>
      * </li>
      * <li>
@@ -819,7 +838,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -852,6 +871,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <p>
      *        <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      *        <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is
+     *        encrypted.
      *        </p>
      *        </li>
      *        <li>
@@ -999,7 +1024,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -1033,6 +1058,11 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <p>
      * <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      * <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is encrypted.
      * </p>
      * </li>
      * <li>
@@ -1172,7 +1202,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </p>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1205,6 +1235,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <p>
      *        <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      *        <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is
+     *        encrypted.
      *        </p>
      *        </li>
      *        <li>
@@ -1354,7 +1390,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -1388,6 +1424,11 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <p>
      * <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      * <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is encrypted.
      * </p>
      * </li>
      * <li>
@@ -1522,7 +1563,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1555,6 +1596,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <p>
      *        <code>block-device-mapping.volume-type</code> - The volume type of the EBS volume (<code>gp2</code> |
      *        <code>io1</code> | <code>st1 </code>| <code>sc1</code> | <code>standard</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>block-device-mapping.encrypted</code> - A Boolean that indicates whether the EBS volume is
+     *        encrypted.
      *        </p>
      *        </li>
      *        <li>
@@ -1699,13 +1746,13 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more image IDs.
+     * The image IDs.
      * </p>
      * <p>
      * Default: Describes all images available to you.
      * </p>
      * 
-     * @return One or more image IDs.</p>
+     * @return The image IDs.</p>
      *         <p>
      *         Default: Describes all images available to you.
      */
@@ -1719,14 +1766,14 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more image IDs.
+     * The image IDs.
      * </p>
      * <p>
      * Default: Describes all images available to you.
      * </p>
      * 
      * @param imageIds
-     *        One or more image IDs.</p>
+     *        The image IDs.</p>
      *        <p>
      *        Default: Describes all images available to you.
      */
@@ -1742,7 +1789,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more image IDs.
+     * The image IDs.
      * </p>
      * <p>
      * Default: Describes all images available to you.
@@ -1754,7 +1801,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </p>
      * 
      * @param imageIds
-     *        One or more image IDs.</p>
+     *        The image IDs.</p>
      *        <p>
      *        Default: Describes all images available to you.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1772,14 +1819,14 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more image IDs.
+     * The image IDs.
      * </p>
      * <p>
      * Default: Describes all images available to you.
      * </p>
      * 
      * @param imageIds
-     *        One or more image IDs.</p>
+     *        The image IDs.</p>
      *        <p>
      *        Default: Describes all images available to you.
      * @return Returns a reference to this object so that method calls can be chained together.

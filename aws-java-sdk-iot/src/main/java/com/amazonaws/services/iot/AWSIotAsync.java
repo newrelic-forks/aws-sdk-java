@@ -35,11 +35,11 @@ import com.amazonaws.services.iot.model.*;
  * </p>
  * <p>
  * For more information about how AWS IoT works, see the <a
- * href="http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.
+ * href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.
  * </p>
  * <p>
  * For information about how to use the credentials provider for AWS IoT, see <a
- * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to
+ * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to
  * AWS Services</a>.
  * </p>
  */
@@ -293,7 +293,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Attaches the specified principal to the specified thing.
+     * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param attachThingPrincipalRequest
@@ -305,7 +306,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Attaches the specified principal to the specified thing.
+     * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param attachThingPrincipalRequest
@@ -974,12 +976,14 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Creates a thing record in the registry.
+     * Creates a thing record in the registry. If this call is made multiple times using the same thing name and
+     * configuration, the call will succeed. If this call is made with the same thing name but different configuration a
+     * <code>ResourceAlreadyExistsException</code> is thrown.
      * </p>
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -993,12 +997,14 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Creates a thing record in the registry.
+     * Creates a thing record in the registry. If this call is made multiple times using the same thing name and
+     * configuration, the call will succeed. If this call is made with the same thing name but different configuration a
+     * <code>ResourceAlreadyExistsException</code> is thrown.
      * </p>
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -1022,7 +1028,7 @@ public interface AWSIotAsync extends AWSIot {
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -1040,7 +1046,7 @@ public interface AWSIotAsync extends AWSIot {
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -2451,7 +2457,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Detaches the specified principal from the specified thing.
+     * Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * <note>
      * <p>
@@ -2468,7 +2475,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Detaches the specified principal from the specified thing.
+     * Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * <note>
      * <p>
@@ -2777,6 +2785,33 @@ public interface AWSIotAsync extends AWSIot {
      */
     java.util.concurrent.Future<GetRegistrationCodeResult> getRegistrationCodeAsync(GetRegistrationCodeRequest getRegistrationCodeRequest,
             com.amazonaws.handlers.AsyncHandler<GetRegistrationCodeRequest, GetRegistrationCodeResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets statistics about things that match the specified query.
+     * </p>
+     * 
+     * @param getStatisticsRequest
+     * @return A Java Future containing the result of the GetStatistics operation returned by the service.
+     * @sample AWSIotAsync.GetStatistics
+     */
+    java.util.concurrent.Future<GetStatisticsResult> getStatisticsAsync(GetStatisticsRequest getStatisticsRequest);
+
+    /**
+     * <p>
+     * Gets statistics about things that match the specified query.
+     * </p>
+     * 
+     * @param getStatisticsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetStatistics operation returned by the service.
+     * @sample AWSIotAsyncHandler.GetStatistics
+     */
+    java.util.concurrent.Future<GetStatisticsResult> getStatisticsAsync(GetStatisticsRequest getStatisticsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetStatisticsRequest, GetStatisticsResult> asyncHandler);
 
     /**
      * <p>
@@ -3366,7 +3401,7 @@ public interface AWSIotAsync extends AWSIot {
      * <p>
      * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a
      * href=
-     * "http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
+     * "https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
      * >AmazonCognito Identity format</a>.
      * </p>
      * <p>
@@ -3385,7 +3420,7 @@ public interface AWSIotAsync extends AWSIot {
      * <p>
      * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a
      * href=
-     * "http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
+     * "https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
      * >AmazonCognito Identity format</a>.
      * </p>
      * <p>
@@ -3407,7 +3442,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Lists the things associated with the specified principal.
+     * Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listPrincipalThingsRequest
@@ -3419,7 +3455,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Lists the things associated with the specified principal.
+     * Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listPrincipalThingsRequest
@@ -3716,7 +3753,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Lists the principals associated with the specified thing.
+     * Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listThingPrincipalsRequest
@@ -3728,7 +3766,8 @@ public interface AWSIotAsync extends AWSIot {
 
     /**
      * <p>
-     * Lists the principals associated with the specified thing.
+     * Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listThingPrincipalsRequest

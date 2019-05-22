@@ -15,8 +15,8 @@ package com.amazonaws.services.mediaconvert.model;
 import javax.annotation.Generated;
 
 /**
- * Enable Anti-alias (AntiAlias) to enhance sharp edges in video output when your input resolution is much larger than
- * your output resolution. Default is enabled.
+ * The service automatically applies the anti-alias filter to all outputs. The service no longer accepts the value
+ * DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum AntiAlias {

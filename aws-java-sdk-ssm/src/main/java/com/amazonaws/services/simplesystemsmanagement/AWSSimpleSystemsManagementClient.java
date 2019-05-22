@@ -109,6 +109,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                             new JsonErrorShapeMetadata().withErrorCode("ParameterMaxVersionLimitExceeded").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.ParameterMaxVersionLimitExceededException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PoliciesLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.PoliciesLimitExceededException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidKeyId").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidKeyIdException.class))
                     .addErrorMetadata(
@@ -160,6 +163,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                             new JsonErrorShapeMetadata().withErrorCode("ParameterVersionNotFound").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.ParameterVersionNotFoundException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceSettingNotFound").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.ServiceSettingNotFoundException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.ResourceInUseException.class))
                     .addErrorMetadata(
@@ -183,6 +189,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidResourceType").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidResourceTypeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedFeatureRequiredException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.UnsupportedFeatureRequiredException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("AutomationDefinitionNotFoundException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.AutomationDefinitionNotFoundException.class))
@@ -240,6 +249,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("UnsupportedInventoryItemContextException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.UnsupportedInventoryItemContextException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPolicyAttributeException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidPolicyAttributeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("IncompatiblePolicyException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.IncompatiblePolicyException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidUpdate").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidUpdateException.class))
@@ -366,6 +381,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidOutputLocation").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidOutputLocationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPolicyTypeException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidPolicyTypeException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ParameterLimitExceeded").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.ParameterLimitExceededException.class))
@@ -664,6 +682,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddTagsToResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -738,6 +757,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelCommand");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -802,6 +822,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelMaintenanceWindowExecution");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -861,6 +882,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateActivation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -960,6 +982,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAssociation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1059,6 +1082,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAssociationBatch");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1127,6 +1151,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDocument");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1192,6 +1217,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1264,6 +1290,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1289,9 +1316,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to
      * ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a
-     * restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync,
-     * see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html">Create a
+     * restrictive bucket policy. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
      * Resource Data Sync for Inventory</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
@@ -1334,6 +1360,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateResourceDataSync");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1399,6 +1426,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteActivation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1480,6 +1508,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAssociation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1545,6 +1574,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDocument");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1609,6 +1639,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInventory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1664,6 +1695,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1721,6 +1753,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteParameter");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1775,6 +1808,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteParameters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1831,6 +1865,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1889,6 +1924,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteResourceDataSync");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1962,6 +1998,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterManagedInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2021,6 +2058,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterPatchBaselineForPatchGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2088,6 +2126,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterTargetFromMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2152,6 +2191,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterTaskFromMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2212,6 +2252,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeActivations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2293,6 +2334,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAssociation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2355,6 +2397,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAssociationExecutionTargets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2415,6 +2458,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAssociationExecutions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2477,6 +2521,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAutomationExecutions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2542,6 +2587,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAutomationStepExecutions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2598,6 +2644,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAvailablePatches");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2657,6 +2704,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDocument");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2718,6 +2766,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDocumentPermission");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2793,6 +2842,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEffectiveInstanceAssociations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2863,6 +2913,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEffectivePatchesForPatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2938,6 +2989,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInstanceAssociationsStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3026,6 +3078,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInstanceInformation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3084,6 +3137,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInstancePatchStates");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3145,6 +3199,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInstancePatchStatesForPatchGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3222,6 +3277,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInstancePatches");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3282,6 +3338,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInventoryDeletions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3301,7 +3358,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance
+     * Retrieves the individual task executions (one per target) for a particular task run as part of a Maintenance
      * Window execution.
      * </p>
      * 
@@ -3349,6 +3406,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowExecutionTaskInvocations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3368,7 +3426,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * For a given Maintenance Window execution, lists the tasks that were executed.
+     * For a given Maintenance Window execution, lists the tasks that were run.
      * </p>
      * 
      * @param describeMaintenanceWindowExecutionTasksRequest
@@ -3413,6 +3471,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowExecutionTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3471,6 +3530,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowExecutions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3535,6 +3595,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowSchedule");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3599,6 +3660,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowTargets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3662,6 +3724,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3718,6 +3781,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindows");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3775,6 +3839,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMaintenanceWindowsForTarget");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3846,6 +3911,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeParameters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3900,6 +3966,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePatchBaselines");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3958,6 +4025,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePatchGroupState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4013,12 +4081,120 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePatchGroups");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribePatchGroupsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribePatchGroupsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the properties of available patches organized by product, product family, classification, severity, and
+     * other properties of available patches. You can use the reported properties in the filters you specify in requests
+     * for actions such as <a>CreatePatchBaseline</a>, <a>UpdatePatchBaseline</a>, <a>DescribeAvailablePatches</a>, and
+     * <a>DescribePatchBaselines</a>.
+     * </p>
+     * <p>
+     * The following section lists the properties that can be used in filters for each major operating system type:
+     * </p>
+     * <dl>
+     * <dt>WINDOWS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX_2</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>UBUNTU</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRIORITY
+     * </p>
+     * </dd>
+     * <dt>REDHAT_ENTERPRISE_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>SUSE</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>CENTOS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * </dl>
+     * 
+     * @param describePatchPropertiesRequest
+     * @return Result of the DescribePatchProperties operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribePatchProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchProperties" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DescribePatchPropertiesResult describePatchProperties(DescribePatchPropertiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePatchProperties(request);
+    }
+
+    @SdkInternalApi
+    final DescribePatchPropertiesResult executeDescribePatchProperties(DescribePatchPropertiesRequest describePatchPropertiesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describePatchPropertiesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribePatchPropertiesRequest> request = null;
+        Response<DescribePatchPropertiesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribePatchPropertiesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describePatchPropertiesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePatchProperties");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribePatchPropertiesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribePatchPropertiesResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -4072,6 +4248,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSessions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4128,6 +4305,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAutomationExecution");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4205,6 +4383,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCommandInvocation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4260,6 +4439,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetConnectionStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4319,6 +4499,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDefaultPatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4349,6 +4530,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @throws UnsupportedOperatingSystemException
      *         The operating systems you specified is not supported, or the operation is not supported for the operating
      *         system. Valid operating systems include: Windows, AmazonLinux, RedhatEnterpriseLinux, and Ubuntu.
+     * @throws UnsupportedFeatureRequiredException
      * @sample AWSSimpleSystemsManagement.GetDeployablePatchSnapshotForInstance
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDeployablePatchSnapshotForInstance"
      *      target="_top">AWS API Documentation</a>
@@ -4380,6 +4562,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDeployablePatchSnapshotForInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4439,6 +4622,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDocument");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4506,6 +4690,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInventory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4565,6 +4750,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInventorySchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4626,6 +4812,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4644,7 +4831,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Retrieves details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves details about a specific task run as part of a Maintenance Window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionRequest
@@ -4688,6 +4875,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMaintenanceWindowExecution");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4707,7 +4895,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Retrieves the details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves the details about a specific task run as part of a Maintenance Window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskRequest
@@ -4752,6 +4940,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMaintenanceWindowExecutionTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4771,7 +4960,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance
+     * Retrieves a task invocation. A task invocation is a specific task running on a specific target. Maintenance
      * Windows report status for all invocations.
      * </p>
      * 
@@ -4818,6 +5007,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMaintenanceWindowExecutionTaskInvocation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4881,6 +5071,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMaintenanceWindowTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4943,6 +5134,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetParameter");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5003,6 +5195,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetParameterHistory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5059,6 +5252,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetParameters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5138,6 +5332,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetParametersByPath");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5201,6 +5396,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5256,6 +5452,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPatchBaselineForPatchGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5263,6 +5460,79 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
             HttpResponseHandler<AmazonWebServiceResponse<GetPatchBaselineForPatchGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new GetPatchBaselineForPatchGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>UpdateServiceSetting</a> API action to change the default setting. Or use the <a>ResetServiceSetting</a> to
+     * change the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Query the current service setting for the account.
+     * </p>
+     * 
+     * @param getServiceSettingRequest
+     *        The request body of the GetServiceSetting API action.
+     * @return Result of the GetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @sample AWSSimpleSystemsManagement.GetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetServiceSettingResult getServiceSetting(GetServiceSettingRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetServiceSetting(request);
+    }
+
+    @SdkInternalApi
+    final GetServiceSettingResult executeGetServiceSetting(GetServiceSettingRequest getServiceSettingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getServiceSettingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetServiceSettingRequest> request = null;
+        Response<GetServiceSettingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetServiceSettingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getServiceSettingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetServiceSetting");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetServiceSettingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetServiceSettingResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -5371,6 +5641,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "LabelParameterVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5431,6 +5702,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAssociationVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5488,6 +5760,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAssociations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5507,8 +5780,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
     /**
      * <p>
      * An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A
-     * command invocation applies to one instance. For example, if a user executes SendCommand against three instances,
-     * then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
+     * command invocation applies to one instance. For example, if a user runs SendCommand against three instances, then
+     * a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
      * command execution.
      * </p>
      * 
@@ -5566,6 +5839,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCommandInvocations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5642,6 +5916,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCommands");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5707,6 +5982,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListComplianceItems");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5768,6 +6044,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListComplianceSummaries");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5827,6 +6104,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDocumentVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5885,6 +6163,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDocuments");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5966,6 +6245,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInventoryEntries");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6027,6 +6307,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListResourceComplianceSummaries");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6092,6 +6373,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListResourceDataSync");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6151,6 +6433,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6218,6 +6501,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyDocumentPermission");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6370,6 +6654,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutComplianceItems");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6465,6 +6750,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutInventory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6514,6 +6800,16 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         The parameter name is not valid.
      * @throws UnsupportedParameterTypeException
      *         The parameter type is not supported.
+     * @throws PoliciesLimitExceededException
+     *         You specified more than the maximum number of allowed policies for the parameter. The maximum is 10.
+     * @throws InvalidPolicyTypeException
+     *         The policy type is not supported. Parameter Store supports the following policy types: Expiration,
+     *         ExpirationNotification, and NoChangeNotification.
+     * @throws InvalidPolicyAttributeException
+     *         A policy attribute or its value is invalid.
+     * @throws IncompatiblePolicyException
+     *         There is a conflict in the policies specified for this parameter. You can't, for example, specify two
+     *         Expiration policies for a parameter. Review your policies, and try again.
      * @sample AWSSimpleSystemsManagement.PutParameter
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter" target="_top">AWS API
      *      Documentation</a>
@@ -6543,6 +6839,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutParameter");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6607,6 +6904,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterDefaultPatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6684,6 +6982,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterPatchBaselineForPatchGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6759,6 +7058,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterTargetWithMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6837,6 +7137,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterTaskWithMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6899,6 +7200,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveTagsFromResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6906,6 +7208,81 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
             HttpResponseHandler<AmazonWebServiceResponse<RemoveTagsFromResourceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new RemoveTagsFromResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Use the <a>UpdateServiceSetting</a> API action to
+     * change the default setting.
+     * </p>
+     * <p>
+     * Reset the service setting for the account to the default value as provisioned by the AWS service team.
+     * </p>
+     * 
+     * @param resetServiceSettingRequest
+     *        The request body of the ResetServiceSetting API action.
+     * @return Result of the ResetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.ResetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ResetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ResetServiceSettingResult resetServiceSetting(ResetServiceSettingRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetServiceSetting(request);
+    }
+
+    @SdkInternalApi
+    final ResetServiceSettingResult executeResetServiceSetting(ResetServiceSettingRequest resetServiceSettingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(resetServiceSettingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ResetServiceSettingRequest> request = null;
+        Response<ResetServiceSettingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ResetServiceSettingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resetServiceSettingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ResetServiceSetting");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ResetServiceSettingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ResetServiceSettingResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -6968,6 +7345,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ResumeSession");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7028,6 +7406,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SendAutomationSignal");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7046,7 +7425,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Executes commands on one or more managed instances.
+     * Runs commands on one or more managed instances.
      * </p>
      * 
      * @param sendCommandRequest
@@ -7123,6 +7502,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SendCommand");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7141,7 +7521,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Use this API action to execute an association immediately and only one time. This action can be helpful when
+     * Use this API action to run an association immediately and only one time. This action can be helpful when
      * troubleshooting associations.
      * </p>
      * 
@@ -7180,6 +7560,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartAssociationsOnce");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7251,6 +7632,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartAutomationExecution");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7322,6 +7704,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartSession");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7340,7 +7723,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Stop an Automation that is currently executing.
+     * Stop an Automation that is currently running.
      * </p>
      * 
      * @param stopAutomationExecutionRequest
@@ -7381,6 +7764,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopAutomationExecution");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7444,6 +7828,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TerminateSession");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7465,6 +7850,11 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * Updates an association. You can update the association name and version, the document version, schedule,
      * parameters, and Amazon S3 output.
      * </p>
+     * <important>
+     * <p>
+     * When you update an association, the association immediately runs against the specified targets.
+     * </p>
+     * </important>
      * 
      * @param updateAssociationRequest
      * @return Result of the UpdateAssociation operation returned by the service.
@@ -7526,6 +7916,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAssociation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7605,6 +7996,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAssociationStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7681,6 +8073,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDocument");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7742,6 +8135,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDocumentDefaultVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7805,6 +8199,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMaintenanceWindow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7890,6 +8285,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMaintenanceWindowTarget");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7991,6 +8387,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMaintenanceWindowTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -8063,6 +8460,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateManagedInstanceRole");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -8132,12 +8530,88 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePatchBaseline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<UpdatePatchBaselineResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdatePatchBaselineResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Or, use the <a>ResetServiceSetting</a> to change
+     * the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Update the service setting for the account.
+     * </p>
+     * 
+     * @param updateServiceSettingRequest
+     *        The request body of the UpdateServiceSetting API action.
+     * @return Result of the UpdateServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.UpdateServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateServiceSettingResult updateServiceSetting(UpdateServiceSettingRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateServiceSetting(request);
+    }
+
+    @SdkInternalApi
+    final UpdateServiceSettingResult executeUpdateServiceSetting(UpdateServiceSettingRequest updateServiceSettingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateServiceSettingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateServiceSettingRequest> request = null;
+        Response<UpdateServiceSettingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateServiceSettingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateServiceSettingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SSM");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateServiceSetting");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateServiceSettingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateServiceSettingResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

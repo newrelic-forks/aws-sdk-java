@@ -66,7 +66,7 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
     private java.util.Date executionEndTime;
     /**
      * <p>
-     * The IAM role ARN of the user who executed the Automation.
+     * The IAM role ARN of the user who ran the Automation.
      * </p>
      */
     private String executedBy;
@@ -96,13 +96,13 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
     private String parentAutomationExecutionId;
     /**
      * <p>
-     * The name of the currently executing step.
+     * The name of the step that is currently running.
      * </p>
      */
     private String currentStepName;
     /**
      * <p>
-     * The action of the currently executing step.
+     * The action of the step that is currently running.
      * </p>
      */
     private String currentAction;
@@ -156,11 +156,10 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
     private String target;
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      */
     private String automationType;
@@ -440,11 +439,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The IAM role ARN of the user who executed the Automation.
+     * The IAM role ARN of the user who ran the Automation.
      * </p>
      * 
      * @param executedBy
-     *        The IAM role ARN of the user who executed the Automation.
+     *        The IAM role ARN of the user who ran the Automation.
      */
 
     public void setExecutedBy(String executedBy) {
@@ -453,10 +452,10 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The IAM role ARN of the user who executed the Automation.
+     * The IAM role ARN of the user who ran the Automation.
      * </p>
      * 
-     * @return The IAM role ARN of the user who executed the Automation.
+     * @return The IAM role ARN of the user who ran the Automation.
      */
 
     public String getExecutedBy() {
@@ -465,11 +464,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The IAM role ARN of the user who executed the Automation.
+     * The IAM role ARN of the user who ran the Automation.
      * </p>
      * 
      * @param executedBy
-     *        The IAM role ARN of the user who executed the Automation.
+     *        The IAM role ARN of the user who ran the Automation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -694,11 +693,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the currently executing step.
+     * The name of the step that is currently running.
      * </p>
      * 
      * @param currentStepName
-     *        The name of the currently executing step.
+     *        The name of the step that is currently running.
      */
 
     public void setCurrentStepName(String currentStepName) {
@@ -707,10 +706,10 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the currently executing step.
+     * The name of the step that is currently running.
      * </p>
      * 
-     * @return The name of the currently executing step.
+     * @return The name of the step that is currently running.
      */
 
     public String getCurrentStepName() {
@@ -719,11 +718,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the currently executing step.
+     * The name of the step that is currently running.
      * </p>
      * 
      * @param currentStepName
-     *        The name of the currently executing step.
+     *        The name of the step that is currently running.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -734,11 +733,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The action of the currently executing step.
+     * The action of the step that is currently running.
      * </p>
      * 
      * @param currentAction
-     *        The action of the currently executing step.
+     *        The action of the step that is currently running.
      */
 
     public void setCurrentAction(String currentAction) {
@@ -747,10 +746,10 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The action of the currently executing step.
+     * The action of the step that is currently running.
      * </p>
      * 
-     * @return The action of the currently executing step.
+     * @return The action of the step that is currently running.
      */
 
     public String getCurrentAction() {
@@ -759,11 +758,11 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The action of the currently executing step.
+     * The action of the step that is currently running.
      * </p>
      * 
      * @param currentAction
-     *        The action of the currently executing step.
+     *        The action of the step that is currently running.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1160,20 +1159,19 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param automationType
-     *        Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount.
-     *        CrossAccount is an Automation that executes in multiple AWS Regions and accounts. For more information,
-     *        see <a href=
+     *        Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount.
+     *        CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     *        >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager
-     *        User Guide</i>.
+     *        >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @see AutomationType
      */
 
@@ -1183,19 +1181,18 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
-     * @return Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount.
-     *         CrossAccount is an Automation that executes in multiple AWS Regions and accounts. For more information,
-     *         see <a href=
+     * @return Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount.
+     *         CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see
+     *         <a href=
      *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     *         >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems
-     *         Manager User Guide</i>.
+     *         >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
+     *         Guide</i>.
      * @see AutomationType
      */
 
@@ -1205,20 +1202,19 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param automationType
-     *        Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount.
-     *        CrossAccount is an Automation that executes in multiple AWS Regions and accounts. For more information,
-     *        see <a href=
+     *        Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount.
+     *        CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     *        >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager
-     *        User Guide</i>.
+     *        >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutomationType
      */
@@ -1230,20 +1226,19 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param automationType
-     *        Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount.
-     *        CrossAccount is an Automation that executes in multiple AWS Regions and accounts. For more information,
-     *        see <a href=
+     *        Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount.
+     *        CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     *        >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager
-     *        User Guide</i>.
+     *        >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @see AutomationType
      */
 
@@ -1253,20 +1248,19 @@ public class AutomationExecutionMetadata implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount. CrossAccount is an
-     * Automation that executes in multiple AWS Regions and accounts. For more information, see <a href=
+     * Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount. CrossAccount is
+     * an Automation that runs in multiple AWS Regions and accounts. For more information, see <a href=
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     * >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
-     * Guide</i>.
+     * >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param automationType
-     *        Use this filter with <a>DescribeAutomationExecution</a>. Specify either Local of CrossAccount.
-     *        CrossAccount is an Automation that executes in multiple AWS Regions and accounts. For more information,
-     *        see <a href=
+     *        Use this filter with <a>DescribeAutomationExecutions</a>. Specify either Local or CrossAccount.
+     *        CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html"
-     *        >Concurrently Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager
-     *        User Guide</i>.
+     *        >Executing Automations in Multiple AWS Regions and Accounts</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutomationType
      */

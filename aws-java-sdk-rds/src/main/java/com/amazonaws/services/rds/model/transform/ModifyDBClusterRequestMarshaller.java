@@ -162,6 +162,10 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
                 if (scalingConfiguration.getSecondsUntilAutoPause() != null) {
                     request.addParameter("ScalingConfiguration.SecondsUntilAutoPause", StringUtils.fromInteger(scalingConfiguration.getSecondsUntilAutoPause()));
                 }
+
+                if (scalingConfiguration.getTimeoutAction() != null) {
+                    request.addParameter("ScalingConfiguration.TimeoutAction", StringUtils.fromString(scalingConfiguration.getTimeoutAction()));
+                }
             }
         }
 
@@ -171,6 +175,10 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
 
         if (modifyDBClusterRequest.getEnableHttpEndpoint() != null) {
             request.addParameter("EnableHttpEndpoint", StringUtils.fromBoolean(modifyDBClusterRequest.getEnableHttpEndpoint()));
+        }
+
+        if (modifyDBClusterRequest.getCopyTagsToSnapshot() != null) {
+            request.addParameter("CopyTagsToSnapshot", StringUtils.fromBoolean(modifyDBClusterRequest.getCopyTagsToSnapshot()));
         }
 
         return request;

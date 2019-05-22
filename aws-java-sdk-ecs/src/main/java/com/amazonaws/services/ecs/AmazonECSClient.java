@@ -51,6 +51,7 @@ import com.amazonaws.services.ecs.model.transform.*;
  * Client for accessing Amazon ECS. All service calls made using this client are blocking, and will not return until the
  * service call completes.
  * <p>
+ * <fullname>Amazon Elastic Container Service</fullname>
  * <p>
  * Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast, container management service that makes it
  * easy to run, stop, and manage Docker containers on a cluster. You can host your cluster on a serverless
@@ -97,50 +98,17 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                             new JsonErrorShapeMetadata().withErrorCode("BlockedException").withModeledClass(
                                     com.amazonaws.services.ecs.model.BlockedException.class))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.InvalidParameterException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoUpdateAvailableException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.NoUpdateAvailableException.class))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ClusterContainsServicesException").withModeledClass(
                                     com.amazonaws.services.ecs.model.ClusterContainsServicesException.class))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PlatformTaskDefinitionIncompatibilityException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.PlatformTaskDefinitionIncompatibilityException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MissingVersionException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.MissingVersionException.class))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("UnsupportedFeatureException").withModeledClass(
                                     com.amazonaws.services.ecs.model.UnsupportedFeatureException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClusterContainsContainerInstancesException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.ClusterContainsContainerInstancesException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.ServiceNotFoundException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttributeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.AttributeLimitExceededException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.AccessDeniedException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotActiveException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.ServiceNotActiveException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ClusterNotFoundException").withModeledClass(
                                     com.amazonaws.services.ecs.model.ClusterNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
                                     com.amazonaws.services.ecs.model.ResourceNotFoundException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServerException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.ServerException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TargetNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecs.model.TargetNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ClientException").withModeledClass(
                                     com.amazonaws.services.ecs.model.ClientException.class))
@@ -153,6 +121,42 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ClusterContainsTasksException").withModeledClass(
                                     com.amazonaws.services.ecs.model.ClusterContainsTasksException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.InvalidParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NoUpdateAvailableException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.NoUpdateAvailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PlatformTaskDefinitionIncompatibilityException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.PlatformTaskDefinitionIncompatibilityException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MissingVersionException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.MissingVersionException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ClusterContainsContainerInstancesException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.ClusterContainsContainerInstancesException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.ServiceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TaskSetNotFoundException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.TaskSetNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttributeLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.AttributeLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.AccessDeniedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotActiveException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.ServiceNotActiveException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServerException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.ServerException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TargetNotFoundException").withModeledClass(
+                                    com.amazonaws.services.ecs.model.TargetNotFoundException.class))
                     .withBaseServiceExceptionClass(com.amazonaws.services.ecs.model.AmazonECSException.class));
 
     /**
@@ -409,6 +413,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCluster");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -433,32 +438,63 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
     /**
      * <p>
      * Runs and maintains a desired number of tasks from a specified task definition. If the number of tasks running in
-     * a service drops below <code>desiredCount</code>, Amazon ECS spawns another copy of the task in the specified
+     * a service drops below the <code>desiredCount</code>, Amazon ECS spawns another copy of the task in the specified
      * cluster. To update an existing service, see <a>UpdateService</a>.
      * </p>
      * <p>
      * In addition to maintaining the desired count of tasks in your service, you can optionally run your service behind
      * a load balancer. The load balancer distributes traffic across the tasks that are associated with the service. For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
      * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * You can optionally specify a deployment configuration for your service. The deployment is triggered by changing
-     * properties, such as the task definition or the desired count of a service, with an <a>UpdateService</a>
-     * operation.
+     * Tasks for services that <i>do not</i> use a load balancer are considered healthy if they're in the
+     * <code>RUNNING</code> state. Tasks for services that <i>do</i> use a load balancer are considered healthy if
+     * they're in the <code>RUNNING</code> state and the container instance that they're hosted on is reported as
+     * healthy by the load balancer.
      * </p>
      * <p>
-     * If a service is using the <code>ECS</code> deployment controller, the <b>minimum healthy percent</b> represents a
-     * lower limit on the number of tasks in a service that must remain in the <code>RUNNING</code> state during a
-     * deployment, as a percentage of the desired number of tasks (rounded up to the nearest integer), and while any
-     * container instances are in the <code>DRAINING</code> state if the service contains tasks using the EC2 launch
-     * type. This parameter enables you to deploy without using additional cluster capacity. For example, if your
-     * service has a desired number of four tasks and a minimum healthy percent of 50%, the scheduler may stop two
-     * existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that <i>do not</i>
-     * use a load balancer are considered healthy if they are in the <code>RUNNING</code> state; tasks for services that
-     * <i>do</i> use a load balancer are considered healthy if they are in the <code>RUNNING</code> state and they are
-     * reported as healthy by the load balancer. The default value for minimum healthy percent is 100%.
+     * There are two service scheduler strategies available:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>REPLICA</code> - The replica scheduling strategy places and maintains the desired number of tasks across
+     * your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task
+     * placement strategies and constraints to customize task placement decisions. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Service Scheduler
+     * Concepts</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DAEMON</code> - The daemon scheduling strategy deploys exactly one task on each active container instance
+     * that meets all of the task placement constraints that you specify in your cluster. When using this strategy, you
+     * don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto Scaling policies.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Service Scheduler
+     * Concepts</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can optionally specify a deployment configuration for your service. The deployment is triggered by changing
+     * properties, such as the task definition or the desired count of a service, with an <a>UpdateService</a>
+     * operation. The default value for a replica service for <code>minimumHealthyPercent</code> is 100%. The default
+     * value for a daemon service for <code>minimumHealthyPercent</code> is 0%.
+     * </p>
+     * <p>
+     * If a service is using the <code>ECS</code> deployment controller, the minimum healthy percent represents a lower
+     * limit on the number of tasks in a service that must remain in the <code>RUNNING</code> state during a deployment,
+     * as a percentage of the desired number of tasks (rounded up to the nearest integer), and while any container
+     * instances are in the <code>DRAINING</code> state if the service contains tasks using the EC2 launch type. This
+     * parameter enables you to deploy without using additional cluster capacity. For example, if your service has a
+     * desired number of four tasks and a minimum healthy percent of 50%, the scheduler might stop two existing tasks to
+     * free up cluster capacity before starting two new tasks. Tasks for services that <i>do not</i> use a load balancer
+     * are considered healthy if they're in the <code>RUNNING</code> state. Tasks for services that <i>do</i> use a load
+     * balancer are considered healthy if they're in the <code>RUNNING</code> state and they're reported as healthy by
+     * the load balancer. The default value for minimum healthy percent is 100%.
      * </p>
      * <p>
      * If a service is using the <code>ECS</code> deployment controller, the <b>maximum percent</b> parameter represents
@@ -471,19 +507,19 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * this are available). The default value for maximum percent is 200%.
      * </p>
      * <p>
-     * If a service is using the <code>CODE_DEPLOY</code> deployment controller and tasks that use the EC2 launch type,
-     * the <b>minimum healthy percent</b> and <b>maximum percent</b> values are only used to define the lower and upper
-     * limit on the number of the tasks in the service that remain in the <code>RUNNING</code> state while the container
-     * instances are in the <code>DRAINING</code> state. If the tasks in the service use the Fargate launch type, the
-     * minimum healthy percent and maximum percent values are not used, although they are currently visible when
-     * describing your service.
+     * If a service is using either the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types
+     * and tasks that use the EC2 launch type, the <b>minimum healthy percent</b> and <b>maximum percent</b> values are
+     * used only to define the lower and upper limit on the number of the tasks in the service that remain in the
+     * <code>RUNNING</code> state while the container instances are in the <code>DRAINING</code> state. If the tasks in
+     * the service use the Fargate launch type, the minimum healthy percent and maximum percent values aren't used,
+     * although they're currently visible when describing your service.
      * </p>
      * <p>
-     * Tasks for services that <i>do not</i> use a load balancer are considered healthy if they are in the
-     * <code>RUNNING</code> state. Tasks for services that <i>do</i> use a load balancer are considered healthy if they
-     * are in the <code>RUNNING</code> state and the container instance they are hosted on is reported as healthy by the
-     * load balancer. The default value for a replica service for <code>minimumHealthyPercent</code> is 100%. The
-     * default value for a daemon service for <code>minimumHealthyPercent</code> is 0%.
+     * When creating a service that uses the <code>EXTERNAL</code> deployment controller, you can specify only
+     * parameters that aren't controlled at the task set level. The only required parameter is the service name. You
+     * control your services using the <a>CreateTaskSet</a> operation. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * When the service scheduler launches new tasks, it determines task placement in your cluster using the following
@@ -569,12 +605,94 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateServiceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateServiceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Create a task set in the specified cluster and service. This is used when a service uses the
+     * <code>EXTERNAL</code> deployment controller type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param createTaskSetRequest
+     * @return Result of the CreateTaskSet operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are Region-specific.
+     * @throws UnsupportedFeatureException
+     *         The specified task is not supported in this Region.
+     * @throws PlatformUnknownException
+     *         The specified platform version does not exist.
+     * @throws PlatformTaskDefinitionIncompatibilityException
+     *         The specified platform version does not satisfy the task definition's required capabilities.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @throws ServiceNotFoundException
+     *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
+     *         Amazon ECS services are cluster-specific and Region-specific.
+     * @throws ServiceNotActiveException
+     *         The specified service is not active. You can't update a service that is inactive. If you have previously
+     *         deleted a service, you can re-create it with <a>CreateService</a>.
+     * @sample AmazonECS.CreateTaskSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateTaskSet" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateTaskSetResult createTaskSet(CreateTaskSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTaskSet(request);
+    }
+
+    @SdkInternalApi
+    final CreateTaskSetResult executeCreateTaskSet(CreateTaskSetRequest createTaskSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createTaskSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateTaskSetRequest> request = null;
+        Response<CreateTaskSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateTaskSetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTaskSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTaskSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateTaskSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateTaskSetResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -631,6 +749,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAccountSetting");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -691,6 +810,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -766,6 +886,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteCluster");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -850,12 +971,93 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteServiceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteServiceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a specified task set within a service. This is used when a service uses the <code>EXTERNAL</code>
+     * deployment controller type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param deleteTaskSetRequest
+     * @return Result of the DeleteTaskSet operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are Region-specific.
+     * @throws UnsupportedFeatureException
+     *         The specified task is not supported in this Region.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @throws ServiceNotFoundException
+     *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
+     *         Amazon ECS services are cluster-specific and Region-specific.
+     * @throws ServiceNotActiveException
+     *         The specified service is not active. You can't update a service that is inactive. If you have previously
+     *         deleted a service, you can re-create it with <a>CreateService</a>.
+     * @throws TaskSetNotFoundException
+     *         The specified task set could not be found. You can view your available container instances with
+     *         <a>DescribeTaskSets</a>. Task sets are specific to each cluster, service and Region.
+     * @sample AmazonECS.DeleteTaskSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteTaskSet" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteTaskSetResult deleteTaskSet(DeleteTaskSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTaskSet(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTaskSetResult executeDeleteTaskSet(DeleteTaskSetRequest deleteTaskSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteTaskSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteTaskSetRequest> request = null;
+        Response<DeleteTaskSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteTaskSetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTaskSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTaskSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteTaskSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteTaskSetResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -932,6 +1134,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterContainerInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1009,6 +1212,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterTaskDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1070,6 +1274,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeClusters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1140,6 +1345,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeContainerInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1204,6 +1410,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeServices");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1271,6 +1478,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTaskDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1278,6 +1486,83 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
             HttpResponseHandler<AmazonWebServiceResponse<DescribeTaskDefinitionResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DescribeTaskDefinitionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Describes the task sets in the specified cluster and service. This is used when a service uses the
+     * <code>EXTERNAL</code> deployment controller type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param describeTaskSetsRequest
+     * @return Result of the DescribeTaskSets operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are Region-specific.
+     * @throws UnsupportedFeatureException
+     *         The specified task is not supported in this Region.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @throws ServiceNotFoundException
+     *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
+     *         Amazon ECS services are cluster-specific and Region-specific.
+     * @throws ServiceNotActiveException
+     *         The specified service is not active. You can't update a service that is inactive. If you have previously
+     *         deleted a service, you can re-create it with <a>CreateService</a>.
+     * @sample AmazonECS.DescribeTaskSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskSets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DescribeTaskSetsResult describeTaskSets(DescribeTaskSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTaskSets(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTaskSetsResult executeDescribeTaskSets(DescribeTaskSetsRequest describeTaskSetsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeTaskSetsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeTaskSetsRequest> request = null;
+        Response<DescribeTaskSetsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeTaskSetsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTaskSetsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTaskSets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeTaskSetsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeTaskSetsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1335,6 +1620,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1398,6 +1684,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DiscoverPollEndpoint");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1463,6 +1750,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAccountSettings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1524,6 +1812,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1584,6 +1873,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListClusters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1610,7 +1900,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * Returns a list of container instances in a specified cluster. You can filter the results of a
      * <code>ListContainerInstances</code> operation with cluster query language statements inside the
      * <code>filter</code> parameter. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
      * Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -1656,6 +1946,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListContainerInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1725,6 +2016,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListServices");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1793,6 +2085,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1860,6 +2153,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTaskDefinitionFamilies");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1927,6 +2221,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTaskDefinitions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2004,6 +2299,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2027,9 +2323,14 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
 
     /**
      * <p>
-     * Modifies the ARN and resource ID format of a resource for a specified IAM user, IAM role, or the root user for an
-     * account. You can specify whether the new ARN and resource ID format are enabled for new resources that are
-     * created. Enabling this setting is required to use new Amazon ECS features such as resource tagging.
+     * Modifies the ARN and resource ID format of a resource type for a specified IAM user, IAM role, or the root user
+     * for an account. If the account setting for the root user is changed, it sets the default setting for all of the
+     * IAM users and roles for which no individual account setting has been set. The opt-in and opt-out account setting
+     * can be set for each Amazon ECS resource separately. The ARN and resource ID format of a resource will be defined
+     * by the opt-in status of the IAM user or role that created the resource. Enabling this setting is required to use
+     * new Amazon ECS features such as resource tagging. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html">Amazon Resource Names
+     * (ARNs) and IDs</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param putAccountSettingRequest
@@ -2071,6 +2372,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutAccountSetting");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2089,10 +2391,75 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
 
     /**
      * <p>
+     * Modifies the ARN and resource ID format of a resource type for all IAM users on an account for which no
+     * individual account setting has been set. Enabling this setting is required to use new Amazon ECS features such as
+     * resource tagging.
+     * </p>
+     * 
+     * @param putAccountSettingDefaultRequest
+     * @return Result of the PutAccountSettingDefault operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @sample AmazonECS.PutAccountSettingDefault
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PutAccountSettingDefault" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public PutAccountSettingDefaultResult putAccountSettingDefault(PutAccountSettingDefaultRequest request) {
+        request = beforeClientExecution(request);
+        return executePutAccountSettingDefault(request);
+    }
+
+    @SdkInternalApi
+    final PutAccountSettingDefaultResult executePutAccountSettingDefault(PutAccountSettingDefaultRequest putAccountSettingDefaultRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putAccountSettingDefaultRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutAccountSettingDefaultRequest> request = null;
+        Response<PutAccountSettingDefaultResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutAccountSettingDefaultRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(putAccountSettingDefaultRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutAccountSettingDefault");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutAccountSettingDefaultResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new PutAccountSettingDefaultResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the
      * attribute exists, its value is replaced with the specified value. To delete an attribute, use
      * <a>DeleteAttributes</a>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes"
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes"
      * >Attributes</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2138,6 +2505,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2204,6 +2572,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterContainerInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2226,14 +2595,14 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * Registers a new task definition from the supplied <code>family</code> and <code>containerDefinitions</code>.
      * Optionally, you can add data volumes to your containers with the <code>volumes</code> parameter. For more
      * information about task definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * You can specify an IAM role for your task with the <code>taskRoleArn</code> parameter. When you specify an IAM
      * role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to
      * the AWS services that are specified in the IAM policy associated with the role. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in
      * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -2286,6 +2655,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterTaskDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2310,7 +2680,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * <p>
      * You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement
      * constraints and placement strategies. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
      * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -2397,6 +2767,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RunTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2419,7 +2790,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * </p>
      * <p>
      * Alternatively, you can use <a>RunTask</a> to place tasks for you. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
      * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2465,6 +2836,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2496,7 +2868,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * <p>
      * The default 30-second timeout can be configured on the Amazon ECS container agent with the
      * <code>ECS_CONTAINER_STOP_TIMEOUT</code> variable. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </note>
@@ -2543,6 +2915,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2609,6 +2982,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SubmitContainerStateChange");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2680,6 +3054,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SubmitTaskStateChange");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2748,6 +3123,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2813,6 +3189,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2840,7 +3217,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or Amazon Linux with the
      * <code>ecs-init</code> service installed and running. For help updating the Amazon ECS container agent on other
      * operating systems, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent"
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent"
      * >Manually Updating the Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer
      * Guide</i>.
      * </p>
@@ -2900,6 +3277,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateContainerAgent");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3014,6 +3392,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateContainerInstancesState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3046,6 +3425,11 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * created. For more information, see <a
      * href="https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html">CreateDeployment</a>
      * in the <i>AWS CodeDeploy API Reference</i>.
+     * </p>
+     * <p>
+     * For services using an external deployment controller, you can update only the desired count and health check
+     * grace period using this API. If the launch type, load balancer, network configuration, platform version, or task
+     * definition need to be updated, you should create a new task set. For more information, see <a>CreateTaskSet</a>.
      * </p>
      * <p>
      * You can add to or subtract from the number of instantiations of a task definition in a service by specifying the
@@ -3202,12 +3586,178 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<UpdateServiceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateServiceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task
+     * set in a service will transition to the service. This is used when a service uses the <code>EXTERNAL</code>
+     * deployment controller type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param updateServicePrimaryTaskSetRequest
+     * @return Result of the UpdateServicePrimaryTaskSet operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are Region-specific.
+     * @throws UnsupportedFeatureException
+     *         The specified task is not supported in this Region.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @throws ServiceNotFoundException
+     *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
+     *         Amazon ECS services are cluster-specific and Region-specific.
+     * @throws ServiceNotActiveException
+     *         The specified service is not active. You can't update a service that is inactive. If you have previously
+     *         deleted a service, you can re-create it with <a>CreateService</a>.
+     * @throws TaskSetNotFoundException
+     *         The specified task set could not be found. You can view your available container instances with
+     *         <a>DescribeTaskSets</a>. Task sets are specific to each cluster, service and Region.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @sample AmazonECS.UpdateServicePrimaryTaskSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateServicePrimaryTaskSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateServicePrimaryTaskSetResult updateServicePrimaryTaskSet(UpdateServicePrimaryTaskSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateServicePrimaryTaskSet(request);
+    }
+
+    @SdkInternalApi
+    final UpdateServicePrimaryTaskSetResult executeUpdateServicePrimaryTaskSet(UpdateServicePrimaryTaskSetRequest updateServicePrimaryTaskSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateServicePrimaryTaskSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateServicePrimaryTaskSetRequest> request = null;
+        Response<UpdateServicePrimaryTaskSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateServicePrimaryTaskSetRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateServicePrimaryTaskSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateServicePrimaryTaskSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateServicePrimaryTaskSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new UpdateServicePrimaryTaskSetResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies a task set. This is used when a service uses the <code>EXTERNAL</code> deployment controller type. For
+     * more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon ECS Deployment
+     * Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param updateTaskSetRequest
+     * @return Result of the UpdateTaskSet operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permissions to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are Region-specific.
+     * @throws UnsupportedFeatureException
+     *         The specified task is not supported in this Region.
+     * @throws AccessDeniedException
+     *         You do not have authorization to perform the requested action.
+     * @throws ServiceNotFoundException
+     *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
+     *         Amazon ECS services are cluster-specific and Region-specific.
+     * @throws ServiceNotActiveException
+     *         The specified service is not active. You can't update a service that is inactive. If you have previously
+     *         deleted a service, you can re-create it with <a>CreateService</a>.
+     * @throws TaskSetNotFoundException
+     *         The specified task set could not be found. You can view your available container instances with
+     *         <a>DescribeTaskSets</a>. Task sets are specific to each cluster, service and Region.
+     * @sample AmazonECS.UpdateTaskSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateTaskSet" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateTaskSetResult updateTaskSet(UpdateTaskSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTaskSet(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTaskSetResult executeUpdateTaskSet(UpdateTaskSetRequest updateTaskSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateTaskSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateTaskSetRequest> request = null;
+        Response<UpdateTaskSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateTaskSetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTaskSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTaskSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateTaskSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateTaskSetResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

@@ -44,7 +44,10 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     private String transformJobStatus;
     /**
      * <p>
-     * If the transform job failed, the reason that it failed.
+     * If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a log
+     * file, which includes error messages, and stores it as an Amazon S3 object. For more information, see <a
+     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker Events with
+     * Amazon CloudWatch</a>.
      * </p>
      */
     private String failureReason;
@@ -63,18 +66,26 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     private Integer maxConcurrentTransforms;
     /**
      * <p>
-     * The maximum payload size , in MB used in the transform job.
+     * The maximum payload size, in MB, used in the transform job.
      * </p>
      */
     private Integer maxPayloadInMB;
     /**
      * <p>
-     * SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained as many
-     * records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i> <i/> is
+     * a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
+     * </p>
+     * <p>
+     * To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>, <code>RecordIO</code>, or
+     * <code>TFRecord</code>.
      * </p>
      */
     private String batchStrategy;
-    /** <p/> */
+    /**
+     * <p>
+     * The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
+     * </p>
+     */
     private java.util.Map<String, String> environment;
     /**
      * <p>
@@ -109,8 +120,8 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     private java.util.Date transformStartTime;
     /**
      * <p>
-     * Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>. You are
-     * billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     * Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     * interval between this time and the value of <code>TransformStartTime</code>.
      * </p>
      */
     private java.util.Date transformEndTime;
@@ -271,11 +282,17 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * If the transform job failed, the reason that it failed.
+     * If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a log
+     * file, which includes error messages, and stores it as an Amazon S3 object. For more information, see <a
+     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker Events with
+     * Amazon CloudWatch</a>.
      * </p>
      * 
      * @param failureReason
-     *        If the transform job failed, the reason that it failed.
+     *        If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a
+     *        log file, which includes error messages, and stores it as an Amazon S3 object. For more information, see
+     *        <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker
+     *        Events with Amazon CloudWatch</a>.
      */
 
     public void setFailureReason(String failureReason) {
@@ -284,10 +301,16 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * If the transform job failed, the reason that it failed.
+     * If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a log
+     * file, which includes error messages, and stores it as an Amazon S3 object. For more information, see <a
+     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker Events with
+     * Amazon CloudWatch</a>.
      * </p>
      * 
-     * @return If the transform job failed, the reason that it failed.
+     * @return If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates
+     *         a log file, which includes error messages, and stores it as an Amazon S3 object. For more information,
+     *         see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker
+     *         Events with Amazon CloudWatch</a>.
      */
 
     public String getFailureReason() {
@@ -296,11 +319,17 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * If the transform job failed, the reason that it failed.
+     * If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a log
+     * file, which includes error messages, and stores it as an Amazon S3 object. For more information, see <a
+     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker Events with
+     * Amazon CloudWatch</a>.
      * </p>
      * 
      * @param failureReason
-     *        If the transform job failed, the reason that it failed.
+     *        If the transform job failed, <code>FailureReason</code> describes why it failed. A transform job creates a
+     *        log file, which includes error messages, and stores it as an Amazon S3 object. For more information, see
+     *        <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html">Log Amazon SageMaker
+     *        Events with Amazon CloudWatch</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -397,11 +426,11 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The maximum payload size , in MB used in the transform job.
+     * The maximum payload size, in MB, used in the transform job.
      * </p>
      * 
      * @param maxPayloadInMB
-     *        The maximum payload size , in MB used in the transform job.
+     *        The maximum payload size, in MB, used in the transform job.
      */
 
     public void setMaxPayloadInMB(Integer maxPayloadInMB) {
@@ -410,10 +439,10 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The maximum payload size , in MB used in the transform job.
+     * The maximum payload size, in MB, used in the transform job.
      * </p>
      * 
-     * @return The maximum payload size , in MB used in the transform job.
+     * @return The maximum payload size, in MB, used in the transform job.
      */
 
     public Integer getMaxPayloadInMB() {
@@ -422,11 +451,11 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The maximum payload size , in MB used in the transform job.
+     * The maximum payload size, in MB, used in the transform job.
      * </p>
      * 
      * @param maxPayloadInMB
-     *        The maximum payload size , in MB used in the transform job.
+     *        The maximum payload size, in MB, used in the transform job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -437,13 +466,21 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained as many
-     * records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i> <i/> is
+     * a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
+     * </p>
+     * <p>
+     * To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>, <code>RecordIO</code>, or
+     * <code>TFRecord</code>.
      * </p>
      * 
      * @param batchStrategy
-     *        SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained
-     *        as many records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     *        Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i>
+     *        <i/> is a single unit of input data that inference can be made on. For example, a single line in a CSV
+     *        file is a record. </p>
+     *        <p>
+     *        To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>,
+     *        <code>RecordIO</code>, or <code>TFRecord</code>.
      * @see BatchStrategy
      */
 
@@ -453,12 +490,20 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained as many
-     * records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i> <i/> is
+     * a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
+     * </p>
+     * <p>
+     * To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>, <code>RecordIO</code>, or
+     * <code>TFRecord</code>.
      * </p>
      * 
-     * @return SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained
-     *         as many records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * @return Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i>
+     *         <i/> is a single unit of input data that inference can be made on. For example, a single line in a CSV
+     *         file is a record. </p>
+     *         <p>
+     *         To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>,
+     *         <code>RecordIO</code>, or <code>TFRecord</code>.
      * @see BatchStrategy
      */
 
@@ -468,13 +513,21 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained as many
-     * records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i> <i/> is
+     * a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
+     * </p>
+     * <p>
+     * To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>, <code>RecordIO</code>, or
+     * <code>TFRecord</code>.
      * </p>
      * 
      * @param batchStrategy
-     *        SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained
-     *        as many records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     *        Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i>
+     *        <i/> is a single unit of input data that inference can be made on. For example, a single line in a CSV
+     *        file is a record. </p>
+     *        <p>
+     *        To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>,
+     *        <code>RecordIO</code>, or <code>TFRecord</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BatchStrategy
      */
@@ -486,13 +539,21 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained as many
-     * records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     * Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i> <i/> is
+     * a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
+     * </p>
+     * <p>
+     * To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>, <code>RecordIO</code>, or
+     * <code>TFRecord</code>.
      * </p>
      * 
      * @param batchStrategy
-     *        SingleRecord means only one record was used per a batch. <code>MultiRecord</code> means batches contained
-     *        as many records that could possibly fit within the <code>MaxPayloadInMB</code> limit.
+     *        Specifies the number of records to include in a mini-batch for an HTTP inference request. A <i>record</i>
+     *        <i/> is a single unit of input data that inference can be made on. For example, a single line in a CSV
+     *        file is a record. </p>
+     *        <p>
+     *        To enable the batch strategy, you must set <code>SplitType</code> to <code>Line</code>,
+     *        <code>RecordIO</code>, or <code>TFRecord</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BatchStrategy
      */
@@ -503,9 +564,12 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * <p/>
+     * <p>
+     * The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
+     * </p>
      * 
-     * @return
+     * @return The environment variables to set in the Docker container. We support up to 16 key and values entries in
+     *         the map.
      */
 
     public java.util.Map<String, String> getEnvironment() {
@@ -513,9 +577,13 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * <p/>
+     * <p>
+     * The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
+     * </p>
      * 
      * @param environment
+     *        The environment variables to set in the Docker container. We support up to 16 key and values entries in
+     *        the map.
      */
 
     public void setEnvironment(java.util.Map<String, String> environment) {
@@ -523,9 +591,13 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * <p/>
+     * <p>
+     * The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
+     * </p>
      * 
      * @param environment
+     *        The environment variables to set in the Docker container. We support up to 16 key and values entries in
+     *        the map.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -766,13 +838,13 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>. You are
-     * billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     * Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     * interval between this time and the value of <code>TransformStartTime</code>.
      * </p>
      * 
      * @param transformEndTime
-     *        Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>.
-     *        You are billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     *        Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     *        interval between this time and the value of <code>TransformStartTime</code>.
      */
 
     public void setTransformEndTime(java.util.Date transformEndTime) {
@@ -781,12 +853,12 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>. You are
-     * billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     * Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     * interval between this time and the value of <code>TransformStartTime</code>.
      * </p>
      * 
-     * @return Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>.
-     *         You are billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     * @return Indicates when the transform job has been completed, or has stopped or failed. You are billed for the
+     *         time interval between this time and the value of <code>TransformStartTime</code>.
      */
 
     public java.util.Date getTransformEndTime() {
@@ -795,13 +867,13 @@ public class DescribeTransformJobResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>. You are
-     * billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     * Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     * interval between this time and the value of <code>TransformStartTime</code>.
      * </p>
      * 
      * @param transformEndTime
-     *        Indicates when the transform job is <code>Completed</code>, <code>Stopped</code>, or <code>Failed</code>.
-     *        You are billed for the time interval between this time and the value of <code>TransformStartTime</code>.
+     *        Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time
+     *        interval between this time and the value of <code>TransformStartTime</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

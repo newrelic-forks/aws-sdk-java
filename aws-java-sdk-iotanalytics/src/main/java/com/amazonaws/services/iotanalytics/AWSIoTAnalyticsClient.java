@@ -209,6 +209,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchPutMessage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -272,6 +273,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelPipelineReprocessing");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -338,6 +340,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -405,6 +408,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -423,7 +427,8 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * Creates the content of a data set by applying a SQL action.
+     * Creates the content of a data set by applying a "queryAction" (a SQL query) or a "containerAction" (executing a
+     * containerized application).
      * </p>
      * 
      * @param createDatasetContentRequest
@@ -467,6 +472,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDatasetContent");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -531,6 +537,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDatastore");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -550,7 +557,8 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
     /**
      * <p>
      * Creates a pipeline. A pipeline consumes messages from one or more channels and allows you to process the messages
-     * before storing them in a data store.
+     * before storing them in a data store. You must specify both a <code>channel</code> and a <code>datastore</code>
+     * activity and, optionally, as many as 23 additional activities in the <code>pipelineActivities</code> array.
      * </p>
      * 
      * @param createPipelineRequest
@@ -596,6 +604,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -658,6 +667,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -723,6 +733,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -785,6 +796,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDatasetContent");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -847,6 +859,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDatastore");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -909,6 +922,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -971,6 +985,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1033,6 +1048,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1095,6 +1111,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDatastore");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1157,6 +1174,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeLoggingOptions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1220,6 +1238,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1282,6 +1301,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDatasetContent");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1342,6 +1362,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListChannels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1404,6 +1425,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDatasetContents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1464,6 +1486,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDatasets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1524,6 +1547,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDatastores");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1584,6 +1608,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPipelines");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1648,6 +1673,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1713,6 +1739,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutLoggingOptions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1773,6 +1800,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RunPipelineActivity");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1836,6 +1864,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SampleChannelData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1901,6 +1930,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartPipelineReprocessing");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1966,6 +1996,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2030,6 +2061,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2092,6 +2124,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2154,6 +2187,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2216,6 +2250,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDatastore");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2234,7 +2269,8 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * Updates the settings of a pipeline.
+     * Updates the settings of a pipeline. You must specify both a <code>channel</code> and a <code>datastore</code>
+     * activity and, optionally, as many as 23 additional activities in the <code>pipelineActivities</code> array.
      * </p>
      * 
      * @param updatePipelineRequest
@@ -2280,6 +2316,7 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoTAnalytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -354,7 +354,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * the returned statistics, to create new time series that represent new insights into your data. For example, using
      * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
      * For more information about metric math expressions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
      * >Metric Math Syntax and Functions</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -411,7 +411,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * the returned statistics, to create new time series that represent new insights into your data. For example, using
      * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
      * For more information about metric math expressions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
      * >Metric Math Syntax and Functions</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -539,7 +539,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * </p>
      * <p>
      * For information about metrics and dimensions supported by AWS services, see the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch
      * Metrics and Dimensions Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
@@ -624,7 +624,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * </p>
      * <p>
      * For information about metrics and dimensions supported by AWS services, see the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch
      * Metrics and Dimensions Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
@@ -826,6 +826,37 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
 
     /**
      * <p>
+     * Displays the tags associated with a CloudWatch resource. Alarms support tagging.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonCloudWatchAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * Displays the tags associated with a CloudWatch resource. Alarms support tagging.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonCloudWatchAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
+     * <p>
      * Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard,
      * the entire contents are replaced with what you specify here.
      * </p>
@@ -931,8 +962,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * </li>
      * <li>
      * <p>
-     * <code>ec2:DescribeInstanceRecoveryAttribute</code> and <code>ec2:RecoverInstances</code> for alarms with recover
-     * actions
+     * No specific permissions are needed for alarms with recover actions
      * </p>
      * </li>
      * </ul>
@@ -954,7 +984,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * The first time you create an alarm in the AWS Management Console, the CLI, or by using the PutMetricAlarm API,
      * CloudWatch creates the necessary service-linked role for you. The service-linked role is called
      * <code>AWSServiceRoleForCloudWatchEvents</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role"
      * >AWS service-linked role</a>.
      * </p>
      * 
@@ -1006,8 +1036,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * </li>
      * <li>
      * <p>
-     * <code>ec2:DescribeInstanceRecoveryAttribute</code> and <code>ec2:RecoverInstances</code> for alarms with recover
-     * actions
+     * No specific permissions are needed for alarms with recover actions
      * </p>
      * </li>
      * </ul>
@@ -1029,7 +1058,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * The first time you create an alarm in the AWS Management Console, the CLI, or by using the PutMetricAlarm API,
      * CloudWatch creates the necessary service-linked role for you. The service-linked role is called
      * <code>AWSServiceRoleForCloudWatchEvents</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role"
      * >AWS service-linked role</a>.
      * </p>
      * 
@@ -1070,9 +1099,9 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * supported.
      * </p>
      * <p>
-     * You can use up to 10 dimensions per metric to further clarify what data the metric collects. For more information
-     * about specifying dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * You can use up to 10 dimensions per metric to further clarify what data the metric collects. Each dimension
+     * consists of a Name and Value pair. For more information about specifying dimensions, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -1130,9 +1159,9 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * supported.
      * </p>
      * <p>
-     * You can use up to 10 dimensions per metric to further clarify what data the metric collects. For more information
-     * about specifying dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * You can use up to 10 dimensions per metric to further clarify what data the metric collects. Each dimension
+     * consists of a Name and Value pair. For more information about specifying dimensions, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -1211,5 +1240,95 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      */
     java.util.concurrent.Future<SetAlarmStateResult> setAlarmStateAsync(SetAlarmStateRequest setAlarmStateRequest,
             com.amazonaws.handlers.AsyncHandler<SetAlarmStateRequest, SetAlarmStateResult> asyncHandler);
+
+    /**
+     * <p>
+     * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Tags can help you organize and
+     * categorize your resources. You can also use them to scope user permissions, by granting a user permission to
+     * access or change only resources with certain tag values. In CloudWatch, alarms can be tagged.
+     * </p>
+     * <p>
+     * Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
+     * </p>
+     * <p>
+     * You can use the <code>TagResource</code> action with a resource that already has tags. If you specify a new tag
+     * key for the resource, this tag is appended to the list of tags associated with the resource. If you specify a tag
+     * key that is already associated with the resource, the new tag value that you specify replaces the previous value
+     * for that tag.
+     * </p>
+     * <p>
+     * You can associate as many as 50 tags with a resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonCloudWatchAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Tags can help you organize and
+     * categorize your resources. You can also use them to scope user permissions, by granting a user permission to
+     * access or change only resources with certain tag values. In CloudWatch, alarms can be tagged.
+     * </p>
+     * <p>
+     * Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
+     * </p>
+     * <p>
+     * You can use the <code>TagResource</code> action with a resource that already has tags. If you specify a new tag
+     * key for the resource, this tag is appended to the list of tags associated with the resource. If you specify a tag
+     * key that is already associated with the resource, the new tag value that you specify replaces the previous value
+     * for that tag.
+     * </p>
+     * <p>
+     * You can associate as many as 50 tags with a resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonCloudWatchAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Removes one or more tags from the specified resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonCloudWatchAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Removes one or more tags from the specified resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonCloudWatchAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
 
 }

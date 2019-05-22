@@ -22,7 +22,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * An object representing metadata for a resource.
  * </p>
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2018-10-01/ResourceMetadata" target="_top">AWS API
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/ResourceMetadata" target="_top">AWS API
  *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -32,30 +32,17 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The full Amazon Resource Name (ARN) for the resource.
      * </p>
-     * <note>
-     * <p>
-     * After you create a virtual node, set this value (either the full ARN or the truncated resource name, for example,
-     * <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment
-     * variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to
-     * the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     * </p>
-     * <p>
-     * If you require your Envoy stats or tracing to use a different name, you can override the
-     * <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     * <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     * </p>
-     * </note>
      */
     private String arn;
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was created.
+     * The Unix epoch timestamp in seconds for when the resource was created.
      * </p>
      */
     private java.util.Date createdAt;
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was last updated.
+     * The Unix epoch timestamp in seconds for when the resource was last updated.
      * </p>
      */
     private java.util.Date lastUpdatedAt;
@@ -67,8 +54,8 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
     private String uid;
     /**
      * <p>
-     * The version of the resource. Resources are created at version 1, and this version is incremented each time they
-     * are updated.
+     * The version of the resource. Resources are created at version 1, and this version is incremented each time that
+     * they're updated.
      * </p>
      */
     private Long version;
@@ -77,33 +64,9 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The full Amazon Resource Name (ARN) for the resource.
      * </p>
-     * <note>
-     * <p>
-     * After you create a virtual node, set this value (either the full ARN or the truncated resource name, for example,
-     * <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment
-     * variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to
-     * the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     * </p>
-     * <p>
-     * If you require your Envoy stats or tracing to use a different name, you can override the
-     * <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     * <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     * </p>
-     * </note>
      * 
      * @param arn
-     *        The full Amazon Resource Name (ARN) for the resource.</p> <note>
-     *        <p>
-     *        After you create a virtual node, set this value (either the full ARN or the truncated resource name, for
-     *        example, <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code>
-     *        environment variable for your task group's Envoy proxy container in your task definition or pod spec. This
-     *        is then mapped to the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     *        </p>
-     *        <p>
-     *        If you require your Envoy stats or tracing to use a different name, you can override the
-     *        <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     *        <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     *        </p>
+     *        The full Amazon Resource Name (ARN) for the resource.
      */
 
     public void setArn(String arn) {
@@ -114,32 +77,8 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The full Amazon Resource Name (ARN) for the resource.
      * </p>
-     * <note>
-     * <p>
-     * After you create a virtual node, set this value (either the full ARN or the truncated resource name, for example,
-     * <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment
-     * variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to
-     * the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     * </p>
-     * <p>
-     * If you require your Envoy stats or tracing to use a different name, you can override the
-     * <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     * <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     * </p>
-     * </note>
      * 
-     * @return The full Amazon Resource Name (ARN) for the resource.</p> <note>
-     *         <p>
-     *         After you create a virtual node, set this value (either the full ARN or the truncated resource name, for
-     *         example, <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code>
-     *         environment variable for your task group's Envoy proxy container in your task definition or pod spec.
-     *         This is then mapped to the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     *         </p>
-     *         <p>
-     *         If you require your Envoy stats or tracing to use a different name, you can override the
-     *         <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     *         <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     *         </p>
+     * @return The full Amazon Resource Name (ARN) for the resource.
      */
 
     public String getArn() {
@@ -150,33 +89,9 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The full Amazon Resource Name (ARN) for the resource.
      * </p>
-     * <note>
-     * <p>
-     * After you create a virtual node, set this value (either the full ARN or the truncated resource name, for example,
-     * <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment
-     * variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to
-     * the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     * </p>
-     * <p>
-     * If you require your Envoy stats or tracing to use a different name, you can override the
-     * <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     * <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     * </p>
-     * </note>
      * 
      * @param arn
-     *        The full Amazon Resource Name (ARN) for the resource.</p> <note>
-     *        <p>
-     *        After you create a virtual node, set this value (either the full ARN or the truncated resource name, for
-     *        example, <code>mesh/default/virtualNode/simpleapp</code>, as the <code>APPMESH_VIRTUAL_NODE_NAME</code>
-     *        environment variable for your task group's Envoy proxy container in your task definition or pod spec. This
-     *        is then mapped to the <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-     *        </p>
-     *        <p>
-     *        If you require your Envoy stats or tracing to use a different name, you can override the
-     *        <code>node.cluster</code> value that is set by <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-     *        <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-     *        </p>
+     *        The full Amazon Resource Name (ARN) for the resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,11 +102,11 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was created.
+     * The Unix epoch timestamp in seconds for when the resource was created.
      * </p>
      * 
      * @param createdAt
-     *        The Unix epoch timestamp in seconds for when the cluster was created.
+     *        The Unix epoch timestamp in seconds for when the resource was created.
      */
 
     public void setCreatedAt(java.util.Date createdAt) {
@@ -200,10 +115,10 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was created.
+     * The Unix epoch timestamp in seconds for when the resource was created.
      * </p>
      * 
-     * @return The Unix epoch timestamp in seconds for when the cluster was created.
+     * @return The Unix epoch timestamp in seconds for when the resource was created.
      */
 
     public java.util.Date getCreatedAt() {
@@ -212,11 +127,11 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was created.
+     * The Unix epoch timestamp in seconds for when the resource was created.
      * </p>
      * 
      * @param createdAt
-     *        The Unix epoch timestamp in seconds for when the cluster was created.
+     *        The Unix epoch timestamp in seconds for when the resource was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -227,11 +142,11 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was last updated.
+     * The Unix epoch timestamp in seconds for when the resource was last updated.
      * </p>
      * 
      * @param lastUpdatedAt
-     *        The Unix epoch timestamp in seconds for when the cluster was last updated.
+     *        The Unix epoch timestamp in seconds for when the resource was last updated.
      */
 
     public void setLastUpdatedAt(java.util.Date lastUpdatedAt) {
@@ -240,10 +155,10 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was last updated.
+     * The Unix epoch timestamp in seconds for when the resource was last updated.
      * </p>
      * 
-     * @return The Unix epoch timestamp in seconds for when the cluster was last updated.
+     * @return The Unix epoch timestamp in seconds for when the resource was last updated.
      */
 
     public java.util.Date getLastUpdatedAt() {
@@ -252,11 +167,11 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The Unix epoch timestamp in seconds for when the cluster was last updated.
+     * The Unix epoch timestamp in seconds for when the resource was last updated.
      * </p>
      * 
      * @param lastUpdatedAt
-     *        The Unix epoch timestamp in seconds for when the cluster was last updated.
+     *        The Unix epoch timestamp in seconds for when the resource was last updated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -307,13 +222,13 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The version of the resource. Resources are created at version 1, and this version is incremented each time they
-     * are updated.
+     * The version of the resource. Resources are created at version 1, and this version is incremented each time that
+     * they're updated.
      * </p>
      * 
      * @param version
      *        The version of the resource. Resources are created at version 1, and this version is incremented each time
-     *        they are updated.
+     *        that they're updated.
      */
 
     public void setVersion(Long version) {
@@ -322,12 +237,12 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The version of the resource. Resources are created at version 1, and this version is incremented each time they
-     * are updated.
+     * The version of the resource. Resources are created at version 1, and this version is incremented each time that
+     * they're updated.
      * </p>
      * 
      * @return The version of the resource. Resources are created at version 1, and this version is incremented each
-     *         time they are updated.
+     *         time that they're updated.
      */
 
     public Long getVersion() {
@@ -336,13 +251,13 @@ public class ResourceMetadata implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The version of the resource. Resources are created at version 1, and this version is incremented each time they
-     * are updated.
+     * The version of the resource. Resources are created at version 1, and this version is incremented each time that
+     * they're updated.
      * </p>
      * 
      * @param version
      *        The version of the resource. Resources are created at version 1, and this version is incremented each time
-     *        they are updated.
+     *        that they're updated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

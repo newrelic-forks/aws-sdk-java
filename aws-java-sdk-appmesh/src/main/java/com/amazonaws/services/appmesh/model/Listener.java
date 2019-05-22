@@ -22,7 +22,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * An object representing a listener for a virtual node.
  * </p>
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2018-10-01/Listener" target="_top">AWS API
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/Listener" target="_top">AWS API
  *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -32,11 +32,6 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The health check information for the listener.
      * </p>
-     * <note>
-     * <p>
-     * Listener health checks are not available during the App Mesh preview.
-     * </p>
-     * </note>
      */
     private HealthCheckPolicy healthCheck;
     /**
@@ -50,17 +45,9 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The health check information for the listener.
      * </p>
-     * <note>
-     * <p>
-     * Listener health checks are not available during the App Mesh preview.
-     * </p>
-     * </note>
      * 
      * @param healthCheck
-     *        The health check information for the listener.</p> <note>
-     *        <p>
-     *        Listener health checks are not available during the App Mesh preview.
-     *        </p>
+     *        The health check information for the listener.
      */
 
     public void setHealthCheck(HealthCheckPolicy healthCheck) {
@@ -71,16 +58,8 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The health check information for the listener.
      * </p>
-     * <note>
-     * <p>
-     * Listener health checks are not available during the App Mesh preview.
-     * </p>
-     * </note>
      * 
-     * @return The health check information for the listener.</p> <note>
-     *         <p>
-     *         Listener health checks are not available during the App Mesh preview.
-     *         </p>
+     * @return The health check information for the listener.
      */
 
     public HealthCheckPolicy getHealthCheck() {
@@ -91,17 +70,9 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The health check information for the listener.
      * </p>
-     * <note>
-     * <p>
-     * Listener health checks are not available during the App Mesh preview.
-     * </p>
-     * </note>
      * 
      * @param healthCheck
-     *        The health check information for the listener.</p> <note>
-     *        <p>
-     *        Listener health checks are not available during the App Mesh preview.
-     *        </p>
+     *        The health check information for the listener.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

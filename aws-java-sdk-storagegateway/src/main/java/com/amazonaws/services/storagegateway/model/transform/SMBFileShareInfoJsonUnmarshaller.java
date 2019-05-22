@@ -104,6 +104,14 @@ public class SMBFileShareInfoJsonUnmarshaller implements Unmarshaller<SMBFileSha
                     context.nextToken();
                     sMBFileShareInfo.setRequesterPays(context.getUnmarshaller(Boolean.class).unmarshall(context));
                 }
+                if (context.testExpression("SMBACLEnabled", targetDepth)) {
+                    context.nextToken();
+                    sMBFileShareInfo.setSMBACLEnabled(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("AdminUserList", targetDepth)) {
+                    context.nextToken();
+                    sMBFileShareInfo.setAdminUserList(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
                 if (context.testExpression("ValidUserList", targetDepth)) {
                     context.nextToken();
                     sMBFileShareInfo.setValidUserList(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
@@ -115,6 +123,10 @@ public class SMBFileShareInfoJsonUnmarshaller implements Unmarshaller<SMBFileSha
                 if (context.testExpression("Authentication", targetDepth)) {
                     context.nextToken();
                     sMBFileShareInfo.setAuthentication(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Tags", targetDepth)) {
+                    context.nextToken();
+                    sMBFileShareInfo.setTags(new ListUnmarshaller<Tag>(TagJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

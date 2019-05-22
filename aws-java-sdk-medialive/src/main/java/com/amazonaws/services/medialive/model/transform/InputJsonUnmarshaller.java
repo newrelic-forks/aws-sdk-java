@@ -64,6 +64,10 @@ public class InputJsonUnmarshaller implements Unmarshaller<Input, JsonUnmarshall
                     context.nextToken();
                     input.setId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("inputClass", targetDepth)) {
+                    context.nextToken();
+                    input.setInputClass(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("mediaConnectFlows", targetDepth)) {
                     context.nextToken();
                     input.setMediaConnectFlows(new ListUnmarshaller<MediaConnectFlow>(MediaConnectFlowJsonUnmarshaller.getInstance()).unmarshall(context));
@@ -87,6 +91,11 @@ public class InputJsonUnmarshaller implements Unmarshaller<Input, JsonUnmarshall
                 if (context.testExpression("state", targetDepth)) {
                     context.nextToken();
                     input.setState(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("tags", targetDepth)) {
+                    context.nextToken();
+                    input.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
+                            .unmarshall(context));
                 }
                 if (context.testExpression("type", targetDepth)) {
                     context.nextToken();

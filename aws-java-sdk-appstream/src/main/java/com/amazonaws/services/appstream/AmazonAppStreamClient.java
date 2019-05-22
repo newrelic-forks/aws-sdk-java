@@ -53,9 +53,27 @@ import com.amazonaws.services.appstream.model.transform.*;
  * <p>
  * <fullname>Amazon AppStream 2.0</fullname>
  * <p>
- * You can use Amazon AppStream 2.0 to stream desktop applications to any device running a web browser, without
- * rewriting them.
+ * This is the <i>Amazon AppStream 2.0 API Reference</i>. It provides descriptions and syntax for each of the actions
+ * and data types in AppStream 2.0. AppStream 2.0 is a fully managed application streaming service. You centrally manage
+ * your desktop applications on AppStream 2.0 and securely deliver them to any computer. AppStream 2.0 manages the AWS
+ * resources required to host and run your applications, scales automatically, and provides access to your users on
+ * demand.
  * </p>
+ * <p>
+ * To learn more about AppStream 2.0, see the following resources:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a href="http://aws.amazon.com/appstream2">Amazon AppStream 2.0 product page</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a href="http://aws.amazon.com/documentation/appstream2">Amazon AppStream 2.0 documentation</a>
+ * </p>
+ * </li>
+ * </ul>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -365,6 +383,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -421,6 +440,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchAssociateUserStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -475,6 +495,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDisassociateUserStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -542,6 +563,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CopyImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -560,8 +582,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Creates a Directory Config object in AppStream 2.0. This object includes the information required to join
-     * streaming instances to an Active Directory domain.
+     * Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required
+     * to join fleets and image builders to Microsoft Active Directory domains.
      * </p>
      * 
      * @param createDirectoryConfigRequest
@@ -602,6 +624,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDirectoryConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -676,6 +699,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -752,6 +776,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateImageBuilder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -809,6 +834,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateImageBuilderStreamingURL");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -878,6 +904,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -939,12 +966,71 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStreamingURL");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateStreamingURLResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateStreamingURLResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a usage report subscription. Usage reports are generated daily.
+     * </p>
+     * 
+     * @param createUsageReportSubscriptionRequest
+     * @return Result of the CreateUsageReportSubscription operation returned by the service.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
+     * @sample AmazonAppStream.CreateUsageReportSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CreateUsageReportSubscription"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateUsageReportSubscriptionResult createUsageReportSubscription(CreateUsageReportSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUsageReportSubscription(request);
+    }
+
+    @SdkInternalApi
+    final CreateUsageReportSubscriptionResult executeCreateUsageReportSubscription(CreateUsageReportSubscriptionRequest createUsageReportSubscriptionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createUsageReportSubscriptionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateUsageReportSubscriptionRequest> request = null;
+        Response<CreateUsageReportSubscriptionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateUsageReportSubscriptionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createUsageReportSubscriptionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUsageReportSubscription");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateUsageReportSubscriptionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateUsageReportSubscriptionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1002,6 +1088,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1059,6 +1146,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDirectoryConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1118,6 +1206,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1179,6 +1268,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1237,6 +1327,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteImageBuilder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1294,6 +1385,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteImagePermissions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1355,12 +1447,73 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteStackResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteStackResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disables usage report generation.
+     * </p>
+     * 
+     * @param deleteUsageReportSubscriptionRequest
+     * @return Result of the DeleteUsageReportSubscription operation returned by the service.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @sample AmazonAppStream.DeleteUsageReportSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DeleteUsageReportSubscription"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteUsageReportSubscriptionResult deleteUsageReportSubscription(DeleteUsageReportSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUsageReportSubscription(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUsageReportSubscriptionResult executeDeleteUsageReportSubscription(DeleteUsageReportSubscriptionRequest deleteUsageReportSubscriptionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteUsageReportSubscriptionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteUsageReportSubscriptionRequest> request = null;
+        Response<DeleteUsageReportSubscriptionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteUsageReportSubscriptionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteUsageReportSubscriptionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUsageReportSubscription");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteUsageReportSubscriptionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteUsageReportSubscriptionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1409,6 +1562,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1429,7 +1583,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * <p>
      * Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names
      * for these objects are provided. Otherwise, all Directory Config objects in the account are described. These
-     * objects include the information required to join streaming instances to an Active Directory domain.
+     * objects include the configuration information required to join fleets and image builders to Microsoft Active
+     * Directory domains.
      * </p>
      * <p>
      * Although the response syntax in this topic includes the account password, this password is not returned in the
@@ -1470,6 +1625,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDirectoryConfigs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1526,6 +1682,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeFleets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1581,6 +1738,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImageBuilders");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1637,6 +1795,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImagePermissions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1695,6 +1854,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1713,7 +1873,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a user ID is provided
+     * Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided
      * for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not
      * provided, the default is to authenticate users using a streaming URL.
      * </p>
@@ -1751,6 +1911,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSessions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1806,12 +1967,74 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStacks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribeStacksResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeStacksResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves a list that describes one or more usage report subscriptions.
+     * </p>
+     * 
+     * @param describeUsageReportSubscriptionsRequest
+     * @return Result of the DescribeUsageReportSubscriptions operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
+     * @sample AmazonAppStream.DescribeUsageReportSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DescribeUsageReportSubscriptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeUsageReportSubscriptionsResult describeUsageReportSubscriptions(DescribeUsageReportSubscriptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeUsageReportSubscriptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeUsageReportSubscriptionsResult executeDescribeUsageReportSubscriptions(
+            DescribeUsageReportSubscriptionsRequest describeUsageReportSubscriptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeUsageReportSubscriptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeUsageReportSubscriptionsRequest> request = null;
+        Response<DescribeUsageReportSubscriptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeUsageReportSubscriptionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeUsageReportSubscriptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUsageReportSubscriptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeUsageReportSubscriptionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeUsageReportSubscriptionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1874,6 +2097,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUserStackAssociations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1893,8 +2117,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Retrieves a list that describes one or more specified users in the user pool, if user names are provided.
-     * Otherwise, all users in the user pool are described.
+     * Retrieves a list that describes one or more specified users in the user pool.
      * </p>
      * 
      * @param describeUsersRequest
@@ -1932,6 +2155,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUsers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1987,6 +2211,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2045,6 +2270,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2103,6 +2329,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2155,6 +2382,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ExpireSession");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2207,6 +2435,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAssociatedFleets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2259,6 +2488,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAssociatedStacks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2282,7 +2512,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
      * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
@@ -2319,6 +2549,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2382,6 +2613,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2445,6 +2677,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartImageBuilder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2501,6 +2734,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2559,6 +2793,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopImageBuilder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2590,7 +2825,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
      * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
@@ -2632,6 +2867,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2657,7 +2893,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * href="https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
      * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
@@ -2694,6 +2930,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2712,8 +2949,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Updates the specified Directory Config object in AppStream 2.0. This object includes the information required to
-     * join streaming instances to an Active Directory domain.
+     * Updates the specified Directory Config object in AppStream 2.0. This object includes the configuration
+     * information required to join fleets and image builders to Microsoft Active Directory domains.
      * </p>
      * 
      * @param updateDirectoryConfigRequest
@@ -2753,6 +2990,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDirectoryConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2776,9 +3014,10 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * If the fleet is in the <code>STOPPED</code> state, you can update any attribute except the fleet name. If the
-     * fleet is in the <code>RUNNING</code> state, you can update the <code>DisplayName</code> and
-     * <code>ComputeCapacity</code> attributes. If the fleet is in the <code>STARTING</code> or <code>STOPPING</code>
-     * state, you can't update it.
+     * fleet is in the <code>RUNNING</code> state, you can update the <code>DisplayName</code>,
+     * <code>ComputeCapacity</code>, <code>ImageARN</code>, <code>ImageName</code>, and
+     * <code>DisconnectTimeoutInSeconds</code> attributes. If the fleet is in the <code>STARTING</code> or
+     * <code>STOPPING</code> state, you can't update it.
      * </p>
      * 
      * @param updateFleetRequest
@@ -2833,6 +3072,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFleet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2891,6 +3131,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateImagePermissions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2932,6 +3173,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The image does not support storage connectors.
      * @throws OperationNotPermittedException
      *         The attempted operation is not permitted.
+     * @throws ConcurrentModificationException
+     *         An API error occurred. Wait a few minutes and try again.
      * @sample AmazonAppStream.UpdateStack
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/UpdateStack" target="_top">AWS API
      *      Documentation</a>
@@ -2961,6 +3204,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "AppStream");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

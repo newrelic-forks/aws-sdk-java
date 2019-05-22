@@ -30,7 +30,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The Maintenance Window ID where the task is registered.
+     * The ID of the Maintenance Window where the task is registered.
      * </p>
      */
     private String windowId;
@@ -64,7 +64,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
     private com.amazonaws.internal.SdkInternalList<Target> targets;
     /**
      * <p>
-     * The parameters that should be passed to the task when it is executed.
+     * The parameters that should be passed to the task when it is run.
      * </p>
      * <note>
      * <p>
@@ -99,13 +99,13 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
     private LoggingInfo loggingInfo;
     /**
      * <p>
-     * The role that should be assumed when executing the task
+     * The role that should be assumed when running the task.
      * </p>
      */
     private String serviceRoleArn;
     /**
      * <p>
-     * The maximum number of targets this task can be run for in parallel.
+     * The maximum number of targets this task can be run for, in parallel.
      * </p>
      */
     private String maxConcurrency;
@@ -130,11 +130,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The Maintenance Window ID where the task is registered.
+     * The ID of the Maintenance Window where the task is registered.
      * </p>
      * 
      * @param windowId
-     *        The Maintenance Window ID where the task is registered.
+     *        The ID of the Maintenance Window where the task is registered.
      */
 
     public void setWindowId(String windowId) {
@@ -143,10 +143,10 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The Maintenance Window ID where the task is registered.
+     * The ID of the Maintenance Window where the task is registered.
      * </p>
      * 
-     * @return The Maintenance Window ID where the task is registered.
+     * @return The ID of the Maintenance Window where the task is registered.
      */
 
     public String getWindowId() {
@@ -155,11 +155,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The Maintenance Window ID where the task is registered.
+     * The ID of the Maintenance Window where the task is registered.
      * </p>
      * 
      * @param windowId
-     *        The Maintenance Window ID where the task is registered.
+     *        The ID of the Maintenance Window where the task is registered.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -425,7 +425,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The parameters that should be passed to the task when it is executed.
+     * The parameters that should be passed to the task when it is run.
      * </p>
      * <note>
      * <p>
@@ -436,7 +436,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
      * </p>
      * </note>
      * 
-     * @return The parameters that should be passed to the task when it is executed.</p> <note>
+     * @return The parameters that should be passed to the task when it is run.</p> <note>
      *         <p>
      *         <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *         instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure.
@@ -451,7 +451,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The parameters that should be passed to the task when it is executed.
+     * The parameters that should be passed to the task when it is run.
      * </p>
      * <note>
      * <p>
@@ -463,7 +463,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
      * </note>
      * 
      * @param taskParameters
-     *        The parameters that should be passed to the task when it is executed.</p> <note>
+     *        The parameters that should be passed to the task when it is run.</p> <note>
      *        <p>
      *        <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *        instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For
@@ -478,7 +478,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The parameters that should be passed to the task when it is executed.
+     * The parameters that should be passed to the task when it is run.
      * </p>
      * <note>
      * <p>
@@ -490,7 +490,7 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
      * </note>
      * 
      * @param taskParameters
-     *        The parameters that should be passed to the task when it is executed.</p> <note>
+     *        The parameters that should be passed to the task when it is run.</p> <note>
      *        <p>
      *        <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *        instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For
@@ -659,11 +659,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The role that should be assumed when executing the task
+     * The role that should be assumed when running the task.
      * </p>
      * 
      * @param serviceRoleArn
-     *        The role that should be assumed when executing the task
+     *        The role that should be assumed when running the task.
      */
 
     public void setServiceRoleArn(String serviceRoleArn) {
@@ -672,10 +672,10 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The role that should be assumed when executing the task
+     * The role that should be assumed when running the task.
      * </p>
      * 
-     * @return The role that should be assumed when executing the task
+     * @return The role that should be assumed when running the task.
      */
 
     public String getServiceRoleArn() {
@@ -684,11 +684,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The role that should be assumed when executing the task
+     * The role that should be assumed when running the task.
      * </p>
      * 
      * @param serviceRoleArn
-     *        The role that should be assumed when executing the task
+     *        The role that should be assumed when running the task.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -699,11 +699,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The maximum number of targets this task can be run for in parallel.
+     * The maximum number of targets this task can be run for, in parallel.
      * </p>
      * 
      * @param maxConcurrency
-     *        The maximum number of targets this task can be run for in parallel.
+     *        The maximum number of targets this task can be run for, in parallel.
      */
 
     public void setMaxConcurrency(String maxConcurrency) {
@@ -712,10 +712,10 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The maximum number of targets this task can be run for in parallel.
+     * The maximum number of targets this task can be run for, in parallel.
      * </p>
      * 
-     * @return The maximum number of targets this task can be run for in parallel.
+     * @return The maximum number of targets this task can be run for, in parallel.
      */
 
     public String getMaxConcurrency() {
@@ -724,11 +724,11 @@ public class MaintenanceWindowTask implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The maximum number of targets this task can be run for in parallel.
+     * The maximum number of targets this task can be run for, in parallel.
      * </p>
      * 
      * @param maxConcurrency
-     *        The maximum number of targets this task can be run for in parallel.
+     *        The maximum number of targets this task can be run for, in parallel.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

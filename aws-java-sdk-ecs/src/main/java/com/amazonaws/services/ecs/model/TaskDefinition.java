@@ -38,7 +38,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of container definitions in JSON format that describe the different containers that make up your task. For
      * more information about container definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -58,7 +58,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you launch the
      * Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in order to take
      * advantage of the feature. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
      * for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -133,7 +133,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information about volume definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -161,7 +161,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -315,6 +315,20 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </note>
      */
     private String ipcMode;
+    /**
+     * <p>
+     * The configuration details for the App Mesh proxy.
+     * </p>
+     * <p>
+     * Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least version
+     * 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container instances are
+     * launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     */
+    private ProxyConfiguration proxyConfiguration;
 
     /**
      * <p>
@@ -360,13 +374,13 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of container definitions in JSON format that describe the different containers that make up your task. For
      * more information about container definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return A list of container definitions in JSON format that describe the different containers that make up your
      *         task. For more information about container definition parameters and defaults, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      *         Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -381,14 +395,14 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of container definitions in JSON format that describe the different containers that make up your task. For
      * more information about container definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param containerDefinitions
      *        A list of container definitions in JSON format that describe the different containers that make up your
      *        task. For more information about container definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -405,7 +419,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of container definitions in JSON format that describe the different containers that make up your task. For
      * more information about container definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -417,7 +431,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * @param containerDefinitions
      *        A list of container definitions in JSON format that describe the different containers that make up your
      *        task. For more information about container definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -436,14 +450,14 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of container definitions in JSON format that describe the different containers that make up your task. For
      * more information about container definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param containerDefinitions
      *        A list of container definitions in JSON format that describe the different containers that make up your
      *        task. For more information about container definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -502,7 +516,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you launch the
      * Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in order to take
      * advantage of the feature. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
      * for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -513,7 +527,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *        IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you
      *        launch the Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in
      *        order to take advantage of the feature. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM
      *        Roles for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -530,7 +544,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you launch the
      * Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in order to take
      * advantage of the feature. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
      * for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -540,8 +554,8 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *         IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you
      *         launch the Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in
      *         order to take advantage of the feature. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM
-     *         Roles for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows
+     *         IAM Roles for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public String getTaskRoleArn() {
@@ -557,7 +571,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you launch the
      * Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in order to take
      * advantage of the feature. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM Roles
      * for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -568,7 +582,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *        IAM roles for tasks on Windows require that the <code>-EnableTaskIAMRole</code> option is set when you
      *        launch the Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code in
      *        order to take advantage of the feature. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html">Windows IAM
      *        Roles for Tasks</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1147,7 +1161,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information about volume definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -1158,7 +1172,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *         </p>
      *         <p>
      *         For more information about volume definition parameters and defaults, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      *         Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1179,7 +1193,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information about volume definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -1191,7 +1205,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For more information about volume definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1214,7 +1228,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information about volume definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -1231,7 +1245,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For more information about volume definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1256,7 +1270,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information about volume definition parameters and defaults, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      * Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -1268,7 +1282,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For more information about volume definition parameters and defaults, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Amazon ECS Task
      *        Definitions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1516,12 +1530,12 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The launch type to use with your task. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see Compatibility
      */
@@ -1536,13 +1550,13 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param compatibilities
      *        The launch type to use with your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see Compatibility
      */
@@ -1559,7 +1573,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -1570,7 +1584,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param compatibilities
      *        The launch type to use with your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Compatibility
@@ -1589,13 +1603,13 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param compatibilities
      *        The launch type to use with your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Compatibility
@@ -1609,13 +1623,13 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type to use with your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param compatibilities
      *        The launch type to use with your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Compatibility
@@ -2882,6 +2896,92 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The configuration details for the App Mesh proxy.
+     * </p>
+     * <p>
+     * Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least version
+     * 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container instances are
+     * launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param proxyConfiguration
+     *        The configuration details for the App Mesh proxy.</p>
+     *        <p>
+     *        Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least
+     *        version 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container
+     *        instances are launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they
+     *        contain the required versions of the container agent and <code>ecs-init</code>. For more information, see
+     *        <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     */
+
+    public void setProxyConfiguration(ProxyConfiguration proxyConfiguration) {
+        this.proxyConfiguration = proxyConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration details for the App Mesh proxy.
+     * </p>
+     * <p>
+     * Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least version
+     * 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container instances are
+     * launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @return The configuration details for the App Mesh proxy.</p>
+     *         <p>
+     *         Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least
+     *         version 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container
+     *         instances are launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then
+     *         they contain the required versions of the container agent and <code>ecs-init</code>. For more
+     *         information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *         ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     */
+
+    public ProxyConfiguration getProxyConfiguration() {
+        return this.proxyConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration details for the App Mesh proxy.
+     * </p>
+     * <p>
+     * Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least version
+     * 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container instances are
+     * launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param proxyConfiguration
+     *        The configuration details for the App Mesh proxy.</p>
+     *        <p>
+     *        Your Amazon ECS container instances require at least version 1.26.0 of the container agent and at least
+     *        version 1.26.0-1 of the <code>ecs-init</code> package to enable a proxy configuration. If your container
+     *        instances are launched from the Amazon ECS-optimized AMI version <code>20190301</code> or later, then they
+     *        contain the required versions of the container agent and <code>ecs-init</code>. For more information, see
+     *        <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TaskDefinition withProxyConfiguration(ProxyConfiguration proxyConfiguration) {
+        setProxyConfiguration(proxyConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2926,7 +3026,9 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
         if (getPidMode() != null)
             sb.append("PidMode: ").append(getPidMode()).append(",");
         if (getIpcMode() != null)
-            sb.append("IpcMode: ").append(getIpcMode());
+            sb.append("IpcMode: ").append(getIpcMode()).append(",");
+        if (getProxyConfiguration() != null)
+            sb.append("ProxyConfiguration: ").append(getProxyConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -3009,6 +3111,10 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getIpcMode() != null && other.getIpcMode().equals(this.getIpcMode()) == false)
             return false;
+        if (other.getProxyConfiguration() == null ^ this.getProxyConfiguration() == null)
+            return false;
+        if (other.getProxyConfiguration() != null && other.getProxyConfiguration().equals(this.getProxyConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -3034,6 +3140,7 @@ public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getMemory() == null) ? 0 : getMemory().hashCode());
         hashCode = prime * hashCode + ((getPidMode() == null) ? 0 : getPidMode().hashCode());
         hashCode = prime * hashCode + ((getIpcMode() == null) ? 0 : getIpcMode().hashCode());
+        hashCode = prime * hashCode + ((getProxyConfiguration() == null) ? 0 : getProxyConfiguration().hashCode());
         return hashCode;
     }
 

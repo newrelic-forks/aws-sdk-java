@@ -54,8 +54,15 @@ import com.amazonaws.services.securityhub.model.transform.*;
  * AWS Security Hub provides you with a comprehensive view of your security state within AWS and your compliance with
  * the security industry standards and best practices. Security Hub collects security data from across AWS accounts,
  * services, and supported third-party partners and helps you analyze your security trends and identify the highest
- * priority security issues. For more information, see <a href="">AWS Security Hub User Guide</a>.
+ * priority security issues. For more information, see <a
+ * href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html">AWS Security Hub User
+ * Guide</a>.
  * </p>
+ * <important>
+ * <p>
+ * Currently, AWS Security Hub is in Preview release.
+ * </p>
+ * </important>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -84,11 +91,20 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                             new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
                                     com.amazonaws.services.securityhub.model.LimitExceededException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
+                                    com.amazonaws.services.securityhub.model.AccessDeniedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAccessException").withModeledClass(
+                                    com.amazonaws.services.securityhub.model.InvalidAccessException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
                                     com.amazonaws.services.securityhub.model.ResourceNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
                                     com.amazonaws.services.securityhub.model.InvalidInputException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceConflictException").withModeledClass(
+                                    com.amazonaws.services.securityhub.model.ResourceConflictException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalException").withModeledClass(
                                     com.amazonaws.services.securityhub.model.InternalException.class))
@@ -156,6 +172,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
      *         The request was rejected because the specified resource cannot be found.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @sample AWSSecurityHub.AcceptInvitation
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/AcceptInvitation" target="_top">AWS
      *      API Documentation</a>
@@ -185,6 +203,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AcceptInvitation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -214,6 +233,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -246,6 +267,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDisableStandards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -276,6 +298,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -308,6 +332,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchEnableStandards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -338,6 +363,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @sample AWSSecurityHub.BatchImportFindings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/BatchImportFindings"
      *      target="_top">AWS API Documentation</a>
@@ -367,6 +394,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchImportFindings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -398,6 +426,10 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
      * @sample AWSSecurityHub.CreateInsight
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/CreateInsight" target="_top">AWS API
      *      Documentation</a>
@@ -427,6 +459,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInsight");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -458,6 +491,10 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
      * @sample AWSSecurityHub.CreateMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/CreateMembers" target="_top">AWS API
      *      Documentation</a>
@@ -487,6 +524,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -515,9 +553,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
-     * @throws LimitExceededException
-     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
-     *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws ResourceNotFoundException
      *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.DeclineInvitations
@@ -549,6 +586,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeclineInvitations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -576,9 +614,13 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.DeleteInsight
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteInsight" target="_top">AWS API
      *      Documentation</a>
@@ -608,6 +650,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInsight");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -641,6 +684,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
      *         The request was rejected because the specified resource cannot be found.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @sample AWSSecurityHub.DeleteInvitations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteInvitations" target="_top">AWS
      *      API Documentation</a>
@@ -670,6 +715,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInvitations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -697,6 +743,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -731,6 +779,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -749,7 +798,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
 
     /**
      * <p>
-     * Stops you from being able to import findings generated by integrated third-party providers into Security Hub.
+     * Cancels the subscription that allows a findings-generating solution (product) to import its findings into
+     * Security Hub.
      * </p>
      * 
      * @param disableImportFindingsForProductRequest
@@ -760,6 +810,11 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @throws ResourceNotFoundException
      *         The request was rejected because the specified resource cannot be found.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
      * @sample AWSSecurityHub.DisableImportFindingsForProduct
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisableImportFindingsForProduct"
      *      target="_top">AWS API Documentation</a>
@@ -791,6 +846,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableImportFindingsForProduct");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -820,6 +876,10 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.DisableSecurityHub
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisableSecurityHub" target="_top">AWS
      *      API Documentation</a>
@@ -849,6 +909,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableSecurityHub");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -876,6 +937,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -911,6 +974,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateFromMasterAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -939,6 +1003,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -973,6 +1039,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -991,7 +1058,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
 
     /**
      * <p>
-     * Enables you to import findings generated by integrated third-party providers into Security Hub.
+     * Sets up the subscription that enables a findings-generating solution (product) to import its findings into
+     * Security Hub.
      * </p>
      * 
      * @param enableImportFindingsForProductRequest
@@ -1000,6 +1068,13 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
      * @sample AWSSecurityHub.EnableImportFindingsForProduct
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/EnableImportFindingsForProduct"
      *      target="_top">AWS API Documentation</a>
@@ -1030,6 +1105,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableImportFindingsForProduct");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1059,6 +1135,12 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
+     * @throws AccessDeniedException
+     *         You do not have permission to to perform the action specified in the request.
      * @sample AWSSecurityHub.EnableSecurityHub
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/EnableSecurityHub" target="_top">AWS
      *      API Documentation</a>
@@ -1088,6 +1170,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableSecurityHub");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1115,6 +1198,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -1147,6 +1232,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetEnabledStandards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1174,11 +1260,11 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetFindings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetFindings" target="_top">AWS API
      *      Documentation</a>
@@ -1208,6 +1294,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFindings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1235,9 +1322,13 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetInsightResults
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInsightResults" target="_top">AWS
      *      API Documentation</a>
@@ -1267,6 +1358,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInsightResults");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1294,9 +1386,13 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetInsights
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInsights" target="_top">AWS API
      *      Documentation</a>
@@ -1326,6 +1422,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInsights");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1354,11 +1451,11 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetInvitationsCount
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInvitationsCount"
      *      target="_top">AWS API Documentation</a>
@@ -1388,6 +1485,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInvitationsCount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1415,6 +1513,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -1449,6 +1549,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMasterAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1476,6 +1577,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -1510,6 +1613,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1539,6 +1643,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -1573,6 +1679,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "InviteMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1591,7 +1698,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
 
     /**
      * <p>
-     * Lists all Security Hub-integrated third-party findings providers.
+     * Lists all findings-generating solutions (products) whose findings you've subscribed to receive in Security Hub.
      * </p>
      * 
      * @param listEnabledProductsForImportRequest
@@ -1601,6 +1708,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @sample AWSSecurityHub.ListEnabledProductsForImport
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListEnabledProductsForImport"
      *      target="_top">AWS API Documentation</a>
@@ -1631,6 +1740,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEnabledProductsForImport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1659,11 +1769,11 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.ListInvitations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListInvitations" target="_top">AWS
      *      API Documentation</a>
@@ -1693,6 +1803,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInvitations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1720,11 +1831,11 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.ListMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListMembers" target="_top">AWS API
      *      Documentation</a>
@@ -1754,6 +1865,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1784,6 +1896,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws ResourceNotFoundException
      *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.UpdateFindings
@@ -1815,6 +1929,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFindings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1842,6 +1957,8 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
      *         Internal server error.
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub is not enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -1876,6 +1993,7 @@ public class AWSSecurityHubClient extends AmazonWebServiceClient implements AWSS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "SecurityHub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateInsight");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

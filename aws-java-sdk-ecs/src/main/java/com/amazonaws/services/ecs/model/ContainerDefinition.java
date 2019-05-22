@@ -289,7 +289,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * All tasks must have at least one essential container. If you have an application that is composed of multiple
      * containers, you should group containers that are used for a common purpose into components, and separate the
      * different components into multiple task definitions. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
      * Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -320,7 +320,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>COMMAND</code> parameter
      * to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a
      * href="https://docs.docker.com/engine/reference/builder/#cmd"
-     * >https://docs.docker.com/engine/reference/builder/#cmd</a>.
+     * >https://docs.docker.com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should
+     * be a separated string in the array.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> command;
@@ -376,10 +377,84 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     private LinuxParameters linuxParameters;
     /**
      * <p>
-     * The secrets to pass to the container.
+     * The secrets to pass to the container. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html">Specifying
+     * Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Secret> secrets;
+    /**
+     * <p>
+     * The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When
+     * a dependency is defined for container startup, for container shutdown it is reversed.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable container dependencies. However, we recommend using the latest container agent version. For
+     * information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ContainerDependency> dependsOn;
+    /**
+     * <p>
+     * Time duration to wait before giving up on resolving dependencies for a container. For example, you specify two
+     * containers in a task definition with containerA having a dependency on containerB reaching a
+     * <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a <code>startTimeout</code> value
+     * is specified for containerB and it does not reach the desired status within that time then containerA will give
+     * up and not start. This results in the task transitioning to a <code>STOPPED</code> state.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable a container start timeout value. However, we recommend using the latest container agent version.
+     * For information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     */
+    private Integer startTimeout;
+    /**
+     * <p>
+     * Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own. For tasks
+     * using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This parameter is available
+     * for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the task or service requires
+     * platform version 1.3.0 or later.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     * <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container instances
+     * require at least version 1.26.0 of the container agent to enable a container stop timeout value. However, we
+     * recommend using the latest container agent version. For information about checking your agent version and
+     * updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     */
+    private Integer stopTimeout;
     /**
      * <p>
      * The hostname to use for your container. This parameter maps to <code>Hostname</code> in the <a
@@ -401,6 +476,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>--user</code> option to
      * <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <p>
+     * You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>user</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:group</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:group</code>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
      * This parameter is not supported for Windows containers.
@@ -521,7 +631,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register with the
      * <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before
      * containers placed on that instance can use these security options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -583,7 +693,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The log configuration specification for the container.
      * </p>
      * <p>
-     * If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     * For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     * <code>splunk</code>.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>, <code>syslog</code>,
+     * <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>, and <code>json-file</code>.
      * </p>
      * <p>
      * This parameter maps to <code>LogConfig</code> in the <a
@@ -614,7 +729,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register the logging drivers available on
      * that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed
      * on that instance can use these log configuration options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </note>
@@ -648,6 +763,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </note>
      */
     private com.amazonaws.internal.SdkInternalList<SystemControl> systemControls;
+    /**
+     * <p>
+     * The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ResourceRequirement> resourceRequirements;
 
     /**
      * <p>
@@ -2353,7 +2474,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * All tasks must have at least one essential container. If you have an application that is composed of multiple
      * containers, you should group containers that are used for a common purpose into components, and separate the
      * different components into multiple task definitions. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
      * Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2367,7 +2488,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        All tasks must have at least one essential container. If you have an application that is composed of
      *        multiple containers, you should group containers that are used for a common purpose into components, and
      *        separate the different components into multiple task definitions. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
      *        >Application Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -2386,7 +2507,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * All tasks must have at least one essential container. If you have an application that is composed of multiple
      * containers, you should group containers that are used for a common purpose into components, and separate the
      * different components into multiple task definitions. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
      * Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2399,7 +2520,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         All tasks must have at least one essential container. If you have an application that is composed of
      *         multiple containers, you should group containers that are used for a common purpose into components, and
      *         separate the different components into multiple task definitions. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
      *         >Application Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -2418,7 +2539,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * All tasks must have at least one essential container. If you have an application that is composed of multiple
      * containers, you should group containers that are used for a common purpose into components, and separate the
      * different components into multiple task definitions. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
      * Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2432,7 +2553,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        All tasks must have at least one essential container. If you have an application that is composed of
      *        multiple containers, you should group containers that are used for a common purpose into components, and
      *        separate the different components into multiple task definitions. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
      *        >Application Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2453,7 +2574,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * All tasks must have at least one essential container. If you have an application that is composed of multiple
      * containers, you should group containers that are used for a common purpose into components, and separate the
      * different components into multiple task definitions. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application
      * Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -2466,7 +2587,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         All tasks must have at least one essential container. If you have an application that is composed of
      *         multiple containers, you should group containers that are used for a common purpose into components, and
      *         separate the different components into multiple task definitions. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html"
      *         >Application Architecture</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -2658,7 +2779,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>COMMAND</code> parameter
      * to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a
      * href="https://docs.docker.com/engine/reference/builder/#cmd"
-     * >https://docs.docker.com/engine/reference/builder/#cmd</a>.
+     * >https://docs.docker.com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should
+     * be a separated string in the array.
      * </p>
      * 
      * @return The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a
@@ -2667,7 +2789,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      *         For more information, see <a
      *         href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker
-     *         .com/engine/reference/builder/#cmd</a>.
+     *         .com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should be a
+     *         separated string in the array.
      */
 
     public java.util.List<String> getCommand() {
@@ -2684,7 +2807,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>COMMAND</code> parameter
      * to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a
      * href="https://docs.docker.com/engine/reference/builder/#cmd"
-     * >https://docs.docker.com/engine/reference/builder/#cmd</a>.
+     * >https://docs.docker.com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should
+     * be a separated string in the array.
      * </p>
      * 
      * @param command
@@ -2694,7 +2818,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      *        For more information, see <a
      *        href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker
-     *        .com/engine/reference/builder/#cmd</a>.
+     *        .com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should be a
+     *        separated string in the array.
      */
 
     public void setCommand(java.util.Collection<String> command) {
@@ -2713,7 +2838,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>COMMAND</code> parameter
      * to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a
      * href="https://docs.docker.com/engine/reference/builder/#cmd"
-     * >https://docs.docker.com/engine/reference/builder/#cmd</a>.
+     * >https://docs.docker.com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should
+     * be a separated string in the array.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2728,7 +2854,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      *        For more information, see <a
      *        href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker
-     *        .com/engine/reference/builder/#cmd</a>.
+     *        .com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should be a
+     *        separated string in the array.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2749,7 +2876,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>COMMAND</code> parameter
      * to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a
      * href="https://docs.docker.com/engine/reference/builder/#cmd"
-     * >https://docs.docker.com/engine/reference/builder/#cmd</a>.
+     * >https://docs.docker.com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should
+     * be a separated string in the array.
      * </p>
      * 
      * @param command
@@ -2759,7 +2887,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      *        For more information, see <a
      *        href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker
-     *        .com/engine/reference/builder/#cmd</a>.
+     *        .com/engine/reference/builder/#cmd</a>. If there are multiple arguments, each argument should be a
+     *        separated string in the array.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3225,10 +3354,14 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The secrets to pass to the container.
+     * The secrets to pass to the container. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html">Specifying
+     * Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
-     * @return The secrets to pass to the container.
+     * @return The secrets to pass to the container. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html"
+     *         >Specifying Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public java.util.List<Secret> getSecrets() {
@@ -3240,11 +3373,15 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The secrets to pass to the container.
+     * The secrets to pass to the container. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html">Specifying
+     * Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param secrets
-     *        The secrets to pass to the container.
+     *        The secrets to pass to the container. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html"
+     *        >Specifying Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setSecrets(java.util.Collection<Secret> secrets) {
@@ -3258,7 +3395,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The secrets to pass to the container.
+     * The secrets to pass to the container. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html">Specifying
+     * Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -3267,7 +3406,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      * 
      * @param secrets
-     *        The secrets to pass to the container.
+     *        The secrets to pass to the container. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html"
+     *        >Specifying Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3283,16 +3424,541 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The secrets to pass to the container.
+     * The secrets to pass to the container. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html">Specifying
+     * Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param secrets
-     *        The secrets to pass to the container.
+     *        The secrets to pass to the container. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html"
+     *        >Specifying Sensitive Data</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ContainerDefinition withSecrets(java.util.Collection<Secret> secrets) {
         setSecrets(secrets);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When
+     * a dependency is defined for container startup, for container shutdown it is reversed.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable container dependencies. However, we recommend using the latest container agent version. For
+     * information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @return The dependencies defined for container startup and shutdown. A container can contain multiple
+     *         dependencies. When a dependency is defined for container startup, for container shutdown it is
+     *         reversed.</p>
+     *         <p>
+     *         For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *         container agent to enable container dependencies. However, we recommend using the latest container agent
+     *         version. For information about checking your agent version and updating to the latest version, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *         Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *         using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *         <code>ecs-init</code> package. If your container instances are launched from version
+     *         <code>20190301</code> or later, then they contain the required versions of the container agent and
+     *         <code>ecs-init</code>. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *         ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         </p>
+     *         <p>
+     *         This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *         and the task or service requires platform version 1.3.0 or later.
+     */
+
+    public java.util.List<ContainerDependency> getDependsOn() {
+        if (dependsOn == null) {
+            dependsOn = new com.amazonaws.internal.SdkInternalList<ContainerDependency>();
+        }
+        return dependsOn;
+    }
+
+    /**
+     * <p>
+     * The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When
+     * a dependency is defined for container startup, for container shutdown it is reversed.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable container dependencies. However, we recommend using the latest container agent version. For
+     * information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @param dependsOn
+     *        The dependencies defined for container startup and shutdown. A container can contain multiple
+     *        dependencies. When a dependency is defined for container startup, for container shutdown it is
+     *        reversed.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *        container agent to enable container dependencies. However, we recommend using the latest container agent
+     *        version. For information about checking your agent version and updating to the latest version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        </p>
+     *        <p>
+     *        This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *        and the task or service requires platform version 1.3.0 or later.
+     */
+
+    public void setDependsOn(java.util.Collection<ContainerDependency> dependsOn) {
+        if (dependsOn == null) {
+            this.dependsOn = null;
+            return;
+        }
+
+        this.dependsOn = new com.amazonaws.internal.SdkInternalList<ContainerDependency>(dependsOn);
+    }
+
+    /**
+     * <p>
+     * The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When
+     * a dependency is defined for container startup, for container shutdown it is reversed.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable container dependencies. However, we recommend using the latest container agent version. For
+     * information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDependsOn(java.util.Collection)} or {@link #withDependsOn(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param dependsOn
+     *        The dependencies defined for container startup and shutdown. A container can contain multiple
+     *        dependencies. When a dependency is defined for container startup, for container shutdown it is
+     *        reversed.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *        container agent to enable container dependencies. However, we recommend using the latest container agent
+     *        version. For information about checking your agent version and updating to the latest version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        </p>
+     *        <p>
+     *        This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *        and the task or service requires platform version 1.3.0 or later.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withDependsOn(ContainerDependency... dependsOn) {
+        if (this.dependsOn == null) {
+            setDependsOn(new com.amazonaws.internal.SdkInternalList<ContainerDependency>(dependsOn.length));
+        }
+        for (ContainerDependency ele : dependsOn) {
+            this.dependsOn.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When
+     * a dependency is defined for container startup, for container shutdown it is reversed.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable container dependencies. However, we recommend using the latest container agent version. For
+     * information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @param dependsOn
+     *        The dependencies defined for container startup and shutdown. A container can contain multiple
+     *        dependencies. When a dependency is defined for container startup, for container shutdown it is
+     *        reversed.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *        container agent to enable container dependencies. However, we recommend using the latest container agent
+     *        version. For information about checking your agent version and updating to the latest version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        </p>
+     *        <p>
+     *        This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *        and the task or service requires platform version 1.3.0 or later.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withDependsOn(java.util.Collection<ContainerDependency> dependsOn) {
+        setDependsOn(dependsOn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before giving up on resolving dependencies for a container. For example, you specify two
+     * containers in a task definition with containerA having a dependency on containerB reaching a
+     * <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a <code>startTimeout</code> value
+     * is specified for containerB and it does not reach the desired status within that time then containerA will give
+     * up and not start. This results in the task transitioning to a <code>STOPPED</code> state.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable a container start timeout value. However, we recommend using the latest container agent version.
+     * For information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @param startTimeout
+     *        Time duration to wait before giving up on resolving dependencies for a container. For example, you specify
+     *        two containers in a task definition with containerA having a dependency on containerB reaching a
+     *        <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a
+     *        <code>startTimeout</code> value is specified for containerB and it does not reach the desired status
+     *        within that time then containerA will give up and not start. This results in the task transitioning to a
+     *        <code>STOPPED</code> state.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *        container agent to enable a container start timeout value. However, we recommend using the latest
+     *        container agent version. For information about checking your agent version and updating to the latest
+     *        version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        </p>
+     *        <p>
+     *        This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *        and the task or service requires platform version 1.3.0 or later.
+     */
+
+    public void setStartTimeout(Integer startTimeout) {
+        this.startTimeout = startTimeout;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before giving up on resolving dependencies for a container. For example, you specify two
+     * containers in a task definition with containerA having a dependency on containerB reaching a
+     * <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a <code>startTimeout</code> value
+     * is specified for containerB and it does not reach the desired status within that time then containerA will give
+     * up and not start. This results in the task transitioning to a <code>STOPPED</code> state.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable a container start timeout value. However, we recommend using the latest container agent version.
+     * For information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @return Time duration to wait before giving up on resolving dependencies for a container. For example, you
+     *         specify two containers in a task definition with containerA having a dependency on containerB reaching a
+     *         <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a
+     *         <code>startTimeout</code> value is specified for containerB and it does not reach the desired status
+     *         within that time then containerA will give up and not start. This results in the task transitioning to a
+     *         <code>STOPPED</code> state.</p>
+     *         <p>
+     *         For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *         container agent to enable a container start timeout value. However, we recommend using the latest
+     *         container agent version. For information about checking your agent version and updating to the latest
+     *         version, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *         Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *         using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *         <code>ecs-init</code> package. If your container instances are launched from version
+     *         <code>20190301</code> or later, then they contain the required versions of the container agent and
+     *         <code>ecs-init</code>. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *         ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         </p>
+     *         <p>
+     *         This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *         and the task or service requires platform version 1.3.0 or later.
+     */
+
+    public Integer getStartTimeout() {
+        return this.startTimeout;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before giving up on resolving dependencies for a container. For example, you specify two
+     * containers in a task definition with containerA having a dependency on containerB reaching a
+     * <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a <code>startTimeout</code> value
+     * is specified for containerB and it does not reach the desired status within that time then containerA will give
+     * up and not start. This results in the task transitioning to a <code>STOPPED</code> state.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container
+     * agent to enable a container start timeout value. However, we recommend using the latest container agent version.
+     * For information about checking your agent version and updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     * task or service requires platform version 1.3.0 or later.
+     * </p>
+     * 
+     * @param startTimeout
+     *        Time duration to wait before giving up on resolving dependencies for a container. For example, you specify
+     *        two containers in a task definition with containerA having a dependency on containerB reaching a
+     *        <code>COMPLETE</code>, <code>SUCCESS</code>, or <code>HEALTHY</code> status. If a
+     *        <code>startTimeout</code> value is specified for containerB and it does not reach the desired status
+     *        within that time then containerA will give up and not start. This results in the task transitioning to a
+     *        <code>STOPPED</code> state.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the
+     *        container agent to enable a container start timeout value. However, we recommend using the latest
+     *        container agent version. For information about checking your agent version and updating to the latest
+     *        version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        </p>
+     *        <p>
+     *        This parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only
+     *        and the task or service requires platform version 1.3.0 or later.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withStartTimeout(Integer startTimeout) {
+        setStartTimeout(startTimeout);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own. For tasks
+     * using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This parameter is available
+     * for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the task or service requires
+     * platform version 1.3.0 or later.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     * <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container instances
+     * require at least version 1.26.0 of the container agent to enable a container stop timeout value. However, we
+     * recommend using the latest container agent version. For information about checking your agent version and
+     * updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param stopTimeout
+     *        Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own.
+     *        For tasks using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This
+     *        parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     *        task or service requires platform version 1.3.0 or later.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     *        <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container
+     *        instances require at least version 1.26.0 of the container agent to enable a container stop timeout value.
+     *        However, we recommend using the latest container agent version. For information about checking your agent
+     *        version and updating to the latest version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     */
+
+    public void setStopTimeout(Integer stopTimeout) {
+        this.stopTimeout = stopTimeout;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own. For tasks
+     * using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This parameter is available
+     * for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the task or service requires
+     * platform version 1.3.0 or later.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     * <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container instances
+     * require at least version 1.26.0 of the container agent to enable a container stop timeout value. However, we
+     * recommend using the latest container agent version. For information about checking your agent version and
+     * updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @return Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own.
+     *         For tasks using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This
+     *         parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and
+     *         the task or service requires platform version 1.3.0 or later.</p>
+     *         <p>
+     *         For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     *         <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container
+     *         instances require at least version 1.26.0 of the container agent to enable a container stop timeout
+     *         value. However, we recommend using the latest container agent version. For information about checking
+     *         your agent version and updating to the latest version, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *         Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *         using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *         <code>ecs-init</code> package. If your container instances are launched from version
+     *         <code>20190301</code> or later, then they contain the required versions of the container agent and
+     *         <code>ecs-init</code>. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *         ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     */
+
+    public Integer getStopTimeout() {
+        return this.stopTimeout;
+    }
+
+    /**
+     * <p>
+     * Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own. For tasks
+     * using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This parameter is available
+     * for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the task or service requires
+     * platform version 1.3.0 or later.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     * <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container instances
+     * require at least version 1.26.0 of the container agent to enable a container stop timeout value. However, we
+     * recommend using the latest container agent version. For information about checking your agent version and
+     * updating to the latest version, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the Amazon ECS
+     * Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are using an Amazon
+     * ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the <code>ecs-init</code> package. If
+     * your container instances are launched from version <code>20190301</code> or later, then they contain the required
+     * versions of the container agent and <code>ecs-init</code>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon ECS-optimized
+     * Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param stopTimeout
+     *        Time duration to wait before the container is forcefully killed if it doesn't exit normally on its own.
+     *        For tasks using the Fargate launch type, the max <code>stopTimeout</code> value is 2 minutes. This
+     *        parameter is available for tasks using the Fargate launch type in the Ohio (us-east-2) region only and the
+     *        task or service requires platform version 1.3.0 or later.</p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the stop timeout value for the container takes precedence over the
+     *        <code>ECS_CONTAINER_STOP_TIMEOUT</code> container agent configuration parameter, if used. Container
+     *        instances require at least version 1.26.0 of the container agent to enable a container stop timeout value.
+     *        However, we recommend using the latest container agent version. For information about checking your agent
+     *        version and updating to the latest version, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html">Updating the
+     *        Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service Developer Guide</i>. If you are
+     *        using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the
+     *        <code>ecs-init</code> package. If your container instances are launched from version <code>20190301</code>
+     *        or later, then they contain the required versions of the container agent and <code>ecs-init</code>. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">Amazon
+     *        ECS-optimized Linux AMI</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withStopTimeout(Integer stopTimeout) {
+        setStopTimeout(stopTimeout);
         return this;
     }
 
@@ -3391,6 +4057,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>--user</code> option to
      * <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <p>
+     * You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>user</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:group</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:group</code>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
      * This parameter is not supported for Windows containers.
@@ -3402,6 +4103,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        href="https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate">Create a container</a> section
      *        of the <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the
      *        <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+     *        <p>
+     *        You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>user</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>user:group</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid:gid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>user:gid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid:group</code>
+     *        </p>
+     *        </li>
+     *        </ul>
      *        <note>
      *        <p>
      *        This parameter is not supported for Windows containers.
@@ -3419,6 +4155,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>--user</code> option to
      * <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <p>
+     * You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>user</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:group</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:group</code>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
      * This parameter is not supported for Windows containers.
@@ -3429,6 +4200,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         href="https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate">Create a container</a> section
      *         of the <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the
      *         <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+     *         <p>
+     *         You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>user</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>user:group</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>uid</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>uid:gid</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>user:gid</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>uid:group</code>
+     *         </p>
+     *         </li>
+     *         </ul>
      *         <note>
      *         <p>
      *         This parameter is not supported for Windows containers.
@@ -3446,6 +4252,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the <code>--user</code> option to
      * <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <p>
+     * You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>user</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:group</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>user:gid</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>uid:group</code>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
      * This parameter is not supported for Windows containers.
@@ -3457,6 +4298,41 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        href="https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate">Create a container</a> section
      *        of the <a href="https://docs.docker.com/engine/api/v1.35/">Docker Remote API</a> and the
      *        <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+     *        <p>
+     *        You can use the following formats. If specifying a UID or GID, you must specify it as a positive integer.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>user</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>user:group</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid:gid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>user:gid</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>uid:group</code>
+     *        </p>
+     *        </li>
+     *        </ul>
      *        <note>
      *        <p>
      *        This parameter is not supported for Windows containers.
@@ -4312,7 +5188,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register with the
      * <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before
      * containers placed on that instance can use these security options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -4334,7 +5210,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         The Amazon ECS container agent running on a container instance must register with the
      *         <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables
      *         before containers placed on that instance can use these security options. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *         Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *         </p>
      *         <p>
@@ -4365,7 +5241,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register with the
      * <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before
      * containers placed on that instance can use these security options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -4388,7 +5264,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        The Amazon ECS container agent running on a container instance must register with the
      *        <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables
      *        before containers placed on that instance can use these security options. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *        Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
@@ -4421,7 +5297,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register with the
      * <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before
      * containers placed on that instance can use these security options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -4449,7 +5325,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        The Amazon ECS container agent running on a container instance must register with the
      *        <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables
      *        before containers placed on that instance can use these security options. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *        Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
@@ -4484,7 +5360,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register with the
      * <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before
      * containers placed on that instance can use these security options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
@@ -4507,7 +5383,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        The Amazon ECS container agent running on a container instance must register with the
      *        <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables
      *        before containers placed on that instance can use these security options. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *        Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
@@ -4948,7 +5824,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The log configuration specification for the container.
      * </p>
      * <p>
-     * If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     * For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     * <code>splunk</code>.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>, <code>syslog</code>,
+     * <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>, and <code>json-file</code>.
      * </p>
      * <p>
      * This parameter maps to <code>LogConfig</code> in the <a
@@ -4979,7 +5860,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register the logging drivers available on
      * that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed
      * on that instance can use these log configuration options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </note>
@@ -4987,7 +5868,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * @param logConfiguration
      *        The log configuration specification for the container.</p>
      *        <p>
-     *        If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     *        For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     *        <code>splunk</code>.
+     *        </p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>,
+     *        <code>syslog</code>, <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>,
+     *        and <code>json-file</code>.
      *        </p>
      *        <p>
      *        This parameter maps to <code>LogConfig</code> in the <a
@@ -5019,7 +5906,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        The Amazon ECS container agent running on a container instance must register the logging drivers available
      *        on that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before
      *        containers placed on that instance can use these log configuration options. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *        Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      */
@@ -5033,7 +5920,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The log configuration specification for the container.
      * </p>
      * <p>
-     * If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     * For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     * <code>splunk</code>.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>, <code>syslog</code>,
+     * <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>, and <code>json-file</code>.
      * </p>
      * <p>
      * This parameter maps to <code>LogConfig</code> in the <a
@@ -5064,14 +5956,20 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register the logging drivers available on
      * that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed
      * on that instance can use these log configuration options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </note>
      * 
      * @return The log configuration specification for the container.</p>
      *         <p>
-     *         If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     *         For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     *         <code>splunk</code>.
+     *         </p>
+     *         <p>
+     *         For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>,
+     *         <code>syslog</code>, <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>,
+     *         and <code>json-file</code>.
      *         </p>
      *         <p>
      *         This parameter maps to <code>LogConfig</code> in the <a
@@ -5103,8 +6001,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         The Amazon ECS container agent running on a container instance must register the logging drivers
      *         available on that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable
      *         before containers placed on that instance can use these log configuration options. For more information,
-     *         see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
-     *         Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon
+     *         ECS Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *         </p>
      */
 
@@ -5117,7 +6015,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The log configuration specification for the container.
      * </p>
      * <p>
-     * If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     * For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     * <code>splunk</code>.
+     * </p>
+     * <p>
+     * For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>, <code>syslog</code>,
+     * <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>, and <code>json-file</code>.
      * </p>
      * <p>
      * This parameter maps to <code>LogConfig</code> in the <a
@@ -5148,7 +6051,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * The Amazon ECS container agent running on a container instance must register the logging drivers available on
      * that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed
      * on that instance can use these log configuration options. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container
      * Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </note>
@@ -5156,7 +6059,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * @param logConfiguration
      *        The log configuration specification for the container.</p>
      *        <p>
-     *        If you are using the Fargate launch type, the only supported value is <code>awslogs</code>.
+     *        For tasks using the Fargate launch type, the supported log drivers are <code>awslogs</code> and
+     *        <code>splunk</code>.
+     *        </p>
+     *        <p>
+     *        For tasks using the EC2 launch type, the supported log drivers are <code>awslogs</code>,
+     *        <code>syslog</code>, <code>gelf</code>, <code>fluentd</code>, <code>splunk</code>, <code>journald</code>,
+     *        and <code>json-file</code>.
      *        </p>
      *        <p>
      *        This parameter maps to <code>LogConfig</code> in the <a
@@ -5188,7 +6097,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        The Amazon ECS container agent running on a container instance must register the logging drivers available
      *        on that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before
      *        containers placed on that instance can use these log configuration options. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS
      *        Container Agent Configuration</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -5440,6 +6349,79 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     }
 
     /**
+     * <p>
+     * The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * </p>
+     * 
+     * @return The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     */
+
+    public java.util.List<ResourceRequirement> getResourceRequirements() {
+        if (resourceRequirements == null) {
+            resourceRequirements = new com.amazonaws.internal.SdkInternalList<ResourceRequirement>();
+        }
+        return resourceRequirements;
+    }
+
+    /**
+     * <p>
+     * The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * </p>
+     * 
+     * @param resourceRequirements
+     *        The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     */
+
+    public void setResourceRequirements(java.util.Collection<ResourceRequirement> resourceRequirements) {
+        if (resourceRequirements == null) {
+            this.resourceRequirements = null;
+            return;
+        }
+
+        this.resourceRequirements = new com.amazonaws.internal.SdkInternalList<ResourceRequirement>(resourceRequirements);
+    }
+
+    /**
+     * <p>
+     * The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setResourceRequirements(java.util.Collection)} or {@link #withResourceRequirements(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param resourceRequirements
+     *        The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withResourceRequirements(ResourceRequirement... resourceRequirements) {
+        if (this.resourceRequirements == null) {
+            setResourceRequirements(new com.amazonaws.internal.SdkInternalList<ResourceRequirement>(resourceRequirements.length));
+        }
+        for (ResourceRequirement ele : resourceRequirements) {
+            this.resourceRequirements.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * </p>
+     * 
+     * @param resourceRequirements
+     *        The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withResourceRequirements(java.util.Collection<ResourceRequirement> resourceRequirements) {
+        setResourceRequirements(resourceRequirements);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -5483,6 +6465,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             sb.append("LinuxParameters: ").append(getLinuxParameters()).append(",");
         if (getSecrets() != null)
             sb.append("Secrets: ").append(getSecrets()).append(",");
+        if (getDependsOn() != null)
+            sb.append("DependsOn: ").append(getDependsOn()).append(",");
+        if (getStartTimeout() != null)
+            sb.append("StartTimeout: ").append(getStartTimeout()).append(",");
+        if (getStopTimeout() != null)
+            sb.append("StopTimeout: ").append(getStopTimeout()).append(",");
         if (getHostname() != null)
             sb.append("Hostname: ").append(getHostname()).append(",");
         if (getUser() != null)
@@ -5516,7 +6504,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         if (getHealthCheck() != null)
             sb.append("HealthCheck: ").append(getHealthCheck()).append(",");
         if (getSystemControls() != null)
-            sb.append("SystemControls: ").append(getSystemControls());
+            sb.append("SystemControls: ").append(getSystemControls()).append(",");
+        if (getResourceRequirements() != null)
+            sb.append("ResourceRequirements: ").append(getResourceRequirements());
         sb.append("}");
         return sb.toString();
     }
@@ -5595,6 +6585,18 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getSecrets() != null && other.getSecrets().equals(this.getSecrets()) == false)
             return false;
+        if (other.getDependsOn() == null ^ this.getDependsOn() == null)
+            return false;
+        if (other.getDependsOn() != null && other.getDependsOn().equals(this.getDependsOn()) == false)
+            return false;
+        if (other.getStartTimeout() == null ^ this.getStartTimeout() == null)
+            return false;
+        if (other.getStartTimeout() != null && other.getStartTimeout().equals(this.getStartTimeout()) == false)
+            return false;
+        if (other.getStopTimeout() == null ^ this.getStopTimeout() == null)
+            return false;
+        if (other.getStopTimeout() != null && other.getStopTimeout().equals(this.getStopTimeout()) == false)
+            return false;
         if (other.getHostname() == null ^ this.getHostname() == null)
             return false;
         if (other.getHostname() != null && other.getHostname().equals(this.getHostname()) == false)
@@ -5663,6 +6665,10 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getSystemControls() != null && other.getSystemControls().equals(this.getSystemControls()) == false)
             return false;
+        if (other.getResourceRequirements() == null ^ this.getResourceRequirements() == null)
+            return false;
+        if (other.getResourceRequirements() != null && other.getResourceRequirements().equals(this.getResourceRequirements()) == false)
+            return false;
         return true;
     }
 
@@ -5687,6 +6693,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getVolumesFrom() == null) ? 0 : getVolumesFrom().hashCode());
         hashCode = prime * hashCode + ((getLinuxParameters() == null) ? 0 : getLinuxParameters().hashCode());
         hashCode = prime * hashCode + ((getSecrets() == null) ? 0 : getSecrets().hashCode());
+        hashCode = prime * hashCode + ((getDependsOn() == null) ? 0 : getDependsOn().hashCode());
+        hashCode = prime * hashCode + ((getStartTimeout() == null) ? 0 : getStartTimeout().hashCode());
+        hashCode = prime * hashCode + ((getStopTimeout() == null) ? 0 : getStopTimeout().hashCode());
         hashCode = prime * hashCode + ((getHostname() == null) ? 0 : getHostname().hashCode());
         hashCode = prime * hashCode + ((getUser() == null) ? 0 : getUser().hashCode());
         hashCode = prime * hashCode + ((getWorkingDirectory() == null) ? 0 : getWorkingDirectory().hashCode());
@@ -5704,6 +6713,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getLogConfiguration() == null) ? 0 : getLogConfiguration().hashCode());
         hashCode = prime * hashCode + ((getHealthCheck() == null) ? 0 : getHealthCheck().hashCode());
         hashCode = prime * hashCode + ((getSystemControls() == null) ? 0 : getSystemControls().hashCode());
+        hashCode = prime * hashCode + ((getResourceRequirements() == null) ? 0 : getResourceRequirements().hashCode());
         return hashCode;
     }
 

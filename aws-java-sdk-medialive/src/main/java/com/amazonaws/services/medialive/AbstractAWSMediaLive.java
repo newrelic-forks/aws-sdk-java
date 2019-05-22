@@ -16,6 +16,7 @@ import javax.annotation.Generated;
 
 import com.amazonaws.services.medialive.model.*;
 import com.amazonaws.*;
+import com.amazonaws.services.medialive.waiters.AWSMediaLiveWaiters;
 
 /**
  * Abstract implementation of {@code AWSMediaLive}. Convenient method forms pass through to the corresponding overload
@@ -48,6 +49,11 @@ public class AbstractAWSMediaLive implements AWSMediaLive {
     }
 
     @Override
+    public CreateTagsResult createTags(CreateTagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteChannelResult deleteChannel(DeleteChannelRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -64,6 +70,16 @@ public class AbstractAWSMediaLive implements AWSMediaLive {
 
     @Override
     public DeleteReservationResult deleteReservation(DeleteReservationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteScheduleResult deleteSchedule(DeleteScheduleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -123,6 +139,11 @@ public class AbstractAWSMediaLive implements AWSMediaLive {
     }
 
     @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public PurchaseOfferingResult purchaseOffering(PurchaseOfferingRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -143,6 +164,11 @@ public class AbstractAWSMediaLive implements AWSMediaLive {
     }
 
     @Override
+    public UpdateChannelClassResult updateChannelClass(UpdateChannelClassRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateInputResult updateInput(UpdateInputRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -153,12 +179,22 @@ public class AbstractAWSMediaLive implements AWSMediaLive {
     }
 
     @Override
+    public UpdateReservationResult updateReservation(UpdateReservationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public void shutdown() {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public AWSMediaLiveWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -169,7 +169,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      * </p>
      * <p>
      * For information about how the service works, see <a
-     * href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html">How it Works</a>.
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html">How it Works</a>.
      * </p>
      * <p>
      * You must have permissions for the <code>KinesisVideo:CreateStream</code> action.
@@ -190,6 +190,9 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      * @throws ClientLimitExceededException
      *         Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client
      *         calls. Try making the call later.
+     * @throws TagsPerResourceExceededLimitException
+     *         You have exceeded the limit of tags that you can associate with the resource. Kinesis video streams
+     *         support up to 50 tags.
      * @sample AmazonKinesisVideo.CreateStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30/CreateStream" target="_top">AWS API
      *      Documentation</a>
@@ -219,6 +222,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -264,6 +268,11 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      *         Amazon Kinesis Video Streams can't find the stream that you specified.
      * @throws NotAuthorizedException
      *         The caller is not authorized to perform this operation.
+     * @throws VersionMismatchException
+     *         The stream version that you specified is not the latest version. To get the latest version, use the <a
+     *         href
+     *         ="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html">DescribeStream</a>
+     *         API.
      * @sample AmazonKinesisVideo.DeleteStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30/DeleteStream" target="_top">AWS API
      *      Documentation</a>
@@ -293,6 +302,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -355,6 +365,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -427,6 +438,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDataEndpoint");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -485,6 +497,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListStreams");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -551,6 +564,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -572,7 +586,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      * Adds one or more tags to a stream. A <i>tag</i> is a key-value pair (the value is optional) that you can define
      * and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value
      * that you specify in the request. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
      * Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * <p>
@@ -630,6 +644,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -697,6 +712,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -763,7 +779,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      * @throws VersionMismatchException
      *         The stream version that you specified is not the latest version. To get the latest version, use the <a
      *         href
-     *         ="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html">DescribeStream</a>
+     *         ="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html">DescribeStream</a>
      *         API.
      * @sample AmazonKinesisVideo.UpdateDataRetention
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30/UpdateDataRetention"
@@ -794,6 +810,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDataRetention");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -842,7 +859,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
      * @throws VersionMismatchException
      *         The stream version that you specified is not the latest version. To get the latest version, use the <a
      *         href
-     *         ="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html">DescribeStream</a>
+     *         ="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html">DescribeStream</a>
      *         API.
      * @sample AmazonKinesisVideo.UpdateStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30/UpdateStream" target="_top">AWS API
@@ -873,6 +890,7 @@ public class AmazonKinesisVideoClient extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -100,7 +100,9 @@ public class AutoScalingGroup implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<String> targetGroupARNs;
     /**
      * <p>
-     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If you
+     * configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it fails either
+     * the EC2 status checks or the load balancer health checks.
      * </p>
      */
     private String healthCheckType;
@@ -131,19 +133,13 @@ public class AutoScalingGroup implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<SuspendedProcess> suspendedProcesses;
     /**
      * <p>
-     * The name of the placement group into which to launch your instances, if any. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * The name of the placement group into which to launch your instances, if any.
      * </p>
      */
     private String placementGroup;
     /**
      * <p>
      * One or more subnet IDs, if applicable, separated by commas.
-     * </p>
-     * <p>
-     * If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability
-     * Zones of the subnets match the values for <code>AvailabilityZones</code>.
      * </p>
      */
     private String vPCZoneIdentifier;
@@ -173,7 +169,8 @@ public class AutoScalingGroup implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<String> terminationPolicies;
     /**
      * <p>
-     * Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     * Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling
+     * in.
      * </p>
      */
     private Boolean newInstancesProtectedFromScaleIn;
@@ -769,11 +766,15 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If you
+     * configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it fails either
+     * the EC2 status checks or the load balancer health checks.
      * </p>
      * 
      * @param healthCheckType
-     *        The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     *        The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If
+     *        you configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it
+     *        fails either the EC2 status checks or the load balancer health checks.
      */
 
     public void setHealthCheckType(String healthCheckType) {
@@ -782,10 +783,14 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If you
+     * configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it fails either
+     * the EC2 status checks or the load balancer health checks.
      * </p>
      * 
-     * @return The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     * @return The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If
+     *         you configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it
+     *         fails either the EC2 status checks or the load balancer health checks.
      */
 
     public String getHealthCheckType() {
@@ -794,11 +799,15 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     * The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If you
+     * configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it fails either
+     * the EC2 status checks or the load balancer health checks.
      * </p>
      * 
      * @param healthCheckType
-     *        The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.
+     *        The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>. If
+     *        you configure an Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it
+     *        fails either the EC2 status checks or the load balancer health checks.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1041,15 +1050,11 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the placement group into which to launch your instances, if any. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * The name of the placement group into which to launch your instances, if any.
      * </p>
      * 
      * @param placementGroup
-     *        The name of the placement group into which to launch your instances, if any. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in
-     *        the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     *        The name of the placement group into which to launch your instances, if any.
      */
 
     public void setPlacementGroup(String placementGroup) {
@@ -1058,14 +1063,10 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the placement group into which to launch your instances, if any. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * The name of the placement group into which to launch your instances, if any.
      * </p>
      * 
-     * @return The name of the placement group into which to launch your instances, if any. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in
-     *         the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return The name of the placement group into which to launch your instances, if any.
      */
 
     public String getPlacementGroup() {
@@ -1074,15 +1075,11 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the placement group into which to launch your instances, if any. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * The name of the placement group into which to launch your instances, if any.
      * </p>
      * 
      * @param placementGroup
-     *        The name of the placement group into which to launch your instances, if any. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in
-     *        the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     *        The name of the placement group into which to launch your instances, if any.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1095,16 +1092,9 @@ public class AutoScalingGroup implements Serializable, Cloneable {
      * <p>
      * One or more subnet IDs, if applicable, separated by commas.
      * </p>
-     * <p>
-     * If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability
-     * Zones of the subnets match the values for <code>AvailabilityZones</code>.
-     * </p>
      * 
      * @param vPCZoneIdentifier
-     *        One or more subnet IDs, if applicable, separated by commas.</p>
-     *        <p>
-     *        If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the
-     *        Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.
+     *        One or more subnet IDs, if applicable, separated by commas.
      */
 
     public void setVPCZoneIdentifier(String vPCZoneIdentifier) {
@@ -1115,15 +1105,8 @@ public class AutoScalingGroup implements Serializable, Cloneable {
      * <p>
      * One or more subnet IDs, if applicable, separated by commas.
      * </p>
-     * <p>
-     * If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability
-     * Zones of the subnets match the values for <code>AvailabilityZones</code>.
-     * </p>
      * 
-     * @return One or more subnet IDs, if applicable, separated by commas.</p>
-     *         <p>
-     *         If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the
-     *         Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.
+     * @return One or more subnet IDs, if applicable, separated by commas.
      */
 
     public String getVPCZoneIdentifier() {
@@ -1134,16 +1117,9 @@ public class AutoScalingGroup implements Serializable, Cloneable {
      * <p>
      * One or more subnet IDs, if applicable, separated by commas.
      * </p>
-     * <p>
-     * If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability
-     * Zones of the subnets match the values for <code>AvailabilityZones</code>.
-     * </p>
      * 
      * @param vPCZoneIdentifier
-     *        One or more subnet IDs, if applicable, separated by commas.</p>
-     *        <p>
-     *        If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the
-     *        Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.
+     *        One or more subnet IDs, if applicable, separated by commas.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1413,11 +1389,13 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     * Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling
+     * in.
      * </p>
      * 
      * @param newInstancesProtectedFromScaleIn
-     *        Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     *        Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when
+     *        scaling in.
      */
 
     public void setNewInstancesProtectedFromScaleIn(Boolean newInstancesProtectedFromScaleIn) {
@@ -1426,11 +1404,12 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     * Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling
+     * in.
      * </p>
      * 
-     * @return Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling
-     *         in.
+     * @return Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when
+     *         scaling in.
      */
 
     public Boolean getNewInstancesProtectedFromScaleIn() {
@@ -1439,11 +1418,13 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     * Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling
+     * in.
      * </p>
      * 
      * @param newInstancesProtectedFromScaleIn
-     *        Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     *        Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when
+     *        scaling in.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1454,11 +1435,12 @@ public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+     * Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling
+     * in.
      * </p>
      * 
-     * @return Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling
-     *         in.
+     * @return Indicates whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when
+     *         scaling in.
      */
 
     public Boolean isNewInstancesProtectedFromScaleIn() {

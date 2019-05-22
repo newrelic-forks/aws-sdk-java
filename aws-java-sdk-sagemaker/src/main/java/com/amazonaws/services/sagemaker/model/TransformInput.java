@@ -30,7 +30,8 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the location of the channel data, meaning the S3 location of the input data that the model can consume.
+     * Describes the location of the channel data, which is, the S3 location of the input data that the model can
+     * consume.
      * </p>
      */
     private TransformDataSource dataSource;
@@ -43,9 +44,8 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
     private String contentType;
     /**
      * <p>
-     * Compressing data helps save on storage space. If your transform data is compressed, specify the compression type.
-     * Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is
-     * <code>None</code>.
+     * If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses
+     * the data for the transform job accordingly. The default value is <code>None</code>.
      * </p>
      */
     private String compressionType;
@@ -72,24 +72,25 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      * <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      * <code>MultiRecord</code>.
      * </p>
-     * </note>
      * <p>
-     * For more information about the RecordIO data format, see <a
+     * For more information about the RecordIO, see <a
      * href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     * documentation. For more information about the TFRecord fofmat, see <a
+     * documentation. For more information about the TFRecord, see <a
      * href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in the
      * TensorFlow documentation.
      * </p>
+     * </note>
      */
     private String splitType;
 
     /**
      * <p>
-     * Describes the location of the channel data, meaning the S3 location of the input data that the model can consume.
+     * Describes the location of the channel data, which is, the S3 location of the input data that the model can
+     * consume.
      * </p>
      * 
      * @param dataSource
-     *        Describes the location of the channel data, meaning the S3 location of the input data that the model can
+     *        Describes the location of the channel data, which is, the S3 location of the input data that the model can
      *        consume.
      */
 
@@ -99,11 +100,12 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the location of the channel data, meaning the S3 location of the input data that the model can consume.
+     * Describes the location of the channel data, which is, the S3 location of the input data that the model can
+     * consume.
      * </p>
      * 
-     * @return Describes the location of the channel data, meaning the S3 location of the input data that the model can
-     *         consume.
+     * @return Describes the location of the channel data, which is, the S3 location of the input data that the model
+     *         can consume.
      */
 
     public TransformDataSource getDataSource() {
@@ -112,11 +114,12 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the location of the channel data, meaning the S3 location of the input data that the model can consume.
+     * Describes the location of the channel data, which is, the S3 location of the input data that the model can
+     * consume.
      * </p>
      * 
      * @param dataSource
-     *        Describes the location of the channel data, meaning the S3 location of the input data that the model can
+     *        Describes the location of the channel data, which is, the S3 location of the input data that the model can
      *        consume.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -174,15 +177,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Compressing data helps save on storage space. If your transform data is compressed, specify the compression type.
-     * Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is
-     * <code>None</code>.
+     * If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses
+     * the data for the transform job accordingly. The default value is <code>None</code>.
      * </p>
      * 
      * @param compressionType
-     *        Compressing data helps save on storage space. If your transform data is compressed, specify the
-     *        compression type. Amazon SageMaker automatically decompresses the data for the transform job accordingly.
-     *        The default value is <code>None</code>.
+     *        If your transform data is compressed, specify the compression type. Amazon SageMaker automatically
+     *        decompresses the data for the transform job accordingly. The default value is <code>None</code>.
      * @see CompressionType
      */
 
@@ -192,14 +193,12 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Compressing data helps save on storage space. If your transform data is compressed, specify the compression type.
-     * Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is
-     * <code>None</code>.
+     * If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses
+     * the data for the transform job accordingly. The default value is <code>None</code>.
      * </p>
      * 
-     * @return Compressing data helps save on storage space. If your transform data is compressed, specify the
-     *         compression type. Amazon SageMaker automatically decompresses the data for the transform job accordingly.
-     *         The default value is <code>None</code>.
+     * @return If your transform data is compressed, specify the compression type. Amazon SageMaker automatically
+     *         decompresses the data for the transform job accordingly. The default value is <code>None</code>.
      * @see CompressionType
      */
 
@@ -209,15 +208,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Compressing data helps save on storage space. If your transform data is compressed, specify the compression type.
-     * Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is
-     * <code>None</code>.
+     * If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses
+     * the data for the transform job accordingly. The default value is <code>None</code>.
      * </p>
      * 
      * @param compressionType
-     *        Compressing data helps save on storage space. If your transform data is compressed, specify the
-     *        compression type. Amazon SageMaker automatically decompresses the data for the transform job accordingly.
-     *        The default value is <code>None</code>.
+     *        If your transform data is compressed, specify the compression type. Amazon SageMaker automatically
+     *        decompresses the data for the transform job accordingly. The default value is <code>None</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CompressionType
      */
@@ -229,15 +226,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Compressing data helps save on storage space. If your transform data is compressed, specify the compression type.
-     * Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is
-     * <code>None</code>.
+     * If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses
+     * the data for the transform job accordingly. The default value is <code>None</code>.
      * </p>
      * 
      * @param compressionType
-     *        Compressing data helps save on storage space. If your transform data is compressed, specify the
-     *        compression type. Amazon SageMaker automatically decompresses the data for the transform job accordingly.
-     *        The default value is <code>None</code>.
+     *        If your transform data is compressed, specify the compression type. Amazon SageMaker automatically
+     *        decompresses the data for the transform job accordingly. The default value is <code>None</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CompressionType
      */
@@ -270,14 +265,14 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      * <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      * <code>MultiRecord</code>.
      * </p>
-     * </note>
      * <p>
-     * For more information about the RecordIO data format, see <a
+     * For more information about the RecordIO, see <a
      * href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     * documentation. For more information about the TFRecord fofmat, see <a
+     * documentation. For more information about the TFRecord, see <a
      * href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in the
      * TensorFlow documentation.
      * </p>
+     * </note>
      * 
      * @param splitType
      *        The method to use to split the transform job's data files into smaller batches. Splitting is necessary
@@ -302,13 +297,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      *        to <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      *        <code>MultiRecord</code>.
      *        </p>
-     *        </note>
      *        <p>
-     *        For more information about the RecordIO data format, see <a
+     *        For more information about the RecordIO, see <a
      *        href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     *        documentation. For more information about the TFRecord fofmat, see <a
+     *        documentation. For more information about the TFRecord, see <a
      *        href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in
      *        the TensorFlow documentation.
+     *        </p>
      * @see SplitType
      */
 
@@ -339,14 +334,14 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      * <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      * <code>MultiRecord</code>.
      * </p>
-     * </note>
      * <p>
-     * For more information about the RecordIO data format, see <a
+     * For more information about the RecordIO, see <a
      * href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     * documentation. For more information about the TFRecord fofmat, see <a
+     * documentation. For more information about the TFRecord, see <a
      * href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in the
      * TensorFlow documentation.
      * </p>
+     * </note>
      * 
      * @return The method to use to split the transform job's data files into smaller batches. Splitting is necessary
      *         when the total size of each object is too large to fit in a single request. You can also use data
@@ -370,13 +365,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      *         to <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      *         <code>MultiRecord</code>.
      *         </p>
-     *         </note>
      *         <p>
-     *         For more information about the RecordIO data format, see <a
+     *         For more information about the RecordIO, see <a
      *         href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     *         documentation. For more information about the TFRecord fofmat, see <a
+     *         documentation. For more information about the TFRecord, see <a
      *         href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in
      *         the TensorFlow documentation.
+     *         </p>
      * @see SplitType
      */
 
@@ -407,14 +402,14 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      * <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      * <code>MultiRecord</code>.
      * </p>
-     * </note>
      * <p>
-     * For more information about the RecordIO data format, see <a
+     * For more information about the RecordIO, see <a
      * href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     * documentation. For more information about the TFRecord fofmat, see <a
+     * documentation. For more information about the TFRecord, see <a
      * href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in the
      * TensorFlow documentation.
      * </p>
+     * </note>
      * 
      * @param splitType
      *        The method to use to split the transform job's data files into smaller batches. Splitting is necessary
@@ -439,13 +434,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      *        to <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      *        <code>MultiRecord</code>.
      *        </p>
-     *        </note>
      *        <p>
-     *        For more information about the RecordIO data format, see <a
+     *        For more information about the RecordIO, see <a
      *        href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     *        documentation. For more information about the TFRecord fofmat, see <a
+     *        documentation. For more information about the TFRecord, see <a
      *        href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in
      *        the TensorFlow documentation.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SplitType
      */
@@ -478,14 +473,14 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      * <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      * <code>MultiRecord</code>.
      * </p>
-     * </note>
      * <p>
-     * For more information about the RecordIO data format, see <a
+     * For more information about the RecordIO, see <a
      * href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     * documentation. For more information about the TFRecord fofmat, see <a
+     * documentation. For more information about the TFRecord, see <a
      * href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in the
      * TensorFlow documentation.
      * </p>
+     * </note>
      * 
      * @param splitType
      *        The method to use to split the transform job's data files into smaller batches. Splitting is necessary
@@ -510,13 +505,13 @@ public class TransformInput implements Serializable, Cloneable, StructuredPojo {
      *        to <code>SingleRecord</code>. Padding is not removed if the value of <code>BatchStrategy</code> is set to
      *        <code>MultiRecord</code>.
      *        </p>
-     *        </note>
      *        <p>
-     *        For more information about the RecordIO data format, see <a
+     *        For more information about the RecordIO, see <a
      *        href="http://mxnet.io/architecture/note_data_loading.html#data-format">Data Format</a> in the MXNet
-     *        documentation. For more information about the TFRecord fofmat, see <a
+     *        documentation. For more information about the TFRecord, see <a
      *        href="https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data">Consuming TFRecord data</a> in
      *        the TensorFlow documentation.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SplitType
      */

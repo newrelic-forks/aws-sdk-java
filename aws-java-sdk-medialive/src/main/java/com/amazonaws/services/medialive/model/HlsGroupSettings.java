@@ -18,7 +18,7 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Placeholder documentation for HlsGroupSettings
+ * Hls Group Settings
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsGroupSettings" target="_top">AWS API
  *      Documentation</a>
@@ -73,8 +73,19 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     /** Parameters that control interactions with the CDN. */
     private HlsCdnSettings hlsCdnSettings;
     /**
-     * If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than
-     * or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     * DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the
+     * Output Selection field).
+     * 
+     * STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests
+     * (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate
+     * it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example,
+     * #EXT-X-BYTERANGE:160364@1461888"
+     */
+    private String iFrameOnlyPlaylists;
+    /**
+     * Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After
+     * this maximum, older segments are removed from the media manifest. This number must be less than or equal to the
+     * Keep Segments field.
      */
     private Integer indexNSegments;
     /** Parameter that control output group behavior on input loss. */
@@ -92,8 +103,8 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
      */
     private String ivSource;
     /**
-     * If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this
-     * parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     * destination directory.
      */
     private Integer keepSegments;
     /**
@@ -124,8 +135,10 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
      */
     private String mode;
     /**
-     * Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without
-     * the .m3u8 file.
+     * MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output
+     * group.
+     * 
+     * SEGMENTSONLY: Does not generate any manifests for this output group.
      */
     private String outputSelection;
     /**
@@ -136,7 +149,18 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     private String programDateTime;
     /** Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds. */
     private Integer programDateTimePeriod;
-    /** When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8) file. */
+    /**
+     * ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its
+     * own media files, then the media files of the other pipeline. This feature allows playout device that support
+     * stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale.
+     * There are still two destinations and two master manifests, but both master manifests reference the media files
+     * from both pipelines.
+     * 
+     * DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
+     * 
+     * For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     * MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+     */
     private String redundantManifest;
     /**
      * Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next
@@ -159,9 +183,12 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     /** Provides an extra millisecond delta offset to fine tune the timestamps. */
     private Integer timestampDeltaMilliseconds;
     /**
-     * When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags
-     * to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server
-     * caching.
+     * SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     * SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest
+     * includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the
+     * output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is
+     * running is not guaranteed due to HTTP server caching.
      */
     private String tsFileMode;
 
@@ -826,12 +853,113 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than
-     * or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     * DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the
+     * Output Selection field).
+     * 
+     * STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests
+     * (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate
+     * it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example,
+     * #EXT-X-BYTERANGE:160364@1461888"
+     * 
+     * @param iFrameOnlyPlaylists
+     *        DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according
+     *        to the Output Selection field).
+     * 
+     *        STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other
+     *        manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY
+     *        tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame
+     *        position. For example, #EXT-X-BYTERANGE:160364@1461888"
+     * @see IFrameOnlyPlaylistType
+     */
+
+    public void setIFrameOnlyPlaylists(String iFrameOnlyPlaylists) {
+        this.iFrameOnlyPlaylists = iFrameOnlyPlaylists;
+    }
+
+    /**
+     * DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the
+     * Output Selection field).
+     * 
+     * STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests
+     * (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate
+     * it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example,
+     * #EXT-X-BYTERANGE:160364@1461888"
+     * 
+     * @return DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according
+     *         to the Output Selection field).
+     * 
+     *         STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other
+     *         manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY
+     *         tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame
+     *         position. For example, #EXT-X-BYTERANGE:160364@1461888"
+     * @see IFrameOnlyPlaylistType
+     */
+
+    public String getIFrameOnlyPlaylists() {
+        return this.iFrameOnlyPlaylists;
+    }
+
+    /**
+     * DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the
+     * Output Selection field).
+     * 
+     * STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests
+     * (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate
+     * it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example,
+     * #EXT-X-BYTERANGE:160364@1461888"
+     * 
+     * @param iFrameOnlyPlaylists
+     *        DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according
+     *        to the Output Selection field).
+     * 
+     *        STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other
+     *        manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY
+     *        tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame
+     *        position. For example, #EXT-X-BYTERANGE:160364@1461888"
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see IFrameOnlyPlaylistType
+     */
+
+    public HlsGroupSettings withIFrameOnlyPlaylists(String iFrameOnlyPlaylists) {
+        setIFrameOnlyPlaylists(iFrameOnlyPlaylists);
+        return this;
+    }
+
+    /**
+     * DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the
+     * Output Selection field).
+     * 
+     * STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests
+     * (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate
+     * it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example,
+     * #EXT-X-BYTERANGE:160364@1461888"
+     * 
+     * @param iFrameOnlyPlaylists
+     *        DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according
+     *        to the Output Selection field).
+     * 
+     *        STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other
+     *        manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY
+     *        tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame
+     *        position. For example, #EXT-X-BYTERANGE:160364@1461888"
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see IFrameOnlyPlaylistType
+     */
+
+    public HlsGroupSettings withIFrameOnlyPlaylists(IFrameOnlyPlaylistType iFrameOnlyPlaylists) {
+        this.iFrameOnlyPlaylists = iFrameOnlyPlaylists.toString();
+        return this;
+    }
+
+    /**
+     * Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After
+     * this maximum, older segments are removed from the media manifest. This number must be less than or equal to the
+     * Keep Segments field.
      * 
      * @param indexNSegments
-     *        If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less
-     *        than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     *        Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file.
+     *        After this maximum, older segments are removed from the media manifest. This number must be less than or
+     *        equal to the Keep Segments field.
      */
 
     public void setIndexNSegments(Integer indexNSegments) {
@@ -839,11 +967,13 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than
-     * or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After
+     * this maximum, older segments are removed from the media manifest. This number must be less than or equal to the
+     * Keep Segments field.
      * 
-     * @return If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be
-     *         less than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     * @return Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file.
+     *         After this maximum, older segments are removed from the media manifest. This number must be less than or
+     *         equal to the Keep Segments field.
      */
 
     public Integer getIndexNSegments() {
@@ -851,12 +981,14 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than
-     * or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After
+     * this maximum, older segments are removed from the media manifest. This number must be less than or equal to the
+     * Keep Segments field.
      * 
      * @param indexNSegments
-     *        If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less
-     *        than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+     *        Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file.
+     *        After this maximum, older segments are removed from the media manifest. This number must be less than or
+     *        equal to the Keep Segments field.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1055,12 +1187,12 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this
-     * parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     * destination directory.
      * 
      * @param keepSegments
-     *        If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod",
-     *        this parameter has no effect.
+     *        Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     *        destination directory.
      */
 
     public void setKeepSegments(Integer keepSegments) {
@@ -1068,11 +1200,11 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this
-     * parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     * destination directory.
      * 
-     * @return If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod",
-     *         this parameter has no effect.
+     * @return Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     *         destination directory.
      */
 
     public Integer getKeepSegments() {
@@ -1080,12 +1212,12 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this
-     * parameter has no effect.
+     * Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     * destination directory.
      * 
      * @param keepSegments
-     *        If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod",
-     *        this parameter has no effect.
+     *        Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the
+     *        destination directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1436,12 +1568,16 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without
-     * the .m3u8 file.
+     * MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output
+     * group.
+     * 
+     * SEGMENTSONLY: Does not generate any manifests for this output group.
      * 
      * @param outputSelection
-     *        Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments
-     *        without the .m3u8 file.
+     *        MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this
+     *        output group.
+     * 
+     *        SEGMENTSONLY: Does not generate any manifests for this output group.
      * @see HlsOutputSelection
      */
 
@@ -1450,11 +1586,15 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without
-     * the .m3u8 file.
+     * MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output
+     * group.
      * 
-     * @return Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments
-     *         without the .m3u8 file.
+     * SEGMENTSONLY: Does not generate any manifests for this output group.
+     * 
+     * @return MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this
+     *         output group.
+     * 
+     *         SEGMENTSONLY: Does not generate any manifests for this output group.
      * @see HlsOutputSelection
      */
 
@@ -1463,12 +1603,16 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without
-     * the .m3u8 file.
+     * MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output
+     * group.
+     * 
+     * SEGMENTSONLY: Does not generate any manifests for this output group.
      * 
      * @param outputSelection
-     *        Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments
-     *        without the .m3u8 file.
+     *        MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this
+     *        output group.
+     * 
+     *        SEGMENTSONLY: Does not generate any manifests for this output group.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsOutputSelection
      */
@@ -1479,12 +1623,16 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without
-     * the .m3u8 file.
+     * MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output
+     * group.
+     * 
+     * SEGMENTSONLY: Does not generate any manifests for this output group.
      * 
      * @param outputSelection
-     *        Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments
-     *        without the .m3u8 file.
+     *        MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this
+     *        output group.
+     * 
+     *        SEGMENTSONLY: Does not generate any manifests for this output group.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsOutputSelection
      */
@@ -1596,11 +1744,30 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8) file.
+     * ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its
+     * own media files, then the media files of the other pipeline. This feature allows playout device that support
+     * stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale.
+     * There are still two destinations and two master manifests, but both master manifests reference the media files
+     * from both pipelines.
+     * 
+     * DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
+     * 
+     * For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     * MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
      * 
      * @param redundantManifest
-     *        When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8)
-     *        file.
+     *        ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines:
+     *        first its own media files, then the media files of the other pipeline. This feature allows playout device
+     *        that support stale manifest detection to switch from one manifest to the other, when the current manifest
+     *        seems to be stale. There are still two destinations and two master manifests, but both master manifests
+     *        reference the media files from both pipelines.
+     * 
+     *        DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline
+     *        only.
+     * 
+     *        For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     *        MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is
+     *        irrelevant.
      * @see HlsRedundantManifest
      */
 
@@ -1609,10 +1776,29 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8) file.
+     * ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its
+     * own media files, then the media files of the other pipeline. This feature allows playout device that support
+     * stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale.
+     * There are still two destinations and two master manifests, but both master manifests reference the media files
+     * from both pipelines.
      * 
-     * @return When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8)
-     *         file.
+     * DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
+     * 
+     * For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     * MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+     * 
+     * @return ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines:
+     *         first its own media files, then the media files of the other pipeline. This feature allows playout device
+     *         that support stale manifest detection to switch from one manifest to the other, when the current manifest
+     *         seems to be stale. There are still two destinations and two master manifests, but both master manifests
+     *         reference the media files from both pipelines.
+     * 
+     *         DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline
+     *         only.
+     * 
+     *         For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     *         MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is
+     *         irrelevant.
      * @see HlsRedundantManifest
      */
 
@@ -1621,11 +1807,30 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8) file.
+     * ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its
+     * own media files, then the media files of the other pipeline. This feature allows playout device that support
+     * stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale.
+     * There are still two destinations and two master manifests, but both master manifests reference the media files
+     * from both pipelines.
+     * 
+     * DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
+     * 
+     * For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     * MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
      * 
      * @param redundantManifest
-     *        When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8)
-     *        file.
+     *        ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines:
+     *        first its own media files, then the media files of the other pipeline. This feature allows playout device
+     *        that support stale manifest detection to switch from one manifest to the other, when the current manifest
+     *        seems to be stale. There are still two destinations and two master manifests, but both master manifests
+     *        reference the media files from both pipelines.
+     * 
+     *        DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline
+     *        only.
+     * 
+     *        For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     *        MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is
+     *        irrelevant.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsRedundantManifest
      */
@@ -1636,11 +1841,30 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8) file.
+     * ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its
+     * own media files, then the media files of the other pipeline. This feature allows playout device that support
+     * stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale.
+     * There are still two destinations and two master manifests, but both master manifests reference the media files
+     * from both pipelines.
+     * 
+     * DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
+     * 
+     * For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     * MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
      * 
      * @param redundantManifest
-     *        When set to "enabled", includes the media playlists from both pipelines in the master manifest (.m3u8)
-     *        file.
+     *        ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines:
+     *        first its own media files, then the media files of the other pipeline. This feature allows playout device
+     *        that support stale manifest detection to switch from one manifest to the other, when the current manifest
+     *        seems to be stale. There are still two destinations and two master manifests, but both master manifests
+     *        reference the media files from both pipelines.
+     * 
+     *        DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline
+     *        only.
+     * 
+     *        For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed.
+     *        MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is
+     *        irrelevant.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsRedundantManifest
      */
@@ -1952,14 +2176,20 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags
-     * to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server
-     * caching.
+     * SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     * SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest
+     * includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the
+     * output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is
+     * running is not guaranteed due to HTTP server caching.
      * 
      * @param tsFileMode
-     *        When set to "singleFile", emits the program as a single media resource (.ts) file, and uses
-     *        #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not
-     *        guaranteed due to HTTP server caching.
+     *        SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     *        SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media
+     *        manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is
+     *        when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback
+     *        while the channel is running is not guaranteed due to HTTP server caching.
      * @see HlsTsFileMode
      */
 
@@ -1968,13 +2198,19 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags
-     * to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server
-     * caching.
+     * SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
      * 
-     * @return When set to "singleFile", emits the program as a single media resource (.ts) file, and uses
-     *         #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not
-     *         guaranteed due to HTTP server caching.
+     * SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest
+     * includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the
+     * output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is
+     * running is not guaranteed due to HTTP server caching.
+     * 
+     * @return SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     *         SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media
+     *         manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is
+     *         when sending the output to AWS Elemental MediaConvert, which can accept only a single media file.
+     *         Playback while the channel is running is not guaranteed due to HTTP server caching.
      * @see HlsTsFileMode
      */
 
@@ -1983,14 +2219,20 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags
-     * to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server
-     * caching.
+     * SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     * SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest
+     * includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the
+     * output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is
+     * running is not guaranteed due to HTTP server caching.
      * 
      * @param tsFileMode
-     *        When set to "singleFile", emits the program as a single media resource (.ts) file, and uses
-     *        #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not
-     *        guaranteed due to HTTP server caching.
+     *        SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     *        SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media
+     *        manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is
+     *        when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback
+     *        while the channel is running is not guaranteed due to HTTP server caching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsTsFileMode
      */
@@ -2001,14 +2243,20 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags
-     * to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server
-     * caching.
+     * SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     * SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest
+     * includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the
+     * output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is
+     * running is not guaranteed due to HTTP server caching.
      * 
      * @param tsFileMode
-     *        When set to "singleFile", emits the program as a single media resource (.ts) file, and uses
-     *        #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not
-     *        guaranteed due to HTTP server caching.
+     *        SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.
+     * 
+     *        SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media
+     *        manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is
+     *        when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback
+     *        while the channel is running is not guaranteed due to HTTP server caching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsTsFileMode
      */
@@ -2054,6 +2302,8 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
             sb.append("EncryptionType: ").append(getEncryptionType()).append(",");
         if (getHlsCdnSettings() != null)
             sb.append("HlsCdnSettings: ").append(getHlsCdnSettings()).append(",");
+        if (getIFrameOnlyPlaylists() != null)
+            sb.append("IFrameOnlyPlaylists: ").append(getIFrameOnlyPlaylists()).append(",");
         if (getIndexNSegments() != null)
             sb.append("IndexNSegments: ").append(getIndexNSegments()).append(",");
         if (getInputLossAction() != null)
@@ -2163,6 +2413,10 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
         if (other.getHlsCdnSettings() == null ^ this.getHlsCdnSettings() == null)
             return false;
         if (other.getHlsCdnSettings() != null && other.getHlsCdnSettings().equals(this.getHlsCdnSettings()) == false)
+            return false;
+        if (other.getIFrameOnlyPlaylists() == null ^ this.getIFrameOnlyPlaylists() == null)
+            return false;
+        if (other.getIFrameOnlyPlaylists() != null && other.getIFrameOnlyPlaylists().equals(this.getIFrameOnlyPlaylists()) == false)
             return false;
         if (other.getIndexNSegments() == null ^ this.getIndexNSegments() == null)
             return false;
@@ -2280,6 +2534,7 @@ public class HlsGroupSettings implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getDirectoryStructure() == null) ? 0 : getDirectoryStructure().hashCode());
         hashCode = prime * hashCode + ((getEncryptionType() == null) ? 0 : getEncryptionType().hashCode());
         hashCode = prime * hashCode + ((getHlsCdnSettings() == null) ? 0 : getHlsCdnSettings().hashCode());
+        hashCode = prime * hashCode + ((getIFrameOnlyPlaylists() == null) ? 0 : getIFrameOnlyPlaylists().hashCode());
         hashCode = prime * hashCode + ((getIndexNSegments() == null) ? 0 : getIndexNSegments().hashCode());
         hashCode = prime * hashCode + ((getInputLossAction() == null) ? 0 : getInputLossAction().hashCode());
         hashCode = prime * hashCode + ((getIvInManifest() == null) ? 0 : getIvInManifest().hashCode());

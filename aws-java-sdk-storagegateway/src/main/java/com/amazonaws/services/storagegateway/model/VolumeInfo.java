@@ -62,7 +62,11 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String gatewayId;
-
+    /**
+     * <p>
+     * One of the VolumeType enumeration values describing the type of the volume.
+     * </p>
+     */
     private String volumeType;
     /**
      * <p>
@@ -73,6 +77,12 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private Long volumeSizeInBytes;
+    /**
+     * <p>
+     * One of the VolumeStatus values that indicates the state of the storage volume.
+     * </p>
+     */
+    private String volumeAttachmentStatus;
 
     /**
      * <p>
@@ -296,7 +306,12 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * One of the VolumeType enumeration values describing the type of the volume.
+     * </p>
+     * 
      * @param volumeType
+     *        One of the VolumeType enumeration values describing the type of the volume.
      */
 
     public void setVolumeType(String volumeType) {
@@ -304,7 +319,11 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * One of the VolumeType enumeration values describing the type of the volume.
+     * </p>
+     * 
+     * @return One of the VolumeType enumeration values describing the type of the volume.
      */
 
     public String getVolumeType() {
@@ -312,7 +331,12 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * One of the VolumeType enumeration values describing the type of the volume.
+     * </p>
+     * 
      * @param volumeType
+     *        One of the VolumeType enumeration values describing the type of the volume.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -377,6 +401,46 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * One of the VolumeStatus values that indicates the state of the storage volume.
+     * </p>
+     * 
+     * @param volumeAttachmentStatus
+     *        One of the VolumeStatus values that indicates the state of the storage volume.
+     */
+
+    public void setVolumeAttachmentStatus(String volumeAttachmentStatus) {
+        this.volumeAttachmentStatus = volumeAttachmentStatus;
+    }
+
+    /**
+     * <p>
+     * One of the VolumeStatus values that indicates the state of the storage volume.
+     * </p>
+     * 
+     * @return One of the VolumeStatus values that indicates the state of the storage volume.
+     */
+
+    public String getVolumeAttachmentStatus() {
+        return this.volumeAttachmentStatus;
+    }
+
+    /**
+     * <p>
+     * One of the VolumeStatus values that indicates the state of the storage volume.
+     * </p>
+     * 
+     * @param volumeAttachmentStatus
+     *        One of the VolumeStatus values that indicates the state of the storage volume.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VolumeInfo withVolumeAttachmentStatus(String volumeAttachmentStatus) {
+        setVolumeAttachmentStatus(volumeAttachmentStatus);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -399,7 +463,9 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
         if (getVolumeType() != null)
             sb.append("VolumeType: ").append(getVolumeType()).append(",");
         if (getVolumeSizeInBytes() != null)
-            sb.append("VolumeSizeInBytes: ").append(getVolumeSizeInBytes());
+            sb.append("VolumeSizeInBytes: ").append(getVolumeSizeInBytes()).append(",");
+        if (getVolumeAttachmentStatus() != null)
+            sb.append("VolumeAttachmentStatus: ").append(getVolumeAttachmentStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -438,6 +504,10 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getVolumeSizeInBytes() != null && other.getVolumeSizeInBytes().equals(this.getVolumeSizeInBytes()) == false)
             return false;
+        if (other.getVolumeAttachmentStatus() == null ^ this.getVolumeAttachmentStatus() == null)
+            return false;
+        if (other.getVolumeAttachmentStatus() != null && other.getVolumeAttachmentStatus().equals(this.getVolumeAttachmentStatus()) == false)
+            return false;
         return true;
     }
 
@@ -452,6 +522,7 @@ public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getGatewayId() == null) ? 0 : getGatewayId().hashCode());
         hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
         hashCode = prime * hashCode + ((getVolumeSizeInBytes() == null) ? 0 : getVolumeSizeInBytes().hashCode());
+        hashCode = prime * hashCode + ((getVolumeAttachmentStatus() == null) ? 0 : getVolumeAttachmentStatus().hashCode());
         return hashCode;
     }
 

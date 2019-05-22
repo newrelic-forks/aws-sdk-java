@@ -200,6 +200,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddFlowOutputs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -266,6 +267,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -328,6 +330,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -391,6 +394,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -457,6 +461,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GrantFlowEntitlements");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -517,6 +522,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEntitlements");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -575,12 +581,70 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListFlows");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<ListFlowsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListFlowsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * List all tags on an AWS Elemental MediaConnect resource
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws NotFoundException
+     *         The requested resource was not found
+     * @throws BadRequestException
+     *         The client performed an invalid request
+     * @throws InternalServerErrorException
+     *         Internal service error
+     * @sample AWSMediaConnect.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -639,6 +703,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveFlowOutput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -702,6 +767,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RevokeFlowEntitlement");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -765,6 +831,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -827,12 +894,131 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<StopFlowResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new StopFlowResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are
+     * not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated
+     * with that resource are deleted as well.
+     * 
+     * @param tagResourceRequest
+     *        The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum
+     *        character length of 128 characters, and tag values can have a maximum length of 256 characters.
+     * @return Result of the TagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The requested resource was not found
+     * @throws BadRequestException
+     *         The client performed an invalid request
+     * @throws InternalServerErrorException
+     *         Internal service error
+     * @sample AWSMediaConnect.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Deletes specified tags from a resource.
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The requested resource was not found
+     * @throws BadRequestException
+     *         The client performed an invalid request
+     * @throws InternalServerErrorException
+     *         Internal service error
+     * @sample AWSMediaConnect.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -891,6 +1077,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowEntitlement");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -955,6 +1142,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowOutput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1018,6 +1206,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowSource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

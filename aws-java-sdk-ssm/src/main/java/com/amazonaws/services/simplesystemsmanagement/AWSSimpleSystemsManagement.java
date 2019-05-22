@@ -447,9 +447,8 @@ public interface AWSSimpleSystemsManagement {
      * <p>
      * By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to
      * ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a
-     * restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync,
-     * see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html">Create a
+     * restrictive bucket policy. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
      * Resource Data Sync for Inventory</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
@@ -1209,7 +1208,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance
+     * Retrieves the individual task executions (one per target) for a particular task run as part of a Maintenance
      * Window execution.
      * </p>
      * 
@@ -1234,7 +1233,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * For a given Maintenance Window execution, lists the tasks that were executed.
+     * For a given Maintenance Window execution, lists the tasks that were run.
      * </p>
      * 
      * @param describeMaintenanceWindowExecutionTasksRequest
@@ -1449,6 +1448,71 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Lists the properties of available patches organized by product, product family, classification, severity, and
+     * other properties of available patches. You can use the reported properties in the filters you specify in requests
+     * for actions such as <a>CreatePatchBaseline</a>, <a>UpdatePatchBaseline</a>, <a>DescribeAvailablePatches</a>, and
+     * <a>DescribePatchBaselines</a>.
+     * </p>
+     * <p>
+     * The following section lists the properties that can be used in filters for each major operating system type:
+     * </p>
+     * <dl>
+     * <dt>WINDOWS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX_2</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>UBUNTU</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRIORITY
+     * </p>
+     * </dd>
+     * <dt>REDHAT_ENTERPRISE_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>SUSE</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>CENTOS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * </dl>
+     * 
+     * @param describePatchPropertiesRequest
+     * @return Result of the DescribePatchProperties operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribePatchProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchProperties" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribePatchPropertiesResult describePatchProperties(DescribePatchPropertiesRequest describePatchPropertiesRequest);
+
+    /**
+     * <p>
      * Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30
      * days.
      * </p>
@@ -1569,6 +1633,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws UnsupportedOperatingSystemException
      *         The operating systems you specified is not supported, or the operation is not supported for the operating
      *         system. Valid operating systems include: Windows, AmazonLinux, RedhatEnterpriseLinux, and Ubuntu.
+     * @throws UnsupportedFeatureRequiredException
      * @sample AWSSimpleSystemsManagement.GetDeployablePatchSnapshotForInstance
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDeployablePatchSnapshotForInstance"
      *      target="_top">AWS API Documentation</a>
@@ -1667,7 +1732,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves details about a specific task run as part of a Maintenance Window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionRequest
@@ -1689,7 +1754,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves the details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves the details about a specific task run as part of a Maintenance Window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskRequest
@@ -1711,7 +1776,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance
+     * Retrieves a task invocation. A task invocation is a specific task running on a specific target. Maintenance
      * Windows report status for all invocations.
      * </p>
      * 
@@ -1896,6 +1961,39 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>UpdateServiceSetting</a> API action to change the default setting. Or use the <a>ResetServiceSetting</a> to
+     * change the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Query the current service setting for the account.
+     * </p>
+     * 
+     * @param getServiceSettingRequest
+     *        The request body of the GetServiceSetting API action.
+     * @return Result of the GetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @sample AWSSimpleSystemsManagement.GetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetServiceSettingResult getServiceSetting(GetServiceSettingRequest getServiceSettingRequest);
+
+    /**
+     * <p>
      * A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a
      * parameter, Systems Manager automatically saves a new version and increments the version number by one. A label
      * can help you remember the purpose of a parameter when there are multiple versions.
@@ -2008,8 +2106,8 @@ public interface AWSSimpleSystemsManagement {
     /**
      * <p>
      * An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A
-     * command invocation applies to one instance. For example, if a user executes SendCommand against three instances,
-     * then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
+     * command invocation applies to one instance. For example, if a user runs SendCommand against three instances, then
+     * a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
      * command execution.
      * </p>
      * 
@@ -2502,6 +2600,16 @@ public interface AWSSimpleSystemsManagement {
      *         The parameter name is not valid.
      * @throws UnsupportedParameterTypeException
      *         The parameter type is not supported.
+     * @throws PoliciesLimitExceededException
+     *         You specified more than the maximum number of allowed policies for the parameter. The maximum is 10.
+     * @throws InvalidPolicyTypeException
+     *         The policy type is not supported. Parameter Store supports the following policy types: Expiration,
+     *         ExpirationNotification, and NoChangeNotification.
+     * @throws InvalidPolicyAttributeException
+     *         A policy attribute or its value is invalid.
+     * @throws IncompatiblePolicyException
+     *         There is a conflict in the policies specified for this parameter. You can't, for example, specify two
+     *         Expiration policies for a parameter. Review your policies, and try again.
      * @sample AWSSimpleSystemsManagement.PutParameter
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter" target="_top">AWS API
      *      Documentation</a>
@@ -2662,6 +2770,41 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Use the <a>UpdateServiceSetting</a> API action to
+     * change the default setting.
+     * </p>
+     * <p>
+     * Reset the service setting for the account to the default value as provisioned by the AWS service team.
+     * </p>
+     * 
+     * @param resetServiceSettingRequest
+     *        The request body of the ResetServiceSetting API action.
+     * @return Result of the ResetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.ResetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ResetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ResetServiceSettingResult resetServiceSetting(ResetServiceSettingRequest resetServiceSettingRequest);
+
+    /**
+     * <p>
      * Reconnects a session to an instance after it has been disconnected. Connections can be resumed for disconnected
      * sessions, but not terminated sessions.
      * </p>
@@ -2712,7 +2855,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Executes commands on one or more managed instances.
+     * Runs commands on one or more managed instances.
      * </p>
      * 
      * @param sendCommandRequest
@@ -2768,7 +2911,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Use this API action to execute an association immediately and only one time. This action can be helpful when
+     * Use this API action to run an association immediately and only one time. This action can be helpful when
      * troubleshooting associations.
      * </p>
      * 
@@ -2847,7 +2990,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Stop an Automation that is currently executing.
+     * Stop an Automation that is currently running.
      * </p>
      * 
      * @param stopAutomationExecutionRequest
@@ -2892,6 +3035,11 @@ public interface AWSSimpleSystemsManagement {
      * Updates an association. You can update the association name and version, the document version, schedule,
      * parameters, and Amazon S3 output.
      * </p>
+     * <important>
+     * <p>
+     * When you update an association, the association immediately runs against the specified targets.
+     * </p>
+     * </important>
      * 
      * @param updateAssociationRequest
      * @return Result of the UpdateAssociation operation returned by the service.
@@ -3211,6 +3359,41 @@ public interface AWSSimpleSystemsManagement {
      *      Documentation</a>
      */
     UpdatePatchBaselineResult updatePatchBaseline(UpdatePatchBaselineRequest updatePatchBaselineRequest);
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Or, use the <a>ResetServiceSetting</a> to change
+     * the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Update the service setting for the account.
+     * </p>
+     * 
+     * @param updateServiceSettingRequest
+     *        The request body of the UpdateServiceSetting API action.
+     * @return Result of the UpdateServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.UpdateServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateServiceSettingResult updateServiceSetting(UpdateServiceSettingRequest updateServiceSettingRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

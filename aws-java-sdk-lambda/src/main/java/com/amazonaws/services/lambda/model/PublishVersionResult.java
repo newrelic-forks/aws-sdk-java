@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * A Lambda function's configuration settings.
+ * Details about a function's configuration.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PublishVersion" target="_top">AWS API
@@ -34,7 +34,7 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
     private String functionName;
     /**
      * <p>
-     * The function's Amazon Resource Name.
+     * The function's Amazon Resource Name (ARN).
      * </p>
      */
     private String functionArn;
@@ -52,13 +52,13 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
     private String role;
     /**
      * <p>
-     * The function Lambda calls to begin executing your function.
+     * The function that Lambda calls to begin executing your function.
      * </p>
      */
     private String handler;
     /**
      * <p>
-     * The size of the function's deployment package in bytes.
+     * The size of the function's deployment package, in bytes.
      * </p>
      */
     private Long codeSize;
@@ -70,13 +70,13 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
     private String description;
     /**
      * <p>
-     * The amount of time that Lambda allows a function to run before terminating it.
+     * The amount of time that Lambda allows a function to run before stopping it.
      * </p>
      */
     private Integer timeout;
     /**
      * <p>
-     * The memory allocated to the function
+     * The memory that's allocated to the function.
      * </p>
      */
     private Integer memorySize;
@@ -119,8 +119,8 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
     private EnvironmentResponse environment;
     /**
      * <p>
-     * The KMS key used to encrypt the function's environment variables. Only returned if you've configured a customer
-     * managed CMK.
+     * The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've
+     * configured a customer-managed CMK.
      * </p>
      */
     private String kMSKeyArn;
@@ -132,19 +132,19 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
     private TracingConfigResponse tracingConfig;
     /**
      * <p>
-     * The ARN of the master function.
+     * For Lambda@Edge functions, the ARN of the master function.
      * </p>
      */
     private String masterArn;
     /**
      * <p>
-     * Represents the latest updated revision of the function or alias.
+     * The latest updated revision of the function or alias.
      * </p>
      */
     private String revisionId;
     /**
      * <p>
-     * A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function layers</a>.
+     * The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html"> layers</a>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Layer> layers;
@@ -191,11 +191,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function's Amazon Resource Name.
+     * The function's Amazon Resource Name (ARN).
      * </p>
      * 
      * @param functionArn
-     *        The function's Amazon Resource Name.
+     *        The function's Amazon Resource Name (ARN).
      */
 
     public void setFunctionArn(String functionArn) {
@@ -204,10 +204,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function's Amazon Resource Name.
+     * The function's Amazon Resource Name (ARN).
      * </p>
      * 
-     * @return The function's Amazon Resource Name.
+     * @return The function's Amazon Resource Name (ARN).
      */
 
     public String getFunctionArn() {
@@ -216,11 +216,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function's Amazon Resource Name.
+     * The function's Amazon Resource Name (ARN).
      * </p>
      * 
      * @param functionArn
-     *        The function's Amazon Resource Name.
+     *        The function's Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,11 +344,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function Lambda calls to begin executing your function.
+     * The function that Lambda calls to begin executing your function.
      * </p>
      * 
      * @param handler
-     *        The function Lambda calls to begin executing your function.
+     *        The function that Lambda calls to begin executing your function.
      */
 
     public void setHandler(String handler) {
@@ -357,10 +357,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function Lambda calls to begin executing your function.
+     * The function that Lambda calls to begin executing your function.
      * </p>
      * 
-     * @return The function Lambda calls to begin executing your function.
+     * @return The function that Lambda calls to begin executing your function.
      */
 
     public String getHandler() {
@@ -369,11 +369,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The function Lambda calls to begin executing your function.
+     * The function that Lambda calls to begin executing your function.
      * </p>
      * 
      * @param handler
-     *        The function Lambda calls to begin executing your function.
+     *        The function that Lambda calls to begin executing your function.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -384,11 +384,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The size of the function's deployment package in bytes.
+     * The size of the function's deployment package, in bytes.
      * </p>
      * 
      * @param codeSize
-     *        The size of the function's deployment package in bytes.
+     *        The size of the function's deployment package, in bytes.
      */
 
     public void setCodeSize(Long codeSize) {
@@ -397,10 +397,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The size of the function's deployment package in bytes.
+     * The size of the function's deployment package, in bytes.
      * </p>
      * 
-     * @return The size of the function's deployment package in bytes.
+     * @return The size of the function's deployment package, in bytes.
      */
 
     public Long getCodeSize() {
@@ -409,11 +409,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The size of the function's deployment package in bytes.
+     * The size of the function's deployment package, in bytes.
      * </p>
      * 
      * @param codeSize
-     *        The size of the function's deployment package in bytes.
+     *        The size of the function's deployment package, in bytes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -464,11 +464,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The amount of time that Lambda allows a function to run before terminating it.
+     * The amount of time that Lambda allows a function to run before stopping it.
      * </p>
      * 
      * @param timeout
-     *        The amount of time that Lambda allows a function to run before terminating it.
+     *        The amount of time that Lambda allows a function to run before stopping it.
      */
 
     public void setTimeout(Integer timeout) {
@@ -477,10 +477,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The amount of time that Lambda allows a function to run before terminating it.
+     * The amount of time that Lambda allows a function to run before stopping it.
      * </p>
      * 
-     * @return The amount of time that Lambda allows a function to run before terminating it.
+     * @return The amount of time that Lambda allows a function to run before stopping it.
      */
 
     public Integer getTimeout() {
@@ -489,11 +489,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The amount of time that Lambda allows a function to run before terminating it.
+     * The amount of time that Lambda allows a function to run before stopping it.
      * </p>
      * 
      * @param timeout
-     *        The amount of time that Lambda allows a function to run before terminating it.
+     *        The amount of time that Lambda allows a function to run before stopping it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -504,11 +504,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The memory allocated to the function
+     * The memory that's allocated to the function.
      * </p>
      * 
      * @param memorySize
-     *        The memory allocated to the function
+     *        The memory that's allocated to the function.
      */
 
     public void setMemorySize(Integer memorySize) {
@@ -517,10 +517,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The memory allocated to the function
+     * The memory that's allocated to the function.
      * </p>
      * 
-     * @return The memory allocated to the function
+     * @return The memory that's allocated to the function.
      */
 
     public Integer getMemorySize() {
@@ -529,11 +529,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The memory allocated to the function
+     * The memory that's allocated to the function.
      * </p>
      * 
      * @param memorySize
-     *        The memory allocated to the function
+     *        The memory that's allocated to the function.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -790,13 +790,13 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The KMS key used to encrypt the function's environment variables. Only returned if you've configured a customer
-     * managed CMK.
+     * The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've
+     * configured a customer-managed CMK.
      * </p>
      * 
      * @param kMSKeyArn
-     *        The KMS key used to encrypt the function's environment variables. Only returned if you've configured a
-     *        customer managed CMK.
+     *        The KMS key that's used to encrypt the function's environment variables. This key is only returned if
+     *        you've configured a customer-managed CMK.
      */
 
     public void setKMSKeyArn(String kMSKeyArn) {
@@ -805,12 +805,12 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The KMS key used to encrypt the function's environment variables. Only returned if you've configured a customer
-     * managed CMK.
+     * The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've
+     * configured a customer-managed CMK.
      * </p>
      * 
-     * @return The KMS key used to encrypt the function's environment variables. Only returned if you've configured a
-     *         customer managed CMK.
+     * @return The KMS key that's used to encrypt the function's environment variables. This key is only returned if
+     *         you've configured a customer-managed CMK.
      */
 
     public String getKMSKeyArn() {
@@ -819,13 +819,13 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The KMS key used to encrypt the function's environment variables. Only returned if you've configured a customer
-     * managed CMK.
+     * The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've
+     * configured a customer-managed CMK.
      * </p>
      * 
      * @param kMSKeyArn
-     *        The KMS key used to encrypt the function's environment variables. Only returned if you've configured a
-     *        customer managed CMK.
+     *        The KMS key that's used to encrypt the function's environment variables. This key is only returned if
+     *        you've configured a customer-managed CMK.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -876,11 +876,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The ARN of the master function.
+     * For Lambda@Edge functions, the ARN of the master function.
      * </p>
      * 
      * @param masterArn
-     *        The ARN of the master function.
+     *        For Lambda@Edge functions, the ARN of the master function.
      */
 
     public void setMasterArn(String masterArn) {
@@ -889,10 +889,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The ARN of the master function.
+     * For Lambda@Edge functions, the ARN of the master function.
      * </p>
      * 
-     * @return The ARN of the master function.
+     * @return For Lambda@Edge functions, the ARN of the master function.
      */
 
     public String getMasterArn() {
@@ -901,11 +901,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The ARN of the master function.
+     * For Lambda@Edge functions, the ARN of the master function.
      * </p>
      * 
      * @param masterArn
-     *        The ARN of the master function.
+     *        For Lambda@Edge functions, the ARN of the master function.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -916,11 +916,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * Represents the latest updated revision of the function or alias.
+     * The latest updated revision of the function or alias.
      * </p>
      * 
      * @param revisionId
-     *        Represents the latest updated revision of the function or alias.
+     *        The latest updated revision of the function or alias.
      */
 
     public void setRevisionId(String revisionId) {
@@ -929,10 +929,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * Represents the latest updated revision of the function or alias.
+     * The latest updated revision of the function or alias.
      * </p>
      * 
-     * @return Represents the latest updated revision of the function or alias.
+     * @return The latest updated revision of the function or alias.
      */
 
     public String getRevisionId() {
@@ -941,11 +941,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * Represents the latest updated revision of the function or alias.
+     * The latest updated revision of the function or alias.
      * </p>
      * 
      * @param revisionId
-     *        Represents the latest updated revision of the function or alias.
+     *        The latest updated revision of the function or alias.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -956,10 +956,10 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function layers</a>.
+     * The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html"> layers</a>.
      * </p>
      * 
-     * @return A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function
+     * @return The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">
      *         layers</a>.
      */
 
@@ -972,11 +972,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function layers</a>.
+     * The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html"> layers</a>.
      * </p>
      * 
      * @param layers
-     *        A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function
+     *        The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">
      *        layers</a>.
      */
 
@@ -991,7 +991,7 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function layers</a>.
+     * The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html"> layers</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1000,7 +1000,7 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
      * </p>
      * 
      * @param layers
-     *        A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function
+     *        The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">
      *        layers</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1017,11 +1017,11 @@ public class PublishVersionResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function layers</a>.
+     * The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html"> layers</a>.
      * </p>
      * 
      * @param layers
-     *        A list of <a href="http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">function
+     *        The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">
      *        layers</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

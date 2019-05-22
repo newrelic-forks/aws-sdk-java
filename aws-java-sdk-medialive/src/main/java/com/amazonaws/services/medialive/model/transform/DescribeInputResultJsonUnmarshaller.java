@@ -65,6 +65,10 @@ public class DescribeInputResultJsonUnmarshaller implements Unmarshaller<Describ
                     context.nextToken();
                     describeInputResult.setId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("inputClass", targetDepth)) {
+                    context.nextToken();
+                    describeInputResult.setInputClass(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("mediaConnectFlows", targetDepth)) {
                     context.nextToken();
                     describeInputResult.setMediaConnectFlows(new ListUnmarshaller<MediaConnectFlow>(MediaConnectFlowJsonUnmarshaller.getInstance())
@@ -89,6 +93,11 @@ public class DescribeInputResultJsonUnmarshaller implements Unmarshaller<Describ
                 if (context.testExpression("state", targetDepth)) {
                     context.nextToken();
                     describeInputResult.setState(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("tags", targetDepth)) {
+                    context.nextToken();
+                    describeInputResult.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
+                            .getUnmarshaller(String.class)).unmarshall(context));
                 }
                 if (context.testExpression("type", targetDepth)) {
                     context.nextToken();

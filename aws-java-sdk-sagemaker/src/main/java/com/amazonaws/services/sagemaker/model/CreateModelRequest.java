@@ -49,7 +49,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and
      * docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute
      * instances is part of model hosting. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      * </p>
      * <note>
      * <p>
@@ -62,19 +62,20 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      */
     private java.util.List<Tag> tags;
     /**
      * <p>
-     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
-     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
-     * transform. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
-     * Private Cloud</a> and <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
-     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
+     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
+     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
+     * Using an Amazon Virtual Private Cloud</a> and <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
+     * Using an Amazon Virtual Private Cloud</a>.
      * </p>
      */
     private VpcConfig vpcConfig;
@@ -251,7 +252,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and
      * docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute
      * instances is part of model hosting. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      * </p>
      * <note>
      * <p>
@@ -264,7 +265,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts
      *        and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML
      *        compute instances is part of model hosting. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *        </p> <note>
      *        <p>
      *        To be able to pass this role to Amazon SageMaker, the caller of this API must have the
@@ -281,7 +282,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and
      * docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute
      * instances is part of model hosting. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      * </p>
      * <note>
      * <p>
@@ -293,7 +294,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @return The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts
      *         and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML
      *         compute instances is part of model hosting. For more information, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *         </p> <note>
      *         <p>
      *         To be able to pass this role to Amazon SageMaker, the caller of this API must have the
@@ -310,7 +311,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and
      * docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute
      * instances is part of model hosting. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      * </p>
      * <note>
      * <p>
@@ -323,7 +324,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts
      *        and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML
      *        compute instances is part of model hosting. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *        </p> <note>
      *        <p>
      *        To be able to pass this role to Amazon SageMaker, the caller of this API must have the
@@ -340,12 +341,12 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @return An array of key-value pairs. For more information, see <a
-     *         href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *         href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *         >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      */
 
@@ -356,13 +357,13 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      */
 
@@ -378,7 +379,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * <p>
@@ -389,7 +390,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -407,13 +408,13 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -425,21 +426,22 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
-     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
-     * transform. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
-     * Private Cloud</a> and <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
-     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
+     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
+     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
+     * Using an Amazon Virtual Private Cloud</a> and <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
+     * Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
-     *        A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to
-     *        and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services
-     *        and in batch transform. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
-     *        Virtual Private Cloud</a> and <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
+     *        A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     *        specifies the VPC that you want your model to connect to. Control access to and from your model container
+     *        by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
+     *        more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
+     *        Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
      *        by Using an Amazon Virtual Private Cloud</a>.
      */
 
@@ -449,21 +451,22 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
-     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
-     * transform. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
-     * Private Cloud</a> and <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
-     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
+     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
+     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
+     * Using an Amazon Virtual Private Cloud</a> and <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
+     * Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
-     * @return A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access
-     *         to and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting
-     *         services and in batch transform. For more information, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
-     *         Virtual Private Cloud</a> and <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
-     *         by Using an Amazon Virtual Private Cloud</a>.
+     * @return A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     *         specifies the VPC that you want your model to connect to. Control access to and from your model container
+     *         by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
+     *         more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
+     *         Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform
+     *         Jobs by Using an Amazon Virtual Private Cloud</a>.
      */
 
     public VpcConfig getVpcConfig() {
@@ -472,21 +475,22 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
-     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
-     * transform. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
-     * Private Cloud</a> and <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
-     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
+     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
+     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
+     * Using an Amazon Virtual Private Cloud</a> and <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
+     * Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
-     *        A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to
-     *        and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services
-     *        and in batch transform. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
-     *        Virtual Private Cloud</a> and <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
+     *        A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
+     *        specifies the VPC that you want your model to connect to. Control access to and from your model container
+     *        by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
+     *        more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
+     *        Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
      *        by Using an Amazon Virtual Private Cloud</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

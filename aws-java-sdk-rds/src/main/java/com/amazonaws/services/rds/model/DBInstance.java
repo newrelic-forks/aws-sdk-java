@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Contains the details of an Amazon RDS DB instance.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>DescribeDBInstances</a> action.
+ * This data type is used as a response element in the <code>DescribeDBInstances</code> action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBInstance" target="_top">AWS API
@@ -61,9 +61,7 @@ public class DBInstance implements Serializable, Cloneable {
     private String masterUsername;
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -117,7 +115,7 @@ public class DBInstance implements Serializable, Cloneable {
     private Integer backupRetentionPeriod;
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      */
@@ -315,6 +313,13 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
+     * </p>
      */
     private Boolean copyTagsToSnapshot;
     /**
@@ -340,7 +345,7 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      */
@@ -411,7 +416,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      */
@@ -424,13 +429,19 @@ public class DBInstance implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<ProcessorFeature> processorFeatures;
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      */
     private Boolean deletionProtection;
+    /**
+     * <p>
+     * The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<DBInstanceRole> associatedRoles;
     /**
      * <p>
      * Specifies the listener connection endpoint for SQL Server Always On.
@@ -643,9 +654,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -666,9 +675,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database engine you use. For example, this value
-     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *        since Read Replicas are only supported for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use.</p>
      *        <p>
      *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
@@ -693,9 +700,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -715,9 +720,7 @@ public class DBInstance implements Serializable, Cloneable {
      * apply to an Oracle DB instance.
      * </p>
      * 
-     * @return The meaning of this parameter differs according to the database engine you use. For example, this value
-     *         returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *         since Read Replicas are only supported for these engines.</p>
+     * @return The meaning of this parameter differs according to the database engine you use.</p>
      *         <p>
      *         <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *         </p>
@@ -742,9 +745,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -765,9 +766,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database engine you use. For example, this value
-     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *        since Read Replicas are only supported for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use.</p>
      *        <p>
      *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
@@ -1000,11 +999,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
-     * @return Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * @return A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *         <code>DBSecurityGroup.Status</code> subelements.
      */
 
@@ -1017,12 +1016,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      */
 
@@ -1037,7 +1036,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * <p>
@@ -1047,7 +1046,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1064,12 +1063,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2628,9 +2627,22 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
+     * </p>
      * 
      * @param copyTagsToSnapshot
-     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
+     *        DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -2641,8 +2653,21 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
+     * </p>
      * 
-     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
+     *         DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -2653,9 +2678,22 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
+     * </p>
      * 
      * @param copyTagsToSnapshot
-     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
+     *        DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2668,8 +2706,21 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
+     * </p>
      * 
-     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
+     *         DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public Boolean isCopyTagsToSnapshot() {
@@ -2809,14 +2860,14 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @param promotionTier
      *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *        failure of the existing primary instance. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2828,13 +2879,13 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @return A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *         failure of the existing primary instance. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *         > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2846,14 +2897,14 @@ public class DBInstance implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @param promotionTier
      *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *        failure of the existing primary instance. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3315,14 +3366,14 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * 
      * @return A list of log types that this DB instance is configured to export to CloudWatch Logs.</p>
      *         <p>
      *         Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      *         Files</a> in the <i>Amazon RDS User Guide.</i>
      */
 
@@ -3339,7 +3390,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * 
@@ -3347,7 +3398,7 @@ public class DBInstance implements Serializable, Cloneable {
      *        A list of log types that this DB instance is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      *        Files</a> in the <i>Amazon RDS User Guide.</i>
      */
 
@@ -3366,7 +3417,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * <p>
@@ -3379,7 +3430,7 @@ public class DBInstance implements Serializable, Cloneable {
      *        A list of log types that this DB instance is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      *        Files</a> in the <i>Amazon RDS User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3400,7 +3451,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * 
@@ -3408,7 +3459,7 @@ public class DBInstance implements Serializable, Cloneable {
      *        A list of log types that this DB instance is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html">Amazon RDS Database Log
      *        Files</a> in the <i>Amazon RDS User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3493,16 +3544,16 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *        value is set to true. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *        Instance</a>.
      */
 
@@ -3512,15 +3563,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
-     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *         Instance</a>.
      */
 
@@ -3530,16 +3581,16 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *        value is set to true. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *        Instance</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3551,20 +3602,93 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
-     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
+     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *         Instance</a>.
      */
 
     public Boolean isDeletionProtection() {
         return this.deletionProtection;
+    }
+
+    /**
+     * <p>
+     * The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * </p>
+     * 
+     * @return The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     */
+
+    public java.util.List<DBInstanceRole> getAssociatedRoles() {
+        if (associatedRoles == null) {
+            associatedRoles = new com.amazonaws.internal.SdkInternalList<DBInstanceRole>();
+        }
+        return associatedRoles;
+    }
+
+    /**
+     * <p>
+     * The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * </p>
+     * 
+     * @param associatedRoles
+     *        The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     */
+
+    public void setAssociatedRoles(java.util.Collection<DBInstanceRole> associatedRoles) {
+        if (associatedRoles == null) {
+            this.associatedRoles = null;
+            return;
+        }
+
+        this.associatedRoles = new com.amazonaws.internal.SdkInternalList<DBInstanceRole>(associatedRoles);
+    }
+
+    /**
+     * <p>
+     * The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAssociatedRoles(java.util.Collection)} or {@link #withAssociatedRoles(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param associatedRoles
+     *        The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withAssociatedRoles(DBInstanceRole... associatedRoles) {
+        if (this.associatedRoles == null) {
+            setAssociatedRoles(new com.amazonaws.internal.SdkInternalList<DBInstanceRole>(associatedRoles.length));
+        }
+        for (DBInstanceRole ele : associatedRoles) {
+            this.associatedRoles.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * </p>
+     * 
+     * @param associatedRoles
+     *        The AWS Identity and Access Management (IAM) roles associated with the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withAssociatedRoles(java.util.Collection<DBInstanceRole> associatedRoles) {
+        setAssociatedRoles(associatedRoles);
+        return this;
     }
 
     /**
@@ -3729,6 +3853,8 @@ public class DBInstance implements Serializable, Cloneable {
             sb.append("ProcessorFeatures: ").append(getProcessorFeatures()).append(",");
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
+        if (getAssociatedRoles() != null)
+            sb.append("AssociatedRoles: ").append(getAssociatedRoles()).append(",");
         if (getListenerEndpoint() != null)
             sb.append("ListenerEndpoint: ").append(getListenerEndpoint());
         sb.append("}");
@@ -3971,6 +4097,10 @@ public class DBInstance implements Serializable, Cloneable {
             return false;
         if (other.getDeletionProtection() != null && other.getDeletionProtection().equals(this.getDeletionProtection()) == false)
             return false;
+        if (other.getAssociatedRoles() == null ^ this.getAssociatedRoles() == null)
+            return false;
+        if (other.getAssociatedRoles() != null && other.getAssociatedRoles().equals(this.getAssociatedRoles()) == false)
+            return false;
         if (other.getListenerEndpoint() == null ^ this.getListenerEndpoint() == null)
             return false;
         if (other.getListenerEndpoint() != null && other.getListenerEndpoint().equals(this.getListenerEndpoint()) == false)
@@ -4038,6 +4168,7 @@ public class DBInstance implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEnabledCloudwatchLogsExports() == null) ? 0 : getEnabledCloudwatchLogsExports().hashCode());
         hashCode = prime * hashCode + ((getProcessorFeatures() == null) ? 0 : getProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
+        hashCode = prime * hashCode + ((getAssociatedRoles() == null) ? 0 : getAssociatedRoles().hashCode());
         hashCode = prime * hashCode + ((getListenerEndpoint() == null) ? 0 : getListenerEndpoint().hashCode());
         return hashCode;
     }

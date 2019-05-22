@@ -44,14 +44,28 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private java.util.List<DatasetTrigger> triggers;
-
+    /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     */
     private java.util.List<DatasetContentDeliveryRule> contentDeliveryRules;
     /**
      * <p>
-     * How long, in days, message data is kept for the data set.
+     * How long, in days, data set contents are kept for the data set.
      * </p>
      */
     private RetentionPeriod retentionPeriod;
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     */
+    private VersioningConfiguration versioningConfiguration;
 
     /**
      * <p>
@@ -242,7 +256,11 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * @return
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
+     * @return When data set contents are created they are delivered to destinations specified here.
      */
 
     public java.util.List<DatasetContentDeliveryRule> getContentDeliveryRules() {
@@ -250,7 +268,12 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      */
 
     public void setContentDeliveryRules(java.util.Collection<DatasetContentDeliveryRule> contentDeliveryRules) {
@@ -264,12 +287,16 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setContentDeliveryRules(java.util.Collection)} or {@link #withContentDeliveryRules(java.util.Collection)}
      * if you want to override the existing values.
      * </p>
      * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -284,7 +311,12 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -295,11 +327,11 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * How long, in days, message data is kept for the data set.
+     * How long, in days, data set contents are kept for the data set.
      * </p>
      * 
      * @param retentionPeriod
-     *        How long, in days, message data is kept for the data set.
+     *        How long, in days, data set contents are kept for the data set.
      */
 
     public void setRetentionPeriod(RetentionPeriod retentionPeriod) {
@@ -308,10 +340,10 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * How long, in days, message data is kept for the data set.
+     * How long, in days, data set contents are kept for the data set.
      * </p>
      * 
-     * @return How long, in days, message data is kept for the data set.
+     * @return How long, in days, data set contents are kept for the data set.
      */
 
     public RetentionPeriod getRetentionPeriod() {
@@ -320,16 +352,80 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * How long, in days, message data is kept for the data set.
+     * How long, in days, data set contents are kept for the data set.
      * </p>
      * 
      * @param retentionPeriod
-     *        How long, in days, message data is kept for the data set.
+     *        How long, in days, data set contents are kept for the data set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDatasetRequest withRetentionPeriod(RetentionPeriod retentionPeriod) {
         setRetentionPeriod(retentionPeriod);
+        return this;
+    }
+
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @param versioningConfiguration
+     *        [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *        latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *        specified by the "retentionPeriod" parameter. (For more information, see
+     *        https://docs.aws.amazon.com/iotanalytics
+     *        /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     */
+
+    public void setVersioningConfiguration(VersioningConfiguration versioningConfiguration) {
+        this.versioningConfiguration = versioningConfiguration;
+    }
+
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @return [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *         latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *         specified by the "retentionPeriod" parameter. (For more information, see
+     *         https://docs.aws.amazon.com/iotanalytics
+     *         /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     */
+
+    public VersioningConfiguration getVersioningConfiguration() {
+        return this.versioningConfiguration;
+    }
+
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @param versioningConfiguration
+     *        [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *        latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *        specified by the "retentionPeriod" parameter. (For more information, see
+     *        https://docs.aws.amazon.com/iotanalytics
+     *        /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateDatasetRequest withVersioningConfiguration(VersioningConfiguration versioningConfiguration) {
+        setVersioningConfiguration(versioningConfiguration);
         return this;
     }
 
@@ -354,7 +450,9 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getContentDeliveryRules() != null)
             sb.append("ContentDeliveryRules: ").append(getContentDeliveryRules()).append(",");
         if (getRetentionPeriod() != null)
-            sb.append("RetentionPeriod: ").append(getRetentionPeriod());
+            sb.append("RetentionPeriod: ").append(getRetentionPeriod()).append(",");
+        if (getVersioningConfiguration() != null)
+            sb.append("VersioningConfiguration: ").append(getVersioningConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -389,6 +487,10 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getRetentionPeriod() != null && other.getRetentionPeriod().equals(this.getRetentionPeriod()) == false)
             return false;
+        if (other.getVersioningConfiguration() == null ^ this.getVersioningConfiguration() == null)
+            return false;
+        if (other.getVersioningConfiguration() != null && other.getVersioningConfiguration().equals(this.getVersioningConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -402,6 +504,7 @@ public class UpdateDatasetRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getTriggers() == null) ? 0 : getTriggers().hashCode());
         hashCode = prime * hashCode + ((getContentDeliveryRules() == null) ? 0 : getContentDeliveryRules().hashCode());
         hashCode = prime * hashCode + ((getRetentionPeriod() == null) ? 0 : getRetentionPeriod().hashCode());
+        hashCode = prime * hashCode + ((getVersioningConfiguration() == null) ? 0 : getVersioningConfiguration().hashCode());
         return hashCode;
     }
 

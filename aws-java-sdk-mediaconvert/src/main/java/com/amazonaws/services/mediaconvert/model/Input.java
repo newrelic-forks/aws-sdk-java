@@ -41,18 +41,37 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
      * outputs. You can use mutiple captions selectors per input.
      */
     private java.util.Map<String, CaptionSelector> captionSelectors;
-
+    /**
+     * Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully
+     * controllable for MPEG2 and uncompressed video inputs.
+     */
     private String deblockFilter;
-    /** If the input file is encrypted, decryption settings to decrypt the media file */
+    /**
+     * Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert can
+     * decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use to encrypt
+     * your content.
+     */
     private InputDecryptionSettings decryptionSettings;
-
+    /**
+     * Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable to
+     * MPEG2, H.264, H.265, and uncompressed video inputs.
+     */
     private String denoiseFilter;
     /**
-     * Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in a job.
-     * These inputs are concantenated, in the order they are specified in the job, to create the output.
+     * Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     * concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your input
+     * format is IMF, specify your input by providing the path to your CPL. For example, "s3://bucket/vf/cpl.xml". If the
+     * CPL is in an incomplete IMP, make sure to use *Supplemental IMPs* (SupplementalImps) to specify any supplemental
+     * IMPs that contain assets referenced by the CPL.
      */
     private String fileInput;
-
+    /**
+     * Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and deblock
+     * filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+     * (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering, depending on input
+     * type and quality. * Disable - The input is not filtered. This is true even if you use the API to enable them in
+     * (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered regardless of input type.
+     */
     private String filterEnable;
     /**
      * Use Filter strength (FilterStrength) to adjust the magnitude the input filter settings (Deblock and Denoise). The
@@ -60,8 +79,8 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
      */
     private Integer filterStrength;
     /**
-     * Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or disable
-     * this feature for each input individually. This setting is disabled by default.
+     * Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this feature for
+     * each input individually. This setting is disabled by default.
      */
     private ImageInserter imageInserter;
     /**
@@ -78,11 +97,27 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
      * specify doesn't exist, the transcoding service will use this default.
      */
     private Integer programNumber;
-
+    /**
+     * Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to scans. *
+     * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+     */
     private String psiControl;
-
+    /**
+     * Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using for
+     * your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing slash or the
+     * ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the
+     * IMP that contains your input CPL, because the service automatically detects it.
+     */
+    private java.util.List<String> supplementalImps;
+    /**
+     * Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that apply to a
+     * single input at a time, such as input clipping and synchronizing some captions formats. Use this setting to
+     * specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or by starting the first
+     * frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or HH:MM:SS;FF, where FF is the frame
+     * number. Only set this to EMBEDDED if your source video has embedded timecodes.
+     */
     private String timecodeSource;
-
+    /** Selector for video. */
     private VideoSelector videoSelector;
 
     /**
@@ -269,7 +304,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully
+     * controllable for MPEG2 and uncompressed video inputs.
+     * 
      * @param deblockFilter
+     *        Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only
+     *        manaully controllable for MPEG2 and uncompressed video inputs.
      * @see InputDeblockFilter
      */
 
@@ -278,7 +318,11 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully
+     * controllable for MPEG2 and uncompressed video inputs.
+     * 
+     * @return Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only
+     *         manaully controllable for MPEG2 and uncompressed video inputs.
      * @see InputDeblockFilter
      */
 
@@ -287,7 +331,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully
+     * controllable for MPEG2 and uncompressed video inputs.
+     * 
      * @param deblockFilter
+     *        Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only
+     *        manaully controllable for MPEG2 and uncompressed video inputs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputDeblockFilter
      */
@@ -298,7 +347,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully
+     * controllable for MPEG2 and uncompressed video inputs.
+     * 
      * @param deblockFilter
+     *        Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only
+     *        manaully controllable for MPEG2 and uncompressed video inputs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputDeblockFilter
      */
@@ -309,10 +363,14 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If the input file is encrypted, decryption settings to decrypt the media file
+     * Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert can
+     * decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use to encrypt
+     * your content.
      * 
      * @param decryptionSettings
-     *        If the input file is encrypted, decryption settings to decrypt the media file
+     *        Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert
+     *        can decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use
+     *        to encrypt your content.
      */
 
     public void setDecryptionSettings(InputDecryptionSettings decryptionSettings) {
@@ -320,9 +378,13 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If the input file is encrypted, decryption settings to decrypt the media file
+     * Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert can
+     * decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use to encrypt
+     * your content.
      * 
-     * @return If the input file is encrypted, decryption settings to decrypt the media file
+     * @return Settings for decrypting any input files that you encrypt before you upload them to Amazon S3.
+     *         MediaConvert can decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key
+     *         that you use to encrypt your content.
      */
 
     public InputDecryptionSettings getDecryptionSettings() {
@@ -330,10 +392,14 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If the input file is encrypted, decryption settings to decrypt the media file
+     * Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert can
+     * decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use to encrypt
+     * your content.
      * 
      * @param decryptionSettings
-     *        If the input file is encrypted, decryption settings to decrypt the media file
+     *        Settings for decrypting any input files that you encrypt before you upload them to Amazon S3. MediaConvert
+     *        can decrypt files only when you use AWS Key Management Service (KMS) to encrypt the data key that you use
+     *        to encrypt your content.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -343,7 +409,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable to
+     * MPEG2, H.264, H.265, and uncompressed video inputs.
+     * 
      * @param denoiseFilter
+     *        Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable
+     *        to MPEG2, H.264, H.265, and uncompressed video inputs.
      * @see InputDenoiseFilter
      */
 
@@ -352,7 +423,11 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable to
+     * MPEG2, H.264, H.265, and uncompressed video inputs.
+     * 
+     * @return Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable
+     *         to MPEG2, H.264, H.265, and uncompressed video inputs.
      * @see InputDenoiseFilter
      */
 
@@ -361,7 +436,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable to
+     * MPEG2, H.264, H.265, and uncompressed video inputs.
+     * 
      * @param denoiseFilter
+     *        Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable
+     *        to MPEG2, H.264, H.265, and uncompressed video inputs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputDenoiseFilter
      */
@@ -372,7 +452,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable to
+     * MPEG2, H.264, H.265, and uncompressed video inputs.
+     * 
      * @param denoiseFilter
+     *        Enable Denoise (InputDenoiseFilter) to filter noise from the input. Default is disabled. Only applicable
+     *        to MPEG2, H.264, H.265, and uncompressed video inputs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputDenoiseFilter
      */
@@ -383,12 +468,18 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in a job.
-     * These inputs are concantenated, in the order they are specified in the job, to create the output.
+     * Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     * concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your input
+     * format is IMF, specify your input by providing the path to your CPL. For example, "s3://bucket/vf/cpl.xml". If the
+     * CPL is in an incomplete IMP, make sure to use *Supplemental IMPs* (SupplementalImps) to specify any supplemental
+     * IMPs that contain assets referenced by the CPL.
      * 
      * @param fileInput
-     *        Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in
-     *        a job. These inputs are concantenated, in the order they are specified in the job, to create the output.
+     *        Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     *        concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your
+     *        input format is IMF, specify your input by providing the path to your CPL. For example,
+     *        "s3://bucket/vf/cpl.xml". If the CPL is in an incomplete IMP, make sure to use *Supplemental IMPs*
+     *        (SupplementalImps) to specify any supplemental IMPs that contain assets referenced by the CPL.
      */
 
     public void setFileInput(String fileInput) {
@@ -396,12 +487,17 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in a job.
-     * These inputs are concantenated, in the order they are specified in the job, to create the output.
+     * Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     * concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your input
+     * format is IMF, specify your input by providing the path to your CPL. For example, "s3://bucket/vf/cpl.xml". If the
+     * CPL is in an incomplete IMP, make sure to use *Supplemental IMPs* (SupplementalImps) to specify any supplemental
+     * IMPs that contain assets referenced by the CPL.
      * 
-     * @return Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs
-     *         in a job. These inputs are concantenated, in the order they are specified in the job, to create the
-     *         output.
+     * @return Specify the source file for your transcoding job. You can use multiple inputs in a single job. The
+     *         service concatenates these inputs, in the order that you specify them in the job, to create the outputs.
+     *         If your input format is IMF, specify your input by providing the path to your CPL. For example,
+     *         "s3://bucket/vf/cpl.xml". If the CPL is in an incomplete IMP, make sure to use *Supplemental IMPs*
+     *         (SupplementalImps) to specify any supplemental IMPs that contain assets referenced by the CPL.
      */
 
     public String getFileInput() {
@@ -409,12 +505,18 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in a job.
-     * These inputs are concantenated, in the order they are specified in the job, to create the output.
+     * Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     * concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your input
+     * format is IMF, specify your input by providing the path to your CPL. For example, "s3://bucket/vf/cpl.xml". If the
+     * CPL is in an incomplete IMP, make sure to use *Supplemental IMPs* (SupplementalImps) to specify any supplemental
+     * IMPs that contain assets referenced by the CPL.
      * 
      * @param fileInput
-     *        Use Input (fileInput) to define the source file used in the transcode job. There can be multiple inputs in
-     *        a job. These inputs are concantenated, in the order they are specified in the job, to create the output.
+     *        Specify the source file for your transcoding job. You can use multiple inputs in a single job. The service
+     *        concatenates these inputs, in the order that you specify them in the job, to create the outputs. If your
+     *        input format is IMF, specify your input by providing the path to your CPL. For example,
+     *        "s3://bucket/vf/cpl.xml". If the CPL is in an incomplete IMP, make sure to use *Supplemental IMPs*
+     *        (SupplementalImps) to specify any supplemental IMPs that contain assets referenced by the CPL.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -424,7 +526,19 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and deblock
+     * filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+     * (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering, depending on input
+     * type and quality. * Disable - The input is not filtered. This is true even if you use the API to enable them in
+     * (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered regardless of input type.
+     * 
      * @param filterEnable
+     *        Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and
+     *        deblock filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and
+     *        Deblock (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering,
+     *        depending on input type and quality. * Disable - The input is not filtered. This is true even if you use
+     *        the API to enable them in (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered
+     *        regardless of input type.
      * @see InputFilterEnable
      */
 
@@ -433,7 +547,18 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and deblock
+     * filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+     * (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering, depending on input
+     * type and quality. * Disable - The input is not filtered. This is true even if you use the API to enable them in
+     * (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered regardless of input type.
+     * 
+     * @return Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and
+     *         deblock filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and
+     *         Deblock (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering,
+     *         depending on input type and quality. * Disable - The input is not filtered. This is true even if you use
+     *         the API to enable them in (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered
+     *         regardless of input type.
      * @see InputFilterEnable
      */
 
@@ -442,7 +567,19 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and deblock
+     * filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+     * (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering, depending on input
+     * type and quality. * Disable - The input is not filtered. This is true even if you use the API to enable them in
+     * (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered regardless of input type.
+     * 
      * @param filterEnable
+     *        Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and
+     *        deblock filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and
+     *        Deblock (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering,
+     *        depending on input type and quality. * Disable - The input is not filtered. This is true even if you use
+     *        the API to enable them in (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered
+     *        regardless of input type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputFilterEnable
      */
@@ -453,7 +590,19 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and deblock
+     * filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+     * (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering, depending on input
+     * type and quality. * Disable - The input is not filtered. This is true even if you use the API to enable them in
+     * (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered regardless of input type.
+     * 
      * @param filterEnable
+     *        Use Filter enable (InputFilterEnable) to specify how the transcoding service applies the denoise and
+     *        deblock filters. You must also enable the filters separately, with Denoise (InputDenoiseFilter) and
+     *        Deblock (InputDeblockFilter). * Auto - The transcoding service determines whether to apply filtering,
+     *        depending on input type and quality. * Disable - The input is not filtered. This is true even if you use
+     *        the API to enable them in (InputDeblockFilter) and (InputDeblockFilter). * Force - The in put is filtered
+     *        regardless of input type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputFilterEnable
      */
@@ -504,12 +653,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or disable
-     * this feature for each input individually. This setting is disabled by default.
+     * Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this feature for
+     * each input individually. This setting is disabled by default.
      * 
      * @param imageInserter
-     *        Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or
-     *        disable this feature for each input individually. This setting is disabled by default.
+     *        Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this
+     *        feature for each input individually. This setting is disabled by default.
      */
 
     public void setImageInserter(ImageInserter imageInserter) {
@@ -517,11 +666,11 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or disable
-     * this feature for each input individually. This setting is disabled by default.
+     * Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this feature for
+     * each input individually. This setting is disabled by default.
      * 
-     * @return Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or
-     *         disable this feature for each input individually. This setting is disabled by default.
+     * @return Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this
+     *         feature for each input individually. This setting is disabled by default.
      */
 
     public ImageInserter getImageInserter() {
@@ -529,12 +678,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or disable
-     * this feature for each input individually. This setting is disabled by default.
+     * Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this feature for
+     * each input individually. This setting is disabled by default.
      * 
      * @param imageInserter
-     *        Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or
-     *        disable this feature for each input individually. This setting is disabled by default.
+     *        Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this
+     *        feature for each input individually. This setting is disabled by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -684,7 +833,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to scans. *
+     * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+     * 
      * @param psiControl
+     *        Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to
+     *        scans. * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
      * @see InputPsiControl
      */
 
@@ -693,7 +847,11 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to scans. *
+     * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+     * 
+     * @return Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to
+     *         scans. * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
      * @see InputPsiControl
      */
 
@@ -702,7 +860,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to scans. *
+     * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+     * 
      * @param psiControl
+     *        Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to
+     *        scans. * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputPsiControl
      */
@@ -713,7 +876,12 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to scans. *
+     * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+     * 
      * @param psiControl
+     *        Set PSI control (InputPsiControl) for transport stream inputs to specify which data the demux process to
+     *        scans. * Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputPsiControl
      */
@@ -724,7 +892,106 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using for
+     * your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing slash or the
+     * ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the
+     * IMP that contains your input CPL, because the service automatically detects it.
+     * 
+     * @return Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're
+     *         using for your input is in an incomplete IMP. Specify either the supplemental IMP directories with a
+     *         trailing slash or the ASSETMAP.xml files. For example ["s3://bucket/ov/",
+     *         "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the IMP that contains your input CPL, because
+     *         the service automatically detects it.
+     */
+
+    public java.util.List<String> getSupplementalImps() {
+        return supplementalImps;
+    }
+
+    /**
+     * Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using for
+     * your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing slash or the
+     * ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the
+     * IMP that contains your input CPL, because the service automatically detects it.
+     * 
+     * @param supplementalImps
+     *        Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using
+     *        for your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing
+     *        slash or the ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You
+     *        don't need to specify the IMP that contains your input CPL, because the service automatically detects it.
+     */
+
+    public void setSupplementalImps(java.util.Collection<String> supplementalImps) {
+        if (supplementalImps == null) {
+            this.supplementalImps = null;
+            return;
+        }
+
+        this.supplementalImps = new java.util.ArrayList<String>(supplementalImps);
+    }
+
+    /**
+     * Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using for
+     * your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing slash or the
+     * ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the
+     * IMP that contains your input CPL, because the service automatically detects it.
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSupplementalImps(java.util.Collection)} or {@link #withSupplementalImps(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param supplementalImps
+     *        Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using
+     *        for your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing
+     *        slash or the ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You
+     *        don't need to specify the IMP that contains your input CPL, because the service automatically detects it.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Input withSupplementalImps(String... supplementalImps) {
+        if (this.supplementalImps == null) {
+            setSupplementalImps(new java.util.ArrayList<String>(supplementalImps.length));
+        }
+        for (String ele : supplementalImps) {
+            this.supplementalImps.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using for
+     * your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing slash or the
+     * ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the
+     * IMP that contains your input CPL, because the service automatically detects it.
+     * 
+     * @param supplementalImps
+     *        Provide a list of any necessary supplemental IMPs. You need supplemental IMPs if the CPL that you're using
+     *        for your input is in an incomplete IMP. Specify either the supplemental IMP directories with a trailing
+     *        slash or the ASSETMAP.xml files. For example ["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You
+     *        don't need to specify the IMP that contains your input CPL, because the service automatically detects it.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Input withSupplementalImps(java.util.Collection<String> supplementalImps) {
+        setSupplementalImps(supplementalImps);
+        return this;
+    }
+
+    /**
+     * Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that apply to a
+     * single input at a time, such as input clipping and synchronizing some captions formats. Use this setting to
+     * specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or by starting the first
+     * frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or HH:MM:SS;FF, where FF is the frame
+     * number. Only set this to EMBEDDED if your source video has embedded timecodes.
+     * 
      * @param timecodeSource
+     *        Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that
+     *        apply to a single input at a time, such as input clipping and synchronizing some captions formats. Use
+     *        this setting to specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or
+     *        by starting the first frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+     *        HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if your source video has embedded
+     *        timecodes.
      * @see InputTimecodeSource
      */
 
@@ -733,7 +1000,18 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that apply to a
+     * single input at a time, such as input clipping and synchronizing some captions formats. Use this setting to
+     * specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or by starting the first
+     * frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or HH:MM:SS;FF, where FF is the frame
+     * number. Only set this to EMBEDDED if your source video has embedded timecodes.
+     * 
+     * @return Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that
+     *         apply to a single input at a time, such as input clipping and synchronizing some captions formats. Use
+     *         this setting to specify whether the service counts frames by timecodes embedded in the video (EMBEDDED)
+     *         or by starting the first frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+     *         HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if your source video has embedded
+     *         timecodes.
      * @see InputTimecodeSource
      */
 
@@ -742,7 +1020,19 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that apply to a
+     * single input at a time, such as input clipping and synchronizing some captions formats. Use this setting to
+     * specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or by starting the first
+     * frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or HH:MM:SS;FF, where FF is the frame
+     * number. Only set this to EMBEDDED if your source video has embedded timecodes.
+     * 
      * @param timecodeSource
+     *        Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that
+     *        apply to a single input at a time, such as input clipping and synchronizing some captions formats. Use
+     *        this setting to specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or
+     *        by starting the first frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+     *        HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if your source video has embedded
+     *        timecodes.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputTimecodeSource
      */
@@ -753,7 +1043,19 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that apply to a
+     * single input at a time, such as input clipping and synchronizing some captions formats. Use this setting to
+     * specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or by starting the first
+     * frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or HH:MM:SS;FF, where FF is the frame
+     * number. Only set this to EMBEDDED if your source video has embedded timecodes.
+     * 
      * @param timecodeSource
+     *        Timecode source under input settings (InputTimecodeSource) only affects the behavior of features that
+     *        apply to a single input at a time, such as input clipping and synchronizing some captions formats. Use
+     *        this setting to specify whether the service counts frames by timecodes embedded in the video (EMBEDDED) or
+     *        by starting the first frame at zero (ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+     *        HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if your source video has embedded
+     *        timecodes.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InputTimecodeSource
      */
@@ -764,7 +1066,10 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Selector for video.
+     * 
      * @param videoSelector
+     *        Selector for video.
      */
 
     public void setVideoSelector(VideoSelector videoSelector) {
@@ -772,7 +1077,9 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Selector for video.
+     * 
+     * @return Selector for video.
      */
 
     public VideoSelector getVideoSelector() {
@@ -780,7 +1087,10 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Selector for video.
+     * 
      * @param videoSelector
+     *        Selector for video.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -827,6 +1137,8 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
             sb.append("ProgramNumber: ").append(getProgramNumber()).append(",");
         if (getPsiControl() != null)
             sb.append("PsiControl: ").append(getPsiControl()).append(",");
+        if (getSupplementalImps() != null)
+            sb.append("SupplementalImps: ").append(getSupplementalImps()).append(",");
         if (getTimecodeSource() != null)
             sb.append("TimecodeSource: ").append(getTimecodeSource()).append(",");
         if (getVideoSelector() != null)
@@ -897,6 +1209,10 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPsiControl() != null && other.getPsiControl().equals(this.getPsiControl()) == false)
             return false;
+        if (other.getSupplementalImps() == null ^ this.getSupplementalImps() == null)
+            return false;
+        if (other.getSupplementalImps() != null && other.getSupplementalImps().equals(this.getSupplementalImps()) == false)
+            return false;
         if (other.getTimecodeSource() == null ^ this.getTimecodeSource() == null)
             return false;
         if (other.getTimecodeSource() != null && other.getTimecodeSource().equals(this.getTimecodeSource()) == false)
@@ -926,6 +1242,7 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getInputClippings() == null) ? 0 : getInputClippings().hashCode());
         hashCode = prime * hashCode + ((getProgramNumber() == null) ? 0 : getProgramNumber().hashCode());
         hashCode = prime * hashCode + ((getPsiControl() == null) ? 0 : getPsiControl().hashCode());
+        hashCode = prime * hashCode + ((getSupplementalImps() == null) ? 0 : getSupplementalImps().hashCode());
         hashCode = prime * hashCode + ((getTimecodeSource() == null) ? 0 : getTimecodeSource().hashCode());
         hashCode = prime * hashCode + ((getVideoSelector() == null) ? 0 : getVideoSelector().hashCode());
         return hashCode;

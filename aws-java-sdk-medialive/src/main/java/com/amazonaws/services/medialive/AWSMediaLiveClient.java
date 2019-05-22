@@ -40,6 +40,7 @@ import com.amazonaws.client.AwsSyncClientParams;
 import com.amazonaws.client.builder.AdvancedConfig;
 
 import com.amazonaws.services.medialive.AWSMediaLiveClientBuilder;
+import com.amazonaws.services.medialive.waiters.AWSMediaLiveWaiters;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -64,6 +65,8 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
     /** Default signing name for the service. */
     private static final String DEFAULT_SIGNING_NAME = "medialive";
 
+    private volatile AWSMediaLiveWaiters waiters;
+
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
@@ -75,9 +78,6 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadGatewayException").withModeledClass(
-                                    com.amazonaws.services.medialive.model.BadGatewayException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
                                     com.amazonaws.services.medialive.model.ForbiddenException.class))
@@ -91,14 +91,17 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                             new JsonErrorShapeMetadata().withErrorCode("UnprocessableEntityException").withModeledClass(
                                     com.amazonaws.services.medialive.model.UnprocessableEntityException.class))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("GatewayTimeoutException").withModeledClass(
-                                    com.amazonaws.services.medialive.model.GatewayTimeoutException.class))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
                                     com.amazonaws.services.medialive.model.TooManyRequestsException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
                                     com.amazonaws.services.medialive.model.BadRequestException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BadGatewayException").withModeledClass(
+                                    com.amazonaws.services.medialive.model.BadGatewayException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("GatewayTimeoutException").withModeledClass(
+                                    com.amazonaws.services.medialive.model.GatewayTimeoutException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
                                     com.amazonaws.services.medialive.model.InternalServerErrorException.class))
@@ -201,6 +204,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchUpdateSchedule");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -268,6 +272,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -331,6 +336,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -395,6 +401,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInputSecurityGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -402,6 +409,66 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
             HttpResponseHandler<AmazonWebServiceResponse<CreateInputSecurityGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new CreateInputSecurityGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Create tags for a resource
+     * 
+     * @param createTagsRequest
+     *        Placeholder documentation for CreateTagsRequest
+     * @return Result of the CreateTags operation returned by the service.
+     * @throws NotFoundException
+     *         The arn was not found.
+     * @throws BadRequestException
+     *         This request was invalid
+     * @throws InternalServerErrorException
+     *         Internal Service Error
+     * @throws ForbiddenException
+     *         Access was denied
+     * @sample AWSMediaLive.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CreateTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateTagsResult createTags(CreateTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateTagsResult executeCreateTags(CreateTagsRequest createTagsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateTagsRequest> request = null;
+        Response<CreateTagsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTagsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTags");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateTagsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateTagsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -463,6 +530,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -530,6 +598,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -596,6 +665,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInputSecurityGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -664,12 +734,139 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteReservation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteReservationResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteReservationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Delete all schedule actions on a channel.
+     * 
+     * @param deleteScheduleRequest
+     *        Placeholder documentation for DeleteScheduleRequest
+     * @return Result of the DeleteSchedule operation returned by the service.
+     * @throws BadRequestException
+     *         This request to delete the schedule on this channel was invalid.
+     * @throws InternalServerErrorException
+     *         Unexpected internal service error.
+     * @throws ForbiddenException
+     *         You do not have permission to delete the channel schedule.
+     * @throws BadGatewayException
+     *         Bad Gateway Error
+     * @throws NotFoundException
+     *         The specified channel does not exist to have its schedule deleted.
+     * @throws GatewayTimeoutException
+     *         Gateway Timeout Error
+     * @throws TooManyRequestsException
+     *         Request limit exceeded on delete schedule calls.
+     * @sample AWSMediaLive.DeleteSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DeleteSchedule" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteScheduleResult deleteSchedule(DeleteScheduleRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSchedule(request);
+    }
+
+    @SdkInternalApi
+    final DeleteScheduleResult executeDeleteSchedule(DeleteScheduleRequest deleteScheduleRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteScheduleRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteScheduleRequest> request = null;
+        Response<DeleteScheduleResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteScheduleRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteScheduleRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSchedule");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteScheduleResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteScheduleResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Removes tags for a resource
+     * 
+     * @param deleteTagsRequest
+     *        Placeholder documentation for DeleteTagsRequest
+     * @return Result of the DeleteTags operation returned by the service.
+     * @throws NotFoundException
+     *         The arn was not found.
+     * @throws BadRequestException
+     *         This request was invalid
+     * @throws InternalServerErrorException
+     *         Internal Service Error
+     * @throws ForbiddenException
+     *         Access was denied
+     * @sample AWSMediaLive.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTags(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsResult executeDeleteTags(DeleteTagsRequest deleteTagsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteTagsRequest> request = null;
+        Response<DeleteTagsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTags");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteTagsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteTagsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -729,6 +926,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -794,6 +992,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -860,6 +1059,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeInputSecurityGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -926,6 +1126,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeOffering");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -991,6 +1192,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeReservation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1056,6 +1258,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSchedule");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1119,6 +1322,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListChannels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1183,6 +1387,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInputSecurityGroups");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1247,6 +1452,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInputs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1310,6 +1516,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListOfferings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1373,12 +1580,73 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListReservations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<ListReservationsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListReservationsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Produces list of tags that have been created for a resource
+     * 
+     * @param listTagsForResourceRequest
+     *        Placeholder documentation for ListTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws NotFoundException
+     *         The arn was not found
+     * @throws BadRequestException
+     *         This request was invalid
+     * @throws InternalServerErrorException
+     *         Internal Service Error
+     * @throws ForbiddenException
+     *         Access was denied
+     * @sample AWSMediaLive.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1440,6 +1708,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PurchaseOffering");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1507,6 +1776,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1574,6 +1844,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1639,12 +1910,83 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<UpdateChannelResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Changes the class of the channel.
+     * 
+     * @param updateChannelClassRequest
+     *        Channel class that the channel should be updated to.
+     * @return Result of the UpdateChannelClass operation returned by the service.
+     * @throws BadRequestException
+     *         This request to update the channel class was invalid.
+     * @throws UnprocessableEntityException
+     *         The channel configuration failed validation when attempting to update the channel class.
+     * @throws InternalServerErrorException
+     *         Unexpected internal service error.
+     * @throws ForbiddenException
+     *         You do not have permission to update the class of this channel.
+     * @throws BadGatewayException
+     *         Bad Gateway Error
+     * @throws NotFoundException
+     *         The channel you're trying to update the class on does not exist.
+     * @throws GatewayTimeoutException
+     *         Gateway Timeout Error
+     * @throws TooManyRequestsException
+     *         Request limit exceeded on update channel class calls.
+     * @throws ConflictException
+     *         The channel class cannot be updated due to an issue with channel resources.
+     * @sample AWSMediaLive.UpdateChannelClass
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateChannelClass" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateChannelClassResult updateChannelClass(UpdateChannelClassRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateChannelClass(request);
+    }
+
+    @SdkInternalApi
+    final UpdateChannelClassResult executeUpdateChannelClass(UpdateChannelClassRequest updateChannelClassRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateChannelClassRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateChannelClassRequest> request = null;
+        Response<UpdateChannelClassResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateChannelClassRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateChannelClassRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateChannelClass");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateChannelClassResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateChannelClassResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1704,6 +2046,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateInput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1771,6 +2114,7 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateInputSecurityGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1778,6 +2122,74 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
             HttpResponseHandler<AmazonWebServiceResponse<UpdateInputSecurityGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new UpdateInputSecurityGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Update reservation.
+     * 
+     * @param updateReservationRequest
+     *        Request to update a reservation
+     * @return Result of the UpdateReservation operation returned by the service.
+     * @throws BadRequestException
+     *         This request was invalid
+     * @throws InternalServerErrorException
+     *         Internal service error
+     * @throws ForbiddenException
+     *         You do not have permission to update reservation
+     * @throws BadGatewayException
+     *         Bad gateway error
+     * @throws NotFoundException
+     *         Reservation not found
+     * @throws GatewayTimeoutException
+     *         Gateway timeout error
+     * @throws TooManyRequestsException
+     *         Request limit exceeded
+     * @throws ConflictException
+     *         The reservation could not be updated
+     * @sample AWSMediaLive.UpdateReservation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateReservation" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateReservationResult updateReservation(UpdateReservationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateReservation(request);
+    }
+
+    @SdkInternalApi
+    final UpdateReservationResult executeUpdateReservation(UpdateReservationRequest updateReservationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateReservationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateReservationRequest> request = null;
+        Response<UpdateReservationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateReservationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateReservationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaLive");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateReservation");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateReservationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateReservationResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1862,6 +2274,26 @@ public class AWSMediaLiveClient extends AmazonWebServiceClient implements AWSMed
     @com.amazonaws.annotation.SdkInternalApi
     static com.amazonaws.protocol.json.SdkJsonProtocolFactory getProtocolFactory() {
         return protocolFactory;
+    }
+
+    @Override
+    public AWSMediaLiveWaiters waiters() {
+        if (waiters == null) {
+            synchronized (this) {
+                if (waiters == null) {
+                    waiters = new AWSMediaLiveWaiters(this);
+                }
+            }
+        }
+        return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

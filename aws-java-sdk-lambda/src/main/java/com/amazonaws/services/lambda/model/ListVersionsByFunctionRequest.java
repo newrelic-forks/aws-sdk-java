@@ -27,7 +27,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -57,22 +57,20 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
     private String functionName;
     /**
      * <p>
-     * Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     * operation. If present, indicates where to continue the listing.
+     * Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      * </p>
      */
     private String marker;
     /**
      * <p>
-     * Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     * parameter value must be greater than 0.
+     * Limit the number of versions that are returned.
      * </p>
      */
     private Integer maxItems;
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -100,7 +98,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * 
      * @param functionName
-     *        The name of the lambda function.</p>
+     *        The name of the Lambda function.</p>
      *        <p class="title">
      *        <b>Name formats</b>
      *        </p>
@@ -132,7 +130,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -159,7 +157,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
      * characters in length.
      * </p>
      * 
-     * @return The name of the lambda function.</p>
+     * @return The name of the Lambda function.</p>
      *         <p class="title">
      *         <b>Name formats</b>
      *         </p>
@@ -191,7 +189,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -219,7 +217,7 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * 
      * @param functionName
-     *        The name of the lambda function.</p>
+     *        The name of the Lambda function.</p>
      *        <p class="title">
      *        <b>Name formats</b>
      *        </p>
@@ -253,13 +251,11 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     * operation. If present, indicates where to continue the listing.
+     * Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      * </p>
      * 
      * @param marker
-     *        Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     *        operation. If present, indicates where to continue the listing.
+     *        Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      */
 
     public void setMarker(String marker) {
@@ -268,12 +264,10 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     * operation. If present, indicates where to continue the listing.
+     * Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      * </p>
      * 
-     * @return Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     *         operation. If present, indicates where to continue the listing.
+     * @return Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      */
 
     public String getMarker() {
@@ -282,13 +276,11 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     * operation. If present, indicates where to continue the listing.
+     * Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      * </p>
      * 
      * @param marker
-     *        Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code>
-     *        operation. If present, indicates where to continue the listing.
+     *        Specify the pagination token that's returned by a previous request to retrieve the next page of results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -299,13 +291,11 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     * parameter value must be greater than 0.
+     * Limit the number of versions that are returned.
      * </p>
      * 
      * @param maxItems
-     *        Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     *        parameter value must be greater than 0.
+     *        Limit the number of versions that are returned.
      */
 
     public void setMaxItems(Integer maxItems) {
@@ -314,12 +304,10 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     * parameter value must be greater than 0.
+     * Limit the number of versions that are returned.
      * </p>
      * 
-     * @return Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response.
-     *         This parameter value must be greater than 0.
+     * @return Limit the number of versions that are returned.
      */
 
     public Integer getMaxItems() {
@@ -328,13 +316,11 @@ public class ListVersionsByFunctionRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     * parameter value must be greater than 0.
+     * Limit the number of versions that are returned.
      * </p>
      * 
      * @param maxItems
-     *        Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This
-     *        parameter value must be greater than 0.
+     *        Limit the number of versions that are returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -844,7 +844,7 @@ public interface AWSLogs {
     /**
      * <p>
      * Creates or updates an access policy associated with an existing destination. An access policy is an <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
      * used to authorize claims to register a subscription filter against a given destination.
      * </p>
      * 
@@ -1060,12 +1060,12 @@ public interface AWSLogs {
 
     /**
      * <p>
-     * Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group to query, the query
-     * string to use, and the time to query.
+     * Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group and time range to
+     * query, and the query string to use.
      * </p>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch Logs Insights
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch Logs Insights
      * Query Syntax</a>.
      * </p>
      * 
@@ -1076,7 +1076,7 @@ public interface AWSLogs {
      *         object. For more information, see .</p>
      *         <p>
      *         For more information about valid query syntax, see <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch Logs
+     *         href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch Logs
      *         Insights Query Syntax</a>.
      * @throws InvalidParameterException
      *         A parameter is specified incorrectly.
@@ -1121,7 +1121,7 @@ public interface AWSLogs {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html">Tag Log Groups in Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html">Tag Log Groups in Amazon
      * CloudWatch Logs</a> in the <i>Amazon CloudWatch Logs User Guide</i>.
      * </p>
      * 

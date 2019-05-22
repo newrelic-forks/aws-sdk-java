@@ -127,6 +127,12 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private Integer gitCloneDepthOverride;
     /**
      * <p>
+     * Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     * </p>
+     */
+    private GitSubmodulesConfig gitSubmodulesConfigOverride;
+    /**
+     * <p>
      * A build spec declaration that overrides, for this build only, the latest one already defined in the build
      * project.
      * </p>
@@ -217,6 +223,35 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      */
     private LogsConfig logsConfigOverride;
+    /**
+     * <p>
+     * The credentials for access to a private registry.
+     * </p>
+     */
+    private RegistryCredential registryCredentialOverride;
+    /**
+     * <p>
+     * The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you modify your
+     * ECR repository policy to trust AWS CodeBuild's service principal.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS
+     * CodeBuild curated image, you must use CODEBUILD credentials.
+     * </p>
+     */
+    private String imagePullCredentialsTypeOverride;
 
     /**
      * <p>
@@ -1004,6 +1039,46 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     * </p>
+     * 
+     * @param gitSubmodulesConfigOverride
+     *        Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     */
+
+    public void setGitSubmodulesConfigOverride(GitSubmodulesConfig gitSubmodulesConfigOverride) {
+        this.gitSubmodulesConfigOverride = gitSubmodulesConfigOverride;
+    }
+
+    /**
+     * <p>
+     * Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     * </p>
+     * 
+     * @return Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     */
+
+    public GitSubmodulesConfig getGitSubmodulesConfigOverride() {
+        return this.gitSubmodulesConfigOverride;
+    }
+
+    /**
+     * <p>
+     * Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     * </p>
+     * 
+     * @param gitSubmodulesConfigOverride
+     *        Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartBuildRequest withGitSubmodulesConfigOverride(GitSubmodulesConfig gitSubmodulesConfigOverride) {
+        setGitSubmodulesConfigOverride(gitSubmodulesConfigOverride);
+        return this;
+    }
+
+    /**
+     * <p>
      * A build spec declaration that overrides, for this build only, the latest one already defined in the build
      * project.
      * </p>
@@ -1693,6 +1768,237 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
     }
 
     /**
+     * <p>
+     * The credentials for access to a private registry.
+     * </p>
+     * 
+     * @param registryCredentialOverride
+     *        The credentials for access to a private registry.
+     */
+
+    public void setRegistryCredentialOverride(RegistryCredential registryCredentialOverride) {
+        this.registryCredentialOverride = registryCredentialOverride;
+    }
+
+    /**
+     * <p>
+     * The credentials for access to a private registry.
+     * </p>
+     * 
+     * @return The credentials for access to a private registry.
+     */
+
+    public RegistryCredential getRegistryCredentialOverride() {
+        return this.registryCredentialOverride;
+    }
+
+    /**
+     * <p>
+     * The credentials for access to a private registry.
+     * </p>
+     * 
+     * @param registryCredentialOverride
+     *        The credentials for access to a private registry.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartBuildRequest withRegistryCredentialOverride(RegistryCredential registryCredentialOverride) {
+        setRegistryCredentialOverride(registryCredentialOverride);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you modify your
+     * ECR repository policy to trust AWS CodeBuild's service principal.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS
+     * CodeBuild curated image, you must use CODEBUILD credentials.
+     * </p>
+     * 
+     * @param imagePullCredentialsTypeOverride
+     *        The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values: </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you
+     *        modify your ECR repository policy to trust AWS CodeBuild's service principal.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an
+     *        AWS CodeBuild curated image, you must use CODEBUILD credentials.
+     * @see ImagePullCredentialsType
+     */
+
+    public void setImagePullCredentialsTypeOverride(String imagePullCredentialsTypeOverride) {
+        this.imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride;
+    }
+
+    /**
+     * <p>
+     * The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you modify your
+     * ECR repository policy to trust AWS CodeBuild's service principal.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS
+     * CodeBuild curated image, you must use CODEBUILD credentials.
+     * </p>
+     * 
+     * @return The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you
+     *         modify your ECR repository policy to trust AWS CodeBuild's service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using
+     *         an AWS CodeBuild curated image, you must use CODEBUILD credentials.
+     * @see ImagePullCredentialsType
+     */
+
+    public String getImagePullCredentialsTypeOverride() {
+        return this.imagePullCredentialsTypeOverride;
+    }
+
+    /**
+     * <p>
+     * The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you modify your
+     * ECR repository policy to trust AWS CodeBuild's service principal.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS
+     * CodeBuild curated image, you must use CODEBUILD credentials.
+     * </p>
+     * 
+     * @param imagePullCredentialsTypeOverride
+     *        The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values: </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you
+     *        modify your ECR repository policy to trust AWS CodeBuild's service principal.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an
+     *        AWS CodeBuild curated image, you must use CODEBUILD credentials.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ImagePullCredentialsType
+     */
+
+    public StartBuildRequest withImagePullCredentialsTypeOverride(String imagePullCredentialsTypeOverride) {
+        setImagePullCredentialsTypeOverride(imagePullCredentialsTypeOverride);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you modify your
+     * ECR repository policy to trust AWS CodeBuild's service principal.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS
+     * CodeBuild curated image, you must use CODEBUILD credentials.
+     * </p>
+     * 
+     * @param imagePullCredentialsTypeOverride
+     *        The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values: </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CODEBUILD</code> specifies that AWS CodeBuild uses its own credentials. This requires that you
+     *        modify your ECR repository policy to trust AWS CodeBuild's service principal.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SERVICE_ROLE</code> specifies that AWS CodeBuild uses your build project's service role.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an
+     *        AWS CodeBuild curated image, you must use CODEBUILD credentials.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ImagePullCredentialsType
+     */
+
+    public StartBuildRequest withImagePullCredentialsTypeOverride(ImagePullCredentialsType imagePullCredentialsTypeOverride) {
+        this.imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1726,6 +2032,8 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
             sb.append("SourceAuthOverride: ").append(getSourceAuthOverride()).append(",");
         if (getGitCloneDepthOverride() != null)
             sb.append("GitCloneDepthOverride: ").append(getGitCloneDepthOverride()).append(",");
+        if (getGitSubmodulesConfigOverride() != null)
+            sb.append("GitSubmodulesConfigOverride: ").append(getGitSubmodulesConfigOverride()).append(",");
         if (getBuildspecOverride() != null)
             sb.append("BuildspecOverride: ").append(getBuildspecOverride()).append(",");
         if (getInsecureSslOverride() != null)
@@ -1753,7 +2061,11 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
         if (getIdempotencyToken() != null)
             sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
         if (getLogsConfigOverride() != null)
-            sb.append("LogsConfigOverride: ").append(getLogsConfigOverride());
+            sb.append("LogsConfigOverride: ").append(getLogsConfigOverride()).append(",");
+        if (getRegistryCredentialOverride() != null)
+            sb.append("RegistryCredentialOverride: ").append(getRegistryCredentialOverride()).append(",");
+        if (getImagePullCredentialsTypeOverride() != null)
+            sb.append("ImagePullCredentialsTypeOverride: ").append(getImagePullCredentialsTypeOverride());
         sb.append("}");
         return sb.toString();
     }
@@ -1813,6 +2125,10 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
             return false;
         if (other.getGitCloneDepthOverride() != null && other.getGitCloneDepthOverride().equals(this.getGitCloneDepthOverride()) == false)
             return false;
+        if (other.getGitSubmodulesConfigOverride() == null ^ this.getGitSubmodulesConfigOverride() == null)
+            return false;
+        if (other.getGitSubmodulesConfigOverride() != null && other.getGitSubmodulesConfigOverride().equals(this.getGitSubmodulesConfigOverride()) == false)
+            return false;
         if (other.getBuildspecOverride() == null ^ this.getBuildspecOverride() == null)
             return false;
         if (other.getBuildspecOverride() != null && other.getBuildspecOverride().equals(this.getBuildspecOverride()) == false)
@@ -1870,6 +2186,15 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
             return false;
         if (other.getLogsConfigOverride() != null && other.getLogsConfigOverride().equals(this.getLogsConfigOverride()) == false)
             return false;
+        if (other.getRegistryCredentialOverride() == null ^ this.getRegistryCredentialOverride() == null)
+            return false;
+        if (other.getRegistryCredentialOverride() != null && other.getRegistryCredentialOverride().equals(this.getRegistryCredentialOverride()) == false)
+            return false;
+        if (other.getImagePullCredentialsTypeOverride() == null ^ this.getImagePullCredentialsTypeOverride() == null)
+            return false;
+        if (other.getImagePullCredentialsTypeOverride() != null
+                && other.getImagePullCredentialsTypeOverride().equals(this.getImagePullCredentialsTypeOverride()) == false)
+            return false;
         return true;
     }
 
@@ -1889,6 +2214,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
         hashCode = prime * hashCode + ((getSourceLocationOverride() == null) ? 0 : getSourceLocationOverride().hashCode());
         hashCode = prime * hashCode + ((getSourceAuthOverride() == null) ? 0 : getSourceAuthOverride().hashCode());
         hashCode = prime * hashCode + ((getGitCloneDepthOverride() == null) ? 0 : getGitCloneDepthOverride().hashCode());
+        hashCode = prime * hashCode + ((getGitSubmodulesConfigOverride() == null) ? 0 : getGitSubmodulesConfigOverride().hashCode());
         hashCode = prime * hashCode + ((getBuildspecOverride() == null) ? 0 : getBuildspecOverride().hashCode());
         hashCode = prime * hashCode + ((getInsecureSslOverride() == null) ? 0 : getInsecureSslOverride().hashCode());
         hashCode = prime * hashCode + ((getReportBuildStatusOverride() == null) ? 0 : getReportBuildStatusOverride().hashCode());
@@ -1903,6 +2229,8 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
         hashCode = prime * hashCode + ((getQueuedTimeoutInMinutesOverride() == null) ? 0 : getQueuedTimeoutInMinutesOverride().hashCode());
         hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
         hashCode = prime * hashCode + ((getLogsConfigOverride() == null) ? 0 : getLogsConfigOverride().hashCode());
+        hashCode = prime * hashCode + ((getRegistryCredentialOverride() == null) ? 0 : getRegistryCredentialOverride().hashCode());
+        hashCode = prime * hashCode + ((getImagePullCredentialsTypeOverride() == null) ? 0 : getImagePullCredentialsTypeOverride().hashCode());
         return hashCode;
     }
 

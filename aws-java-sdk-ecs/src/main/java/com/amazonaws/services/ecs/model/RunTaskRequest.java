@@ -98,7 +98,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The launch type on which to run your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -107,7 +107,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * <p>
      * The platform version the task should run. A platform version is only specified for tasks using the Fargate launch
      * type. If one is not specified, the <code>LATEST</code> platform version is used by default. For more information,
-     * see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     * see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      * Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -133,16 +133,22 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private Boolean enableECSManagedTags;
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the task. If no value is
-     * specified, the tags are not propagated.
+     * Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags
+     * are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after
+     * task creation, use the <a>TagResource</a> API action.
      * </p>
+     * <note>
+     * <p>
+     * An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     * </p>
+     * </note>
      */
     private String propagateTags;
 
@@ -674,13 +680,13 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The launch type on which to run your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -692,12 +698,12 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The launch type on which to run your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The launch type on which to run your task. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -709,13 +715,13 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The launch type on which to run your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -729,13 +735,13 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The launch type on which to run your task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which to run your task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -750,7 +756,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * <p>
      * The platform version the task should run. A platform version is only specified for tasks using the Fargate launch
      * type. If one is not specified, the <code>LATEST</code> platform version is used by default. For more information,
-     * see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     * see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      * Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -758,7 +764,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      *        The platform version the task should run. A platform version is only specified for tasks using the Fargate
      *        launch type. If one is not specified, the <code>LATEST</code> platform version is used by default. For
      *        more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -770,14 +776,14 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * <p>
      * The platform version the task should run. A platform version is only specified for tasks using the Fargate launch
      * type. If one is not specified, the <code>LATEST</code> platform version is used by default. For more information,
-     * see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     * see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      * Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The platform version the task should run. A platform version is only specified for tasks using the
      *         Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
      *         default. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -789,7 +795,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * <p>
      * The platform version the task should run. A platform version is only specified for tasks using the Fargate launch
      * type. If one is not specified, the <code>LATEST</code> platform version is used by default. For more information,
-     * see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     * see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      * Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -797,7 +803,7 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
      *        The platform version the task should run. A platform version is only specified for tasks using the Fargate
      *        launch type. If one is not specified, the <code>LATEST</code> platform version is used by default. For
      *        more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -963,14 +969,14 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *        Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setEnableECSManagedTags(Boolean enableECSManagedTags) {
@@ -980,13 +986,13 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *         Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean getEnableECSManagedTags() {
@@ -996,14 +1002,14 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *        Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1015,13 +1021,13 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the task. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
-     *         Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean isEnableECSManagedTags() {
@@ -1030,13 +1036,23 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the task. If no value is
-     * specified, the tags are not propagated.
+     * Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags
+     * are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after
+     * task creation, use the <a>TagResource</a> API action.
      * </p>
+     * <note>
+     * <p>
+     * An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     * </p>
+     * </note>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the task. If no value
-     *        is specified, the tags are not propagated.
+     *        Specifies whether to propagate the tags from the task definition to the task. If no value is specified,
+     *        the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to
+     *        a task after task creation, use the <a>TagResource</a> API action.</p> <note>
+     *        <p>
+     *        An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     *        </p>
      * @see PropagateTags
      */
 
@@ -1046,12 +1062,22 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the task. If no value is
-     * specified, the tags are not propagated.
+     * Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags
+     * are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after
+     * task creation, use the <a>TagResource</a> API action.
      * </p>
+     * <note>
+     * <p>
+     * An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     * </p>
+     * </note>
      * 
-     * @return Specifies whether to propagate the tags from the task definition or the service to the task. If no value
-     *         is specified, the tags are not propagated.
+     * @return Specifies whether to propagate the tags from the task definition to the task. If no value is specified,
+     *         the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to
+     *         a task after task creation, use the <a>TagResource</a> API action.</p> <note>
+     *         <p>
+     *         An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     *         </p>
      * @see PropagateTags
      */
 
@@ -1061,13 +1087,23 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the task. If no value is
-     * specified, the tags are not propagated.
+     * Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags
+     * are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after
+     * task creation, use the <a>TagResource</a> API action.
      * </p>
+     * <note>
+     * <p>
+     * An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     * </p>
+     * </note>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the task. If no value
-     *        is specified, the tags are not propagated.
+     *        Specifies whether to propagate the tags from the task definition to the task. If no value is specified,
+     *        the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to
+     *        a task after task creation, use the <a>TagResource</a> API action.</p> <note>
+     *        <p>
+     *        An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PropagateTags
      */
@@ -1079,13 +1115,23 @@ public class RunTaskRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specifies whether to propagate the tags from the task definition or the service to the task. If no value is
-     * specified, the tags are not propagated.
+     * Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags
+     * are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after
+     * task creation, use the <a>TagResource</a> API action.
      * </p>
+     * <note>
+     * <p>
+     * An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     * </p>
+     * </note>
      * 
      * @param propagateTags
-     *        Specifies whether to propagate the tags from the task definition or the service to the task. If no value
-     *        is specified, the tags are not propagated.
+     *        Specifies whether to propagate the tags from the task definition to the task. If no value is specified,
+     *        the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to
+     *        a task after task creation, use the <a>TagResource</a> API action.</p> <note>
+     *        <p>
+     *        An error will be received if you specify the <code>SERVICE</code> option when running a task.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PropagateTags
      */

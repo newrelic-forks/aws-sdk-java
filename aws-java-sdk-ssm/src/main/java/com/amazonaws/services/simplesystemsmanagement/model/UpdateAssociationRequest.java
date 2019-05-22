@@ -58,7 +58,29 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     private InstanceAssociationOutputLocation outputLocation;
     /**
      * <p>
-     * The name of the association document.
+     * The name of the SSM document that contains the configuration information for the instance. You can specify
+     * Command or Automation documents.
+     * </p>
+     * <p>
+     * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
+     * another account.
+     * </p>
+     * <p>
+     * For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM document
+     * ARN, in the following format:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     * </p>
+     * <p>
+     * For example:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     * </p>
+     * <p>
+     * For AWS-predefined documents and SSM documents you created in your account, you only need to specify the document
+     * name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      * </p>
      */
     private String name;
@@ -84,6 +106,13 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     private String associationVersion;
     /**
      * <p>
+     * Specify the target for the association. This target is required for associations that use an Automation document
+     * and target resources by using rate controls.
+     * </p>
+     */
+    private String automationTargetParameterName;
+    /**
+     * <p>
      * The number of errors that are allowed before the system stops sending requests to run the association on
      * additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the
      * target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth
@@ -105,7 +134,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -347,11 +376,54 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the association document.
+     * The name of the SSM document that contains the configuration information for the instance. You can specify
+     * Command or Automation documents.
+     * </p>
+     * <p>
+     * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
+     * another account.
+     * </p>
+     * <p>
+     * For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM document
+     * ARN, in the following format:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     * </p>
+     * <p>
+     * For example:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     * </p>
+     * <p>
+     * For AWS-predefined documents and SSM documents you created in your account, you only need to specify the document
+     * name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      * </p>
      * 
      * @param name
-     *        The name of the association document.
+     *        The name of the SSM document that contains the configuration information for the instance. You can specify
+     *        Command or Automation documents.</p>
+     *        <p>
+     *        You can specify AWS-predefined documents, documents you created, or a document that is shared with you
+     *        from another account.
+     *        </p>
+     *        <p>
+     *        For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM
+     *        document ARN, in the following format:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     *        </p>
+     *        <p>
+     *        For example:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     *        </p>
+     *        <p>
+     *        For AWS-predefined documents and SSM documents you created in your account, you only need to specify the
+     *        document name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      */
 
     public void setName(String name) {
@@ -360,10 +432,53 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the association document.
+     * The name of the SSM document that contains the configuration information for the instance. You can specify
+     * Command or Automation documents.
+     * </p>
+     * <p>
+     * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
+     * another account.
+     * </p>
+     * <p>
+     * For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM document
+     * ARN, in the following format:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     * </p>
+     * <p>
+     * For example:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     * </p>
+     * <p>
+     * For AWS-predefined documents and SSM documents you created in your account, you only need to specify the document
+     * name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      * </p>
      * 
-     * @return The name of the association document.
+     * @return The name of the SSM document that contains the configuration information for the instance. You can
+     *         specify Command or Automation documents.</p>
+     *         <p>
+     *         You can specify AWS-predefined documents, documents you created, or a document that is shared with you
+     *         from another account.
+     *         </p>
+     *         <p>
+     *         For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM
+     *         document ARN, in the following format:
+     *         </p>
+     *         <p>
+     *         <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     *         </p>
+     *         <p>
+     *         For example:
+     *         </p>
+     *         <p>
+     *         <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     *         </p>
+     *         <p>
+     *         For AWS-predefined documents and SSM documents you created in your account, you only need to specify the
+     *         document name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      */
 
     public String getName() {
@@ -372,11 +487,54 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the association document.
+     * The name of the SSM document that contains the configuration information for the instance. You can specify
+     * Command or Automation documents.
+     * </p>
+     * <p>
+     * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
+     * another account.
+     * </p>
+     * <p>
+     * For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM document
+     * ARN, in the following format:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     * </p>
+     * <p>
+     * For example:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     * </p>
+     * <p>
+     * For AWS-predefined documents and SSM documents you created in your account, you only need to specify the document
+     * name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      * </p>
      * 
      * @param name
-     *        The name of the association document.
+     *        The name of the SSM document that contains the configuration information for the instance. You can specify
+     *        Command or Automation documents.</p>
+     *        <p>
+     *        You can specify AWS-predefined documents, documents you created, or a document that is shared with you
+     *        from another account.
+     *        </p>
+     *        <p>
+     *        For SSM documents that are shared with you from other AWS accounts, you must specify the complete SSM
+     *        document ARN, in the following format:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> </code>
+     *        </p>
+     *        <p>
+     *        For example:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document</code>
+     *        </p>
+     *        <p>
+     *        For AWS-predefined documents and SSM documents you created in your account, you only need to specify the
+     *        document name. For example, <code>AWS-ApplyPatchBaseline</code> or <code>My-Document</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -552,6 +710,52 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
+     * Specify the target for the association. This target is required for associations that use an Automation document
+     * and target resources by using rate controls.
+     * </p>
+     * 
+     * @param automationTargetParameterName
+     *        Specify the target for the association. This target is required for associations that use an Automation
+     *        document and target resources by using rate controls.
+     */
+
+    public void setAutomationTargetParameterName(String automationTargetParameterName) {
+        this.automationTargetParameterName = automationTargetParameterName;
+    }
+
+    /**
+     * <p>
+     * Specify the target for the association. This target is required for associations that use an Automation document
+     * and target resources by using rate controls.
+     * </p>
+     * 
+     * @return Specify the target for the association. This target is required for associations that use an Automation
+     *         document and target resources by using rate controls.
+     */
+
+    public String getAutomationTargetParameterName() {
+        return this.automationTargetParameterName;
+    }
+
+    /**
+     * <p>
+     * Specify the target for the association. This target is required for associations that use an Automation document
+     * and target resources by using rate controls.
+     * </p>
+     * 
+     * @param automationTargetParameterName
+     *        Specify the target for the association. This target is required for associations that use an Automation
+     *        document and target resources by using rate controls.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateAssociationRequest withAutomationTargetParameterName(String automationTargetParameterName) {
+        setAutomationTargetParameterName(automationTargetParameterName);
+        return this;
+    }
+
+    /**
+     * <p>
      * The number of errors that are allowed before the system stops sending requests to run the association on
      * additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the
      * target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth
@@ -654,7 +858,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -664,7 +868,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *        for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means
      *        all targets run the association at the same time.</p>
      *        <p>
-     *        If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *        If a new instance starts and attempts to run an association while Systems Manager is running
      *        MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *        new instance will process its association within the limit specified for MaxConcurrency.
      */
@@ -680,7 +884,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -689,7 +893,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *         for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which
      *         means all targets run the association at the same time.</p>
      *         <p>
-     *         If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *         If a new instance starts and attempts to run an association while Systems Manager is running
      *         MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *         new instance will process its association within the limit specified for MaxConcurrency.
      */
@@ -705,7 +909,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -715,7 +919,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *        for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means
      *        all targets run the association at the same time.</p>
      *        <p>
-     *        If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *        If a new instance starts and attempts to run an association while Systems Manager is running
      *        MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *        new instance will process its association within the limit specified for MaxConcurrency.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -815,6 +1019,8 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
             sb.append("AssociationName: ").append(getAssociationName()).append(",");
         if (getAssociationVersion() != null)
             sb.append("AssociationVersion: ").append(getAssociationVersion()).append(",");
+        if (getAutomationTargetParameterName() != null)
+            sb.append("AutomationTargetParameterName: ").append(getAutomationTargetParameterName()).append(",");
         if (getMaxErrors() != null)
             sb.append("MaxErrors: ").append(getMaxErrors()).append(",");
         if (getMaxConcurrency() != null)
@@ -871,6 +1077,11 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getAssociationVersion() != null && other.getAssociationVersion().equals(this.getAssociationVersion()) == false)
             return false;
+        if (other.getAutomationTargetParameterName() == null ^ this.getAutomationTargetParameterName() == null)
+            return false;
+        if (other.getAutomationTargetParameterName() != null
+                && other.getAutomationTargetParameterName().equals(this.getAutomationTargetParameterName()) == false)
+            return false;
         if (other.getMaxErrors() == null ^ this.getMaxErrors() == null)
             return false;
         if (other.getMaxErrors() != null && other.getMaxErrors().equals(this.getMaxErrors()) == false)
@@ -900,6 +1111,7 @@ public class UpdateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getTargets() == null) ? 0 : getTargets().hashCode());
         hashCode = prime * hashCode + ((getAssociationName() == null) ? 0 : getAssociationName().hashCode());
         hashCode = prime * hashCode + ((getAssociationVersion() == null) ? 0 : getAssociationVersion().hashCode());
+        hashCode = prime * hashCode + ((getAutomationTargetParameterName() == null) ? 0 : getAutomationTargetParameterName().hashCode());
         hashCode = prime * hashCode + ((getMaxErrors() == null) ? 0 : getMaxErrors().hashCode());
         hashCode = prime * hashCode + ((getMaxConcurrency() == null) ? 0 : getMaxConcurrency().hashCode());
         hashCode = prime * hashCode + ((getComplianceSeverity() == null) ? 0 : getComplianceSeverity().hashCode());

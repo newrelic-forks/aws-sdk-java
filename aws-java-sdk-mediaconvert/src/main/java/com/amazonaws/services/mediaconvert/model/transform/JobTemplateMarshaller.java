@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class JobTemplateMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> ACCELERATIONSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accelerationSettings").build();
     private static final MarshallingInfo<String> ARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("arn").build();
     private static final MarshallingInfo<String> CATEGORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -43,6 +45,8 @@ public class JobTemplateMarshaller {
             .marshallLocationName("queue").build();
     private static final MarshallingInfo<StructuredPojo> SETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("settings").build();
+    private static final MarshallingInfo<String> STATUSUPDATEINTERVAL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusUpdateInterval").build();
     private static final MarshallingInfo<String> TYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("type").build();
 
@@ -62,6 +66,7 @@ public class JobTemplateMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(jobTemplate.getAccelerationSettings(), ACCELERATIONSETTINGS_BINDING);
             protocolMarshaller.marshall(jobTemplate.getArn(), ARN_BINDING);
             protocolMarshaller.marshall(jobTemplate.getCategory(), CATEGORY_BINDING);
             protocolMarshaller.marshall(jobTemplate.getCreatedAt(), CREATEDAT_BINDING);
@@ -70,6 +75,7 @@ public class JobTemplateMarshaller {
             protocolMarshaller.marshall(jobTemplate.getName(), NAME_BINDING);
             protocolMarshaller.marshall(jobTemplate.getQueue(), QUEUE_BINDING);
             protocolMarshaller.marshall(jobTemplate.getSettings(), SETTINGS_BINDING);
+            protocolMarshaller.marshall(jobTemplate.getStatusUpdateInterval(), STATUSUPDATEINTERVAL_BINDING);
             protocolMarshaller.marshall(jobTemplate.getType(), TYPE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

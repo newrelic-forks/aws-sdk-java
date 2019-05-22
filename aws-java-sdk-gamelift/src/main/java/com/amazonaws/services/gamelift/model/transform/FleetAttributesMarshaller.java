@@ -48,6 +48,8 @@ public class FleetAttributesMarshaller {
             .marshallLocationName("Status").build();
     private static final MarshallingInfo<String> BUILDID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("BuildId").build();
+    private static final MarshallingInfo<String> SCRIPTID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("ScriptId").build();
     private static final MarshallingInfo<String> SERVERLAUNCHPATH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ServerLaunchPath").build();
     private static final MarshallingInfo<String> SERVERLAUNCHPARAMETERS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -64,6 +66,8 @@ public class FleetAttributesMarshaller {
             .marshallLocationName("MetricGroups").build();
     private static final MarshallingInfo<List> STOPPEDACTIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StoppedActions").build();
+    private static final MarshallingInfo<String> INSTANCEROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("InstanceRoleArn").build();
 
     private static final FleetAttributesMarshaller instance = new FleetAttributesMarshaller();
 
@@ -91,6 +95,7 @@ public class FleetAttributesMarshaller {
             protocolMarshaller.marshall(fleetAttributes.getTerminationTime(), TERMINATIONTIME_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getStatus(), STATUS_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getBuildId(), BUILDID_BINDING);
+            protocolMarshaller.marshall(fleetAttributes.getScriptId(), SCRIPTID_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getServerLaunchPath(), SERVERLAUNCHPATH_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getServerLaunchParameters(), SERVERLAUNCHPARAMETERS_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getLogPaths(), LOGPATHS_BINDING);
@@ -99,6 +104,7 @@ public class FleetAttributesMarshaller {
             protocolMarshaller.marshall(fleetAttributes.getResourceCreationLimitPolicy(), RESOURCECREATIONLIMITPOLICY_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getMetricGroups(), METRICGROUPS_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getStoppedActions(), STOPPEDACTIONS_BINDING);
+            protocolMarshaller.marshall(fleetAttributes.getInstanceRoleArn(), INSTANCEROLEARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

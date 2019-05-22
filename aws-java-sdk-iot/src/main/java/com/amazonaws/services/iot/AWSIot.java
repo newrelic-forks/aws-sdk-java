@@ -36,11 +36,11 @@ import com.amazonaws.services.iot.model.*;
  * </p>
  * <p>
  * For more information about how AWS IoT works, see the <a
- * href="http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.
+ * href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.
  * </p>
  * <p>
  * For information about how to use the credentials provider for AWS IoT, see <a
- * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to
+ * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to
  * AWS Services</a>.
  * </p>
  */
@@ -294,7 +294,8 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Attaches the specified principal to the specified thing.
+     * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param attachThingPrincipalRequest
@@ -814,12 +815,14 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Creates a thing record in the registry.
+     * Creates a thing record in the registry. If this call is made multiple times using the same thing name and
+     * configuration, the call will succeed. If this call is made with the same thing name but different configuration a
+     * <code>ResourceAlreadyExistsException</code> is thrown.
      * </p>
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -852,7 +855,7 @@ public interface AWSIot {
      * <note>
      * <p>
      * This is a control plane operation. See <a
-     * href="http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html">Authorization</a> for information
      * about authorizing control plane actions.
      * </p>
      * </note>
@@ -1948,7 +1951,8 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Detaches the specified principal from the specified thing.
+     * Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * <note>
      * <p>
@@ -2200,6 +2204,35 @@ public interface AWSIot {
      * @sample AWSIot.GetRegistrationCode
      */
     GetRegistrationCodeResult getRegistrationCode(GetRegistrationCodeRequest getRegistrationCodeRequest);
+
+    /**
+     * <p>
+     * Gets statistics about things that match the specified query.
+     * </p>
+     * 
+     * @param getStatisticsRequest
+     * @return Result of the GetStatistics operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidQueryException
+     *         The query is invalid.
+     * @throws InvalidAggregationException
+     *         The aggregation is invalid.
+     * @throws IndexNotReadyException
+     *         The index is not ready.
+     * @sample AWSIot.GetStatistics
+     */
+    GetStatisticsResult getStatistics(GetStatisticsRequest getStatisticsRequest);
 
     /**
      * <p>
@@ -2630,7 +2663,7 @@ public interface AWSIot {
      * <p>
      * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a
      * href=
-     * "http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
+     * "https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax"
      * >AmazonCognito Identity format</a>.
      * </p>
      * <p>
@@ -2659,7 +2692,8 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Lists the things associated with the specified principal.
+     * Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listPrincipalThingsRequest
@@ -2876,7 +2910,8 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Lists the principals associated with the specified thing.
+     * Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users,
+     * groups, and roles, Amazon Cognito identities or federated identities.
      * </p>
      * 
      * @param listThingPrincipalsRequest

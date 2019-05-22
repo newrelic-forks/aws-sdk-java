@@ -37,6 +37,11 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
      * name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then
      * all branches are built.
      * </p>
+     * <note>
+     * <p>
+     * It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     * </p>
+     * </note>
      */
     private String branchFilter;
     /**
@@ -46,6 +51,13 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private Boolean rotateSecret;
+    /**
+     * <p>
+     * An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger a
+     * build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * </p>
+     */
+    private java.util.List<java.util.List<WebhookFilter>> filterGroups;
 
     /**
      * <p>
@@ -93,11 +105,19 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
      * name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then
      * all branches are built.
      * </p>
+     * <note>
+     * <p>
+     * It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     * </p>
+     * </note>
      * 
      * @param branchFilter
      *        A regular expression used to determine which repository branches are built when a webhook is triggered. If
      *        the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is
-     *        empty, then all branches are built.
+     *        empty, then all branches are built.</p> <note>
+     *        <p>
+     *        It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     *        </p>
      */
 
     public void setBranchFilter(String branchFilter) {
@@ -110,10 +130,18 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
      * name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then
      * all branches are built.
      * </p>
+     * <note>
+     * <p>
+     * It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     * </p>
+     * </note>
      * 
      * @return A regular expression used to determine which repository branches are built when a webhook is triggered.
      *         If the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is
-     *         empty, then all branches are built.
+     *         empty, then all branches are built.</p> <note>
+     *         <p>
+     *         It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     *         </p>
      */
 
     public String getBranchFilter() {
@@ -126,11 +154,19 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
      * name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then
      * all branches are built.
      * </p>
+     * <note>
+     * <p>
+     * It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     * </p>
+     * </note>
      * 
      * @param branchFilter
      *        A regular expression used to determine which repository branches are built when a webhook is triggered. If
      *        the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is
-     *        empty, then all branches are built.
+     *        empty, then all branches are built.</p> <note>
+     *        <p>
+     *        It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -200,6 +236,84 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger a
+     * build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * </p>
+     * 
+     * @return An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger
+     *         a build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     */
+
+    public java.util.List<java.util.List<WebhookFilter>> getFilterGroups() {
+        return filterGroups;
+    }
+
+    /**
+     * <p>
+     * An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger a
+     * build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * </p>
+     * 
+     * @param filterGroups
+     *        An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger
+     *        a build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     */
+
+    public void setFilterGroups(java.util.Collection<java.util.List<WebhookFilter>> filterGroups) {
+        if (filterGroups == null) {
+            this.filterGroups = null;
+            return;
+        }
+
+        this.filterGroups = new java.util.ArrayList<java.util.List<WebhookFilter>>(filterGroups);
+    }
+
+    /**
+     * <p>
+     * An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger a
+     * build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFilterGroups(java.util.Collection)} or {@link #withFilterGroups(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param filterGroups
+     *        An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger
+     *        a build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateWebhookRequest withFilterGroups(java.util.List<WebhookFilter>... filterGroups) {
+        if (this.filterGroups == null) {
+            setFilterGroups(new java.util.ArrayList<java.util.List<WebhookFilter>>(filterGroups.length));
+        }
+        for (java.util.List<WebhookFilter> ele : filterGroups) {
+            this.filterGroups.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger a
+     * build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * </p>
+     * 
+     * @param filterGroups
+     *        An array of arrays of <code>WebhookFilter</code> objects used to determine if a webhook event can trigger
+     *        a build. A filter group must pcontain at least one <code>EVENT</code> <code>WebhookFilter</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateWebhookRequest withFilterGroups(java.util.Collection<java.util.List<WebhookFilter>> filterGroups) {
+        setFilterGroups(filterGroups);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -216,7 +330,9 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getBranchFilter() != null)
             sb.append("BranchFilter: ").append(getBranchFilter()).append(",");
         if (getRotateSecret() != null)
-            sb.append("RotateSecret: ").append(getRotateSecret());
+            sb.append("RotateSecret: ").append(getRotateSecret()).append(",");
+        if (getFilterGroups() != null)
+            sb.append("FilterGroups: ").append(getFilterGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -243,6 +359,10 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getRotateSecret() != null && other.getRotateSecret().equals(this.getRotateSecret()) == false)
             return false;
+        if (other.getFilterGroups() == null ^ this.getFilterGroups() == null)
+            return false;
+        if (other.getFilterGroups() != null && other.getFilterGroups().equals(this.getFilterGroups()) == false)
+            return false;
         return true;
     }
 
@@ -254,6 +374,7 @@ public class UpdateWebhookRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getProjectName() == null) ? 0 : getProjectName().hashCode());
         hashCode = prime * hashCode + ((getBranchFilter() == null) ? 0 : getBranchFilter().hashCode());
         hashCode = prime * hashCode + ((getRotateSecret() == null) ? 0 : getRotateSecret().hashCode());
+        hashCode = prime * hashCode + ((getFilterGroups() == null) ? 0 : getFilterGroups().hashCode());
         return hashCode;
     }
 

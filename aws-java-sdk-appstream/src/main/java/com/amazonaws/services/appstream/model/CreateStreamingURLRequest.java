@@ -39,7 +39,7 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     private String fleetName;
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      */
     private String userId;
@@ -60,7 +60,7 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      */
@@ -148,11 +148,11 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
      * @param userId
-     *        The ID of the user.
+     *        The identifier of the user.
      */
 
     public void setUserId(String userId) {
@@ -161,10 +161,10 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
-     * @return The ID of the user.
+     * @return The identifier of the user.
      */
 
     public String getUserId() {
@@ -173,11 +173,11 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
      * @param userId
-     *        The ID of the user.
+     *        The identifier of the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,13 +281,13 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param sessionContext
      *        The session context. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      *        >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      */
 
@@ -298,12 +298,12 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @return The session context. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *         "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      *         >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      */
 
@@ -314,13 +314,13 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param sessionContext
      *        The session context. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
      *        >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

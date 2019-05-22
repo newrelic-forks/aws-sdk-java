@@ -35,7 +35,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start
      * the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * <p>
      * You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is
@@ -47,9 +47,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your
-     * Own Algorithms with Amazon SageMaker</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
+     * your own algorithms, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using
+     * Your Own Algorithms with Amazon SageMaker</a>.
      * </p>
      */
     private AlgorithmSpecification algorithmSpecification;
@@ -61,7 +61,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a
      * Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch
      * Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For
-     * more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
+     * more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
      * SageMaker Roles</a>.
      * </p>
      * <note>
@@ -112,7 +112,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control access to
      * and from your training container by configuring the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
      * Virtual Private Cloud</a>.
      * </p>
      */
@@ -133,7 +133,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      */
@@ -141,9 +141,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers
-     * within a training cluster for distributed training. If network isolation is used for training jobs that are
+     * within a training cluster for distributed training. If you enable network isolation for training jobs that are
      * configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the
-     * specifed VPC, but the training container does not have network access.
+     * specified VPC, but the training container does not have network access.
      * </p>
      * <note>
      * <p>
@@ -152,6 +152,17 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * </note>
      */
     private Boolean enableNetworkIsolation;
+    /**
+     * <p>
+     * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
+     * Encryption provides greater security for distributed training, but training might take longer. How long it takes
+     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
+     * in distributed training. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between ML
+     * Compute Instances in a Distributed Training Job</a>.
+     * </p>
+     */
+    private Boolean enableInterContainerTrafficEncryption;
 
     /**
      * <p>
@@ -197,7 +208,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start
      * the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * <p>
      * You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is
@@ -206,7 +217,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @return Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you
      *         start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon
-     *         SageMaker, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
+     *         SageMaker, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
      *         <p>
      *         You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and
      *         value is limited to 256 characters, as specified by the <code>Length Constraint</code>.
@@ -220,7 +231,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start
      * the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * <p>
      * You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is
@@ -230,7 +241,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * @param hyperParameters
      *        Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you
      *        start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon
-     *        SageMaker, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
+     *        SageMaker, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
      *        <p>
      *        You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and
      *        value is limited to 256 characters, as specified by the <code>Length Constraint</code>.
@@ -244,7 +255,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start
      * the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * <p>
      * You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is
@@ -254,7 +265,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * @param hyperParameters
      *        Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you
      *        start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon
-     *        SageMaker, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
+     *        SageMaker, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. </p>
      *        <p>
      *        You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and
      *        value is limited to 256 characters, as specified by the <code>Length Constraint</code>.
@@ -291,17 +302,17 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your
-     * Own Algorithms with Amazon SageMaker</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
+     * your own algorithms, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using
+     * Your Own Algorithms with Amazon SageMaker</a>.
      * </p>
      * 
      * @param algorithmSpecification
      *        The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *        metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
-     *        see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
+     *        see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
      *        about providing your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with
      *        Amazon SageMaker</a>.
      */
 
@@ -313,17 +324,17 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your
-     * Own Algorithms with Amazon SageMaker</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
+     * your own algorithms, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using
+     * Your Own Algorithms with Amazon SageMaker</a>.
      * </p>
      * 
      * @return The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *         metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
-     *         see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
+     *         see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
      *         about providing your own algorithms, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with
-     *         Amazon SageMaker</a>.
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms
+     *         with Amazon SageMaker</a>.
      */
 
     public AlgorithmSpecification getAlgorithmSpecification() {
@@ -334,17 +345,17 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your
-     * Own Algorithms with Amazon SageMaker</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
+     * your own algorithms, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using
+     * Your Own Algorithms with Amazon SageMaker</a>.
      * </p>
      * 
      * @param algorithmSpecification
      *        The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *        metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
-     *        see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
+     *        see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
      *        about providing your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with
      *        Amazon SageMaker</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -362,7 +373,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a
      * Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch
      * Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For
-     * more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
+     * more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
      * SageMaker Roles</a>.
      * </p>
      * <note>
@@ -380,7 +391,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      *        download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to
      *        Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these
      *        tasks to an IAM role. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *        </p>
      *        <note>
      *        <p>
@@ -401,7 +412,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a
      * Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch
      * Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For
-     * more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
+     * more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
      * SageMaker Roles</a>.
      * </p>
      * <note>
@@ -418,7 +429,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      *         download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to
      *         Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these
      *         tasks to an IAM role. For more information, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *         </p>
      *         <note>
      *         <p>
@@ -439,7 +450,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a
      * Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch
      * Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For
-     * more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
+     * more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
      * SageMaker Roles</a>.
      * </p>
      * <note>
@@ -457,7 +468,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      *        download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to
      *        Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these
      *        tasks to an IAM role. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon SageMaker Roles</a>.
      *        </p>
      *        <note>
      *        <p>
@@ -750,14 +761,14 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control access to
      * and from your training container by configuring the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
      * Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
      *        A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control
      *        access to and from your training container by configuring the VPC. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
      *        Amazon Virtual Private Cloud</a>.
      */
 
@@ -769,13 +780,13 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control access to
      * and from your training container by configuring the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
      * Virtual Private Cloud</a>.
      * </p>
      * 
      * @return A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control
      *         access to and from your training container by configuring the VPC. For more information, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
      *         Amazon Virtual Private Cloud</a>.
      */
 
@@ -787,14 +798,14 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control access to
      * and from your training container by configuring the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an Amazon
      * Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
      *        A <a>VpcConfig</a> object that specifies the VPC that you want your training job to connect to. Control
      *        access to and from your training container by configuring the VPC. For more information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs by Using an
      *        Amazon Virtual Private Cloud</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -886,12 +897,12 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @return An array of key-value pairs. For more information, see <a
-     *         href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *         href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *         >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      */
 
@@ -902,13 +913,13 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      */
 
@@ -924,7 +935,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * <p>
@@ -935,7 +946,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -953,13 +964,13 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * An array of key-value pairs. For more information, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
      * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
      * @param tags
      *        An array of key-value pairs. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
+     *        href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what"
      *        >Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -972,9 +983,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers
-     * within a training cluster for distributed training. If network isolation is used for training jobs that are
+     * within a training cluster for distributed training. If you enable network isolation for training jobs that are
      * configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the
-     * specifed VPC, but the training container does not have network access.
+     * specified VPC, but the training container does not have network access.
      * </p>
      * <note>
      * <p>
@@ -984,9 +995,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @param enableNetworkIsolation
      *        Isolates the training container. No inbound or outbound network calls can be made, except for calls
-     *        between peers within a training cluster for distributed training. If network isolation is used for
+     *        between peers within a training cluster for distributed training. If you enable network isolation for
      *        training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and
-     *        model artifacts through the specifed VPC, but the training container does not have network access.</p>
+     *        model artifacts through the specified VPC, but the training container does not have network access.</p>
      *        <note>
      *        <p>
      *        The Semantic Segmentation built-in algorithm does not support network isolation.
@@ -1000,9 +1011,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers
-     * within a training cluster for distributed training. If network isolation is used for training jobs that are
+     * within a training cluster for distributed training. If you enable network isolation for training jobs that are
      * configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the
-     * specifed VPC, but the training container does not have network access.
+     * specified VPC, but the training container does not have network access.
      * </p>
      * <note>
      * <p>
@@ -1011,9 +1022,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * </note>
      * 
      * @return Isolates the training container. No inbound or outbound network calls can be made, except for calls
-     *         between peers within a training cluster for distributed training. If network isolation is used for
+     *         between peers within a training cluster for distributed training. If you enable network isolation for
      *         training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and
-     *         model artifacts through the specifed VPC, but the training container does not have network access.</p>
+     *         model artifacts through the specified VPC, but the training container does not have network access.</p>
      *         <note>
      *         <p>
      *         The Semantic Segmentation built-in algorithm does not support network isolation.
@@ -1027,9 +1038,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers
-     * within a training cluster for distributed training. If network isolation is used for training jobs that are
+     * within a training cluster for distributed training. If you enable network isolation for training jobs that are
      * configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the
-     * specifed VPC, but the training container does not have network access.
+     * specified VPC, but the training container does not have network access.
      * </p>
      * <note>
      * <p>
@@ -1039,9 +1050,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @param enableNetworkIsolation
      *        Isolates the training container. No inbound or outbound network calls can be made, except for calls
-     *        between peers within a training cluster for distributed training. If network isolation is used for
+     *        between peers within a training cluster for distributed training. If you enable network isolation for
      *        training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and
-     *        model artifacts through the specifed VPC, but the training container does not have network access.</p>
+     *        model artifacts through the specified VPC, but the training container does not have network access.</p>
      *        <note>
      *        <p>
      *        The Semantic Segmentation built-in algorithm does not support network isolation.
@@ -1057,9 +1068,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers
-     * within a training cluster for distributed training. If network isolation is used for training jobs that are
+     * within a training cluster for distributed training. If you enable network isolation for training jobs that are
      * configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the
-     * specifed VPC, but the training container does not have network access.
+     * specified VPC, but the training container does not have network access.
      * </p>
      * <note>
      * <p>
@@ -1068,9 +1079,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * </note>
      * 
      * @return Isolates the training container. No inbound or outbound network calls can be made, except for calls
-     *         between peers within a training cluster for distributed training. If network isolation is used for
+     *         between peers within a training cluster for distributed training. If you enable network isolation for
      *         training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and
-     *         model artifacts through the specifed VPC, but the training container does not have network access.</p>
+     *         model artifacts through the specified VPC, but the training container does not have network access.</p>
      *         <note>
      *         <p>
      *         The Semantic Segmentation built-in algorithm does not support network isolation.
@@ -1079,6 +1090,98 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
 
     public Boolean isEnableNetworkIsolation() {
         return this.enableNetworkIsolation;
+    }
+
+    /**
+     * <p>
+     * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
+     * Encryption provides greater security for distributed training, but training might take longer. How long it takes
+     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
+     * in distributed training. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between ML
+     * Compute Instances in a Distributed Training Job</a>.
+     * </p>
+     * 
+     * @param enableInterContainerTrafficEncryption
+     *        To encrypt all communications between ML compute instances in distributed training, choose
+     *        <code>True</code>. Encryption provides greater security for distributed training, but training might take
+     *        longer. How long it takes depends on the amount of communication between compute instances, especially if
+     *        you use a deep learning algorithm in distributed training. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between
+     *        ML Compute Instances in a Distributed Training Job</a>.
+     */
+
+    public void setEnableInterContainerTrafficEncryption(Boolean enableInterContainerTrafficEncryption) {
+        this.enableInterContainerTrafficEncryption = enableInterContainerTrafficEncryption;
+    }
+
+    /**
+     * <p>
+     * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
+     * Encryption provides greater security for distributed training, but training might take longer. How long it takes
+     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
+     * in distributed training. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between ML
+     * Compute Instances in a Distributed Training Job</a>.
+     * </p>
+     * 
+     * @return To encrypt all communications between ML compute instances in distributed training, choose
+     *         <code>True</code>. Encryption provides greater security for distributed training, but training might take
+     *         longer. How long it takes depends on the amount of communication between compute instances, especially if
+     *         you use a deep learning algorithm in distributed training. For more information, see <a
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between
+     *         ML Compute Instances in a Distributed Training Job</a>.
+     */
+
+    public Boolean getEnableInterContainerTrafficEncryption() {
+        return this.enableInterContainerTrafficEncryption;
+    }
+
+    /**
+     * <p>
+     * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
+     * Encryption provides greater security for distributed training, but training might take longer. How long it takes
+     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
+     * in distributed training. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between ML
+     * Compute Instances in a Distributed Training Job</a>.
+     * </p>
+     * 
+     * @param enableInterContainerTrafficEncryption
+     *        To encrypt all communications between ML compute instances in distributed training, choose
+     *        <code>True</code>. Encryption provides greater security for distributed training, but training might take
+     *        longer. How long it takes depends on the amount of communication between compute instances, especially if
+     *        you use a deep learning algorithm in distributed training. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between
+     *        ML Compute Instances in a Distributed Training Job</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTrainingJobRequest withEnableInterContainerTrafficEncryption(Boolean enableInterContainerTrafficEncryption) {
+        setEnableInterContainerTrafficEncryption(enableInterContainerTrafficEncryption);
+        return this;
+    }
+
+    /**
+     * <p>
+     * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
+     * Encryption provides greater security for distributed training, but training might take longer. How long it takes
+     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
+     * in distributed training. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between ML
+     * Compute Instances in a Distributed Training Job</a>.
+     * </p>
+     * 
+     * @return To encrypt all communications between ML compute instances in distributed training, choose
+     *         <code>True</code>. Encryption provides greater security for distributed training, but training might take
+     *         longer. How long it takes depends on the amount of communication between compute instances, especially if
+     *         you use a deep learning algorithm in distributed training. For more information, see <a
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html">Protect Communications Between
+     *         ML Compute Instances in a Distributed Training Job</a>.
+     */
+
+    public Boolean isEnableInterContainerTrafficEncryption() {
+        return this.enableInterContainerTrafficEncryption;
     }
 
     /**
@@ -1114,7 +1217,9 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getEnableNetworkIsolation() != null)
-            sb.append("EnableNetworkIsolation: ").append(getEnableNetworkIsolation());
+            sb.append("EnableNetworkIsolation: ").append(getEnableNetworkIsolation()).append(",");
+        if (getEnableInterContainerTrafficEncryption() != null)
+            sb.append("EnableInterContainerTrafficEncryption: ").append(getEnableInterContainerTrafficEncryption());
         sb.append("}");
         return sb.toString();
     }
@@ -1173,6 +1278,11 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getEnableNetworkIsolation() != null && other.getEnableNetworkIsolation().equals(this.getEnableNetworkIsolation()) == false)
             return false;
+        if (other.getEnableInterContainerTrafficEncryption() == null ^ this.getEnableInterContainerTrafficEncryption() == null)
+            return false;
+        if (other.getEnableInterContainerTrafficEncryption() != null
+                && other.getEnableInterContainerTrafficEncryption().equals(this.getEnableInterContainerTrafficEncryption()) == false)
+            return false;
         return true;
     }
 
@@ -1192,6 +1302,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getStoppingCondition() == null) ? 0 : getStoppingCondition().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getEnableNetworkIsolation() == null) ? 0 : getEnableNetworkIsolation().hashCode());
+        hashCode = prime * hashCode + ((getEnableInterContainerTrafficEncryption() == null) ? 0 : getEnableInterContainerTrafficEncryption().hashCode());
         return hashCode;
     }
 

@@ -29,7 +29,7 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of ScheduleDefinitions
+     * A list of ScheduleDefinitions.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> scheduleDefinitions;
@@ -51,15 +51,27 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
-
+    /** <p/> */
     private com.amazonaws.internal.SdkInternalList<java.util.Date> nextInvocations;
+    /**
+     * <p>
+     * The number of clusters associated with the schedule.
+     * </p>
+     */
+    private Integer associatedClusterCount;
+    /**
+     * <p>
+     * A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ClusterAssociatedToSchedule> associatedClusters;
 
     /**
      * <p>
-     * A list of ScheduleDefinitions
+     * A list of ScheduleDefinitions.
      * </p>
      * 
-     * @return A list of ScheduleDefinitions
+     * @return A list of ScheduleDefinitions.
      */
 
     public java.util.List<String> getScheduleDefinitions() {
@@ -71,11 +83,11 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of ScheduleDefinitions
+     * A list of ScheduleDefinitions.
      * </p>
      * 
      * @param scheduleDefinitions
-     *        A list of ScheduleDefinitions
+     *        A list of ScheduleDefinitions.
      */
 
     public void setScheduleDefinitions(java.util.Collection<String> scheduleDefinitions) {
@@ -89,7 +101,7 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of ScheduleDefinitions
+     * A list of ScheduleDefinitions.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -98,7 +110,7 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param scheduleDefinitions
-     *        A list of ScheduleDefinitions
+     *        A list of ScheduleDefinitions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,11 +126,11 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of ScheduleDefinitions
+     * A list of ScheduleDefinitions.
      * </p>
      * 
      * @param scheduleDefinitions
-     *        A list of ScheduleDefinitions
+     *        A list of ScheduleDefinitions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,6 +293,8 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * <p/>
+     * 
      * @return
      */
 
@@ -292,6 +306,8 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * <p/>
+     * 
      * @param nextInvocations
      */
 
@@ -305,6 +321,7 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * <p/>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setNextInvocations(java.util.Collection)} or {@link #withNextInvocations(java.util.Collection)} if you
@@ -326,12 +343,127 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * <p/>
+     * 
      * @param nextInvocations
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ModifySnapshotScheduleResult withNextInvocations(java.util.Collection<java.util.Date> nextInvocations) {
         setNextInvocations(nextInvocations);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of clusters associated with the schedule.
+     * </p>
+     * 
+     * @param associatedClusterCount
+     *        The number of clusters associated with the schedule.
+     */
+
+    public void setAssociatedClusterCount(Integer associatedClusterCount) {
+        this.associatedClusterCount = associatedClusterCount;
+    }
+
+    /**
+     * <p>
+     * The number of clusters associated with the schedule.
+     * </p>
+     * 
+     * @return The number of clusters associated with the schedule.
+     */
+
+    public Integer getAssociatedClusterCount() {
+        return this.associatedClusterCount;
+    }
+
+    /**
+     * <p>
+     * The number of clusters associated with the schedule.
+     * </p>
+     * 
+     * @param associatedClusterCount
+     *        The number of clusters associated with the schedule.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifySnapshotScheduleResult withAssociatedClusterCount(Integer associatedClusterCount) {
+        setAssociatedClusterCount(associatedClusterCount);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * </p>
+     * 
+     * @return A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     */
+
+    public java.util.List<ClusterAssociatedToSchedule> getAssociatedClusters() {
+        if (associatedClusters == null) {
+            associatedClusters = new com.amazonaws.internal.SdkInternalList<ClusterAssociatedToSchedule>();
+        }
+        return associatedClusters;
+    }
+
+    /**
+     * <p>
+     * A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * </p>
+     * 
+     * @param associatedClusters
+     *        A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     */
+
+    public void setAssociatedClusters(java.util.Collection<ClusterAssociatedToSchedule> associatedClusters) {
+        if (associatedClusters == null) {
+            this.associatedClusters = null;
+            return;
+        }
+
+        this.associatedClusters = new com.amazonaws.internal.SdkInternalList<ClusterAssociatedToSchedule>(associatedClusters);
+    }
+
+    /**
+     * <p>
+     * A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAssociatedClusters(java.util.Collection)} or {@link #withAssociatedClusters(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param associatedClusters
+     *        A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifySnapshotScheduleResult withAssociatedClusters(ClusterAssociatedToSchedule... associatedClusters) {
+        if (this.associatedClusters == null) {
+            setAssociatedClusters(new com.amazonaws.internal.SdkInternalList<ClusterAssociatedToSchedule>(associatedClusters.length));
+        }
+        for (ClusterAssociatedToSchedule ele : associatedClusters) {
+            this.associatedClusters.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * </p>
+     * 
+     * @param associatedClusters
+     *        A list of clusters associated with the schedule. A maximum of 100 clusters is returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifySnapshotScheduleResult withAssociatedClusters(java.util.Collection<ClusterAssociatedToSchedule> associatedClusters) {
+        setAssociatedClusters(associatedClusters);
         return this;
     }
 
@@ -356,7 +488,11 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getNextInvocations() != null)
-            sb.append("NextInvocations: ").append(getNextInvocations());
+            sb.append("NextInvocations: ").append(getNextInvocations()).append(",");
+        if (getAssociatedClusterCount() != null)
+            sb.append("AssociatedClusterCount: ").append(getAssociatedClusterCount()).append(",");
+        if (getAssociatedClusters() != null)
+            sb.append("AssociatedClusters: ").append(getAssociatedClusters());
         sb.append("}");
         return sb.toString();
     }
@@ -391,6 +527,14 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
             return false;
         if (other.getNextInvocations() != null && other.getNextInvocations().equals(this.getNextInvocations()) == false)
             return false;
+        if (other.getAssociatedClusterCount() == null ^ this.getAssociatedClusterCount() == null)
+            return false;
+        if (other.getAssociatedClusterCount() != null && other.getAssociatedClusterCount().equals(this.getAssociatedClusterCount()) == false)
+            return false;
+        if (other.getAssociatedClusters() == null ^ this.getAssociatedClusters() == null)
+            return false;
+        if (other.getAssociatedClusters() != null && other.getAssociatedClusters().equals(this.getAssociatedClusters()) == false)
+            return false;
         return true;
     }
 
@@ -404,6 +548,8 @@ public class ModifySnapshotScheduleResult extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getScheduleDescription() == null) ? 0 : getScheduleDescription().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getNextInvocations() == null) ? 0 : getNextInvocations().hashCode());
+        hashCode = prime * hashCode + ((getAssociatedClusterCount() == null) ? 0 : getAssociatedClusterCount().hashCode());
+        hashCode = prime * hashCode + ((getAssociatedClusters() == null) ? 0 : getAssociatedClusters().hashCode());
         return hashCode;
     }
 

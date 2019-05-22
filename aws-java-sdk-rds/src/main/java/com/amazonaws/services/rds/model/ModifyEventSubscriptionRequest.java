@@ -54,14 +54,14 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories
      * for a given SourceType in the <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
      * RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> eventCategories;
     /**
      * <p>
-     * A Boolean value; set to <b>true</b> to activate the subscription.
+     * A value that indicates whether to activate the subscription.
      * </p>
      */
     private Boolean enabled;
@@ -223,13 +223,13 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories
      * for a given SourceType in the <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
      * RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * </p>
      * 
      * @return A list of event categories for a SourceType that you want to subscribe to. You can see a list of the
      *         categories for a given SourceType in the <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
      *         <i>Amazon RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      */
 
@@ -244,14 +244,14 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories
      * for a given SourceType in the <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
      * RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * </p>
      * 
      * @param eventCategories
      *        A list of event categories for a SourceType that you want to subscribe to. You can see a list of the
      *        categories for a given SourceType in the <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
      *        <i>Amazon RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      */
 
@@ -268,7 +268,7 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories
      * for a given SourceType in the <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
      * RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * </p>
      * <p>
@@ -280,7 +280,7 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * @param eventCategories
      *        A list of event categories for a SourceType that you want to subscribe to. You can see a list of the
      *        categories for a given SourceType in the <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
      *        <i>Amazon RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -299,14 +299,14 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories
      * for a given SourceType in the <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the <i>Amazon
      * RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * </p>
      * 
      * @param eventCategories
      *        A list of event categories for a SourceType that you want to subscribe to. You can see a list of the
      *        categories for a given SourceType in the <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the
      *        <i>Amazon RDS User Guide</i> or by using the <b>DescribeEventCategories</b> action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -318,11 +318,11 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A Boolean value; set to <b>true</b> to activate the subscription.
+     * A value that indicates whether to activate the subscription.
      * </p>
      * 
      * @param enabled
-     *        A Boolean value; set to <b>true</b> to activate the subscription.
+     *        A value that indicates whether to activate the subscription.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -331,10 +331,10 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A Boolean value; set to <b>true</b> to activate the subscription.
+     * A value that indicates whether to activate the subscription.
      * </p>
      * 
-     * @return A Boolean value; set to <b>true</b> to activate the subscription.
+     * @return A value that indicates whether to activate the subscription.
      */
 
     public Boolean getEnabled() {
@@ -343,11 +343,11 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A Boolean value; set to <b>true</b> to activate the subscription.
+     * A value that indicates whether to activate the subscription.
      * </p>
      * 
      * @param enabled
-     *        A Boolean value; set to <b>true</b> to activate the subscription.
+     *        A value that indicates whether to activate the subscription.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -358,10 +358,10 @@ public class ModifyEventSubscriptionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A Boolean value; set to <b>true</b> to activate the subscription.
+     * A value that indicates whether to activate the subscription.
      * </p>
      * 
-     * @return A Boolean value; set to <b>true</b> to activate the subscription.
+     * @return A value that indicates whether to activate the subscription.
      */
 
     public Boolean isEnabled() {

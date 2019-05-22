@@ -14,16 +14,17 @@
  */
 package com.amazonaws.services.s3.transfer.internal;
 
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import java.io.File;
-import java.io.FileInputStream;
+import static com.amazonaws.services.s3.Headers.SERVER_SIDE_ENCRYPTION_CUSTOMER_KEY;
 
 import com.amazonaws.internal.ReleasableInputStream;
 import com.amazonaws.services.s3.internal.InputSubstream;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.SSECustomerKey;
 import com.amazonaws.services.s3.model.UploadPartRequest;
 import com.amazonaws.services.s3.transfer.TransferManager;
+import java.io.File;
+import java.io.FileInputStream;
 
 /**
  * Factory for creating all the individual UploadPartRequest objects for a
@@ -46,7 +47,6 @@ public class UploadPartRequestFactory {
     private long remainingBytes;
     private SSECustomerKey sseCustomerKey;
     private final int totalNumberOfParts;
-    private final ObjectMetadata objectMetadata;
 
     /**
      * Wrapped to provide necessary mark-and-reset support for the underlying
@@ -55,6 +55,8 @@ public class UploadPartRequestFactory {
      */
     private ReleasableInputStream wrappedStream;
 
+    // Note: Do not copy object metadata from PutObjectRequest to the UploadPartRequest
+    // as headers "like x-amz-server-side-encryption" are valid in PutObject but not in UploadPart API
     public UploadPartRequestFactory(PutObjectRequest origReq, String uploadId, long optimalPartSize) {
         this.origReq = origReq;
         this.uploadId = uploadId;
@@ -66,7 +68,6 @@ public class UploadPartRequestFactory {
         this.sseCustomerKey = origReq.getSSECustomerKey();
         this.totalNumberOfParts = (int) Math.ceil((double) this.remainingBytes
                 / this.optimalPartSize);
-        this.objectMetadata = origReq.getMetadata();
         if (origReq.getInputStream() != null) {
             wrappedStream = ReleasableInputStream.wrap(origReq.getInputStream());
         }
@@ -99,7 +100,24 @@ public class UploadPartRequestFactory {
                 .withPartNumber(partNumber++)
                 .withPartSize(partSize);
         }
-        req.withObjectMetadata(objectMetadata);
+
+        // Copying the SSE-C metadata if it's using SSE-C, which is required for each UploadPart Request.
+        // See https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadUploadPart.html, https://github.com/aws/aws-sdk-java/issues/1840
+        ObjectMetadata origReqMetadata = origReq.getMetadata();
+        if (origReqMetadata != null &&
+            origReqMetadata.getRawMetadataValue(SERVER_SIDE_ENCRYPTION_CUSTOMER_KEY) != null &&
+            origReqMetadata.getSSECustomerAlgorithm() != null &&
+            origReqMetadata.getSSECustomerKeyMd5() != null) {
+
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setHeader(SERVER_SIDE_ENCRYPTION_CUSTOMER_KEY,
+                               origReqMetadata.getRawMetadataValue(SERVER_SIDE_ENCRYPTION_CUSTOMER_KEY));
+            metadata.setSSECustomerAlgorithm(origReqMetadata.getSSECustomerAlgorithm());
+            metadata.setSSECustomerKeyMd5(origReqMetadata.getSSECustomerKeyMd5());
+
+            req.withObjectMetadata(metadata);
+        }
+
         req.withRequesterPays(origReq.isRequesterPays());
         TransferManager.appendMultipartUserAgent(req);
 

@@ -20,7 +20,7 @@
     "customServiceMetadata" : null,
     "customServiceNameForRequest" : null,
     "customSignerProvider" : null,
-    "deprecatedSuppressions" : [ "EnumSetterOverload", "ClientConstructors", "ClientMutationMethods" ],
+    "deprecatedSuppressions" : [ "ClientConstructors", "EnumSetterOverload", "ClientMutationMethods" ],
     "emitLegacyEnumSetterFor" : null,
     "operationModifiers" : null,
     "operationsWithResponseStreamContentLengthValidation" : null,
@@ -468,6 +468,50 @@
       },
       "syncReturnType" : "ListFlowsResult"
     },
+    "ListTagsForResource" : {
+      "asyncCallableType" : "java.util.concurrent.Callable<ListTagsForResourceResult>",
+      "asyncFutureType" : "java.util.concurrent.Future<ListTagsForResourceResult>",
+      "asyncHandlerType" : "com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult>",
+      "asyncReturnType" : "ListTagsForResourceResult",
+      "authenticated" : true,
+      "deprecated" : false,
+      "documentation" : "List all tags on an AWS Elemental MediaConnect resource",
+      "endpointDiscovery" : null,
+      "endpointOperation" : false,
+      "endpointTrait" : null,
+      "exceptions" : [ {
+        "exceptionName" : "NotFoundException",
+        "documentation" : "The requested resource was not found",
+        "httpStatusCode" : 404
+      }, {
+        "exceptionName" : "BadRequestException",
+        "documentation" : "The client performed an invalid request",
+        "httpStatusCode" : 400
+      }, {
+        "exceptionName" : "InternalServerErrorException",
+        "documentation" : "Internal service error",
+        "httpStatusCode" : 500
+      } ],
+      "hasBlobMemberAsPayload" : false,
+      "hostPrefixProcessor" : null,
+      "input" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ListTagsForResourceRequest",
+        "variableName" : "listTagsForResourceRequest",
+        "variableType" : "ListTagsForResourceRequest",
+        "documentation" : "",
+        "simpleType" : "ListTagsForResourceRequest",
+        "variableSetterType" : "ListTagsForResourceRequest"
+      },
+      "inputStreamPropertyName" : null,
+      "methodName" : "listTagsForResource",
+      "operationName" : "ListTagsForResource",
+      "returnType" : {
+        "returnType" : "ListTagsForResourceResult",
+        "documentation" : "The tags for the resource"
+      },
+      "syncReturnType" : "ListTagsForResourceResult"
+    },
     "RemoveFlowOutput" : {
       "asyncCallableType" : "java.util.concurrent.Callable<RemoveFlowOutputResult>",
       "asyncFutureType" : "java.util.concurrent.Future<RemoveFlowOutputResult>",
@@ -692,6 +736,94 @@
       },
       "syncReturnType" : "StopFlowResult"
     },
+    "TagResource" : {
+      "asyncCallableType" : "java.util.concurrent.Callable<TagResourceResult>",
+      "asyncFutureType" : "java.util.concurrent.Future<TagResourceResult>",
+      "asyncHandlerType" : "com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult>",
+      "asyncReturnType" : "TagResourceResult",
+      "authenticated" : true,
+      "deprecated" : false,
+      "documentation" : "Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.",
+      "endpointDiscovery" : null,
+      "endpointOperation" : false,
+      "endpointTrait" : null,
+      "exceptions" : [ {
+        "exceptionName" : "NotFoundException",
+        "documentation" : "The requested resource was not found",
+        "httpStatusCode" : 404
+      }, {
+        "exceptionName" : "BadRequestException",
+        "documentation" : "The client performed an invalid request",
+        "httpStatusCode" : 400
+      }, {
+        "exceptionName" : "InternalServerErrorException",
+        "documentation" : "Internal service error",
+        "httpStatusCode" : 500
+      } ],
+      "hasBlobMemberAsPayload" : false,
+      "hostPrefixProcessor" : null,
+      "input" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "TagResourceRequest",
+        "variableName" : "tagResourceRequest",
+        "variableType" : "TagResourceRequest",
+        "documentation" : "The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+        "simpleType" : "TagResourceRequest",
+        "variableSetterType" : "TagResourceRequest"
+      },
+      "inputStreamPropertyName" : null,
+      "methodName" : "tagResource",
+      "operationName" : "TagResource",
+      "returnType" : {
+        "returnType" : "TagResourceResult",
+        "documentation" : null
+      },
+      "syncReturnType" : "TagResourceResult"
+    },
+    "UntagResource" : {
+      "asyncCallableType" : "java.util.concurrent.Callable<UntagResourceResult>",
+      "asyncFutureType" : "java.util.concurrent.Future<UntagResourceResult>",
+      "asyncHandlerType" : "com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult>",
+      "asyncReturnType" : "UntagResourceResult",
+      "authenticated" : true,
+      "deprecated" : false,
+      "documentation" : "Deletes specified tags from a resource.",
+      "endpointDiscovery" : null,
+      "endpointOperation" : false,
+      "endpointTrait" : null,
+      "exceptions" : [ {
+        "exceptionName" : "NotFoundException",
+        "documentation" : "The requested resource was not found",
+        "httpStatusCode" : 404
+      }, {
+        "exceptionName" : "BadRequestException",
+        "documentation" : "The client performed an invalid request",
+        "httpStatusCode" : 400
+      }, {
+        "exceptionName" : "InternalServerErrorException",
+        "documentation" : "Internal service error",
+        "httpStatusCode" : 500
+      } ],
+      "hasBlobMemberAsPayload" : false,
+      "hostPrefixProcessor" : null,
+      "input" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "UntagResourceRequest",
+        "variableName" : "untagResourceRequest",
+        "variableType" : "UntagResourceRequest",
+        "documentation" : "",
+        "simpleType" : "UntagResourceRequest",
+        "variableSetterType" : "UntagResourceRequest"
+      },
+      "inputStreamPropertyName" : null,
+      "methodName" : "untagResource",
+      "operationName" : "UntagResource",
+      "returnType" : {
+        "returnType" : "UntagResourceResult",
+        "documentation" : null
+      },
+      "syncReturnType" : "UntagResourceResult"
+    },
     "UpdateFlowEntitlement" : {
       "asyncCallableType" : "java.util.concurrent.Callable<UpdateFlowEntitlementResult>",
       "asyncFutureType" : "java.util.concurrent.Future<UpdateFlowEntitlementResult>",
@@ -876,6 +1008,7 @@
       "errorCode" : "AddFlowOutputs420Exception",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -913,6 +1046,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -949,6 +1083,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -1015,6 +1150,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputs",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputs",
           "uri" : false
@@ -1052,6 +1188,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -1164,6 +1301,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -1231,6 +1369,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputs",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputs",
             "uri" : false
@@ -1268,6 +1407,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -1386,6 +1526,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1415,6 +1556,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -1481,6 +1623,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputs",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputs",
           "uri" : false
@@ -1518,6 +1661,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -1630,6 +1774,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -1697,6 +1842,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputs",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputs",
             "uri" : false
@@ -1734,6 +1880,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -1855,6 +2002,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1884,6 +2032,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -1950,6 +2099,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "destination",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "destination",
           "uri" : false
@@ -2016,6 +2166,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -2082,6 +2233,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxLatency",
           "uri" : false
@@ -2148,6 +2300,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -2214,6 +2367,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "port",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "port",
           "uri" : false
@@ -2280,6 +2434,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "protocol",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "protocol",
           "uri" : false
@@ -2346,6 +2501,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "smoothingLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "smoothingLatency",
           "uri" : false
@@ -2412,6 +2568,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "streamId",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "streamId",
           "uri" : false
@@ -2480,6 +2637,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -2547,6 +2705,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "destination",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "destination",
             "uri" : false
@@ -2614,6 +2773,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -2681,6 +2841,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxLatency",
             "uri" : false
@@ -2748,6 +2909,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -2815,6 +2977,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "port",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "port",
             "uri" : false
@@ -2882,6 +3045,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "protocol",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "protocol",
             "uri" : false
@@ -2949,6 +3113,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "smoothingLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "smoothingLatency",
             "uri" : false
@@ -3016,6 +3181,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "streamId",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "streamId",
             "uri" : false
@@ -3102,6 +3268,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3142,6 +3309,7 @@
       "errorCode" : "BadRequestException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3179,6 +3347,7 @@
       "errorCode" : "CreateFlow420Exception",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3216,6 +3385,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -3252,6 +3422,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "availabilityZone",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "availabilityZone",
           "uri" : false
@@ -3318,6 +3489,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlements",
           "uri" : false
@@ -3355,6 +3527,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -3465,6 +3638,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -3531,6 +3705,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputs",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputs",
           "uri" : false
@@ -3568,6 +3743,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -3678,6 +3854,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "source",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "source",
           "uri" : false
@@ -3746,6 +3923,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "availabilityZone",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "availabilityZone",
             "uri" : false
@@ -3813,6 +3991,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlements",
             "uri" : false
@@ -3850,6 +4029,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -3961,6 +4141,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -4028,6 +4209,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputs",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputs",
             "uri" : false
@@ -4065,6 +4247,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -4176,6 +4359,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "source",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "source",
             "uri" : false
@@ -4250,6 +4434,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -4279,6 +4464,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flow",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flow",
           "uri" : false
@@ -4347,6 +4533,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flow",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flow",
             "uri" : false
@@ -4424,6 +4611,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -4460,6 +4648,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -4528,6 +4717,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -4602,6 +4792,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -4631,6 +4822,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -4697,6 +4889,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "status",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "status",
           "uri" : false
@@ -4765,6 +4958,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -4832,6 +5026,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "status",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "status",
             "uri" : false
@@ -4909,6 +5104,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -4945,6 +5141,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -5013,6 +5210,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -5087,6 +5285,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -5116,6 +5315,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flow",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flow",
           "uri" : false
@@ -5182,6 +5382,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "messages",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "messages",
           "uri" : false
@@ -5250,6 +5451,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flow",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flow",
             "uri" : false
@@ -5317,6 +5519,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "messages",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "messages",
             "uri" : false
@@ -5394,6 +5597,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -5423,6 +5627,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "algorithm",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "algorithm",
           "uri" : false
@@ -5489,6 +5694,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "keyType",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "keyType",
           "uri" : false
@@ -5555,6 +5761,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "roleArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "roleArn",
           "uri" : false
@@ -5621,6 +5828,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "secretArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "secretArn",
           "uri" : false
@@ -5689,6 +5897,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "algorithm",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "algorithm",
             "uri" : false
@@ -5756,6 +5965,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "keyType",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "keyType",
             "uri" : false
@@ -5823,6 +6033,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "roleArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "roleArn",
             "uri" : false
@@ -5890,6 +6101,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "secretArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "secretArn",
             "uri" : false
@@ -5967,6 +6179,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -5996,6 +6209,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -6062,6 +6276,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -6128,6 +6343,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -6194,6 +6410,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -6260,6 +6477,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "subscribers",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "subscribers",
           "uri" : false
@@ -6297,6 +6515,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -6409,6 +6628,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -6476,6 +6696,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -6543,6 +6764,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -6610,6 +6832,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -6677,6 +6900,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "subscribers",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "subscribers",
             "uri" : false
@@ -6714,6 +6938,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -6835,6 +7060,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -6864,6 +7090,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "availabilityZone",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "availabilityZone",
           "uri" : false
@@ -6930,6 +7157,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -6996,6 +7224,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "egressIp",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "egressIp",
           "uri" : false
@@ -7062,6 +7291,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlements",
           "uri" : false
@@ -7099,6 +7329,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -7209,6 +7440,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -7275,6 +7507,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -7341,6 +7574,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputs",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputs",
           "uri" : false
@@ -7378,6 +7612,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -7488,6 +7723,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "source",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "source",
           "uri" : false
@@ -7554,6 +7790,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "status",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "status",
           "uri" : false
@@ -7622,6 +7859,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "availabilityZone",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "availabilityZone",
             "uri" : false
@@ -7689,6 +7927,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -7756,6 +7995,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "egressIp",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "egressIp",
             "uri" : false
@@ -7823,6 +8063,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlements",
             "uri" : false
@@ -7860,6 +8101,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -7971,6 +8213,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -8038,6 +8281,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -8105,6 +8349,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputs",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputs",
             "uri" : false
@@ -8142,6 +8387,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -8253,6 +8499,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "source",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "source",
             "uri" : false
@@ -8320,6 +8567,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "status",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "status",
             "uri" : false
@@ -8397,6 +8645,7 @@
       "errorCode" : "ForbiddenException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -8434,6 +8683,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -8463,6 +8713,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -8529,6 +8780,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -8595,6 +8847,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -8661,6 +8914,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "subscribers",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "subscribers",
           "uri" : false
@@ -8698,6 +8952,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -8810,6 +9065,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -8877,6 +9133,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -8944,6 +9201,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -9011,6 +9269,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "subscribers",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "subscribers",
             "uri" : false
@@ -9048,6 +9307,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -9169,6 +9429,7 @@
       "errorCode" : "GrantFlowEntitlements420Exception",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -9206,6 +9467,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -9242,6 +9504,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlements",
           "uri" : false
@@ -9279,6 +9542,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -9389,6 +9653,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -9457,6 +9722,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlements",
             "uri" : false
@@ -9494,6 +9760,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -9605,6 +9872,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -9679,6 +9947,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -9708,6 +9977,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlements",
           "uri" : false
@@ -9745,6 +10015,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -9855,6 +10126,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -9923,6 +10195,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlements",
             "uri" : false
@@ -9960,6 +10233,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -10071,6 +10345,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -10148,6 +10423,7 @@
       "errorCode" : "InternalServerErrorException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -10188,6 +10464,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -10228,6 +10505,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -10264,6 +10542,7 @@
           "marshallLocation" : "QUERY_PARAM",
           "marshallLocationName" : "maxResults",
           "queryString" : true,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxResults",
           "uri" : false
@@ -10330,6 +10609,7 @@
           "marshallLocation" : "QUERY_PARAM",
           "marshallLocationName" : "nextToken",
           "queryString" : true,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "nextToken",
           "uri" : false
@@ -10398,6 +10678,7 @@
             "marshallLocation" : "QUERY_PARAM",
             "marshallLocationName" : "maxResults",
             "queryString" : true,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxResults",
             "uri" : false
@@ -10465,6 +10746,7 @@
             "marshallLocation" : "QUERY_PARAM",
             "marshallLocationName" : "nextToken",
             "queryString" : true,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "nextToken",
             "uri" : false
@@ -10539,6 +10821,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -10568,6 +10851,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlements",
           "uri" : false
@@ -10605,6 +10889,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -10715,6 +11000,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "nextToken",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "nextToken",
           "uri" : false
@@ -10783,6 +11069,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlements",
             "uri" : false
@@ -10820,6 +11107,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -10931,6 +11219,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "nextToken",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "nextToken",
             "uri" : false
@@ -11008,6 +11297,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -11044,6 +11334,7 @@
           "marshallLocation" : "QUERY_PARAM",
           "marshallLocationName" : "maxResults",
           "queryString" : true,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxResults",
           "uri" : false
@@ -11110,6 +11401,7 @@
           "marshallLocation" : "QUERY_PARAM",
           "marshallLocationName" : "nextToken",
           "queryString" : true,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "nextToken",
           "uri" : false
@@ -11178,6 +11470,7 @@
             "marshallLocation" : "QUERY_PARAM",
             "marshallLocationName" : "maxResults",
             "queryString" : true,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxResults",
             "uri" : false
@@ -11245,6 +11538,7 @@
             "marshallLocation" : "QUERY_PARAM",
             "marshallLocationName" : "nextToken",
             "queryString" : true,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "nextToken",
             "uri" : false
@@ -11319,6 +11613,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -11348,6 +11643,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flows",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flows",
           "uri" : false
@@ -11385,6 +11681,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -11495,6 +11792,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "nextToken",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "nextToken",
           "uri" : false
@@ -11563,6 +11861,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flows",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flows",
             "uri" : false
@@ -11600,6 +11899,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -11711,6 +12011,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "nextToken",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "nextToken",
             "uri" : false
@@ -11774,6 +12075,528 @@
       },
       "wrapper" : false
     },
+    "ListTagsForResourceRequest" : {
+      "c2jName" : "ListTagsForResourceRequest",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : {
+        "action" : "ListTagsForResource",
+        "locationName" : null,
+        "requestUri" : "/tags/{resourceArn}",
+        "target" : null,
+        "verb" : "GET",
+        "xmlNameSpaceUri" : null
+      },
+      "members" : [ {
+        "c2jName" : "ResourceArn",
+        "c2jShape" : "__string",
+        "deprecated" : false,
+        "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withResourceArn",
+        "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.*/",
+        "getterMethodName" : "getResourceArn",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : "uri",
+          "marshallLocation" : "PATH",
+          "marshallLocationName" : "resourceArn",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "resourceArn",
+          "uri" : true
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "ResourceArn",
+        "sensitive" : false,
+        "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.*/",
+        "setterMethodName" : "setResourceArn",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "ResourceArn" : {
+          "c2jName" : "ResourceArn",
+          "c2jShape" : "__string",
+          "deprecated" : false,
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withResourceArn",
+          "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.*/",
+          "getterMethodName" : "getResourceArn",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : "uri",
+            "marshallLocation" : "PATH",
+            "marshallLocationName" : "resourceArn",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "resourceArn",
+            "uri" : true
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "ResourceArn",
+          "sensitive" : false,
+          "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.*/",
+          "setterMethodName" : "setResourceArn",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : [ "ResourceArn" ],
+      "shapeName" : "ListTagsForResourceRequest",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ListTagsForResourceRequest",
+        "variableName" : "listTagsForResourceRequest",
+        "variableType" : "ListTagsForResourceRequest",
+        "documentation" : null,
+        "simpleType" : "ListTagsForResourceRequest",
+        "variableSetterType" : "ListTagsForResourceRequest"
+      },
+      "wrapper" : false
+    },
+    "ListTagsForResourceResult" : {
+      "c2jName" : "ListTagsForResourceResponse",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : [ {
+        "c2jName" : "Tags",
+        "c2jShape" : "__mapOf__string",
+        "deprecated" : false,
+        "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withTags",
+        "getterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+        "getterMethodName" : "getTags",
+        "getterModel" : {
+          "returnType" : "java.util.Map<String,String>",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "tags",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "tags",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : true,
+        "mapModel" : {
+          "implType" : "java.util.HashMap",
+          "interfaceType" : "java.util.Map",
+          "keyLocationName" : "key",
+          "keyModel" : null,
+          "keyType" : "String",
+          "valueLocationName" : "value",
+          "valueModel" : {
+            "c2jName" : "value",
+            "c2jShape" : "__string",
+            "deprecated" : false,
+            "documentation" : "",
+            "enumType" : null,
+            "fluentSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "fluentSetterMethodName" : "withValue",
+            "getterDocumentation" : "/**\n@return */",
+            "getterMethodName" : "getValue",
+            "getterModel" : {
+              "returnType" : "String",
+              "documentation" : null
+            },
+            "http" : {
+              "additionalMarshallingPath" : null,
+              "additionalUnmarshallingPath" : null,
+              "flattened" : false,
+              "greedy" : false,
+              "header" : false,
+              "isPayload" : false,
+              "isStreaming" : false,
+              "location" : null,
+              "marshallLocation" : "PAYLOAD",
+              "marshallLocationName" : "value",
+              "queryString" : false,
+              "requiresLength" : false,
+              "statusCode" : false,
+              "unmarshallLocationName" : "value",
+              "uri" : false
+            },
+            "idempotencyToken" : false,
+            "isBinary" : false,
+            "jsonValue" : false,
+            "list" : false,
+            "listModel" : null,
+            "map" : false,
+            "mapModel" : null,
+            "marshallingTargetClass" : "String",
+            "marshallingType" : "STRING",
+            "name" : "Value",
+            "sensitive" : false,
+            "setterDocumentation" : "/**\n@param value */",
+            "setterMethodName" : "setValue",
+            "setterModel" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "value",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "shouldEmitLegacyEnumSetter" : false,
+            "simple" : true,
+            "unmarshallingType" : null,
+            "varargSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "variable" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "value",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "xmlNameSpaceUri" : null
+          },
+          "valueType" : "String",
+          "entryType" : "Map.Entry<String, String>",
+          "keySimple" : true,
+          "templateImplType" : "java.util.HashMap<String,String>",
+          "templateType" : "java.util.Map<String,String>",
+          "valueList" : false,
+          "valueSimple" : true
+        },
+        "marshallingTargetClass" : "Map",
+        "marshallingType" : "MAP",
+        "name" : "Tags",
+        "sensitive" : false,
+        "setterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+        "setterMethodName" : "setTags",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.Map<String,String>",
+          "variableName" : "tags",
+          "variableType" : "java.util.Map<String,String>",
+          "documentation" : "",
+          "simpleType" : "Map<String,String>",
+          "variableSetterType" : "java.util.Map<String,String>"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : false,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.Map<String,String>",
+          "variableName" : "tags",
+          "variableType" : "java.util.Map<String,String>",
+          "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+          "simpleType" : "Map<String,String>",
+          "variableSetterType" : "java.util.Map<String,String>"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "Tags" : {
+          "c2jName" : "Tags",
+          "c2jShape" : "__mapOf__string",
+          "deprecated" : false,
+          "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withTags",
+          "getterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+          "getterMethodName" : "getTags",
+          "getterModel" : {
+            "returnType" : "java.util.Map<String,String>",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "tags",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "tags",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : true,
+          "mapModel" : {
+            "implType" : "java.util.HashMap",
+            "interfaceType" : "java.util.Map",
+            "keyLocationName" : "key",
+            "keyModel" : null,
+            "keyType" : "String",
+            "valueLocationName" : "value",
+            "valueModel" : {
+              "c2jName" : "value",
+              "c2jShape" : "__string",
+              "deprecated" : false,
+              "documentation" : "",
+              "enumType" : null,
+              "fluentSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "fluentSetterMethodName" : "withValue",
+              "getterDocumentation" : "/**\n@return */",
+              "getterMethodName" : "getValue",
+              "getterModel" : {
+                "returnType" : "String",
+                "documentation" : null
+              },
+              "http" : {
+                "additionalMarshallingPath" : null,
+                "additionalUnmarshallingPath" : null,
+                "flattened" : false,
+                "greedy" : false,
+                "header" : false,
+                "isPayload" : false,
+                "isStreaming" : false,
+                "location" : null,
+                "marshallLocation" : "PAYLOAD",
+                "marshallLocationName" : "value",
+                "queryString" : false,
+                "requiresLength" : false,
+                "statusCode" : false,
+                "unmarshallLocationName" : "value",
+                "uri" : false
+              },
+              "idempotencyToken" : false,
+              "isBinary" : false,
+              "jsonValue" : false,
+              "list" : false,
+              "listModel" : null,
+              "map" : false,
+              "mapModel" : null,
+              "marshallingTargetClass" : "String",
+              "marshallingType" : "STRING",
+              "name" : "Value",
+              "sensitive" : false,
+              "setterDocumentation" : "/**\n@param value */",
+              "setterMethodName" : "setValue",
+              "setterModel" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "value",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "shouldEmitLegacyEnumSetter" : false,
+              "simple" : true,
+              "unmarshallingType" : null,
+              "varargSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "variable" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "value",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "xmlNameSpaceUri" : null
+            },
+            "valueType" : "String",
+            "entryType" : "Map.Entry<String, String>",
+            "keySimple" : true,
+            "templateImplType" : "java.util.HashMap<String,String>",
+            "templateType" : "java.util.Map<String,String>",
+            "valueList" : false,
+            "valueSimple" : true
+          },
+          "marshallingTargetClass" : "Map",
+          "marshallingType" : "MAP",
+          "name" : "Tags",
+          "sensitive" : false,
+          "setterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+          "setterMethodName" : "setTags",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.Map<String,String>",
+            "variableName" : "tags",
+            "variableType" : "java.util.Map<String,String>",
+            "documentation" : "",
+            "simpleType" : "Map<String,String>",
+            "variableSetterType" : "java.util.Map<String,String>"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : false,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.Map<String,String>",
+            "variableName" : "tags",
+            "variableType" : "java.util.Map<String,String>",
+            "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+            "simpleType" : "Map<String,String>",
+            "variableSetterType" : "java.util.Map<String,String>"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "ListTagsForResourceResult",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ListTagsForResourceResult",
+        "variableName" : "listTagsForResourceResult",
+        "variableType" : "ListTagsForResourceResult",
+        "documentation" : null,
+        "simpleType" : "ListTagsForResourceResult",
+        "variableSetterType" : "ListTagsForResourceResult"
+      },
+      "wrapper" : false
+    },
     "ListedEntitlement" : {
       "c2jName" : "ListedEntitlement",
       "customization" : {
@@ -11788,6 +12611,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -11817,6 +12641,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -11883,6 +12708,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementName",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementName",
           "uri" : false
@@ -11951,6 +12777,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -12018,6 +12845,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementName",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementName",
             "uri" : false
@@ -12095,6 +12923,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -12124,6 +12953,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "availabilityZone",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "availabilityZone",
           "uri" : false
@@ -12190,6 +13020,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -12256,6 +13087,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -12322,6 +13154,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -12388,6 +13221,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "sourceType",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "sourceType",
           "uri" : false
@@ -12454,6 +13288,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "status",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "status",
           "uri" : false
@@ -12522,6 +13357,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "availabilityZone",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "availabilityZone",
             "uri" : false
@@ -12589,6 +13425,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -12656,6 +13493,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -12723,6 +13561,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -12790,6 +13629,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "sourceType",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "sourceType",
             "uri" : false
@@ -12857,6 +13697,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "status",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "status",
             "uri" : false
@@ -12934,6 +13775,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -12963,6 +13805,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "errors",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "errors",
           "uri" : false
@@ -13000,6 +13843,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -13112,6 +13956,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "errors",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "errors",
             "uri" : false
@@ -13149,6 +13994,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -13270,6 +14116,7 @@
       "errorCode" : "NotFoundException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -13307,6 +14154,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -13336,6 +14184,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -13402,6 +14251,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "destination",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "destination",
           "uri" : false
@@ -13468,6 +14318,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -13534,6 +14385,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -13600,6 +14452,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "mediaLiveInputArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "mediaLiveInputArn",
           "uri" : false
@@ -13666,6 +14519,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -13732,6 +14586,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputArn",
           "uri" : false
@@ -13798,6 +14653,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "port",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "port",
           "uri" : false
@@ -13864,6 +14720,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "transport",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "transport",
           "uri" : false
@@ -13932,6 +14789,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -13999,6 +14857,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "destination",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "destination",
             "uri" : false
@@ -14066,6 +14925,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -14133,6 +14993,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -14200,6 +15061,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "mediaLiveInputArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "mediaLiveInputArn",
             "uri" : false
@@ -14267,6 +15129,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -14334,6 +15197,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputArn",
             "uri" : false
@@ -14401,6 +15265,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "port",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "port",
             "uri" : false
@@ -14468,6 +15333,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "transport",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "transport",
             "uri" : false
@@ -14554,6 +15420,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -14594,6 +15461,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -14630,6 +15498,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -14696,6 +15565,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "outputArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputArn",
           "uri" : true
@@ -14764,6 +15634,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -14831,6 +15702,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "outputArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputArn",
             "uri" : true
@@ -14905,6 +15777,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -14934,6 +15807,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -15000,6 +15874,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "outputArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputArn",
           "uri" : false
@@ -15068,6 +15943,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -15135,6 +16011,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "outputArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputArn",
             "uri" : false
@@ -15212,6 +16089,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -15248,6 +16126,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : true
@@ -15314,6 +16193,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -15382,6 +16262,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : true
@@ -15449,6 +16330,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -15523,6 +16405,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -15552,6 +16435,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -15618,6 +16502,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -15686,6 +16571,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -15753,6 +16639,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -15830,6 +16717,7 @@
       "errorCode" : "ServiceUnavailableException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -15867,6 +16755,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -15896,6 +16785,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "decryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "decryption",
           "uri" : false
@@ -15962,6 +16852,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -16028,6 +16919,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -16094,6 +16986,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ingestPort",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ingestPort",
           "uri" : false
@@ -16160,6 +17053,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxBitrate",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxBitrate",
           "uri" : false
@@ -16226,6 +17120,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxLatency",
           "uri" : false
@@ -16292,6 +17187,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -16358,6 +17254,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "protocol",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "protocol",
           "uri" : false
@@ -16424,6 +17321,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "streamId",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "streamId",
           "uri" : false
@@ -16490,6 +17388,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "whitelistCidr",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "whitelistCidr",
           "uri" : false
@@ -16558,6 +17457,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "decryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "decryption",
             "uri" : false
@@ -16625,6 +17525,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -16692,6 +17593,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -16759,6 +17661,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ingestPort",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ingestPort",
             "uri" : false
@@ -16826,6 +17729,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxBitrate",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxBitrate",
             "uri" : false
@@ -16893,6 +17797,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxLatency",
             "uri" : false
@@ -16960,6 +17865,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -17027,6 +17933,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "protocol",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "protocol",
             "uri" : false
@@ -17094,6 +18001,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "streamId",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "streamId",
             "uri" : false
@@ -17161,6 +18069,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "whitelistCidr",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "whitelistCidr",
             "uri" : false
@@ -17238,6 +18147,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -17267,6 +18177,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "decryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "decryption",
           "uri" : false
@@ -17333,6 +18244,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -17399,6 +18311,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -17465,6 +18378,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ingestIp",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ingestIp",
           "uri" : false
@@ -17531,6 +18445,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ingestPort",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ingestPort",
           "uri" : false
@@ -17597,6 +18512,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "name",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "name",
           "uri" : false
@@ -17663,6 +18579,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "sourceArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "sourceArn",
           "uri" : false
@@ -17729,6 +18646,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "transport",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "transport",
           "uri" : false
@@ -17795,6 +18713,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "whitelistCidr",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "whitelistCidr",
           "uri" : false
@@ -17863,6 +18782,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "decryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "decryption",
             "uri" : false
@@ -17930,6 +18850,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -17997,6 +18918,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -18064,6 +18986,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ingestIp",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ingestIp",
             "uri" : false
@@ -18131,6 +19054,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ingestPort",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ingestPort",
             "uri" : false
@@ -18198,6 +19122,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "name",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "name",
             "uri" : false
@@ -18265,6 +19190,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "sourceArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "sourceArn",
             "uri" : false
@@ -18332,6 +19258,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "transport",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "transport",
             "uri" : false
@@ -18399,6 +19326,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "whitelistCidr",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "whitelistCidr",
             "uri" : false
@@ -18482,6 +19410,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -18522,6 +19451,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -18558,6 +19488,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -18626,6 +19557,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -18700,6 +19632,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -18729,6 +19662,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -18795,6 +19729,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "status",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "status",
           "uri" : false
@@ -18863,6 +19798,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -18930,6 +19866,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "status",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "status",
             "uri" : false
@@ -19028,6 +19965,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -19068,6 +20006,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -19104,6 +20043,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -19172,6 +20112,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -19246,6 +20187,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -19275,6 +20217,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -19341,6 +20284,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "status",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "status",
           "uri" : false
@@ -19409,6 +20353,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -19476,6 +20421,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "status",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "status",
             "uri" : false
@@ -19539,6 +20485,527 @@
       },
       "wrapper" : false
     },
+    "TagResourceRequest" : {
+      "c2jName" : "TagResourceRequest",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : {
+        "action" : "TagResource",
+        "locationName" : null,
+        "requestUri" : "/tags/{resourceArn}",
+        "target" : null,
+        "verb" : "POST",
+        "xmlNameSpaceUri" : null
+      },
+      "members" : [ {
+        "c2jName" : "ResourceArn",
+        "c2jShape" : "__string",
+        "deprecated" : false,
+        "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withResourceArn",
+        "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.*/",
+        "getterMethodName" : "getResourceArn",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : "uri",
+          "marshallLocation" : "PATH",
+          "marshallLocationName" : "resourceArn",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "resourceArn",
+          "uri" : true
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "ResourceArn",
+        "sensitive" : false,
+        "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.*/",
+        "setterMethodName" : "setResourceArn",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "Tags",
+        "c2jShape" : "__mapOf__string",
+        "deprecated" : false,
+        "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withTags",
+        "getterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+        "getterMethodName" : "getTags",
+        "getterModel" : {
+          "returnType" : "java.util.Map<String,String>",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "tags",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "tags",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : true,
+        "mapModel" : {
+          "implType" : "java.util.HashMap",
+          "interfaceType" : "java.util.Map",
+          "keyLocationName" : "key",
+          "keyModel" : null,
+          "keyType" : "String",
+          "valueLocationName" : "value",
+          "valueModel" : {
+            "c2jName" : "value",
+            "c2jShape" : "__string",
+            "deprecated" : false,
+            "documentation" : "",
+            "enumType" : null,
+            "fluentSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "fluentSetterMethodName" : "withValue",
+            "getterDocumentation" : "/**\n@return */",
+            "getterMethodName" : "getValue",
+            "getterModel" : {
+              "returnType" : "String",
+              "documentation" : null
+            },
+            "http" : {
+              "additionalMarshallingPath" : null,
+              "additionalUnmarshallingPath" : null,
+              "flattened" : false,
+              "greedy" : false,
+              "header" : false,
+              "isPayload" : false,
+              "isStreaming" : false,
+              "location" : null,
+              "marshallLocation" : "PAYLOAD",
+              "marshallLocationName" : "value",
+              "queryString" : false,
+              "requiresLength" : false,
+              "statusCode" : false,
+              "unmarshallLocationName" : "value",
+              "uri" : false
+            },
+            "idempotencyToken" : false,
+            "isBinary" : false,
+            "jsonValue" : false,
+            "list" : false,
+            "listModel" : null,
+            "map" : false,
+            "mapModel" : null,
+            "marshallingTargetClass" : "String",
+            "marshallingType" : "STRING",
+            "name" : "Value",
+            "sensitive" : false,
+            "setterDocumentation" : "/**\n@param value */",
+            "setterMethodName" : "setValue",
+            "setterModel" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "value",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "shouldEmitLegacyEnumSetter" : false,
+            "simple" : true,
+            "unmarshallingType" : null,
+            "varargSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "variable" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "value",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "xmlNameSpaceUri" : null
+          },
+          "valueType" : "String",
+          "entryType" : "Map.Entry<String, String>",
+          "keySimple" : true,
+          "templateImplType" : "java.util.HashMap<String,String>",
+          "templateType" : "java.util.Map<String,String>",
+          "valueList" : false,
+          "valueSimple" : true
+        },
+        "marshallingTargetClass" : "Map",
+        "marshallingType" : "MAP",
+        "name" : "Tags",
+        "sensitive" : false,
+        "setterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+        "setterMethodName" : "setTags",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.Map<String,String>",
+          "variableName" : "tags",
+          "variableType" : "java.util.Map<String,String>",
+          "documentation" : "",
+          "simpleType" : "Map<String,String>",
+          "variableSetterType" : "java.util.Map<String,String>"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : false,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.Map<String,String>",
+          "variableName" : "tags",
+          "variableType" : "java.util.Map<String,String>",
+          "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+          "simpleType" : "Map<String,String>",
+          "variableSetterType" : "java.util.Map<String,String>"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "ResourceArn" : {
+          "c2jName" : "ResourceArn",
+          "c2jShape" : "__string",
+          "deprecated" : false,
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withResourceArn",
+          "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.*/",
+          "getterMethodName" : "getResourceArn",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : "uri",
+            "marshallLocation" : "PATH",
+            "marshallLocationName" : "resourceArn",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "resourceArn",
+            "uri" : true
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "ResourceArn",
+          "sensitive" : false,
+          "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.*/",
+          "setterMethodName" : "setResourceArn",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "Tags" : {
+          "c2jName" : "Tags",
+          "c2jShape" : "__mapOf__string",
+          "deprecated" : false,
+          "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withTags",
+          "getterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+          "getterMethodName" : "getTags",
+          "getterModel" : {
+            "returnType" : "java.util.Map<String,String>",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "tags",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "tags",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : true,
+          "mapModel" : {
+            "implType" : "java.util.HashMap",
+            "interfaceType" : "java.util.Map",
+            "keyLocationName" : "key",
+            "keyModel" : null,
+            "keyType" : "String",
+            "valueLocationName" : "value",
+            "valueModel" : {
+              "c2jName" : "value",
+              "c2jShape" : "__string",
+              "deprecated" : false,
+              "documentation" : "",
+              "enumType" : null,
+              "fluentSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "fluentSetterMethodName" : "withValue",
+              "getterDocumentation" : "/**\n@return */",
+              "getterMethodName" : "getValue",
+              "getterModel" : {
+                "returnType" : "String",
+                "documentation" : null
+              },
+              "http" : {
+                "additionalMarshallingPath" : null,
+                "additionalUnmarshallingPath" : null,
+                "flattened" : false,
+                "greedy" : false,
+                "header" : false,
+                "isPayload" : false,
+                "isStreaming" : false,
+                "location" : null,
+                "marshallLocation" : "PAYLOAD",
+                "marshallLocationName" : "value",
+                "queryString" : false,
+                "requiresLength" : false,
+                "statusCode" : false,
+                "unmarshallLocationName" : "value",
+                "uri" : false
+              },
+              "idempotencyToken" : false,
+              "isBinary" : false,
+              "jsonValue" : false,
+              "list" : false,
+              "listModel" : null,
+              "map" : false,
+              "mapModel" : null,
+              "marshallingTargetClass" : "String",
+              "marshallingType" : "STRING",
+              "name" : "Value",
+              "sensitive" : false,
+              "setterDocumentation" : "/**\n@param value */",
+              "setterMethodName" : "setValue",
+              "setterModel" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "value",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "shouldEmitLegacyEnumSetter" : false,
+              "simple" : true,
+              "unmarshallingType" : null,
+              "varargSetterDocumentation" : "/**\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "variable" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "value",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "xmlNameSpaceUri" : null
+            },
+            "valueType" : "String",
+            "entryType" : "Map.Entry<String, String>",
+            "keySimple" : true,
+            "templateImplType" : "java.util.HashMap<String,String>",
+            "templateType" : "java.util.Map<String,String>",
+            "valueList" : false,
+            "valueSimple" : true
+          },
+          "marshallingTargetClass" : "Map",
+          "marshallingType" : "MAP",
+          "name" : "Tags",
+          "sensitive" : false,
+          "setterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.*/",
+          "setterMethodName" : "setTags",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.Map<String,String>",
+            "variableName" : "tags",
+            "variableType" : "java.util.Map<String,String>",
+            "documentation" : "",
+            "simpleType" : "Map<String,String>",
+            "variableSetterType" : "java.util.Map<String,String>"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : false,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@param tags A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.Map<String,String>",
+            "variableName" : "tags",
+            "variableType" : "java.util.Map<String,String>",
+            "documentation" : "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+            "simpleType" : "Map<String,String>",
+            "variableSetterType" : "java.util.Map<String,String>"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : [ "ResourceArn", "Tags" ],
+      "shapeName" : "TagResourceRequest",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "TagResourceRequest",
+        "variableName" : "tagResourceRequest",
+        "variableType" : "TagResourceRequest",
+        "documentation" : null,
+        "simpleType" : "TagResourceRequest",
+        "variableSetterType" : "TagResourceRequest"
+      },
+      "wrapper" : false
+    },
+    "TagResourceResult" : {
+      "c2jName" : "TagResourceResult",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : null,
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : null,
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "TagResourceResult",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "TagResourceResult",
+        "variableName" : "tagResourceResult",
+        "variableType" : "TagResourceResult",
+        "documentation" : null,
+        "simpleType" : "TagResourceResult",
+        "variableSetterType" : "TagResourceResult"
+      },
+      "wrapper" : false
+    },
     "TooManyRequestsException" : {
       "c2jName" : "TooManyRequestsException",
       "customization" : {
@@ -19553,6 +21020,7 @@
       "errorCode" : "TooManyRequestsException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -19590,6 +21058,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -19619,6 +21088,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxBitrate",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxBitrate",
           "uri" : false
@@ -19685,6 +21155,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxLatency",
           "uri" : false
@@ -19751,6 +21222,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "protocol",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "protocol",
           "uri" : false
@@ -19817,6 +21289,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "smoothingLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "smoothingLatency",
           "uri" : false
@@ -19883,6 +21356,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "streamId",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "streamId",
           "uri" : false
@@ -19951,6 +21425,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxBitrate",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxBitrate",
             "uri" : false
@@ -20018,6 +21493,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxLatency",
             "uri" : false
@@ -20085,6 +21561,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "protocol",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "protocol",
             "uri" : false
@@ -20152,6 +21629,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "smoothingLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "smoothingLatency",
             "uri" : false
@@ -20219,6 +21697,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "streamId",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "streamId",
             "uri" : false
@@ -20282,6 +21761,527 @@
       },
       "wrapper" : false
     },
+    "UntagResourceRequest" : {
+      "c2jName" : "UntagResourceRequest",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : {
+        "action" : "UntagResource",
+        "locationName" : null,
+        "requestUri" : "/tags/{resourceArn}",
+        "target" : null,
+        "verb" : "DELETE",
+        "xmlNameSpaceUri" : null
+      },
+      "members" : [ {
+        "c2jName" : "ResourceArn",
+        "c2jShape" : "__string",
+        "deprecated" : false,
+        "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withResourceArn",
+        "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.*/",
+        "getterMethodName" : "getResourceArn",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : "uri",
+          "marshallLocation" : "PATH",
+          "marshallLocationName" : "resourceArn",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "resourceArn",
+          "uri" : true
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "ResourceArn",
+        "sensitive" : false,
+        "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.*/",
+        "setterMethodName" : "setResourceArn",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "resourceArn",
+          "variableType" : "String",
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "TagKeys",
+        "c2jShape" : "__listOf__string",
+        "deprecated" : false,
+        "documentation" : "The keys of the tags to be removed.",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**The keys of the tags to be removed.\n@param tagKeys The keys of the tags to be removed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withTagKeys",
+        "getterDocumentation" : "/**The keys of the tags to be removed.\n@return The keys of the tags to be removed.*/",
+        "getterMethodName" : "getTagKeys",
+        "getterModel" : {
+          "returnType" : "java.util.List<String>",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : "querystring",
+          "marshallLocation" : "QUERY_PARAM",
+          "marshallLocationName" : "tagKeys",
+          "queryString" : true,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "tagKeys",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : true,
+        "listModel" : {
+          "implType" : "java.util.ArrayList",
+          "interfaceType" : "java.util.List",
+          "listMemberModel" : {
+            "c2jName" : "member",
+            "c2jShape" : "__string",
+            "deprecated" : false,
+            "documentation" : "",
+            "enumType" : null,
+            "fluentSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "fluentSetterMethodName" : "withMember",
+            "getterDocumentation" : "/**\n@return */",
+            "getterMethodName" : "getMember",
+            "getterModel" : {
+              "returnType" : "String",
+              "documentation" : null
+            },
+            "http" : {
+              "additionalMarshallingPath" : null,
+              "additionalUnmarshallingPath" : null,
+              "flattened" : false,
+              "greedy" : false,
+              "header" : false,
+              "isPayload" : false,
+              "isStreaming" : false,
+              "location" : null,
+              "marshallLocation" : "PAYLOAD",
+              "marshallLocationName" : "member",
+              "queryString" : false,
+              "requiresLength" : false,
+              "statusCode" : false,
+              "unmarshallLocationName" : "member",
+              "uri" : false
+            },
+            "idempotencyToken" : false,
+            "isBinary" : false,
+            "jsonValue" : false,
+            "list" : false,
+            "listModel" : null,
+            "map" : false,
+            "mapModel" : null,
+            "marshallingTargetClass" : "String",
+            "marshallingType" : "STRING",
+            "name" : "Member",
+            "sensitive" : false,
+            "setterDocumentation" : "/**\n@param member */",
+            "setterMethodName" : "setMember",
+            "setterModel" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "member",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "shouldEmitLegacyEnumSetter" : false,
+            "simple" : true,
+            "unmarshallingType" : null,
+            "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
+            "variable" : {
+              "timestampFormat" : null,
+              "variableDeclarationType" : "String",
+              "variableName" : "member",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "xmlNameSpaceUri" : null
+          },
+          "memberLocationName" : null,
+          "memberType" : "String",
+          "map" : false,
+          "marshallNonAutoConstructedEmptyLists" : false,
+          "memberAdditionalMarshallingPath" : null,
+          "memberAdditionalUnmarshallingPath" : null,
+          "sendEmptyQueryString" : false,
+          "simple" : true,
+          "simpleType" : "String",
+          "templateImplType" : "java.util.ArrayList<String>",
+          "templateType" : "java.util.List<String>"
+        },
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "List",
+        "marshallingType" : "LIST",
+        "name" : "TagKeys",
+        "sensitive" : false,
+        "setterDocumentation" : "/**The keys of the tags to be removed.\n@param tagKeys The keys of the tags to be removed.*/",
+        "setterMethodName" : "setTagKeys",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.List<String>",
+          "variableName" : "tagKeys",
+          "variableType" : "java.util.List<String>",
+          "documentation" : "",
+          "simpleType" : "List<String>",
+          "variableSetterType" : "java.util.Collection<String>"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : false,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**The keys of the tags to be removed.\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setTagKeys(java.util.Collection)} or {@link #withTagKeys(java.util.Collection)} if you want to override the existing values.</p>\n@param tagKeys The keys of the tags to be removed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "java.util.List<String>",
+          "variableName" : "tagKeys",
+          "variableType" : "java.util.List<String>",
+          "documentation" : "The keys of the tags to be removed.",
+          "simpleType" : "List<String>",
+          "variableSetterType" : "java.util.Collection<String>"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "ResourceArn" : {
+          "c2jName" : "ResourceArn",
+          "c2jShape" : "__string",
+          "deprecated" : false,
+          "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withResourceArn",
+          "getterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.*/",
+          "getterMethodName" : "getResourceArn",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : "uri",
+            "marshallLocation" : "PATH",
+            "marshallLocationName" : "resourceArn",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "resourceArn",
+            "uri" : true
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "ResourceArn",
+          "sensitive" : false,
+          "setterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.*/",
+          "setterMethodName" : "setResourceArn",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@param resourceArn The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "resourceArn",
+            "variableType" : "String",
+            "documentation" : "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "TagKeys" : {
+          "c2jName" : "TagKeys",
+          "c2jShape" : "__listOf__string",
+          "deprecated" : false,
+          "documentation" : "The keys of the tags to be removed.",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**The keys of the tags to be removed.\n@param tagKeys The keys of the tags to be removed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withTagKeys",
+          "getterDocumentation" : "/**The keys of the tags to be removed.\n@return The keys of the tags to be removed.*/",
+          "getterMethodName" : "getTagKeys",
+          "getterModel" : {
+            "returnType" : "java.util.List<String>",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : "querystring",
+            "marshallLocation" : "QUERY_PARAM",
+            "marshallLocationName" : "tagKeys",
+            "queryString" : true,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "tagKeys",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : true,
+          "listModel" : {
+            "implType" : "java.util.ArrayList",
+            "interfaceType" : "java.util.List",
+            "listMemberModel" : {
+              "c2jName" : "member",
+              "c2jShape" : "__string",
+              "deprecated" : false,
+              "documentation" : "",
+              "enumType" : null,
+              "fluentSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "fluentSetterMethodName" : "withMember",
+              "getterDocumentation" : "/**\n@return */",
+              "getterMethodName" : "getMember",
+              "getterModel" : {
+                "returnType" : "String",
+                "documentation" : null
+              },
+              "http" : {
+                "additionalMarshallingPath" : null,
+                "additionalUnmarshallingPath" : null,
+                "flattened" : false,
+                "greedy" : false,
+                "header" : false,
+                "isPayload" : false,
+                "isStreaming" : false,
+                "location" : null,
+                "marshallLocation" : "PAYLOAD",
+                "marshallLocationName" : "member",
+                "queryString" : false,
+                "requiresLength" : false,
+                "statusCode" : false,
+                "unmarshallLocationName" : "member",
+                "uri" : false
+              },
+              "idempotencyToken" : false,
+              "isBinary" : false,
+              "jsonValue" : false,
+              "list" : false,
+              "listModel" : null,
+              "map" : false,
+              "mapModel" : null,
+              "marshallingTargetClass" : "String",
+              "marshallingType" : "STRING",
+              "name" : "Member",
+              "sensitive" : false,
+              "setterDocumentation" : "/**\n@param member */",
+              "setterMethodName" : "setMember",
+              "setterModel" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "member",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "shouldEmitLegacyEnumSetter" : false,
+              "simple" : true,
+              "unmarshallingType" : null,
+              "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
+              "variable" : {
+                "timestampFormat" : null,
+                "variableDeclarationType" : "String",
+                "variableName" : "member",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "xmlNameSpaceUri" : null
+            },
+            "memberLocationName" : null,
+            "memberType" : "String",
+            "map" : false,
+            "marshallNonAutoConstructedEmptyLists" : false,
+            "memberAdditionalMarshallingPath" : null,
+            "memberAdditionalUnmarshallingPath" : null,
+            "sendEmptyQueryString" : false,
+            "simple" : true,
+            "simpleType" : "String",
+            "templateImplType" : "java.util.ArrayList<String>",
+            "templateType" : "java.util.List<String>"
+          },
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "List",
+          "marshallingType" : "LIST",
+          "name" : "TagKeys",
+          "sensitive" : false,
+          "setterDocumentation" : "/**The keys of the tags to be removed.\n@param tagKeys The keys of the tags to be removed.*/",
+          "setterMethodName" : "setTagKeys",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.List<String>",
+            "variableName" : "tagKeys",
+            "variableType" : "java.util.List<String>",
+            "documentation" : "",
+            "simpleType" : "List<String>",
+            "variableSetterType" : "java.util.Collection<String>"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : false,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**The keys of the tags to be removed.\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setTagKeys(java.util.Collection)} or {@link #withTagKeys(java.util.Collection)} if you want to override the existing values.</p>\n@param tagKeys The keys of the tags to be removed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "java.util.List<String>",
+            "variableName" : "tagKeys",
+            "variableType" : "java.util.List<String>",
+            "documentation" : "The keys of the tags to be removed.",
+            "simpleType" : "List<String>",
+            "variableSetterType" : "java.util.Collection<String>"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : [ "TagKeys", "ResourceArn" ],
+      "shapeName" : "UntagResourceRequest",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "UntagResourceRequest",
+        "variableName" : "untagResourceRequest",
+        "variableType" : "UntagResourceRequest",
+        "documentation" : null,
+        "simpleType" : "UntagResourceRequest",
+        "variableSetterType" : "UntagResourceRequest"
+      },
+      "wrapper" : false
+    },
+    "UntagResourceResult" : {
+      "c2jName" : "UntagResourceResult",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : null,
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : null,
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "UntagResourceResult",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "UntagResourceResult",
+        "variableName" : "untagResourceResult",
+        "variableType" : "UntagResourceResult",
+        "documentation" : null,
+        "simpleType" : "UntagResourceResult",
+        "variableSetterType" : "UntagResourceResult"
+      },
+      "wrapper" : false
+    },
     "UpdateEncryption" : {
       "c2jName" : "UpdateEncryption",
       "customization" : {
@@ -20296,6 +22296,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -20325,6 +22326,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "algorithm",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "algorithm",
           "uri" : false
@@ -20391,6 +22393,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "keyType",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "keyType",
           "uri" : false
@@ -20457,6 +22460,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "roleArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "roleArn",
           "uri" : false
@@ -20523,6 +22527,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "secretArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "secretArn",
           "uri" : false
@@ -20591,6 +22596,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "algorithm",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "algorithm",
             "uri" : false
@@ -20658,6 +22664,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "keyType",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "keyType",
             "uri" : false
@@ -20725,6 +22732,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "roleArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "roleArn",
             "uri" : false
@@ -20792,6 +22800,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "secretArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "secretArn",
             "uri" : false
@@ -20869,6 +22878,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -20905,6 +22915,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -20971,6 +22982,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -21037,6 +23049,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : true
@@ -21103,6 +23116,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -21169,6 +23183,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "subscribers",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "subscribers",
           "uri" : false
@@ -21206,6 +23221,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -21318,6 +23334,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -21385,6 +23402,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -21452,6 +23470,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : true
@@ -21519,6 +23538,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -21586,6 +23606,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "subscribers",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "subscribers",
             "uri" : false
@@ -21623,6 +23644,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -21741,6 +23763,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -21770,6 +23793,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlement",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlement",
           "uri" : false
@@ -21836,6 +23860,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -21904,6 +23929,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlement",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlement",
             "uri" : false
@@ -21971,6 +23997,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -22048,6 +24075,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -22084,6 +24112,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -22150,6 +24179,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "destination",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "destination",
           "uri" : false
@@ -22216,6 +24246,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "encryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "encryption",
           "uri" : false
@@ -22282,6 +24313,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -22348,6 +24380,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxLatency",
           "uri" : false
@@ -22414,6 +24447,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "outputArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "outputArn",
           "uri" : true
@@ -22480,6 +24514,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "port",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "port",
           "uri" : false
@@ -22546,6 +24581,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "protocol",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "protocol",
           "uri" : false
@@ -22612,6 +24648,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "smoothingLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "smoothingLatency",
           "uri" : false
@@ -22678,6 +24715,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "streamId",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "streamId",
           "uri" : false
@@ -22746,6 +24784,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -22813,6 +24852,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "destination",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "destination",
             "uri" : false
@@ -22880,6 +24920,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "encryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "encryption",
             "uri" : false
@@ -22947,6 +24988,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -23014,6 +25056,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxLatency",
             "uri" : false
@@ -23081,6 +25124,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "outputArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "outputArn",
             "uri" : true
@@ -23148,6 +25192,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "port",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "port",
             "uri" : false
@@ -23215,6 +25260,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "protocol",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "protocol",
             "uri" : false
@@ -23282,6 +25328,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "smoothingLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "smoothingLatency",
             "uri" : false
@@ -23349,6 +25396,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "streamId",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "streamId",
             "uri" : false
@@ -23423,6 +25471,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -23452,6 +25501,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -23518,6 +25568,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "output",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "output",
           "uri" : false
@@ -23586,6 +25637,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -23653,6 +25705,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "output",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "output",
             "uri" : false
@@ -23730,6 +25783,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -23766,6 +25820,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "decryption",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "decryption",
           "uri" : false
@@ -23832,6 +25887,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "description",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "description",
           "uri" : false
@@ -23898,6 +25954,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "entitlementArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "entitlementArn",
           "uri" : false
@@ -23964,6 +26021,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : true
@@ -24030,6 +26088,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ingestPort",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ingestPort",
           "uri" : false
@@ -24096,6 +26155,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxBitrate",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxBitrate",
           "uri" : false
@@ -24162,6 +26222,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "maxLatency",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "maxLatency",
           "uri" : false
@@ -24228,6 +26289,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "protocol",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "protocol",
           "uri" : false
@@ -24294,6 +26356,7 @@
           "marshallLocation" : "PATH",
           "marshallLocationName" : "sourceArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "sourceArn",
           "uri" : true
@@ -24360,6 +26423,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "streamId",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "streamId",
           "uri" : false
@@ -24426,6 +26490,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "whitelistCidr",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "whitelistCidr",
           "uri" : false
@@ -24494,6 +26559,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "decryption",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "decryption",
             "uri" : false
@@ -24561,6 +26627,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "description",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "description",
             "uri" : false
@@ -24628,6 +26695,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "entitlementArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "entitlementArn",
             "uri" : false
@@ -24695,6 +26763,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : true
@@ -24762,6 +26831,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ingestPort",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ingestPort",
             "uri" : false
@@ -24829,6 +26899,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxBitrate",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxBitrate",
             "uri" : false
@@ -24896,6 +26967,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "maxLatency",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "maxLatency",
             "uri" : false
@@ -24963,6 +27035,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "protocol",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "protocol",
             "uri" : false
@@ -25030,6 +27103,7 @@
             "marshallLocation" : "PATH",
             "marshallLocationName" : "sourceArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "sourceArn",
             "uri" : true
@@ -25097,6 +27171,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "streamId",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "streamId",
             "uri" : false
@@ -25164,6 +27239,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "whitelistCidr",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "whitelistCidr",
             "uri" : false
@@ -25238,6 +27314,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -25267,6 +27344,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "flowArn",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "flowArn",
           "uri" : false
@@ -25333,6 +27411,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "source",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "source",
           "uri" : false
@@ -25401,6 +27480,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "flowArn",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "flowArn",
             "uri" : false
@@ -25468,6 +27548,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "source",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "source",
             "uri" : false
@@ -25533,7 +27614,6 @@
     }
   },
   "clientConfigFactory" : "ClientConfigurationFactory",
-  "customAuthorizers" : { },
   "examples" : {
     "examples" : { },
     "version" : null

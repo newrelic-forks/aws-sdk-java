@@ -31,33 +31,33 @@ import javax.annotation.Generated;
  * <ul>
  * <li>
  * <p>
- * <a>CreateDBInstance</a>
+ * <code>CreateDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ModifyDBInstance</a>
+ * <code>ModifyDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>RestoreDBInstanceFromDBSnapshot</a>
+ * <code>RestoreDBInstanceFromDBSnapshot</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>RestoreDBInstanceFromS3</a>
+ * <code>RestoreDBInstanceFromS3</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>RestoreDBInstanceToPointInTime</a>
+ * <code>RestoreDBInstanceToPointInTime</code>
  * </p>
  * </li>
  * </ul>
  * <p>
  * You can view the valid processor values for a particular instance class by calling the
- * <a>DescribeOrderableDBInstanceOptions</a> action and specifying the instance class for the
+ * <code>DescribeOrderableDBInstanceOptions</code> action and specifying the instance class for the
  * <code>DBInstanceClass</code> parameter.
  * </p>
  * <p>
@@ -66,23 +66,23 @@ import javax.annotation.Generated;
  * <ul>
  * <li>
  * <p>
- * <a>DescribeDBInstances</a>
+ * <code>DescribeDBInstances</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeDBSnapshots</a>
+ * <code>DescribeDBSnapshots</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeValidDBInstanceModifications</a>
+ * <code>DescribeValidDBInstanceModifications</code>
  * </p>
  * </li>
  * </ul>
  * <p>
  * For more information, see <a
- * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor"
+ * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor"
  * >Configuring the Processor of the DB Instance Class</a> in the <i>Amazon RDS User Guide. </i>
  * </p>
  * 

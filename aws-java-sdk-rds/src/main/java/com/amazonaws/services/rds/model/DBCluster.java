@@ -20,8 +20,8 @@ import javax.annotation.Generated;
  * Contains the details of an Amazon Aurora DB cluster.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>DescribeDBClusters</a>, <a>StopDBCluster</a>, and
- * <a>StartDBCluster</a> actions.
+ * This data type is used as a response element in the <code>DescribeDBClusters</code>, <code>StopDBCluster</code>, and
+ * <code>StartDBCluster</code> actions.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBCluster" target="_top">AWS API
@@ -40,7 +40,7 @@ public class DBCluster implements Serializable, Cloneable {
     private Integer allocatedStorage;
     /**
      * <p>
-     * Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> availabilityZones;
@@ -219,7 +219,7 @@ public class DBCluster implements Serializable, Cloneable {
     private Boolean storageEncrypted;
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     * If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      * </p>
      */
     private String kmsKeyId;
@@ -246,8 +246,8 @@ public class DBCluster implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<DBClusterRole> associatedRoles;
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     * otherwise false.
+     * A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts is enabled.
      * </p>
      */
     private Boolean iAMDatabaseAuthenticationEnabled;
@@ -288,7 +288,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      */
@@ -299,7 +299,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      */
@@ -315,8 +315,8 @@ public class DBCluster implements Serializable, Cloneable {
     private ScalingConfigurationInfo scalingConfigurationInfo;
     /**
      * <p>
-     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set
-     * to true.
+     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled.
      * </p>
      */
     private Boolean deletionProtection;
@@ -327,8 +327,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     * <code>false</code> otherwise.
+     * A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      * </p>
      * <p>
      * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
@@ -336,11 +335,17 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      */
     private Boolean httpEndpointEnabled;
+    /**
+     * <p>
+     * Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * </p>
+     */
+    private Boolean copyTagsToSnapshot;
 
     /**
      * <p>
@@ -396,10 +401,10 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * </p>
      * 
-     * @return Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * @return Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      */
 
     public java.util.List<String> getAvailabilityZones() {
@@ -411,11 +416,11 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      */
 
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
@@ -429,7 +434,7 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -438,7 +443,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -454,11 +459,11 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1810,11 +1815,11 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     * If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     *        If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -1823,10 +1828,10 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     * If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      * </p>
      * 
-     * @return If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     * @return If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      */
 
     public String getKmsKeyId() {
@@ -1835,11 +1840,11 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     * If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB cluster.
+     *        If <code>StorageEncrypted</code> is enabled, the AWS KMS key identifier for the encrypted DB cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2025,13 +2030,13 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     * otherwise false.
+     * A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts is enabled.
      * </p>
      * 
      * @param iAMDatabaseAuthenticationEnabled
-     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     *        otherwise false.
+     *        A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts is enabled.
      */
 
     public void setIAMDatabaseAuthenticationEnabled(Boolean iAMDatabaseAuthenticationEnabled) {
@@ -2040,12 +2045,12 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     * otherwise false.
+     * A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts is enabled.
      * </p>
      * 
-     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     *         otherwise false.
+     * @return A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts is enabled.
      */
 
     public Boolean getIAMDatabaseAuthenticationEnabled() {
@@ -2054,13 +2059,13 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     * otherwise false.
+     * A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts is enabled.
      * </p>
      * 
      * @param iAMDatabaseAuthenticationEnabled
-     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     *        otherwise false.
+     *        A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2071,12 +2076,12 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     * otherwise false.
+     * A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts is enabled.
      * </p>
      * 
-     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
-     *         otherwise false.
+     * @return A value that indicates whether the mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts is enabled.
      */
 
     public Boolean isIAMDatabaseAuthenticationEnabled() {
@@ -2295,14 +2300,14 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @return A list of log types that this DB cluster is configured to export to CloudWatch Logs.</p>
      *         <p>
      *         Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS
      *         Database Log Files</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
@@ -2319,7 +2324,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
@@ -2327,8 +2332,8 @@ public class DBCluster implements Serializable, Cloneable {
      *        A list of log types that this DB cluster is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database
-     *        Log Files</a> in the <i>Amazon Aurora User Guide.</i>
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS
+     *        Database Log Files</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public void setEnabledCloudwatchLogsExports(java.util.Collection<String> enabledCloudwatchLogsExports) {
@@ -2346,7 +2351,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
@@ -2359,8 +2364,8 @@ public class DBCluster implements Serializable, Cloneable {
      *        A list of log types that this DB cluster is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database
-     *        Log Files</a> in the <i>Amazon Aurora User Guide.</i>
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS
+     *        Database Log Files</a> in the <i>Amazon Aurora User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2380,7 +2385,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database Log
      * Files</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
@@ -2388,8 +2393,8 @@ public class DBCluster implements Serializable, Cloneable {
      *        A list of log types that this DB cluster is configured to export to CloudWatch Logs.</p>
      *        <p>
      *        Log types vary by DB engine. For information about the log types for each DB engine, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS Database
-     *        Log Files</a> in the <i>Amazon Aurora User Guide.</i>
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html">Amazon RDS
+     *        Database Log Files</a> in the <i>Amazon Aurora User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2404,7 +2409,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2413,7 +2418,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        paused.</p>
      *        <p>
      *        For more information about Aurora Serverless, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2427,7 +2432,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2435,7 +2440,7 @@ public class DBCluster implements Serializable, Cloneable {
      *         paused.</p>
      *         <p>
      *         For more information about Aurora Serverless, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *         Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2449,7 +2454,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2458,7 +2463,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        paused.</p>
      *        <p>
      *        For more information about Aurora Serverless, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2542,13 +2547,13 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set
-     * to true.
+     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value
-     *        is set to true.
+     *        Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled.
      */
 
     public void setDeletionProtection(Boolean deletionProtection) {
@@ -2557,12 +2562,12 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set
-     * to true.
+     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true.
+     * @return Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled.
      */
 
     public Boolean getDeletionProtection() {
@@ -2571,13 +2576,13 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set
-     * to true.
+     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value
-     *        is set to true.
+     *        Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2588,12 +2593,12 @@ public class DBCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set
-     * to true.
+     * Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true.
+     * @return Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled.
      */
 
     public Boolean isDeletionProtection() {
@@ -2607,8 +2612,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     * <code>false</code> otherwise.
+     * A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      * </p>
      * <p>
      * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
@@ -2616,7 +2620,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2626,8 +2630,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        </p>
      *        </note>
      *        <p>
-     *        Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     *        <code>false</code> otherwise.
+     *        A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      *        </p>
      *        <p>
      *        When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
@@ -2636,7 +2639,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        For more information about Aurora Serverless, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2651,8 +2654,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     * <code>false</code> otherwise.
+     * A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      * </p>
      * <p>
      * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
@@ -2660,7 +2662,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2669,8 +2671,7 @@ public class DBCluster implements Serializable, Cloneable {
      *         </p>
      *         </note>
      *         <p>
-     *         Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     *         <code>false</code> otherwise.
+     *         A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      *         </p>
      *         <p>
      *         When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
@@ -2679,7 +2680,7 @@ public class DBCluster implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         For more information about Aurora Serverless, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *         Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -2694,8 +2695,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     * <code>false</code> otherwise.
+     * A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      * </p>
      * <p>
      * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
@@ -2703,7 +2703,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2713,8 +2713,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        </p>
      *        </note>
      *        <p>
-     *        Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     *        <code>false</code> otherwise.
+     *        A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      *        </p>
      *        <p>
      *        When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
@@ -2723,7 +2722,7 @@ public class DBCluster implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        For more information about Aurora Serverless, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2740,8 +2739,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     * <code>false</code> otherwise.
+     * A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      * </p>
      * <p>
      * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
@@ -2749,7 +2747,7 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      * <p>
      * For more information about Aurora Serverless, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon Aurora
      * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
@@ -2758,8 +2756,7 @@ public class DBCluster implements Serializable, Cloneable {
      *         </p>
      *         </note>
      *         <p>
-     *         Value that is <code>true</code> if the HTTP endpoint for an Aurora Serverless DB cluster is enabled and
-     *         <code>false</code> otherwise.
+     *         A value that indicates whether the HTTP endpoint for an Aurora Serverless DB cluster is enabled.
      *         </p>
      *         <p>
      *         When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
@@ -2768,12 +2765,64 @@ public class DBCluster implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         For more information about Aurora Serverless, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html">Using Amazon
      *         Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
     public Boolean isHttpEndpointEnabled() {
         return this.httpEndpointEnabled;
+    }
+
+    /**
+     * <p>
+     * Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * </p>
+     * 
+     * @param copyTagsToSnapshot
+     *        Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     */
+
+    public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
+        this.copyTagsToSnapshot = copyTagsToSnapshot;
+    }
+
+    /**
+     * <p>
+     * Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * </p>
+     * 
+     * @return Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     */
+
+    public Boolean getCopyTagsToSnapshot() {
+        return this.copyTagsToSnapshot;
+    }
+
+    /**
+     * <p>
+     * Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * </p>
+     * 
+     * @param copyTagsToSnapshot
+     *        Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBCluster withCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
+        setCopyTagsToSnapshot(copyTagsToSnapshot);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     * </p>
+     * 
+     * @return Specifies whether tags are copied from the DB cluster to snapshots of the DB cluster.
+     */
+
+    public Boolean isCopyTagsToSnapshot() {
+        return this.copyTagsToSnapshot;
     }
 
     /**
@@ -2877,7 +2926,9 @@ public class DBCluster implements Serializable, Cloneable {
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
         if (getHttpEndpointEnabled() != null)
-            sb.append("HttpEndpointEnabled: ").append(getHttpEndpointEnabled());
+            sb.append("HttpEndpointEnabled: ").append(getHttpEndpointEnabled()).append(",");
+        if (getCopyTagsToSnapshot() != null)
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot());
         sb.append("}");
         return sb.toString();
     }
@@ -3075,6 +3126,10 @@ public class DBCluster implements Serializable, Cloneable {
             return false;
         if (other.getHttpEndpointEnabled() != null && other.getHttpEndpointEnabled().equals(this.getHttpEndpointEnabled()) == false)
             return false;
+        if (other.getCopyTagsToSnapshot() == null ^ this.getCopyTagsToSnapshot() == null)
+            return false;
+        if (other.getCopyTagsToSnapshot() != null && other.getCopyTagsToSnapshot().equals(this.getCopyTagsToSnapshot()) == false)
+            return false;
         return true;
     }
 
@@ -3128,6 +3183,7 @@ public class DBCluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getScalingConfigurationInfo() == null) ? 0 : getScalingConfigurationInfo().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
         hashCode = prime * hashCode + ((getHttpEndpointEnabled() == null) ? 0 : getHttpEndpointEnabled().hashCode());
+        hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
         return hashCode;
     }
 

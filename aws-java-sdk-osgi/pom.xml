@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.477-SNAPSHOT</version>
+    <version>1.11.558-SNAPSHOT</version>
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-osgi</artifactId>
@@ -15,6 +15,42 @@
 
   <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
   <dependencies>
+    <dependency>
+        <artifactId>aws-java-sdk-mediapackagevod</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-managedblockchain</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-textract</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-worklink</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-backup</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-docdb</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
     <dependency>
         <artifactId>aws-java-sdk-apigatewayv2</artifactId>
         <groupId>com.amazonaws</groupId>
@@ -1059,7 +1095,7 @@
         <configuration>
           <instructions>
             <Export-Package>com.amazonaws.*</Export-Package>
-            <Import-Package>!org.junit.*,!org.springframework.*,!org.apache.avalon.*,!org.apache.log.*,!org.aspectj.*,org.apache.http.conn.routing,com.sun.org.apache.xerces.internal.jaxp.*;resolution:=optional,com.sun.org.apache.xml.internal.dtm.*;resolution:=optional,com.sun.org.apache.xml.internal.dtm.ref.*;resolution:=optional,com.sun.org.apache.xpath.internal.*;resolution:=optional,*</Import-Package>
+            <Import-Package>!org.junit.*,!org.springframework.*,!org.apache.avalon.*,!org.apache.log.*,!org.aspectj.*,org.apache.http.conn.routing,com.sun.org.apache.xerces.internal.jaxp.*;resolution:=optional,com.sun.org.apache.xml.internal.dtm.*;resolution:=optional,com.sun.org.apache.xml.internal.dtm.ref.*;resolution:=optional,com.sun.org.apache.xpath.internal.*;resolution:=optional,javax.mail;resolution:=optional,*</Import-Package>
             <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
             <Embed-Transitive>false</Embed-Transitive>
           </instructions>
@@ -1136,6 +1172,30 @@
                               </taglet>
                           </taglets>
                           <groups>
+                              <group>
+                                  <title>AWS Elemental MediaPackage VOD</title>
+                                  <packages>com.amazonaws.services.mediapackagevod*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Managed Blockchain</title>
+                                  <packages>com.amazonaws.services.managedblockchain*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Textract</title>
+                                  <packages>com.amazonaws.services.textract*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon WorkLink</title>
+                                  <packages>com.amazonaws.services.worklink*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Backup</title>
+                                  <packages>com.amazonaws.services.backup*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon DocumentDB with MongoDB compatibility</title>
+                                  <packages>com.amazonaws.services.docdb*</packages>
+                              </group>
                               <group>
                                   <title>AmazonApiGatewayV2</title>
                                   <packages>com.amazonaws.services.apigatewayv2*</packages>

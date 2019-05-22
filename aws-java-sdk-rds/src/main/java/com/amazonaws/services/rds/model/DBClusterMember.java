@@ -34,8 +34,7 @@ public class DBClusterMember implements Serializable, Cloneable {
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     * <code>false</code> otherwise.
+     * A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * </p>
      */
     private Boolean isClusterWriter;
@@ -49,7 +48,7 @@ public class DBClusterMember implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      */
@@ -97,13 +96,11 @@ public class DBClusterMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     * <code>false</code> otherwise.
+     * A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * </p>
      * 
      * @param isClusterWriter
-     *        Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     *        <code>false</code> otherwise.
+     *        A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      */
 
     public void setIsClusterWriter(Boolean isClusterWriter) {
@@ -112,12 +109,10 @@ public class DBClusterMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     * <code>false</code> otherwise.
+     * A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * </p>
      * 
-     * @return Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     *         <code>false</code> otherwise.
+     * @return A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      */
 
     public Boolean getIsClusterWriter() {
@@ -126,13 +121,11 @@ public class DBClusterMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     * <code>false</code> otherwise.
+     * A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * </p>
      * 
      * @param isClusterWriter
-     *        Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     *        <code>false</code> otherwise.
+     *        A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -143,12 +136,10 @@ public class DBClusterMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     * <code>false</code> otherwise.
+     * A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      * </p>
      * 
-     * @return Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and
-     *         <code>false</code> otherwise.
+     * @return A value that indicates whehter the cluster member is the primary instance for the DB cluster.
      */
 
     public Boolean isClusterWriter() {
@@ -199,14 +190,14 @@ public class DBClusterMember implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @param promotionTier
      *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *        failure of the existing primary instance. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -218,13 +209,13 @@ public class DBClusterMember implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @return A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *         failure of the existing primary instance. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *         > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      */
 
@@ -236,14 +227,14 @@ public class DBClusterMember implements Serializable, Cloneable {
      * <p>
      * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
      * of the existing primary instance. For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      * > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * </p>
      * 
      * @param promotionTier
      *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
      *        failure of the existing primary instance. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a> in the <i>Amazon Aurora User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

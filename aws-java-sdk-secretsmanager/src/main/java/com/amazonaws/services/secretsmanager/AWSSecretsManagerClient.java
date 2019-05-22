@@ -56,7 +56,7 @@ import com.amazonaws.services.secretsmanager.model.transform.*;
  * </p>
  * <p>
  * This guide provides descriptions of the Secrets Manager API. For more information about using this service, see the
- * <a href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html">AWS Secrets Manager User
+ * <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html">AWS Secrets Manager User
  * Guide</a>.
  * </p>
  * <p>
@@ -79,7 +79,7 @@ import com.amazonaws.services.secretsmanager.model.transform.*;
  * We recommend that you use the AWS SDKs to make programmatic API calls to Secrets Manager. However, you also can use
  * the Secrets Manager HTTP Query API to make direct calls to the Secrets Manager web service. To learn more about the
  * Secrets Manager HTTP Query API, see <a
- * href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html">Making Query Requests</a> in
+ * href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html">Making Query Requests</a> in
  * the <i>AWS Secrets Manager User Guide</i>.
  * </p>
  * <p>
@@ -118,7 +118,7 @@ import com.amazonaws.services.secretsmanager.model.transform.*;
  * href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail">Logging AWS
  * Secrets Manager Events with AWS CloudTrail</a> in the <i>AWS Secrets Manager User Guide</i>. To learn more about
  * CloudTrail, including how to turn it on and find your log files, see the <a
- * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">AWS CloudTrail
+ * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">AWS CloudTrail
  * User Guide</a>.
  * </p>
  */
@@ -355,6 +355,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelRotateSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -553,6 +554,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -659,6 +661,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteResourcePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -793,6 +796,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -888,6 +892,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -976,6 +981,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRandomPassword");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1084,6 +1090,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetResourcePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1196,6 +1203,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSecretValue");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1287,6 +1295,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSecretVersionIds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1379,6 +1388,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSecrets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1404,7 +1414,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
      * permitted by all of the relevant policies. For more information, see <a
      * href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html"
      * >Using Resource-Based Policies for AWS Secrets Manager</a>. For the complete description of the AWS policy syntax
-     * and grammar, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html">IAM JSON
+     * and grammar, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html">IAM JSON
      * Policy Reference</a> in the <i>IAM User Guide</i>.
      * </p>
      * <p>
@@ -1497,6 +1507,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutResourcePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1689,6 +1700,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutSecretValue");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1788,6 +1800,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RestoreSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1819,7 +1832,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
      * secret with the staging label <code>AWSCURRENT</code> so that your clients all immediately begin to use the new
      * version. For more information about rotating secrets and how to configure a Lambda function to rotate the secrets
      * for your protected service, see <a
-     * href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html">Rotating Secrets in AWS
+     * href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html">Rotating Secrets in AWS
      * Secrets Manager</a> in the <i>AWS Secrets Manager User Guide</i>.
      * </p>
      * <p>
@@ -1948,6 +1961,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RotateSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2099,6 +2113,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2213,6 +2228,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2404,6 +2420,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSecret");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2426,7 +2443,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
      * progresses through the secret rotation process. You can attach a staging label to only one version of a secret at
      * a time. If a staging label to be added is already attached to another version, then it is moved--removed from the
      * other version first and then attached to this one. For more information about staging labels, see <a
-     * href="http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label">Staging
+     * href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label">Staging
      * Labels</a> in the <i>AWS Secrets Manager User Guide</i>.
      * </p>
      * <p>
@@ -2528,6 +2545,7 @@ public class AWSSecretsManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Secrets Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSecretVersionStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -26,23 +26,24 @@ import java.util.concurrent.ExecutorService;
  * notification when an asynchronous operation completes.
  * <p>
  * <p>
- * AWS App Mesh is a service mesh based on the Envoy proxy that makes it easy to monitor and control containerized
- * microservices. App Mesh standardizes how your microservices communicate, giving you end-to-end visibility and helping
- * to ensure high-availability for your applications.
+ * AWS App Mesh is a service mesh based on the Envoy proxy that makes it easy to monitor and control microservices. App
+ * Mesh standardizes how your microservices communicate, giving you end-to-end visibility and helping to ensure high
+ * availability for your applications.
  * </p>
  * <p>
  * App Mesh gives you consistent visibility and network traffic controls for every microservice in an application. You
- * can use App Mesh with Amazon ECS (using the Amazon EC2 launch type), Amazon EKS, and Kubernetes on AWS.
+ * can use App Mesh with AWS Fargate, Amazon ECS, Amazon EKS, and Kubernetes on AWS.
  * </p>
  * <note>
  * <p>
- * App Mesh supports containerized microservice applications that use service discovery naming for their components. To
- * use App Mesh, you must have a containerized application running on Amazon EC2 instances, hosted in either Amazon ECS,
- * Amazon EKS, or Kubernetes on AWS. For more information about service discovery on Amazon ECS, see <a
- * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguideservice-discovery.html">Service Discovery</a> in the
- * <i>Amazon Elastic Container Service Developer Guide</i>. Kubernetes <code>kube-dns</code> is supported. For more
- * information, see <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">DNS for Services
- * and Pods</a> in the Kubernetes documentation.
+ * App Mesh supports microservice applications that use service discovery naming for their components. To use App Mesh,
+ * you must have an application running on Amazon EC2 instances, hosted in either Amazon ECS, Amazon EKS, or Kubernetes
+ * on AWS. For more information about service discovery on Amazon ECS, see <a
+ * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a> in the
+ * <i>Amazon Elastic Container Service Developer Guide</i>. Kubernetes <code>kube-dns</code> and <code>coredns</code>
+ * are supported. For more information, see <a
+ * href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">DNS for Services and Pods</a> in the
+ * Kubernetes documentation.
  * </p>
  * </note>
  */
@@ -211,6 +212,39 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
     }
 
     @Override
+    public java.util.concurrent.Future<CreateVirtualServiceResult> createVirtualServiceAsync(CreateVirtualServiceRequest request) {
+
+        return createVirtualServiceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVirtualServiceResult> createVirtualServiceAsync(final CreateVirtualServiceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateVirtualServiceRequest, CreateVirtualServiceResult> asyncHandler) {
+        final CreateVirtualServiceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateVirtualServiceResult>() {
+            @Override
+            public CreateVirtualServiceResult call() throws Exception {
+                CreateVirtualServiceResult result = null;
+
+                try {
+                    result = executeCreateVirtualService(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteMeshResult> deleteMeshAsync(DeleteMeshRequest request) {
 
         return deleteMeshAsync(request, null);
@@ -327,6 +361,39 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
 
                 try {
                     result = executeDeleteVirtualRouter(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVirtualServiceResult> deleteVirtualServiceAsync(DeleteVirtualServiceRequest request) {
+
+        return deleteVirtualServiceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVirtualServiceResult> deleteVirtualServiceAsync(final DeleteVirtualServiceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteVirtualServiceRequest, DeleteVirtualServiceResult> asyncHandler) {
+        final DeleteVirtualServiceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteVirtualServiceResult>() {
+            @Override
+            public DeleteVirtualServiceResult call() throws Exception {
+                DeleteVirtualServiceResult result = null;
+
+                try {
+                    result = executeDeleteVirtualService(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -475,6 +542,39 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeVirtualServiceResult> describeVirtualServiceAsync(DescribeVirtualServiceRequest request) {
+
+        return describeVirtualServiceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeVirtualServiceResult> describeVirtualServiceAsync(final DescribeVirtualServiceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeVirtualServiceRequest, DescribeVirtualServiceResult> asyncHandler) {
+        final DescribeVirtualServiceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeVirtualServiceResult>() {
+            @Override
+            public DescribeVirtualServiceResult call() throws Exception {
+                DescribeVirtualServiceResult result = null;
+
+                try {
+                    result = executeDescribeVirtualService(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListMeshesResult> listMeshesAsync(ListMeshesRequest request) {
 
         return listMeshesAsync(request, null);
@@ -541,6 +641,39 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
     }
 
     @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest request) {
+
+        return listTagsForResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(final ListTagsForResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler) {
+        final ListTagsForResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTagsForResourceResult>() {
+            @Override
+            public ListTagsForResourceResult call() throws Exception {
+                ListTagsForResourceResult result = null;
+
+                try {
+                    result = executeListTagsForResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListVirtualNodesResult> listVirtualNodesAsync(ListVirtualNodesRequest request) {
 
         return listVirtualNodesAsync(request, null);
@@ -591,6 +724,138 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
 
                 try {
                     result = executeListVirtualRouters(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListVirtualServicesResult> listVirtualServicesAsync(ListVirtualServicesRequest request) {
+
+        return listVirtualServicesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListVirtualServicesResult> listVirtualServicesAsync(final ListVirtualServicesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListVirtualServicesRequest, ListVirtualServicesResult> asyncHandler) {
+        final ListVirtualServicesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListVirtualServicesResult>() {
+            @Override
+            public ListVirtualServicesResult call() throws Exception {
+                ListVirtualServicesResult result = null;
+
+                try {
+                    result = executeListVirtualServices(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request) {
+
+        return tagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(final TagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler) {
+        final TagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<TagResourceResult>() {
+            @Override
+            public TagResourceResult call() throws Exception {
+                TagResourceResult result = null;
+
+                try {
+                    result = executeTagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest request) {
+
+        return untagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(final UntagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler) {
+        final UntagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UntagResourceResult>() {
+            @Override
+            public UntagResourceResult call() throws Exception {
+                UntagResourceResult result = null;
+
+                try {
+                    result = executeUntagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMeshResult> updateMeshAsync(UpdateMeshRequest request) {
+
+        return updateMeshAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMeshResult> updateMeshAsync(final UpdateMeshRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateMeshRequest, UpdateMeshResult> asyncHandler) {
+        final UpdateMeshRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateMeshResult>() {
+            @Override
+            public UpdateMeshResult call() throws Exception {
+                UpdateMeshResult result = null;
+
+                try {
+                    result = executeUpdateMesh(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -690,6 +955,39 @@ public class AWSAppMeshAsyncClient extends AWSAppMeshClient implements AWSAppMes
 
                 try {
                     result = executeUpdateVirtualRouter(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVirtualServiceResult> updateVirtualServiceAsync(UpdateVirtualServiceRequest request) {
+
+        return updateVirtualServiceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVirtualServiceResult> updateVirtualServiceAsync(final UpdateVirtualServiceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateVirtualServiceRequest, UpdateVirtualServiceResult> asyncHandler) {
+        final UpdateVirtualServiceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateVirtualServiceResult>() {
+            @Override
+            public UpdateVirtualServiceResult call() throws Exception {
+                UpdateVirtualServiceResult result = null;
+
+                try {
+                    result = executeUpdateVirtualService(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

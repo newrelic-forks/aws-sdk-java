@@ -30,7 +30,7 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * <p>
      * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      * information about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      */
@@ -40,7 +40,7 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * The pending maintenance action to apply to this resource.
      * </p>
      * <p>
-     * Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     * Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      * </p>
      */
     private String applyAction;
@@ -76,14 +76,14 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * <p>
      * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      * information about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceIdentifier
      *        The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      *        information about creating an ARN, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
 
@@ -95,13 +95,13 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * <p>
      * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      * information about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @return The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      *         information about creating an ARN, see <a href=
-     *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *         > Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
 
@@ -113,14 +113,14 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * <p>
      * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      * information about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceIdentifier
      *        The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
      *        information about creating an ARN, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -135,13 +135,13 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * The pending maintenance action to apply to this resource.
      * </p>
      * <p>
-     * Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     * Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      * </p>
      * 
      * @param applyAction
      *        The pending maintenance action to apply to this resource.</p>
      *        <p>
-     *        Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     *        Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      */
 
     public void setApplyAction(String applyAction) {
@@ -153,12 +153,12 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * The pending maintenance action to apply to this resource.
      * </p>
      * <p>
-     * Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     * Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      * </p>
      * 
      * @return The pending maintenance action to apply to this resource.</p>
      *         <p>
-     *         Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     *         Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      */
 
     public String getApplyAction() {
@@ -170,13 +170,13 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
      * The pending maintenance action to apply to this resource.
      * </p>
      * <p>
-     * Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     * Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      * </p>
      * 
      * @param applyAction
      *        The pending maintenance action to apply to this resource.</p>
      *        <p>
-     *        Valid values: <code>system-update</code>, <code>db-upgrade</code>
+     *        Valid values: <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

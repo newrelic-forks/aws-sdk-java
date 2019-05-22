@@ -144,14 +144,15 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
 
     /**
      * <p>
-     * Use this API to retrieve media content from a Kinesis video stream. In the request, you identify stream name or
-     * stream Amazon Resource Name (ARN), and the starting chunk. Kinesis Video Streams then returns a stream of chunks
-     * in order by fragment number.
+     * Use this API to retrieve media content from a Kinesis video stream. In the request, you identify the stream name
+     * or stream Amazon Resource Name (ARN), and the starting chunk. Kinesis Video Streams then returns a stream of
+     * chunks in order by fragment number.
      * </p>
      * <note>
      * <p>
-     * You must first call the <code>GetDataEndpoint</code> API to get an endpoint to which you can then send the
-     * <code>GetMedia</code> requests.
+     * You must first call the <code>GetDataEndpoint</code> API to get an endpoint. Then send the <code>GetMedia</code>
+     * requests to this endpoint using the <a href="https://docs.aws.amazon.com/cli/latest/reference/">--endpoint-url
+     * parameter</a>.
      * </p>
      * </note>
      * <p>
@@ -224,6 +225,7 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video Media");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMedia");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

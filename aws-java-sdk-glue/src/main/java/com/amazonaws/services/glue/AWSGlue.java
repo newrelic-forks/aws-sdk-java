@@ -163,6 +163,69 @@ public interface AWSGlue {
 
     /**
      * <p>
+     * Returns a list of resource metadata for a given list of crawler names. After calling the
+     * <code>ListCrawlers</code> operation, you can call this operation to access the data to which you have been
+     * granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
+     * </p>
+     * 
+     * @param batchGetCrawlersRequest
+     * @return Result of the BatchGetCrawlers operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.BatchGetCrawlers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetCrawlers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    BatchGetCrawlersResult batchGetCrawlers(BatchGetCrawlersRequest batchGetCrawlersRequest);
+
+    /**
+     * <p>
+     * Returns a list of resource metadata for a given list of DevEndpoint names. After calling the
+     * <code>ListDevEndpoints</code> operation, you can call this operation to access the data to which you have been
+     * granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
+     * </p>
+     * 
+     * @param batchGetDevEndpointsRequest
+     * @return Result of the BatchGetDevEndpoints operation returned by the service.
+     * @throws AccessDeniedException
+     *         Access to a resource was denied.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @sample AWSGlue.BatchGetDevEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetDevEndpoints" target="_top">AWS API
+     *      Documentation</a>
+     */
+    BatchGetDevEndpointsResult batchGetDevEndpoints(BatchGetDevEndpointsRequest batchGetDevEndpointsRequest);
+
+    /**
+     * <p>
+     * Returns a list of resource metadata for a given list of job names. After calling the <code>ListJobs</code>
+     * operation, you can call this operation to access the data to which you have been granted permissions. This
+     * operation supports all IAM permissions, including permission conditions that uses tags.
+     * </p>
+     * 
+     * @param batchGetJobsRequest
+     * @return Result of the BatchGetJobs operation returned by the service.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @sample AWSGlue.BatchGetJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    BatchGetJobsResult batchGetJobs(BatchGetJobsRequest batchGetJobsRequest);
+
+    /**
+     * <p>
      * Retrieves partitions in a batch request.
      * </p>
      * 
@@ -186,6 +249,27 @@ public interface AWSGlue {
 
     /**
      * <p>
+     * Returns a list of resource metadata for a given list of trigger names. After calling the
+     * <code>ListTriggers</code> operation, you can call this operation to access the data to which you have been
+     * granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
+     * </p>
+     * 
+     * @param batchGetTriggersRequest
+     * @return Result of the BatchGetTriggers operation returned by the service.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @sample AWSGlue.BatchGetTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetTriggers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    BatchGetTriggersResult batchGetTriggers(BatchGetTriggersRequest batchGetTriggersRequest);
+
+    /**
+     * <p>
      * Stops one or more job runs for a specified job definition.
      * </p>
      * 
@@ -205,9 +289,9 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Creates a classifier in the user's account. This may be a <code>GrokClassifier</code>, an
-     * <code>XMLClassifier</code>, or abbrev <code>JsonClassifier</code>, depending on which field of the request is
-     * present.
+     * Creates a classifier in the user's account. This can be a <code>GrokClassifier</code>, an
+     * <code>XMLClassifier</code>, a <code>JsonClassifier</code>, or a <code>CsvClassifier</code>, depending on which
+     * field of the request is present.
      * </p>
      * 
      * @param createClassifierRequest
@@ -250,8 +334,8 @@ public interface AWSGlue {
     /**
      * <p>
      * Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl
-     * target must be specified, in the <i>s3Targets</i> field, the <i>jdbcTargets</i> field, or the
-     * <i>DynamoDBTargets</i> field.
+     * target must be specified, in the <code>s3Targets</code> field, the <code>jdbcTargets</code> field, or the
+     * <code>DynamoDBTargets</code> field.
      * </p>
      * 
      * @param createCrawlerRequest
@@ -537,7 +621,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Removes a specified crawler from the Data Catalog, unless the crawler state is <code>RUNNING</code>.
+     * Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is <code>RUNNING</code>.
      * </p>
      * 
      * @param deleteCrawlerRequest
@@ -1394,6 +1478,27 @@ public interface AWSGlue {
 
     /**
      * <p>
+     * Retrieves a list of tags associated with a resource.
+     * </p>
+     * 
+     * @param getTagsRequest
+     * @return Result of the GetTags operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @sample AWSGlue.GetTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetTagsResult getTags(GetTagsRequest getTagsRequest);
+
+    /**
+     * <p>
      * Retrieves the definition of a trigger.
      * </p>
      * 
@@ -1499,7 +1604,109 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Sets the security configuration for a specified catalog. Once the configuration has been set, the specified
+     * Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag. This
+     * operation allows you to see which resources are available in your account, and their names.
+     * </p>
+     * <p>
+     * This operation takes the optional <code>Tags</code> field which you can use as a filter on the response so that
+     * tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag
+     * will be retrieved.
+     * </p>
+     * 
+     * @param listCrawlersRequest
+     * @return Result of the ListCrawlers operation returned by the service.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.ListCrawlers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListCrawlers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListCrawlersResult listCrawlers(ListCrawlersRequest listCrawlersRequest);
+
+    /**
+     * <p>
+     * Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag.
+     * This operation allows you to see which resources are available in your account, and their names.
+     * </p>
+     * <p>
+     * This operation takes the optional <code>Tags</code> field which you can use as a filter on the response so that
+     * tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag
+     * will be retrieved.
+     * </p>
+     * 
+     * @param listDevEndpointsRequest
+     * @return Result of the ListDevEndpoints operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.ListDevEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListDevEndpoints" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListDevEndpointsResult listDevEndpoints(ListDevEndpointsRequest listDevEndpointsRequest);
+
+    /**
+     * <p>
+     * Retrieves the names of all job resources in this AWS account, or the resources with the specified tag. This
+     * operation allows you to see which resources are available in your account, and their names.
+     * </p>
+     * <p>
+     * This operation takes the optional <code>Tags</code> field which you can use as a filter on the response so that
+     * tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag
+     * will be retrieved.
+     * </p>
+     * 
+     * @param listJobsRequest
+     * @return Result of the ListJobs operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.ListJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListJobsResult listJobs(ListJobsRequest listJobsRequest);
+
+    /**
+     * <p>
+     * Retrieves the names of all trigger resources in this AWS account, or the resources with the specified tag. This
+     * operation allows you to see which resources are available in your account, and their names.
+     * </p>
+     * <p>
+     * This operation takes the optional <code>Tags</code> field which you can use as a filter on the response so that
+     * tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag
+     * will be retrieved.
+     * </p>
+     * 
+     * @param listTriggersRequest
+     * @return Result of the ListTriggers operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.ListTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListTriggers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTriggersResult listTriggers(ListTriggersRequest listTriggersRequest);
+
+    /**
+     * <p>
+     * Sets the security configuration for a specified catalog. After the configuration has been set, the specified
      * encryption is applied to every catalog write thereafter.
      * </p>
      * 
@@ -1726,8 +1933,52 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Modifies an existing classifier (a <code>GrokClassifier</code>, <code>XMLClassifier</code>, or
-     * <code>JsonClassifier</code>, depending on which field is present).
+     * Adds tags to a resource. A tag is a label you can assign to an AWS resource. In AWS Glue, you can tag only
+     * certain resources. For information about what resources you can tag, see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a>.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @sample AWSGlue.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @sample AWSGlue.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Modifies an existing classifier (a <code>GrokClassifier</code>, an <code>XMLClassifier</code>, a
+     * <code>JsonClassifier</code>, or a <code>CsvClassifier</code>, depending on which field is present).
      * </p>
      * 
      * @param updateClassifierRequest

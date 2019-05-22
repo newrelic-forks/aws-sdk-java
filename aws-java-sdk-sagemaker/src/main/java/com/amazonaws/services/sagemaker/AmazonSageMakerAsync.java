@@ -25,7 +25,9 @@ import com.amazonaws.services.sagemaker.model.*;
  * {@link com.amazonaws.services.sagemaker.AbstractAmazonSageMakerAsync} instead.
  * </p>
  * <p>
- * Definition of the public APIs exposed by SageMaker
+ * <p>
+ * Provides APIs for creating and managing Amazon SageMaker resources.
+ * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSageMakerAsync extends AmazonSageMaker {
@@ -33,7 +35,8 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook
-     * instances, training jobs, hyperparameter tuning jobs, models, endpoint configurations, and endpoints.
+     * instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams,
+     * endpoint configurations, and endpoints.
      * </p>
      * <p>
      * Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information
@@ -62,7 +65,8 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook
-     * instances, training jobs, hyperparameter tuning jobs, models, endpoint configurations, and endpoints.
+     * instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams,
+     * endpoint configurations, and endpoints.
      * </p>
      * <p>
      * Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information
@@ -126,14 +130,14 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Create a git repository as a resource in your Amazon SageMaker account. You can associate the repository with
-     * notebook instances so that you can use git source control for the notebooks you create. The git repository is a
+     * Creates a Git repository as a resource in your Amazon SageMaker account. You can associate the repository with
+     * notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a
      * resource in your Amazon SageMaker account, so it can be associated with more than one notebook instance, and it
      * persists independently from the lifecycle of any notebook instances it is associated with.
      * </p>
      * <p>
      * The repository can be hosted either in <a
-     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a> or in any other git
+     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a> or in any other Git
      * repository.
      * </p>
      * 
@@ -147,14 +151,14 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Create a git repository as a resource in your Amazon SageMaker account. You can associate the repository with
-     * notebook instances so that you can use git source control for the notebooks you create. The git repository is a
+     * Creates a Git repository as a resource in your Amazon SageMaker account. You can associate the repository with
+     * notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a
      * resource in your Amazon SageMaker account, so it can be associated with more than one notebook instance, and it
      * persists independently from the lifecycle of any notebook instances it is associated with.
      * </p>
      * <p>
      * The repository can be hosted either in <a
-     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a> or in any other git
+     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a> or in any other Git
      * repository.
      * </p>
      * 
@@ -286,11 +290,17 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint
      * to provision resources and deploy models. You create the endpoint configuration with the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html">CreateEndpointConfig</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html">CreateEndpointConfig</a>
+     * API.
      * </p>
      * <note>
      * <p>
      * Use this API only for hosting models using Amazon SageMaker hosting services.
+     * </p>
+     * <p>
+     * You must not delete an <code>EndpointConfig</code> in use by an endpoint that is live or while the
+     * <code>UpdateEndpoint</code> or <code>CreateEndpoint</code> operations are being performed on the endpoint. To
+     * update an endpoint, you must create a new <code>EndpointConfig</code>.
      * </p>
      * </note>
      * <p>
@@ -304,10 +314,10 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * When Amazon SageMaker receives the request, it sets the endpoint status to <code>Creating</code>. After it
      * creates the endpoint, it sets the status to <code>InService</code>. Amazon SageMaker can then process incoming
      * requests for inferences. To check the status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * <p>
-     * For an example, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html">Exercise 1: Using the
+     * For an example, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html">Exercise 1: Using the
      * K-Means Algorithm Provided by Amazon SageMaker</a>.
      * </p>
      * <p>
@@ -331,11 +341,17 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint
      * to provision resources and deploy models. You create the endpoint configuration with the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html">CreateEndpointConfig</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html">CreateEndpointConfig</a>
+     * API.
      * </p>
      * <note>
      * <p>
      * Use this API only for hosting models using Amazon SageMaker hosting services.
+     * </p>
+     * <p>
+     * You must not delete an <code>EndpointConfig</code> in use by an endpoint that is live or while the
+     * <code>UpdateEndpoint</code> or <code>CreateEndpoint</code> operations are being performed on the endpoint. To
+     * update an endpoint, you must create a new <code>EndpointConfig</code>.
      * </p>
      * </note>
      * <p>
@@ -349,10 +365,10 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * When Amazon SageMaker receives the request, it sets the endpoint status to <code>Creating</code>. After it
      * creates the endpoint, it sets the status to <code>InService</code>. Amazon SageMaker can then process incoming
      * requests for inferences. To check the status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * <p>
-     * For an example, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html">Exercise 1: Using the
+     * For an example, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html">Exercise 1: Using the
      * K-Means Algorithm Provided by Amazon SageMaker</a>.
      * </p>
      * <p>
@@ -382,7 +398,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models. In the
      * configuration, you identify one or more models, created using the <code>CreateModel</code> API, to deploy and the
      * resources that you want Amazon SageMaker to provision. Then you call the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> API.
      * </p>
      * <note>
      * <p>
@@ -414,7 +430,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models. In the
      * configuration, you identify one or more models, created using the <code>CreateModel</code> API, to deploy and the
      * resources that you want Amazon SageMaker to provision. Then you call the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> API.
      * </p>
      * <note>
      * <p>
@@ -769,7 +785,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * model, host models by creating Amazon SageMaker endpoints, and validate hosted models.
      * </p>
      * <p>
-     * For more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It
+     * For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It
      * Works</a>.
      * </p>
      * 
@@ -830,7 +846,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * model, host models by creating Amazon SageMaker endpoints, and validate hosted models.
      * </p>
      * <p>
-     * For more information, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It
+     * For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It
      * Works</a>.
      * </p>
      * 
@@ -870,7 +886,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * For information about notebook instance lifestyle configurations, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
      * Customize a Notebook Instance</a>.
      * </p>
      * 
@@ -907,7 +923,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * For information about notebook instance lifestyle configurations, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
      * Customize a Notebook Instance</a>.
      * </p>
      * 
@@ -939,10 +955,15 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook
      * instance. Use the <code>NotIpAddress</code> condition operator and the <code>aws:SourceIP</code> condition
      * context key to specify the list of IP addresses that you want to have access to the notebook instance. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter">Limit Access to a
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html">Limit Access to a
      * Notebook Instance by IP Address</a>.
      * </p>
+     * <note>
+     * <p>
+     * The URL that you get from a call to is valid only for 5 minutes. If you try to use the URL after the 5-minute
+     * limit expires, you are directed to the AWS console sign-in page.
+     * </p>
+     * </note>
      * 
      * @param createPresignedNotebookInstanceUrlRequest
      * @return A Java Future containing the result of the CreatePresignedNotebookInstanceUrl operation returned by the
@@ -967,10 +988,15 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook
      * instance. Use the <code>NotIpAddress</code> condition operator and the <code>aws:SourceIP</code> condition
      * context key to specify the list of IP addresses that you want to have access to the notebook instance. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter">Limit Access to a
+     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html">Limit Access to a
      * Notebook Instance by IP Address</a>.
      * </p>
+     * <note>
+     * <p>
+     * The URL that you get from a call to is valid only for 5 minutes. If you try to use the URL after the 5-minute
+     * limit expires, you are directed to the AWS console sign-in page.
+     * </p>
+     * </note>
      * 
      * @param createPresignedNotebookInstanceUrlRequest
      * @param asyncHandler
@@ -994,7 +1020,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model
-     * artifacts as part of the model. You can also use the artifacts in a deep learning service other than Amazon
+     * artifacts as part of the model. You can also use the artifacts in a machine learning service other than Amazon
      * SageMaker, provided that you know how to use them for inferences.
      * </p>
      * <p>
@@ -1010,7 +1036,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * <code>HyperParameters</code> - Specify these algorithm-specific parameters to influence the quality of the final
      * model. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * </li>
      * <li>
@@ -1045,7 +1071,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </ul>
      * <p>
      * For more information about Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It Works</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It Works</a>.
      * </p>
      * 
      * @param createTrainingJobRequest
@@ -1063,7 +1089,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model
-     * artifacts as part of the model. You can also use the artifacts in a deep learning service other than Amazon
+     * artifacts as part of the model. You can also use the artifacts in a machine learning service other than Amazon
      * SageMaker, provided that you know how to use them for inferences.
      * </p>
      * <p>
@@ -1079,7 +1105,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * <code>HyperParameters</code> - Specify these algorithm-specific parameters to influence the quality of the final
      * model. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>.
      * </p>
      * </li>
      * <li>
@@ -1114,7 +1140,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </ul>
      * <p>
      * For more information about Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It Works</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It Works</a>.
      * </p>
      * 
      * @param createTrainingJobRequest
@@ -1175,7 +1201,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </ul>
      * <p>
      * For more information about how batch transformation works Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">How It Works</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">How It Works</a>.
      * </p>
      * 
      * @param createTransformJobRequest
@@ -1231,7 +1257,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </ul>
      * <p>
      * For more information about how batch transformation works Amazon SageMaker, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">How It Works</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">How It Works</a>.
      * </p>
      * 
      * @param createTransformJobRequest
@@ -1319,7 +1345,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Deletes the specified git repository from your account.
+     * Deletes the specified Git repository from your account.
      * </p>
      * 
      * @param deleteCodeRepositoryRequest
@@ -1332,7 +1358,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Deletes the specified git repository from your account.
+     * Deletes the specified Git repository from your account.
      * </p>
      * 
      * @param deleteCodeRepositoryRequest
@@ -1426,7 +1452,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * Deletes a model. The <code>DeleteModel</code> API deletes only the model entry that was created in Amazon
      * SageMaker when you called the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API. It does not
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API. It does not
      * delete model artifacts, inference code, or the IAM role that you specified when creating the model.
      * </p>
      * 
@@ -1442,7 +1468,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * Deletes a model. The <code>DeleteModel</code> API deletes only the model entry that was created in Amazon
      * SageMaker when you called the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API. It does not
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API. It does not
      * delete model artifacts, inference code, or the IAM role that you specified when creating the model.
      * </p>
      * 
@@ -1691,7 +1717,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Gets details about the specified git repository.
+     * Gets details about the specified Git repository.
      * </p>
      * 
      * @param describeCodeRepositoryRequest
@@ -1704,7 +1730,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Gets details about the specified git repository.
+     * Gets details about the specified Git repository.
      * </p>
      * 
      * @param describeCodeRepositoryRequest
@@ -1994,7 +2020,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * For information about notebook instance lifestyle configurations, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
      * Customize a Notebook Instance</a>.
      * </p>
      * 
@@ -2015,7 +2041,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * </p>
      * <p>
      * For information about notebook instance lifestyle configurations, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html">Step 2.1: (Optional)
      * Customize a Notebook Instance</a>.
      * </p>
      * 
@@ -2233,7 +2259,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Gets a list of the git repositories in your account.
+     * Gets a list of the Git repositories in your account.
      * </p>
      * 
      * @param listCodeRepositoriesRequest
@@ -2246,7 +2272,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Gets a list of the git repositories in your account.
+     * Gets a list of the Git repositories in your account.
      * </p>
      * 
      * @param listCodeRepositoriesRequest
@@ -2498,7 +2524,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Lists models created with the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API.
      * </p>
      * 
      * @param listModelsRequest
@@ -2512,7 +2538,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Lists models created with the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API.
      * </p>
      * 
      * @param listModelsRequest
@@ -3031,7 +3057,8 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage
-     * volume from it. Amazon SageMaker preserves the ML storage volume.
+     * volume from it. Amazon SageMaker preserves the ML storage volume. Amazon SageMaker stops charging you for the ML
+     * compute instance when you call <code>StopNotebookInstance</code>.
      * </p>
      * <p>
      * To access data on the ML storage volume for a notebook instance that has been terminated, call the
@@ -3050,7 +3077,8 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage
-     * volume from it. Amazon SageMaker preserves the ML storage volume.
+     * volume from it. Amazon SageMaker preserves the ML storage volume. Amazon SageMaker stops charging you for the ML
+     * compute instance when you call <code>StopNotebookInstance</code>.
      * </p>
      * <p>
      * To access data on the ML storage volume for a notebook instance that has been terminated, call the
@@ -3078,11 +3106,6 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * so the results of the training is not lost.
      * </p>
      * <p>
-     * Training algorithms provided by Amazon SageMaker save the intermediate results of a model training job. This
-     * intermediate data is a valid model artifact. You can use the model artifacts that are saved when Amazon SageMaker
-     * stops a training job to create a model.
-     * </p>
-     * <p>
      * When it receives a <code>StopTrainingJob</code> request, Amazon SageMaker changes the status of the job to
      * <code>Stopping</code>. After Amazon SageMaker stops the job, it sets the status to <code>Stopped</code>.
      * </p>
@@ -3100,11 +3123,6 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * Stops a training job. To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which
      * delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts,
      * so the results of the training is not lost.
-     * </p>
-     * <p>
-     * Training algorithms provided by Amazon SageMaker save the intermediate results of a model training job. This
-     * intermediate data is a valid model artifact. You can use the model artifacts that are saved when Amazon SageMaker
-     * stops a training job to create a model.
      * </p>
      * <p>
      * When it receives a <code>StopTrainingJob</code> request, Amazon SageMaker changes the status of the job to
@@ -3167,7 +3185,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Updates the specified git repository with the specified values.
+     * Updates the specified Git repository with the specified values.
      * </p>
      * 
      * @param updateCodeRepositoryRequest
@@ -3180,7 +3198,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
 
     /**
      * <p>
-     * Updates the specified git repository with the specified values.
+     * Updates the specified Git repository with the specified values.
      * </p>
      * 
      * @param updateCodeRepositoryRequest
@@ -3205,12 +3223,13 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * When Amazon SageMaker receives the request, it sets the endpoint status to <code>Updating</code>. After updating
      * the endpoint, it sets the status to <code>InService</code>. To check the status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * <note>
      * <p>
-     * You cannot update an endpoint with the current <code>EndpointConfig</code>. To update an endpoint, you must
-     * create a new <code>EndpointConfig</code>.
+     * You must not delete an <code>EndpointConfig</code> in use by an endpoint that is live or while the
+     * <code>UpdateEndpoint</code> or <code>CreateEndpoint</code> operations are being performed on the endpoint. To
+     * update an endpoint, you must create a new <code>EndpointConfig</code>.
      * </p>
      * </note>
      * 
@@ -3231,12 +3250,13 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * <p>
      * When Amazon SageMaker receives the request, it sets the endpoint status to <code>Updating</code>. After updating
      * the endpoint, it sets the status to <code>InService</code>. To check the status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * <note>
      * <p>
-     * You cannot update an endpoint with the current <code>EndpointConfig</code>. To update an endpoint, you must
-     * create a new <code>EndpointConfig</code>.
+     * You must not delete an <code>EndpointConfig</code> in use by an endpoint that is live or while the
+     * <code>UpdateEndpoint</code> or <code>CreateEndpoint</code> operations are being performed on the endpoint. To
+     * update an endpoint, you must create a new <code>EndpointConfig</code>.
      * </p>
      * </note>
      * 
@@ -3259,7 +3279,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * associated with an existing endpoint. When it receives the request, Amazon SageMaker sets the endpoint status to
      * <code>Updating</code>. After updating the endpoint, it sets the status to <code>InService</code>. To check the
      * status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * 
      * @param updateEndpointWeightsAndCapacitiesRequest
@@ -3278,7 +3298,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
      * associated with an existing endpoint. When it receives the request, Amazon SageMaker sets the endpoint status to
      * <code>Updating</code>. After updating the endpoint, it sets the status to <code>InService</code>. To check the
      * status of an endpoint, use the <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * 
      * @param updateEndpointWeightsAndCapacitiesRequest
@@ -3299,8 +3319,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance
-     * used for your notebook instance to accommodate changes in your workload requirements. You can also update the VPC
-     * security groups.
+     * used for your notebook instance to accommodate changes in your workload requirements.
      * </p>
      * 
      * @param updateNotebookInstanceRequest
@@ -3314,8 +3333,7 @@ public interface AmazonSageMakerAsync extends AmazonSageMaker {
     /**
      * <p>
      * Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance
-     * used for your notebook instance to accommodate changes in your workload requirements. You can also update the VPC
-     * security groups.
+     * used for your notebook instance to accommodate changes in your workload requirements.
      * </p>
      * 
      * @param updateNotebookInstanceRequest

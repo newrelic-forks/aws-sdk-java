@@ -52,7 +52,11 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.List<DatasetTrigger> triggers;
-
+    /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     */
     private java.util.List<DatasetContentDeliveryRule> contentDeliveryRules;
     /**
      * <p>
@@ -78,6 +82,16 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private RetentionPeriod retentionPeriod;
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     */
+    private VersioningConfiguration versioningConfiguration;
 
     /**
      * <p>
@@ -300,7 +314,11 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
+     * @return When data set contents are created they are delivered to destinations specified here.
      */
 
     public java.util.List<DatasetContentDeliveryRule> getContentDeliveryRules() {
@@ -308,7 +326,12 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      */
 
     public void setContentDeliveryRules(java.util.Collection<DatasetContentDeliveryRule> contentDeliveryRules) {
@@ -322,12 +345,16 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setContentDeliveryRules(java.util.Collection)} or {@link #withContentDeliveryRules(java.util.Collection)}
      * if you want to override the existing values.
      * </p>
      * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -342,7 +369,12 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * When data set contents are created they are delivered to destinations specified here.
+     * </p>
+     * 
      * @param contentDeliveryRules
+     *        When data set contents are created they are delivered to destinations specified here.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -531,6 +563,70 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @param versioningConfiguration
+     *        [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *        latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *        specified by the "retentionPeriod" parameter. (For more information, see
+     *        https://docs.aws.amazon.com/iotanalytics
+     *        /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     */
+
+    public void setVersioningConfiguration(VersioningConfiguration versioningConfiguration) {
+        this.versioningConfiguration = versioningConfiguration;
+    }
+
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @return [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *         latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *         specified by the "retentionPeriod" parameter. (For more information, see
+     *         https://docs.aws.amazon.com/iotanalytics
+     *         /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     */
+
+    public VersioningConfiguration getVersioningConfiguration() {
+        return this.versioningConfiguration;
+    }
+
+    /**
+     * <p>
+     * [Optional] How many versions of data set contents are kept. If not specified or set to null, only the latest
+     * version plus the latest succeeded version (if they are different) are kept for the time period specified by the
+     * "retentionPeriod" parameter. (For more information, see
+     * https://docs.aws.amazon.com/iotanalytics/latest/userguide/
+     * getting-started.html#aws-iot-analytics-dataset-versions)
+     * </p>
+     * 
+     * @param versioningConfiguration
+     *        [Optional] How many versions of data set contents are kept. If not specified or set to null, only the
+     *        latest version plus the latest succeeded version (if they are different) are kept for the time period
+     *        specified by the "retentionPeriod" parameter. (For more information, see
+     *        https://docs.aws.amazon.com/iotanalytics
+     *        /latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Dataset withVersioningConfiguration(VersioningConfiguration versioningConfiguration) {
+        setVersioningConfiguration(versioningConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -559,7 +655,9 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
         if (getLastUpdateTime() != null)
             sb.append("LastUpdateTime: ").append(getLastUpdateTime()).append(",");
         if (getRetentionPeriod() != null)
-            sb.append("RetentionPeriod: ").append(getRetentionPeriod());
+            sb.append("RetentionPeriod: ").append(getRetentionPeriod()).append(",");
+        if (getVersioningConfiguration() != null)
+            sb.append("VersioningConfiguration: ").append(getVersioningConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -610,6 +708,10 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getRetentionPeriod() != null && other.getRetentionPeriod().equals(this.getRetentionPeriod()) == false)
             return false;
+        if (other.getVersioningConfiguration() == null ^ this.getVersioningConfiguration() == null)
+            return false;
+        if (other.getVersioningConfiguration() != null && other.getVersioningConfiguration().equals(this.getVersioningConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -627,6 +729,7 @@ public class Dataset implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
         hashCode = prime * hashCode + ((getLastUpdateTime() == null) ? 0 : getLastUpdateTime().hashCode());
         hashCode = prime * hashCode + ((getRetentionPeriod() == null) ? 0 : getRetentionPeriod().hashCode());
+        hashCode = prime * hashCode + ((getVersioningConfiguration() == null) ? 0 : getVersioningConfiguration().hashCode());
         return hashCode;
     }
 

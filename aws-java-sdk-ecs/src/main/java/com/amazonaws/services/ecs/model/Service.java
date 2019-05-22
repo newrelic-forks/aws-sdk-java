@@ -63,7 +63,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LoadBalancer> loadBalancers;
-    /** <p/> */
+    /**
+     * <p>
+     * The details of the service discovery registries to assign to this service. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<ServiceRegistry> serviceRegistries;
     /**
      * <p>
@@ -95,7 +100,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type on which your service is running. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -105,7 +110,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * The platform version on which your tasks in the service are running. A platform version is only specified for
      * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -126,9 +131,9 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     private DeploymentConfiguration deploymentConfiguration;
     /**
      * <p>
-     * Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set includes
-     * details such as the desired number of tasks, how many tasks are running, and whether the task set serves
-     * production traffic.
+     * Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code> deployment.
+     * An Amazon ECS task set includes details such as the desired number of tasks, how many tasks are running, and
+     * whether the task set serves production traffic.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TaskSet> taskSets;
@@ -236,7 +241,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -534,9 +539,14 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The details of the service discovery registries to assign to this service. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * </p>
      * 
-     * @return
+     * @return The details of the service discovery registries to assign to this service. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *         Discovery</a>.
      */
 
     public java.util.List<ServiceRegistry> getServiceRegistries() {
@@ -547,9 +557,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The details of the service discovery registries to assign to this service. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * </p>
      * 
      * @param serviceRegistries
+     *        The details of the service discovery registries to assign to this service. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        Discovery</a>.
      */
 
     public void setServiceRegistries(java.util.Collection<ServiceRegistry> serviceRegistries) {
@@ -562,7 +578,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The details of the service discovery registries to assign to this service. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setServiceRegistries(java.util.Collection)} or {@link #withServiceRegistries(java.util.Collection)} if
@@ -570,6 +589,9 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param serviceRegistries
+     *        The details of the service discovery registries to assign to this service. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        Discovery</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -584,9 +606,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The details of the service discovery registries to assign to this service. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * </p>
      * 
      * @param serviceRegistries
+     *        The details of the service discovery registries to assign to this service. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        Discovery</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -776,13 +804,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type on which your service is running. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which your service is running. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -794,12 +822,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type on which your service is running. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The launch type on which your service is running. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -811,13 +839,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type on which your service is running. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which your service is running. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -831,13 +859,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The launch type on which your service is running. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param launchType
      *        The launch type on which your service is running. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
      *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -853,7 +881,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * The platform version on which your tasks in the service are running. A platform version is only specified for
      * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -861,7 +889,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      *        The platform version on which your tasks in the service are running. A platform version is only specified
      *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -874,14 +902,14 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * The platform version on which your tasks in the service are running. A platform version is only specified for
      * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The platform version on which your tasks in the service are running. A platform version is only specified
      *         for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform
      *         version is used by default. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -894,7 +922,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * The platform version on which your tasks in the service are running. A platform version is only specified for
      * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -902,7 +930,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      *        The platform version on which your tasks in the service are running. A platform version is only specified
      *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1006,14 +1034,14 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set includes
-     * details such as the desired number of tasks, how many tasks are running, and whether the task set serves
-     * production traffic.
+     * Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code> deployment.
+     * An Amazon ECS task set includes details such as the desired number of tasks, how many tasks are running, and
+     * whether the task set serves production traffic.
      * </p>
      * 
-     * @return Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set
-     *         includes details such as the desired number of tasks, how many tasks are running, and whether the task
-     *         set serves production traffic.
+     * @return Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code>
+     *         deployment. An Amazon ECS task set includes details such as the desired number of tasks, how many tasks
+     *         are running, and whether the task set serves production traffic.
      */
 
     public java.util.List<TaskSet> getTaskSets() {
@@ -1025,15 +1053,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set includes
-     * details such as the desired number of tasks, how many tasks are running, and whether the task set serves
-     * production traffic.
+     * Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code> deployment.
+     * An Amazon ECS task set includes details such as the desired number of tasks, how many tasks are running, and
+     * whether the task set serves production traffic.
      * </p>
      * 
      * @param taskSets
-     *        Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set
-     *        includes details such as the desired number of tasks, how many tasks are running, and whether the task set
-     *        serves production traffic.
+     *        Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code>
+     *        deployment. An Amazon ECS task set includes details such as the desired number of tasks, how many tasks
+     *        are running, and whether the task set serves production traffic.
      */
 
     public void setTaskSets(java.util.Collection<TaskSet> taskSets) {
@@ -1047,9 +1075,9 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set includes
-     * details such as the desired number of tasks, how many tasks are running, and whether the task set serves
-     * production traffic.
+     * Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code> deployment.
+     * An Amazon ECS task set includes details such as the desired number of tasks, how many tasks are running, and
+     * whether the task set serves production traffic.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1058,9 +1086,9 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param taskSets
-     *        Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set
-     *        includes details such as the desired number of tasks, how many tasks are running, and whether the task set
-     *        serves production traffic.
+     *        Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code>
+     *        deployment. An Amazon ECS task set includes details such as the desired number of tasks, how many tasks
+     *        are running, and whether the task set serves production traffic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1076,15 +1104,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set includes
-     * details such as the desired number of tasks, how many tasks are running, and whether the task set serves
-     * production traffic.
+     * Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code> deployment.
+     * An Amazon ECS task set includes details such as the desired number of tasks, how many tasks are running, and
+     * whether the task set serves production traffic.
      * </p>
      * 
      * @param taskSets
-     *        Information about a set of Amazon ECS tasks in an AWS CodeDeploy deployment. An Amazon ECS task set
-     *        includes details such as the desired number of tasks, how many tasks are running, and whether the task set
-     *        serves production traffic.
+     *        Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an <code>EXTERNAL</code>
+     *        deployment. An Amazon ECS task set includes details such as the desired number of tasks, how many tasks
+     *        are running, and whether the task set serves production traffic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1982,13 +2010,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information,
-     *        see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your
+     *        see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
      *        Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1999,12 +2027,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information,
-     *         see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your
+     *         see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
      *         Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -2015,13 +2043,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information,
-     *        see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your
+     *        see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
      *        Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2034,12 +2062,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your Amazon ECS
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks in the service. For more information,
-     *         see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html">Tagging Your
+     *         see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
      *         Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 

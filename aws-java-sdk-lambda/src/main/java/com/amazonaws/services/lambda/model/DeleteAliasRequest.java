@@ -27,7 +27,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -57,14 +57,14 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String functionName;
     /**
      * <p>
-     * Name of the alias to delete.
+     * The name of the alias.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -92,7 +92,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param functionName
-     *        The name of the lambda function.</p>
+     *        The name of the Lambda function.</p>
      *        <p class="title">
      *        <b>Name formats</b>
      *        </p>
@@ -124,7 +124,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -151,7 +151,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
      * characters in length.
      * </p>
      * 
-     * @return The name of the lambda function.</p>
+     * @return The name of the Lambda function.</p>
      *         <p class="title">
      *         <b>Name formats</b>
      *         </p>
@@ -183,7 +183,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The name of the lambda function.
+     * The name of the Lambda function.
      * </p>
      * <p class="title">
      * <b>Name formats</b>
@@ -211,7 +211,7 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param functionName
-     *        The name of the lambda function.</p>
+     *        The name of the Lambda function.</p>
      *        <p class="title">
      *        <b>Name formats</b>
      *        </p>
@@ -245,11 +245,11 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Name of the alias to delete.
+     * The name of the alias.
      * </p>
      * 
      * @param name
-     *        Name of the alias to delete.
+     *        The name of the alias.
      */
 
     public void setName(String name) {
@@ -258,10 +258,10 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Name of the alias to delete.
+     * The name of the alias.
      * </p>
      * 
-     * @return Name of the alias to delete.
+     * @return The name of the alias.
      */
 
     public String getName() {
@@ -270,11 +270,11 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Name of the alias to delete.
+     * The name of the alias.
      * </p>
      * 
      * @param name
-     *        Name of the alias to delete.
+     *        The name of the alias.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

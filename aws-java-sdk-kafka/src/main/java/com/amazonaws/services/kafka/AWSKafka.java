@@ -70,6 +70,33 @@ public interface AWSKafka {
 
     /**
      * <p>
+     * Creates a new MSK configuration.
+     * </p>
+     * 
+     * @param createConfigurationRequest
+     * @return Result of the CreateConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         Because of incorrect input, the request isn't valid. Correct the input, then retry the request.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @throws UnauthorizedException
+     *         The request is not authorized. The provided credentials couldn't be validated.
+     * @throws ForbiddenException
+     *         Access forbidden. Check your credentials and then retry your request.
+     * @throws ServiceUnavailableException
+     *         503 response
+     * @throws TooManyRequestsException
+     *         429 response
+     * @throws ConflictException
+     *         This configuration name already exists. Retry your request using another name.
+     * @sample AWSKafka.CreateConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/CreateConfiguration" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateConfigurationResult createConfiguration(CreateConfigurationRequest createConfigurationRequest);
+
+    /**
+     * <p>
      * Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
      * </p>
      * 
@@ -111,6 +138,56 @@ public interface AWSKafka {
      *      Documentation</a>
      */
     DescribeClusterResult describeCluster(DescribeClusterRequest describeClusterRequest);
+
+    /**
+     * <p>
+     * Returns a description of this MSK configuration.
+     * </p>
+     * 
+     * @param describeConfigurationRequest
+     * @return Result of the DescribeConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         Because of incorrect input, the request isn't valid. Correct the input, then retry the request.
+     * @throws UnauthorizedException
+     *         The request is not authorized. The provided credentials couldn't be validated.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @throws ForbiddenException
+     *         Access forbidden. Check your credentials and then retry your request.
+     * @throws NotFoundException
+     *         The resource could not be found due to incorrect input. Correct the input, then retry the request.
+     * @throws ServiceUnavailableException
+     *         503 response
+     * @sample AWSKafka.DescribeConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/DescribeConfiguration" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeConfigurationResult describeConfiguration(DescribeConfigurationRequest describeConfigurationRequest);
+
+    /**
+     * <p>
+     * Returns a description of this revision of the configuration.
+     * </p>
+     * 
+     * @param describeConfigurationRevisionRequest
+     * @return Result of the DescribeConfigurationRevision operation returned by the service.
+     * @throws BadRequestException
+     *         Because of incorrect input, the request isn't valid. Correct the input, then retry the request.
+     * @throws UnauthorizedException
+     *         The request is not authorized. The provided credentials couldn't be validated.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @throws ForbiddenException
+     *         Access forbidden. Check your credentials and then retry your request.
+     * @throws NotFoundException
+     *         The resource could not be found due to incorrect input. Correct the input, then retry the request.
+     * @throws ServiceUnavailableException
+     *         503 response
+     * @sample AWSKafka.DescribeConfigurationRevision
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/DescribeConfigurationRevision"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeConfigurationRevisionResult describeConfigurationRevision(DescribeConfigurationRevisionRequest describeConfigurationRevisionRequest);
 
     /**
      * <p>
@@ -158,6 +235,29 @@ public interface AWSKafka {
 
     /**
      * <p>
+     * Returns a list of all the MSK configurations in this Region for this account.
+     * </p>
+     * 
+     * @param listConfigurationsRequest
+     * @return Result of the ListConfigurations operation returned by the service.
+     * @throws ServiceUnavailableException
+     *         503 response
+     * @throws BadRequestException
+     *         Because of incorrect input, the request isn't valid. Correct the input, then retry the request.
+     * @throws UnauthorizedException
+     *         The request is not authorized. The provided credentials couldn't be validated.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @throws ForbiddenException
+     *         Access forbidden. Check your credentials and then retry your request.
+     * @sample AWSKafka.ListConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/ListConfigurations" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListConfigurationsResult listConfigurations(ListConfigurationsRequest listConfigurationsRequest);
+
+    /**
+     * <p>
      * Returns a list of the broker nodes in the cluster.
      * </p>
      * 
@@ -176,6 +276,63 @@ public interface AWSKafka {
      *      Documentation</a>
      */
     ListNodesResult listNodes(ListNodesRequest listNodesRequest);
+
+    /**
+     * <p>
+     * Returns a list of tags attached to a resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws NotFoundException
+     *         The resource could not be found due to incorrect input. Correct your request and then retry it.
+     * @throws BadRequestException
+     *         Bad request due to incorrect input. Correct your request and then retry it.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @sample AWSKafka.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * Tag a resource with given tags.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The resource could not be found due to incorrect input. Correct your request and then retry it.
+     * @throws BadRequestException
+     *         Bad request due to incorrect input. Correct your request and then retry it.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @sample AWSKafka.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Remove tags of a resource by given tag keys.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The resource could not be found due to incorrect input. Correct your request and then retry it.
+     * @throws BadRequestException
+     *         Bad request due to incorrect input. Correct your request and then retry it.
+     * @throws InternalServerErrorException
+     *         There was an unexpected internal server error. Retrying your request might resolve the issue.
+     * @sample AWSKafka.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

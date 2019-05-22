@@ -90,11 +90,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * TAG
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * TENANCY
      * </p>
      * </li>
@@ -193,7 +188,15 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private Expression filter;
-
+    /**
+     * <p>
+     * The measurement that you want your reservation coverage reported in.
+     * </p>
+     * <p>
+     * Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values in a
+     * request.
+     * </p>
+     */
     private java.util.List<String> metrics;
     /**
      * <p>
@@ -322,11 +325,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * TAG
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * TENANCY
      * </p>
      * </li>
@@ -377,11 +375,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      *         <li>
      *         <p>
      *         REGION
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         TAG
      *         </p>
      *         </li>
      *         <li>
@@ -447,11 +440,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * TAG
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * TENANCY
      * </p>
      * </li>
@@ -503,11 +491,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      *        <li>
      *        <p>
      *        REGION
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        TAG
      *        </p>
      *        </li>
      *        <li>
@@ -578,11 +561,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * TAG
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * TENANCY
      * </p>
      * </li>
@@ -639,11 +617,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      *        <li>
      *        <p>
      *        REGION
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        TAG
      *        </p>
      *        </li>
      *        <li>
@@ -716,11 +689,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * TAG
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * TENANCY
      * </p>
      * </li>
@@ -772,11 +740,6 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
      *        <li>
      *        <p>
      *        REGION
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        TAG
      *        </p>
      *        </li>
      *        <li>
@@ -1390,7 +1353,18 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * @return
+     * <p>
+     * The measurement that you want your reservation coverage reported in.
+     * </p>
+     * <p>
+     * Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values in a
+     * request.
+     * </p>
+     * 
+     * @return The measurement that you want your reservation coverage reported in.</p>
+     *         <p>
+     *         Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values
+     *         in a request.
      */
 
     public java.util.List<String> getMetrics() {
@@ -1398,7 +1372,19 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * The measurement that you want your reservation coverage reported in.
+     * </p>
+     * <p>
+     * Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values in a
+     * request.
+     * </p>
+     * 
      * @param metrics
+     *        The measurement that you want your reservation coverage reported in.</p>
+     *        <p>
+     *        Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values
+     *        in a request.
      */
 
     public void setMetrics(java.util.Collection<String> metrics) {
@@ -1412,12 +1398,23 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
+     * The measurement that you want your reservation coverage reported in.
+     * </p>
+     * <p>
+     * Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values in a
+     * request.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setMetrics(java.util.Collection)} or {@link #withMetrics(java.util.Collection)} if you want to override
      * the existing values.
      * </p>
      * 
      * @param metrics
+     *        The measurement that you want your reservation coverage reported in.</p>
+     *        <p>
+     *        Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values
+     *        in a request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1432,7 +1429,19 @@ public class GetReservationCoverageRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * The measurement that you want your reservation coverage reported in.
+     * </p>
+     * <p>
+     * Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values in a
+     * request.
+     * </p>
+     * 
      * @param metrics
+     *        The measurement that you want your reservation coverage reported in.</p>
+     *        <p>
+     *        Valid values are <code>Hour</code>, <code>Unit</code>, and <code>Cost</code>. You can use multiple values
+     *        in a request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -37,8 +37,9 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * Balancing.
  * </p>
  * <p>
- * For more information, see the <a
- * href="http://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html">Amazon EC2 Auto
+ * For more information, including information about granting IAM users required permissions for Amazon EC2 Auto Scaling
+ * actions, see the <a
+ * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html">Amazon EC2 Auto
  * Scaling User Guide</a>.
  * </p>
  */

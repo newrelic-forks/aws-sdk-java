@@ -88,6 +88,12 @@ public class VpcEndpoint implements Serializable, Cloneable {
     private Boolean privateDnsEnabled;
     /**
      * <p>
+     * Indicates whether the VPC endpoint is being managed by its service.
+     * </p>
+     */
+    private Boolean requesterManaged;
+    /**
+     * <p>
      * (Interface endpoint) One or more network interfaces for the endpoint.
      * </p>
      */
@@ -104,6 +110,12 @@ public class VpcEndpoint implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date creationTimestamp;
+    /**
+     * <p>
+     * Any tags assigned to the VPC endpoint.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
@@ -684,6 +696,58 @@ public class VpcEndpoint implements Serializable, Cloneable {
 
     /**
      * <p>
+     * Indicates whether the VPC endpoint is being managed by its service.
+     * </p>
+     * 
+     * @param requesterManaged
+     *        Indicates whether the VPC endpoint is being managed by its service.
+     */
+
+    public void setRequesterManaged(Boolean requesterManaged) {
+        this.requesterManaged = requesterManaged;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the VPC endpoint is being managed by its service.
+     * </p>
+     * 
+     * @return Indicates whether the VPC endpoint is being managed by its service.
+     */
+
+    public Boolean getRequesterManaged() {
+        return this.requesterManaged;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the VPC endpoint is being managed by its service.
+     * </p>
+     * 
+     * @param requesterManaged
+     *        Indicates whether the VPC endpoint is being managed by its service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcEndpoint withRequesterManaged(Boolean requesterManaged) {
+        setRequesterManaged(requesterManaged);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the VPC endpoint is being managed by its service.
+     * </p>
+     * 
+     * @return Indicates whether the VPC endpoint is being managed by its service.
+     */
+
+    public Boolean isRequesterManaged() {
+        return this.requesterManaged;
+    }
+
+    /**
+     * <p>
      * (Interface endpoint) One or more network interfaces for the endpoint.
      * </p>
      * 
@@ -869,6 +933,79 @@ public class VpcEndpoint implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Any tags assigned to the VPC endpoint.
+     * </p>
+     * 
+     * @return Any tags assigned to the VPC endpoint.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * Any tags assigned to the VPC endpoint.
+     * </p>
+     * 
+     * @param tags
+     *        Any tags assigned to the VPC endpoint.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * Any tags assigned to the VPC endpoint.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        Any tags assigned to the VPC endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcEndpoint withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Any tags assigned to the VPC endpoint.
+     * </p>
+     * 
+     * @param tags
+     *        Any tags assigned to the VPC endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcEndpoint withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -900,12 +1037,16 @@ public class VpcEndpoint implements Serializable, Cloneable {
             sb.append("Groups: ").append(getGroups()).append(",");
         if (getPrivateDnsEnabled() != null)
             sb.append("PrivateDnsEnabled: ").append(getPrivateDnsEnabled()).append(",");
+        if (getRequesterManaged() != null)
+            sb.append("RequesterManaged: ").append(getRequesterManaged()).append(",");
         if (getNetworkInterfaceIds() != null)
             sb.append("NetworkInterfaceIds: ").append(getNetworkInterfaceIds()).append(",");
         if (getDnsEntries() != null)
             sb.append("DnsEntries: ").append(getDnsEntries()).append(",");
         if (getCreationTimestamp() != null)
-            sb.append("CreationTimestamp: ").append(getCreationTimestamp());
+            sb.append("CreationTimestamp: ").append(getCreationTimestamp()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -960,6 +1101,10 @@ public class VpcEndpoint implements Serializable, Cloneable {
             return false;
         if (other.getPrivateDnsEnabled() != null && other.getPrivateDnsEnabled().equals(this.getPrivateDnsEnabled()) == false)
             return false;
+        if (other.getRequesterManaged() == null ^ this.getRequesterManaged() == null)
+            return false;
+        if (other.getRequesterManaged() != null && other.getRequesterManaged().equals(this.getRequesterManaged()) == false)
+            return false;
         if (other.getNetworkInterfaceIds() == null ^ this.getNetworkInterfaceIds() == null)
             return false;
         if (other.getNetworkInterfaceIds() != null && other.getNetworkInterfaceIds().equals(this.getNetworkInterfaceIds()) == false)
@@ -971,6 +1116,10 @@ public class VpcEndpoint implements Serializable, Cloneable {
         if (other.getCreationTimestamp() == null ^ this.getCreationTimestamp() == null)
             return false;
         if (other.getCreationTimestamp() != null && other.getCreationTimestamp().equals(this.getCreationTimestamp()) == false)
+            return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -990,9 +1139,11 @@ public class VpcEndpoint implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
         hashCode = prime * hashCode + ((getGroups() == null) ? 0 : getGroups().hashCode());
         hashCode = prime * hashCode + ((getPrivateDnsEnabled() == null) ? 0 : getPrivateDnsEnabled().hashCode());
+        hashCode = prime * hashCode + ((getRequesterManaged() == null) ? 0 : getRequesterManaged().hashCode());
         hashCode = prime * hashCode + ((getNetworkInterfaceIds() == null) ? 0 : getNetworkInterfaceIds().hashCode());
         hashCode = prime * hashCode + ((getDnsEntries() == null) ? 0 : getDnsEntries().hashCode());
         hashCode = prime * hashCode + ((getCreationTimestamp() == null) ? 0 : getCreationTimestamp().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
